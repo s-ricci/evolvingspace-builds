@@ -74,7 +74,7 @@
   - `AndroidBuilder` ora incrementa la versione a ogni build (versionCode + versionName `0.<code>`), scrive `Builds/version.json` e pubblica APK + json come **release GitHub** su `s-ricci/evolvingspace-builds` via `gh` CLI (URL stabile `releases/latest/download/...`)
   - `UpdateChecker` (in `GameBootstrap`): all'avvio su dispositivo scarica il version.json remoto; se più nuovo → popup "Aggiornamento disponibile" con **Scarica** (apre il download; installazione sopra la vecchia conserva i salvataggi) / "Più tardi". Silenzioso se offline o senza release
   - Permessi risolti: `gh` ora autenticata come `s-ricci` (ADMIN sul repo)
-- **Documentazione online**: `documentazione.html` pubblicata come `index.html` sul repo → **https://s-ricci.github.io/evolvingspace-builds/** (GitHub Pages); per ripubblicarla dopo una modifica: `Tools/publish-docs.ps1`
+- **Documentazione online**: i tre Markdown (GDD, decisioni, stato) sono leggibili direttamente su **github.com/s-ricci/evolvingspace-builds** (con README indice), e `documentazione.html` è la versione a pagina unica su **https://s-ricci.github.io/evolvingspace-builds/** (GitHub Pages). `Tools/publish-docs.ps1` pubblica tutto insieme e tiene le due versioni allineate
 
 **In corso:**
 - Build v0.2 con release GitHub e updater a bordo
