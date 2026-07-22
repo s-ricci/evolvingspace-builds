@@ -358,9 +358,17 @@
     <li><strong>Raggio traente visibile implementato</strong>: fascio verde-acqua pulsante dalla pancia della nave che aggancia <strong>un minerale alla volta</strong> e lo traina a bordo (sostituisce la deriva ambientale invisibile); upgrade "forza di trazione" Lv 0–5 = velocità di traino 0,8 → 2,8 u/s (4-20 lingotti); predisposto per i materiali pesanti futuri (velocità = forza/massa); offline sequenziale allineato; nel salvataggio</li>
   </ul>
 
+  <ul>
+    <li><strong>Prima build Android</strong> (menu <strong>EvolvingSpace → Build APK Android</strong> o batch): APK IL2CPP/ARM64, portrait, debug key; compila in <code>Builds/</code> e copia in <code>G:\Il mio Drive\APK</code>. Fix: la SampleScene del template era la scena 0 delle Build Settings (schermata blu sul telefono) — rimossa, <code>Game.unity</code> è l'unica scena</li>
+    <li><strong>Pulsante reset</strong> in mining: quadrato rosso con la X accanto a "INTERNO NAVE" → popup di conferma → cancella il salvataggio e riparte da capo</li>
+    <li><strong>Raggio traente ora va installato</strong> (4 lingotti, sala comandi, come la torretta): senza raggio si raccoglie solo a mano e niente resa offline; i salvataggi con livelli già comprati migrano come "installato"</li>
+    <li><strong>Auto-updater (stadio A)</strong>: ogni build incrementa la versione, scrive <code>version.json</code> e pubblica APK + json come <strong>release GitHub</strong> su <code>s-ricci/evolvingspace-builds</code>; all'avvio su dispositivo l'<code>UpdateChecker</code> confronta le versioni e propone il download (l'installazione sopra conserva i salvataggi)</li>
+    <li><strong>Documentazione online</strong>: i tre Markdown leggibili su <a href="https://github.com/s-ricci/evolvingspace-builds">github.com/s-ricci/evolvingspace-builds</a> (README indice) e questa pagina su <a href="https://s-ricci.github.io/evolvingspace-builds/">Pages</a>; <code>Tools/publish-docs.ps1</code> pubblica e allinea tutto</li>
+  </ul>
+
   <h4>In corso</h4>
   <ul>
-    <li>Prova del fascio: guardare il raggio agganciare i drop uno a uno; comprare qualche livello di forza e vederlo trainare più in fretta</li>
+    <li>Test su telefono della v0.2: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio</li>
   </ul>
 
   <h4>Prossimo passo</h4>
