@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EvolvingSpace — Documentazione</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #161b22;
+    --bg-card: #1c2330;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #9198a1;
+    --accent: #f0b429;
+    --green: #3fb950;
+    --red: #f85149;
+    --blue: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    line-height: 1.65;
+  }
+  header {
+    background: var(--bg-panel);
+    border-bottom: 2px solid var(--accent);
+    padding: 1.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-family: "Consolas", monospace;
+  }
+  header .updated { color: var(--text-dim); font-size: 0.85rem; }
+  nav { margin-left: auto; display: flex; gap: 1rem; }
+  nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+  }
+  nav a:hover { background: var(--bg-card); }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  section {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    scroll-margin-top: 6rem;
+  }
+  h2 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    font-family: "Consolas", monospace;
+    letter-spacing: 0.04em;
+  }
+  h3 { color: var(--text); font-size: 1.15rem; margin: 1.5rem 0 0.6rem; }
+  h4 { color: var(--blue); font-size: 1rem; margin: 1.2rem 0 0.5rem; }
+  p, ul, ol { margin-bottom: 0.9rem; }
+  ul, ol { padding-left: 1.4rem; }
+  li { margin-bottom: 0.3rem; }
+  strong { color: #fff; }
+  em { color: var(--text-dim); }
+  code {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-family: "Consolas", monospace;
+    font-size: 0.9em;
+  }
+  pre {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  pre code { background: none; border: none; padding: 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+  }
+  th { background: var(--bg-card); color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1rem;
+    color: var(--text-dim);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+  .badge.open { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid var(--red); }
+  .badge.done { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid var(--green); }
+  .decision-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+  }
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    padding: 1rem 0 2.5rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⟨ EVOLVING SPACE ⟩</h1>
+  <span class="updated">Aggiornato al 2026-07-22</span>
+  <nav>
+    <a href="#gdd">GDD</a>
+    <a href="#decisioni">Decisioni</a>
+    <a href="#stato">Stato</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================ GDD ============================ -->
+<section id="gdd">
+  <h2>Game Design Document</h2>
+
+  <blockquote>Documento vivo. Fonte: <code>Docs/GDD.md</code>. I materiali originali (docx, lore, immagini di riferimento) sono in <code>Docs/old/</code>.</blockquote>
+
+  <h3>Visione</h3>
+  <p>Gioco mobile 2D in <strong>pixel art</strong>, orientamento <strong>portrait</strong>, prospettiva <strong>top-down</strong>. Genere idle/incremental spaziale con progressione di crafting e potenziamento della nave.</p>
+  <ul>
+    <li>Engine: Unity 6.4 (6000.4.10f1)</li>
+    <li>Riferimenti visivi: <code>old/img1.jpeg</code> (intro a fumetto), <code>old/img2.jpeg</code> (stazione Aeterna), <code>old/img3.jpeg</code> (mockup gameplay)</li>
+  </ul>
+
+  <h3>Lore</h3>
+  <p>Il protagonista viveva sulla <strong>Aeterna</strong>, un'enorme stazione spaziale piena di persone, equipaggio e la sua famiglia — centinaia di stanze. Una flotta di pirati spaziali attacca la stazione con missili e laser: esplosioni, fiamme, morti. Il protagonista scappa nell'hangar posteriore, trova un piccolo caccia in riparazione ma pronto a partire, e fugge. I pirati lo inseguono e lo colpiscono di striscio un paio di volte; per un colpo di fortuna finisce in un buco nero e riemerge in un nuovo universo, da solo, con il caccia mezzo distrutto.</p>
+  <p><strong>Da qui inizia il suo viaggio di vendetta.</strong></p>
+
+  <h3>Loop di gioco iniziale</h3>
+
+  <h4>Schermata 1 — Mining</h4>
+  <ul>
+    <li>Il caccia è in basso al centro dello schermo, punta verso l'alto, con una mini torretta laser visibile sopra di esso.</li>
+    <li>Sopra il caccia: 4 piccoli asteroidi che danno l'idea di essere pieni di ferro <em>(erano 2 nel design iniziale; portati a 4 e rimpiccioliti nella revisione grafica del 22/07/2026)</em>.</li>
+    <li><strong>Tap su un asteroide</strong> → dalla torretta parte un raggio laser rapido verso il bersaglio → sopra l'asteroide compare il numero del danno ("5").</li>
+    <li>HP asteroide: <strong>15</strong> → servono 3 colpi da 5 per distruggerlo.</li>
+    <li>Alla distruzione: piccola animazione esplosiva, l'asteroide scompare e droppa <strong>3 minerali di ferro grezzo</strong> nella stessa posizione.</li>
+    <li><strong>Trascina col dito</strong> i minerali verso il caccia: quando sono abbastanza vicini scompaiono e appare un "+1" che svanisce rapidamente (feedback di raccolta).</li>
+    <li>In basso: pulsante per passare alla schermata dell'interno nave.</li>
+  </ul>
+  <blockquote>✅ <strong>Deciso il 22/07/2026</strong> (vedi <a href="#decisioni">Decisioni</a>): asteroidi statici a ondate (opzione 1a) e meccanica tap + trascina (opzione 2a). Lo spawner degli asteroidi è astratto (<code>IAsteroidSpawner</code>) per poter evolvere verso gli asteroidi in avvicinamento con barra velocità (opzione 1b). Le azioni manuali (tap, trascina) sono pensate per diventare upgrade automatici più avanti (torretta automatica, raggio traente).</blockquote>
+
+  <h4>Schermata 2 — Interno nave</h4>
+  <p>Piantina del caccia vista dall'alto, poche stanze:</p>
+  <table>
+    <tr><th>Stanza</th><th>Stato iniziale</th></tr>
+    <tr><td>Sala comandi</td><td>Poltrona con il personaggio seduto</td></tr>
+    <tr><td>Magazzino</td><td>Mezzo spoglio, un paio di pallet vuoti</td></tr>
+    <tr><td>Fonderia</td><td>Rotta, malandata, al centro della stanza</td></tr>
+    <tr><td>Reattore</td><td>Malandato ma funzionante</td></tr>
+  </table>
+  <ul>
+    <li><strong>Click sulla fonderia rotta</strong> → pop-up che spiega che è rotta; pulsante verde <strong>"Costruisci"</strong> con indicazione "(30 secondi)".</li>
+    <li>Premendo "Costruisci" parte una barra che si riempie in 30 secondi; al termine la stanza si trasforma: resta trasandata ma la fonderia diventa utilizzabile.</li>
+    <li>I minerali di ferro grezzo raccolti vengono <strong>visualizzati automaticamente sui pallet</strong> del magazzino.</li>
+  </ul>
+
+  <h4>Schermata 3 — Crafting (fonderia)</h4>
+  <p>Click sulla fonderia riparata → schermata di crafting. Ricetta disposta in orizzontale:</p>
+  <pre><code>3 × [minerale ferro grezzo]  →  1 × [lingotto di ferro]     [CRAFT]</code></pre>
+  <ul>
+    <li>Freccia rossa come indicatore di conversione, pulsante rosso "Craft" a destra.</li>
+    <li>Premendo "Craft" si consumano 3 minerali grezzi e si produce 1 lingotto.</li>
+  </ul>
+
+  <h3>Progressione e potenziamenti</h3>
+  <p>Catena decisa il 22/07/2026 (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
+  <pre><code>tap manuale (gratis, sempre)
+  → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
+  → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
+  → riparazione reattore (10 lingotti · 60 s) → produzione FUEL  [implementata]
+  → mining offline limitato dal serbatoio (30 FUEL = 30 min)     [implementato]
+  → recupero di bordo lento di serie (deriva 0,15 u/s)           [implementato]
+  → raggio traente Lv 0–5: deriva 0,15→0,50 u/s,
+    portata calamita 1,5→4,0 u (4-20 lingotti/livello)           [implementato]
+  → upgrade capacità serbatoio
+  → viaggio (evoluzione 1b): barra velocità che consuma FUEL</code></pre>
+  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai FUEL (anti-softlock); FUEL è l'energia dei soli sistemi automatici e il serbatoio è il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi, come per la fonderia).</p>
+
+  <h3>UI generale</h3>
+  <ul>
+    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>FUEL</strong> (vedi mockup <code>old/img3.jpeg</code>).</li>
+    <li>Intro narrativa a fumetto prima del gameplay (vedi <code>old/img1.jpeg</code>), che termina con "[ INIZIA IL VIAGGIO ]".</li>
+    <li>La mappa della stazione Aeterna (<code>old/img2.jpeg</code>) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.</li>
+  </ul>
+</section>
+
+<!-- ========================= DECISIONI ========================= -->
+<section id="decisioni">
+  <h2>Registro decisioni</h2>
+
+  <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
+
+  <h3>Decisioni prese <span class="badge done">5</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-22 — Raggio traente visibile, un oggetto alla volta</h4>
+    <p><strong>Scelta:</strong> il raggio traente è un <strong>fascio visibile</strong> (cono verde-acqua pulsante) che aggancia <strong>un minerale alla volta</strong> e lo traina a bordo. L'upgrade è la <strong>forza di trazione</strong> = velocità di traino (0,8 → 2,8 u/s, 4-20 lingotti). Sostituisce la deriva ambientale invisibile; simulazione offline sequenziale.</p>
+    <p><strong>Motivazione:</strong> feedback visivo (si vede cosa fa la nave e cosa compra l'upgrade); "un oggetto alla volta" dà futuro alla statistica — con i prossimi tipi di minerale la velocità diventerà forza/massa e sotto una forza minima i materiali pesanti non si solleveranno. La raccolta sequenziale rallenta un po' l'idle e dà ancora più valore al trascinamento manuale.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-22 — Recupero di bordo lento (coerenza idle online/offline)</h4>
+    <p><strong>Scelta:</strong> la nave ha di serie un recupero debolissimo: i minerali <strong>derivano verso il caccia a 0,15 u/s</strong> (~30-40 s), calamita rapida solo nell'ultimo tratto. La resa offline usa lo stesso modello del ciclo idle online (~35 s di raccolta per ondata).</p>
+    <p><strong>Motivazione:</strong> senza raccolta di base l'idle online si bloccava dopo una sola ondata mentre l'offline assumeva raccolta completa. La deriva fa ciclare l'idle, resta 5-6 volte più lenta del trascinamento (il gioco attivo batte sempre il passivo) e dà al futuro raggio traente il ruolo di <em>potenziare</em> una meccanica esistente invece di introdurla da zero. Ciò che si vede a schermo stando fermi è ciò che il salvataggio simula.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-22 — Progressione degli upgrade, ruolo del FUEL e limite offline</h4>
+    <p><strong>Scelta:</strong> catena: tap manuale (gratis, sempre) → <strong>torretta automatica</strong> lenta (5 lingotti, 1 colpo/2,5 s) → upgrade velocità/danni → <strong>riparazione reattore</strong> → produzione <strong>FUEL</strong> → <strong>mining offline limitato dall'autonomia del serbatoio</strong> (upgradabile) → <strong>raggio traente a portata limitata</strong> (upgradabile) → <strong>viaggio</strong> (1b) con velocità che consuma FUEL. Acquisti dalle stanze della nave (popup sala comandi).</p>
+    <p><strong>Regole fisse:</strong> il gioco attivo batte sempre il passivo (la torretta parte molto più lenta del tap); il mining manuale non consuma mai FUEL (anti-softlock); FUEL = energia dei soli sistemi automatici, il serbatoio è il cap offline diegetico; il raggio traente ha senso proprio in movimento (nella 1b i drop scorrono via); il reattore è lo snodo che sblocca FUEL, offline e viaggio; capienza magazzino come seconda leva rimandata.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-22 — Comportamento della schermata mining</h4>
+    <p><strong>Scelta:</strong> opzione <strong>a)</strong> — 2 asteroidi statici; la nave aspetta che vengano distrutti e raccolti prima di avanzare (nuova ondata a campo libero).</p>
+    <p><strong>Motivazione:</strong> è la versione già descritta nel GDD e la più rapida per arrivare a un primo giocabile che validi il loop "spara → raccogli → crafta". In un idle/incremental la prima schermata fa da tutorial: la semplicità è un pregio. L'opzione <strong>b)</strong> (asteroidi in avvicinamento + barra velocità) resta l'<strong>evoluzione naturale a medio termine</strong> — dà la sensazione di viaggio coerente con la lore — e per questo lo spawner degli asteroidi è astratto dietro un'interfaccia (<code>IAsteroidSpawner</code>). L'opzione <strong>c)</strong> (esplorazione procedurale con due levette) è <strong>scartata</strong>: cambia genere, richiede due mani e attenzione continua, l'opposto di un idle giocabile con un pollice.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-22 — Meccanica di distruzione asteroidi e raccolta minerali</h4>
+    <p><strong>Scelta:</strong> opzione <strong>a)</strong> — tap per sparare col laser, poi trascini i minerali verso l'astronave (versione del GDD).</p>
+    <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
+  </div>
+
+  <h3>Decisioni aperte <span class="badge open">0</span></h3>
+  <p><em>Nessuna al momento — aggiornato al 2026-07-22.</em></p>
+</section>
+
+<!-- =========================== STATO =========================== -->
+<section id="stato">
+  <h2>Stato dei lavori</h2>
+
+  <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
+
+  <h3>Aggiornato al 2026-07-22</h3>
+
+  <h4>Fatto</h4>
+  <ul>
+    <li>Progetto Unity 6000.4.10f1 creato</li>
+    <li>Documentazione riorganizzata in <code>Docs/</code> (GDD.md, decisioni.md, stato.md + questa pagina); materiali originali spostati in <code>Docs/old/</code></li>
+    <li>Chiuse le due decisioni sulla schermata mining: opzioni <strong>1a</strong> (asteroidi statici a ondate) e <strong>2a</strong> (tap + trascina)</li>
+    <li><strong>Schermata mining implementata</strong> (primo giocabile, grafica segnaposto generata a runtime):
+      <ul>
+        <li><code>Assets/Scripts/Core/</code> — <code>GameResources</code> (risorse IRON/FUEL), <code>PlaceholderSprites</code> (sprite pixel-art procedurali), <code>FloatingText</code> (numeri di danno e "+1")</li>
+        <li><code>Assets/Scripts/Mining/</code> — <code>MiningScreen</code> (controller + input col nuovo Input System), <code>IAsteroidSpawner</code> (astrazione per la futura evoluzione 1b) + <code>StaticAsteroidSpawner</code> (ondate di 2 asteroidi), <code>Asteroid</code> (15 HP, droppa 3 minerali), <code>Turret</code> (laser, 5 danni a tap), <code>Mineral</code> (trascinabile, raccolta vicino al caccia), <code>Debris</code> (esplosione)</li>
+        <li><code>Assets/Scripts/UI/ResourceBarUI</code> — barra IRON/FUEL in alto; pulsante "INTERNO NAVE" in basso (segnaposto)</li>
+        <li><code>Assets/Editor/MiningSceneBuilder</code> — menu <strong>EvolvingSpace → Genera scena Mining</strong> che crea <code>Assets/Scenes/Mining.unity</code></li>
+      </ul>
+    </li>
+    <li><strong>Rifiniture di game feel</strong> (4 pacchetti, sessione del 22/07):
+      <ol>
+        <li><em>Colpi incisivi</em> — screen-shake (<code>CameraShake</code>), squash &amp; stretch e lampo rosso sull'asteroide colpito, scintille d'impatto (<code>Debris.Sparks</code>), torretta che ruota verso il bersaglio con rinculo</li>
+        <li><em>Raccolta appagante</em> — il minerale vola verso la nave alla raccolta, "pop" del contatore IRON, mini-calamita sotto 1,5 unità dal caccia (assaggio del futuro upgrade magnete), luccichio periodico sui minerali</li>
+        <li><em>Mondo vivo</em> — asteroidi che ruotano/oscillano, scale-in allo spawn, scurimento progressivo col danno (niente barra HP), fiamma motori animata + bobbing nave (<code>ShipVisuals</code>), stelle che brillano (<code>Starfield</code>)</li>
+        <li><em>Audio segnaposto</em> — suoni sintetizzati a runtime (<code>ProceduralAudio</code>): pew laser, crack esplosione, blip raccolta</li>
+      </ol>
+    </li>
+    <li>Fix latenza audio: buffer DSP portato da 1024 a <strong>256</strong> ("Best latency"), attacco istantaneo del blip di raccolta, warm-up di clip e sorgenti all'avvio della schermata</li>
+    <li><strong>Schermata 2 — Interno nave implementata</strong>:
+      <ul>
+        <li><code>Assets/Scripts/Core/GameBootstrap</code> — radice del gioco: camera, EventSystem, audio e le due schermate attivate una alla volta (niente caricamento scene: lo stato sopravvive al cambio)</li>
+        <li><code>Assets/Scripts/Ship/ShipState</code> — stato della fonderia (rotta → in costruzione → riparata) su base <code>Time.time</code>: i 30 s avanzano anche mentre si sta minando</li>
+        <li><code>Assets/Scripts/Ship/ShipInteriorScreen</code> — piantina top-down con le 4 stanze del GDD; tap sulla fonderia → popup "Costruisci (30 secondi)" → barra progresso → fonderia riparata; i minerali raccolti compaiono sui pallet (fino a 12); tap sulle altre stanze → testi flavor</li>
+        <li><code>Assets/Scripts/UI/UiKit</code> — fabbrica uGUI condivisa (canvas, bottoni, testi)</li>
+        <li>I pulsanti "INTERNO NAVE" / "TORNA AL MINING" commutano le schermate</li>
+        <li><code>Assets/Editor/GameSceneBuilder</code> — nuovo menu <strong>EvolvingSpace → Genera scena di gioco</strong> che crea <code>Assets/Scenes/Game.unity</code> e rimuove la vecchia <code>Mining.unity</code></li>
+      </ul>
+    </li>
+    <li><strong>Schermata 3 — Crafting implementata</strong> (chiude il primo loop completo: mina → ripara → crafta):
+      <ul>
+        <li><code>Assets/Scripts/Ship/CraftingScreen</code> — terza schermata del <code>GameBootstrap</code>; si apre col tap sulla fonderia riparata. Ricetta orizzontale come da GDD: 3 × minerale grezzo → (freccia rossa) → 1 × lingotto, pulsante rosso <strong>CRAFT</strong> a destra, attivo solo con ≥ 3 minerali. Al craft: clang metallico sintetizzato, pop dell'icona lingotto, contatori "hai: N" sotto le icone</li>
+        <li><code>GameResources</code> esteso: <code>Ingots</code>, <code>TrySpendIron</code>, <code>AddIngots</code>; sprite procedurale del lingotto in <code>PlaceholderSprites</code></li>
+        <li>Il tap sul magazzino ora mostra anche i lingotti</li>
+        <li>Nessuna rigenerazione scena necessaria: <code>Game.unity</code> contiene solo camera + <code>GameBootstrap</code>, le schermate nascono a runtime</li>
+      </ul>
+    </li>
+    <li><strong>Persistenza dello stato implementata</strong>:
+      <ul>
+        <li><code>Assets/Scripts/Core/SaveSystem</code> — salvataggio JSON in <code>persistentDataPath/save.json</code> (scrittura atomica): risorse + stato fonderia. Salva anche l'orario UTC: <strong>la costruzione della fonderia avanza a gioco chiuso</strong> (progresso offline)</li>
+        <li><code>Assets/Scripts/Core/SaveManager</code> — autosalvataggio ogni 10 s + su pausa app (mobile) e uscita; caricamento in <code>GameBootstrap.Awake</code></li>
+        <li>Menu editor <strong>EvolvingSpace → Cancella salvataggio</strong> per ripartire da zero nei test</li>
+      </ul>
+    </li>
+    <li><strong>Torretta automatica livello 1 implementata</strong> (primo sink dei lingotti):
+      <ul>
+        <li>Acquisto dal popup della <strong>sala comandi</strong> (5 lingotti); pulsante attivo solo con abbastanza lingotti, "Installata ✓" dopo l'acquisto</li>
+        <li>In mining: 1 colpo ogni 2,5 s sul primo asteroide in campo, volutamente molto più lenta del tap (~3 colpi/s); livrea azzurrina quando è automatica; inclusa nel salvataggio</li>
+        <li>Per ora non consuma nulla: il costo in FUEL arriverà con la riparazione del reattore</li>
+      </ul>
+    </li>
+    <li><strong>Upgrade torretta implementati</strong> (pannello sala comandi, visibili dopo l'installazione): velocità di fuoco Lv 0–5 (1 colpo/2,5 s → 1,25 s) e danni Lv 0–5 (5 → 15, valgono anche per il tap); costi 3, 6, 9, 12, 15 lingotti per livello</li>
+    <li><strong>Reattore → FUEL → mining offline implementati</strong>:
+      <ul>
+        <li>Tap sul reattore → popup "Ripara (10 lingotti · 60 s)"; barra progresso; nocciolo verde vivace quando è online</li>
+        <li>A reattore attivo: <strong>1 FUEL ogni 20 s, solo online</strong>; serbatoio da 30 FUEL; barra risorse con <code>FUEL n/30</code></li>
+        <li><strong>Mining offline</strong>: alla riapertura, con torretta e reattore attivi, la torretta ha minato per min(tempo passato, FUEL) — 1 FUEL = 1 minuto; resa che simula il ritmo delle ondate, quindi meno redditizia del gioco attivo</li>
+        <li>Popup <strong>"Rapporto di bordo"</strong> all'avvio con ferro minato e carburante consumato; salvataggio esteso (v2, retrocompatibile)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><strong>Recupero di bordo lento</strong> (fix coerenza idle): i minerali derivano verso il caccia a 0,15 u/s, calamita rapida nell'ultimo tratto. L'idle online ora cicla davvero (prima si bloccava dopo un'ondata); la formula offline usa lo stesso modello (~35 s di raccolta per ondata, prima 6,8 s)</li>
+  </ul>
+
+  <ul>
+    <li><strong>Revisione grafica della schermata mining</strong>: ondate portate a <strong>4 asteroidi</strong> più piccoli (formula offline allineata); nave ridotta e <strong>sprite del caccia ridisegnata</strong> — pixel art 19×27 disegnata pixel per pixel: muso affusolato, abitacolo con cupola e riflesso, ali a freccia con punte rosse, doppia gondola motori con due fiamme indipendenti</li>
+  </ul>
+
+  <ul>
+    <li><strong>Raggio traente visibile implementato</strong>: fascio verde-acqua pulsante dalla pancia della nave che aggancia <strong>un minerale alla volta</strong> e lo traina a bordo (sostituisce la deriva ambientale invisibile); upgrade "forza di trazione" Lv 0–5 = velocità di traino 0,8 → 2,8 u/s (4-20 lingotti); predisposto per i materiali pesanti futuri (velocità = forza/massa); offline sequenziale allineato; nel salvataggio</li>
+  </ul>
+
+  <h4>In corso</h4>
+  <ul>
+    <li>Prova del fascio: guardare il raggio agganciare i drop uno a uno; comprare qualche livello di forza e vederlo trainare più in fretta</li>
+  </ul>
+
+  <h4>Prossimo passo</h4>
+  <ol>
+    <li>Upgrade capacità serbatoio (ultimo tassello della catena prima del viaggio)</li>
+    <li>Evoluzione 1b della schermata mining: asteroidi in avvicinamento + barra velocità che consuma FUEL</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  EvolvingSpace — pagina generata dai file Markdown in <code>Docs/</code> · da rigenerare a ogni modifica di GDD.md, decisioni.md o stato.md
+</footer>
+
+</body>
+</html>
