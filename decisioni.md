@@ -8,6 +8,7 @@
 ### 2026-07-22 — Comportamento della schermata mining
 **Scelta:** opzione **a)** — 2 asteroidi statici; la nave aspetta che vengano distrutti e raccolti prima di avanzare (nuova ondata a campo libero).
 **Motivazione:** è la versione già descritta nel GDD e la più rapida per arrivare a un primo giocabile che validi il loop "spara → raccogli → crafta". In un idle/incremental la prima schermata fa da tutorial: la semplicità è un pregio. L'opzione **b)** (asteroidi in avvicinamento + barra velocità) resta la **evoluzione naturale a medio termine** — dà la sensazione di viaggio coerente con la lore — e per questo lo spawner degli asteroidi è astratto dietro un'interfaccia (`IAsteroidSpawner`), così il passaggio a b) non richiederà di riscrivere la schermata. L'opzione **c)** (esplorazione procedurale con due levette) è **scartata**: cambia genere, richiede due mani e attenzione continua, l'opposto di un idle giocabile con un pollice.
+*(Superata il 23/07 sera: gli asteroidi ora scendono dalla cima della mappa — vedi "Schermata mining dinamica".)*
 
 ### 2026-07-22 — Meccanica di distruzione asteroidi e raccolta minerali
 **Scelta:** opzione **a)** — tap per sparare col laser, poi trascini i minerali verso l'astronave (versione del GDD).
@@ -37,6 +38,19 @@
 2. **I sistemi consumano energia anche online** (torretta automatica, raggio traente, poi motori): online il reattore copre i consumi e l'avanzo carica le batterie. Da bilanciare perché l'inizio partita non sia frustrante.
 3. **Offline il reattore è in standby** (flavor: protocollo di sicurezza senza pilota a bordo) e i sistemi attingono solo dalle batterie: la carica delle batterie **è** il cap offline. Obiettivo di bilanciamento: capacità iniziale ≈ 12–24 h di offline (idea 1).
 **Motivazione:** il FUEL era l'unica risorsa prodotta "gratis" in un gioco dove tutto si estrae e si trasforma — incoerente. La catena deuterio → reattore → energia → batterie dà uno scopo immediato al deuterio, rende il cap offline perfettamente diegetico (reattore spento ⇒ durata offline = carica batterie) e trasforma la futura schermata delle automazioni offline (idea 2) nel "quadro elettrico" della nave: quali sistemi lasciare attaccati alle batterie, ognuno col suo consumo. Online si gioca finché c'è deuterio, offline finché c'è batteria: il gioco attivo continua a battere il passivo, come da regola fissa. Migrazione salvataggi: FUEL esistente → energia in batteria, reattore riparato resta riparato. *(Aggiorna la regola 3 della decisione del 22/07 sulla progressione: dove si legge FUEL/serbatoio, ora vale energia/batterie.)*
+*(Superata il 23/07 sera, dopo il playtest della v0.3: energia, deuterio e reattore sono stati ritirati — vedi "Passo indietro sull'energia".)*
+
+### 2026-07-23 (sera) — Passo indietro sull'energia: via deuterio e reattore, il grezzo pesa e vive nel raggio traente
+**Scelta:** dal Google Doc, dopo il playtest della v0.3 (direttiva 12 del [registro idee](idee.md)). Quattro punti:
+1. **Energia, deuterio e reattore vengono rimossi** dal gioco (asteroide di deuterio compreso); si reinseriranno più avanti se serviranno. I sistemi automatici (torretta, raggio traente) tornano a non consumare nulla.
+2. **Il magazzino non ha limite ma non contiene minerale grezzo**: ospita solo materiali lavorati (lingotti). Il grezzo è trattenuto in un **deposito interno al raggio traente** con **limite in peso**: ogni tipo di minerale ha un suo peso (ferro = 1; i minerali futuri peseranno sempre di più) e a deposito pieno non si raccoglie altro finché non si fonde.
+3. **Gli upgrade di bordo restano nel pannello della sala comandi** — questo chiude la decisione aperta sulla grammatica UI — e sono quattro linee: velocità di fuoco del laser, danni del laser, forza di trazione del raggio traente, peso trasportabile del deposito. **Tutte cappate a Lv 5 = tier 1.**
+4. **I tier si sbloccheranno con le missioni della stazione spaziale**, che daranno la valuta "Cookie"; finché stazione e valuta non esistono, si resta a Lv 5 tier 1.
+**Motivazione:** l'economia energetica introdotta ieri (secondo minerale, reattore, batterie, consumi al minuto) aggiungeva troppa gestione troppo presto rispetto al cuore del gioco. Il limite in peso sul grezzo ricrea lo stesso ritmo "torna in fonderia e svuota" con una sola valuta, dà un corpo concreto al sistema forza/massa già previsto per il raggio traente e sposta il cap offline dalle batterie a **deposito pieno + tetto di 24 h** (idea 1). Il mining manuale resta sempre gratuito (anti-softlock, regola invariata). Migrazione salvataggi: energia, deuterio e livelli di reattore/batterie decadono senza risarcimento; tutto il resto (risorse, lingotti, livelli, installazioni) sopravvive.
+
+### 2026-07-23 (sera) — Schermata mining dinamica (supera la 1a)
+**Scelta:** dal Google Doc (direttiva 13 del [registro idee](idee.md)): stelle che pulsano ed effetto di nave in avanzamento; asteroidi che compaiono random dalla cima della mappa, con piccolo margine di deriva laterale e **discesa lenta e costante**, e che **scompaiono in fondo** se non distrutti; il **laser automatico** aggancia solo asteroidi interamente dentro l'area di gioco e comunque sotto un margine d'ingresso in alto; alla distruzione i minerali (più piccoli di prima) **"scappano" dall'esplosione** con una spinta contenuta, catturabile dal raggio traente.
+**Motivazione:** è la componente visiva dell'evoluzione **1b** anticipata senza barra velocità né mappa: il mondo scorre, la nave "viaggia", e il despawn in fondo introduce la prima pressione temporale dolce del gioco (un asteroide ignorato è ferro perso). Il margine d'ingresso del laser automatico lascia al giocatore la prelazione sui bersagli appena entrati e evita colpi su asteroidi mezzi fuori schermo.
 
 <!-- Formato:
 ### AAAA-MM-GG — Titolo decisione
@@ -44,7 +58,10 @@
 **Motivazione:** ...
 -->
 
+### 2026-07-23 (sera) — Grammatica UI degli upgrade: pannello della sala comandi
+**Scelta:** gli upgrade di bordo si comprano dal **pannello della sala comandi** (punto 3 della direttiva 12, che elenca esplicitamente le quattro linee "uppabili nella sala comandi"). L'idea della stanza "Armeria/torrette" con potenziamento a tap sugli oggetti fisici (idea 5) resta nel cassetto per quando arriveranno i raggi traenti multipli.
+**Motivazione:** era la decisione aperta che bloccava la tappa dei raggi multipli; il Google Doc l'ha chiusa confermando la grammatica attuale. Un pannello unico scala meglio con poche linee di upgrade cappate a Lv 5; il potenziamento "fisico" tornerà in discussione se gli strumenti da gestire diventeranno tanti.
+
 ## Decisioni aperte
 
-### Grammatica UI degli upgrade: pannello centrale o oggetti fisici?
-Dall'idea 5 del [registro idee](idee.md): oggi tutti gli upgrade si comprano dal pannello della sala comandi; la proposta è potenziare gli strumenti **cliccandoli fisicamente** nella schermata interno nave (ed eventualmente raggrupparli in una stanza "Armeria/torrette"). Vale per raggi traenti, torretta e reattore/batterie: da decidere una volta sola, prima di aggiungere i raggi multipli.
+*(nessuna al momento)*
