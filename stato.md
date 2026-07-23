@@ -117,9 +117,10 @@
   - **Suono del laser più acuto** (terza revisione): portante 880 → **1500 Hz**
   - **Ronzio del raggio traente**: loop sintetizzato senza giunzioni (210/316/424 Hz, battito a 3 Hz) su sorgente dedicata, parte solo mentre sta trainando, volume 0,1
 
+- **Build v0.4 pubblicata** (23/07, notte): release su GitHub (APK 43 MB + version.json) e copia su Drive. Contiene tutto il lavoro della giornata: rimozione energia, deposito a carico in unità, schermata mining dinamica, grafica vera (asteroidi/nave PNG, fondale skybox), laserata da 1 s con colore "flowing", musica in loop, suoni rivisti
+
 **In corso:**
-- Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti
-- Poi build **v0.4** da pubblicare (menu EvolvingSpace → Build APK Android)
+- Test su telefono della v0.4: auto-update sopra la v0.3, migrazione salvataggi v3 (energia che decade), deposito a carico, schermata dinamica su touch, volumi di musica/laser/raggio
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
