@@ -145,10 +145,11 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-22</span>
+  <span class="updated">Aggiornato al 2026-07-23</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
+    <a href="#idee">Idee</a>
     <a href="#stato">Stato</a>
   </nav>
 </header>
@@ -210,22 +211,44 @@
   </ul>
 
   <h3>Progressione e potenziamenti</h3>
-  <p>Catena decisa il 22/07/2026 (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
+  <p>Catena decisa il 22/07/2026 e rivista il 23/07/2026 col <strong>sistema energetico</strong> (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
   <pre><code>tap manuale (gratis, sempre)
   → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
   → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → riparazione reattore (10 lingotti · 60 s) → produzione FUEL  [implementata]
-  → mining offline limitato dal serbatoio (30 FUEL = 30 min)     [implementato]
-  → recupero di bordo lento di serie (deriva 0,15 u/s)           [implementato]
-  → raggio traente Lv 0–5: deriva 0,15→0,50 u/s,
-    portata calamita 1,5→4,0 u (4-20 lingotti/livello)           [implementato]
-  → upgrade capacità serbatoio
-  → viaggio (evoluzione 1b): barra velocità che consuma FUEL</code></pre>
-  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai FUEL (anti-softlock); FUEL è l'energia dei soli sistemi automatici e il serbatoio è il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi, come per la fonderia).</p>
+  → riparazione reattore (10 lingotti · 60 s)                    [implementata*]
+  → mining offline limitato dall'energia accumulata              [implementato*]
+  → raggio traente visibile: 1 minerale alla volta,
+    forza di trazione Lv 0–5 (4-20 lingotti/livello)             [implementato]
+  → sistema energetico: deuterio → reattore → energia → batterie
+    (sostituisce il FUEL; upgrade reattore e batterie)
+  → viaggio (evoluzione 1b): barra velocità che consuma energia</code></pre>
+  <p><em>* Implementati nella versione provvisoria a FUEL (il reattore produce 1 FUEL/20 s dal nulla, serbatoio da 30): sarà sostituita dal sistema energetico.</em></p>
+
+  <h4>Sistema energetico (deciso il 23/07/2026)</h4>
+  <p><strong>Deuterio → reattore → energia → batterie.</strong> Il deuterio è un nuovo minerale (asteroide dedicato, spawn 25% al posto di uno di ferro). Il reattore lo brucia e produce energia; l'energia alimenta i sistemi della nave (torretta automatica, raggio traente, poi i motori) e l'avanzo carica le batterie.</p>
+  <ul>
+    <li><strong>Il FUEL non esiste più</strong>: unica valuta energetica, l'ENERGIA. Anche il viaggio la consuma (i motori sono un sistema di bordo).</li>
+    <li><strong>Online</strong>: il reattore copre i consumi finché c'è deuterio; l'avanzo va in batteria.</li>
+    <li><strong>Offline</strong>: il reattore è in standby (protocollo di sicurezza senza pilota a bordo); i sistemi attingono solo dalle batterie → <strong>la carica delle batterie è il cap offline</strong>. Capacità iniziale tarata su 12–24 h.</li>
+    <li><strong>Upgrade su due assi</strong>: reattore (produzione) e batterie (capacità), separati.</li>
+  </ul>
+  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai energia (anti-softlock); le batterie sono il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi) — <em>grammatica in discussione, vedi le decisioni aperte</em>.</p>
+
+  <h3>Visione a medio-lungo termine</h3>
+  <p>Idee valutate e messe in roadmap il 23/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
+  <ol>
+    <li><strong>Fonderia comoda</strong> — X di chiusura, "produci tutti", "Crafta tutto" (QoL immediata)</li>
+    <li><strong>Sistema energetico</strong> — deuterio, reattore, energia, batterie; offline fino a 12–24 h col popup di recap</li>
+    <li><strong>Viaggio (1b) + mappa stellare</strong> — asteroidi in avvicinamento, barra velocità, mappa con punti di interesse; raggi traenti multipli</li>
+    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali di commercio, valuta galattica, compravendita di ferro e deuterio a prezzi variabili</li>
+    <li><strong>Prima stazione spaziale</strong> — hub dell'universo 1: rifornimento deuterio, commercio, hangar. Con lei i <strong>Tier</strong> della strumentazione, i <strong>nuovi minerali</strong> (spawn 0% fino all'arrivo) e le <strong>stanze costruibili</strong> (es. sala mappe)</li>
+    <li><strong>Quadro elettrico</strong> — schermata di configurazione delle automazioni offline (quando le automazioni saranno ≥ 2)</li>
+    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto</li>
+  </ol>
 
   <h3>UI generale</h3>
   <ul>
-    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>FUEL</strong> (vedi mockup <code>old/img3.jpeg</code>).</li>
+    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>FUEL</strong> (vedi mockup <code>old/img3.jpeg</code>) — col sistema energetico diventerà <strong>IRON</strong> / <strong>DEUTERIO</strong> / <strong>ENERGIA</strong>.</li>
     <li>Intro narrativa a fumetto prima del gameplay (vedi <code>old/img1.jpeg</code>), che termina con "[ INIZIA IL VIAGGIO ]".</li>
     <li>La mappa della stazione Aeterna (<code>old/img2.jpeg</code>) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.</li>
   </ul>
@@ -237,7 +260,13 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">5</span></h3>
+  <h3>Decisioni prese <span class="badge done">6</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-23 — Sistema energetico: deuterio → reattore → energia → batterie (il FUEL sparisce)</h4>
+    <p><strong>Scelta:</strong> il reattore non produce più FUEL dal nulla: <strong>brucia deuterio</strong> (nuovo minerale, dall'asteroide dedicato) e produce <strong>energia</strong>. L'energia alimenta i sistemi della nave e, se avanza, si accumula nelle <strong>batterie</strong>. Reattore (produzione) e batterie (capacità) upgradabili separatamente. Tre sotto-decisioni: 1) il FUEL è sostituito dall'ENERGIA in tutto il gioco, viaggio compreso (niente doppia valuta energetica; il "rifornimento fuel" della futura stazione diventa acquisto di deuterio); 2) i sistemi consumano energia anche online (il reattore copre i consumi, l'avanzo carica le batterie); 3) offline il reattore è in standby (flavor: protocollo di sicurezza senza pilota) e i sistemi attingono solo dalle batterie: la carica delle batterie <strong>è</strong> il cap offline, iniziale ~12–24 h.</p>
+    <p><strong>Motivazione:</strong> il FUEL era l'unica risorsa prodotta "gratis" in un gioco dove tutto si estrae e si trasforma. La catena dà uno scopo immediato al deuterio, rende il cap offline perfettamente diegetico e trasforma la futura schermata delle automazioni offline nel "quadro elettrico" della nave. Online si gioca finché c'è deuterio, offline finché c'è batteria: il gioco attivo continua a battere il passivo. Migrazione salvataggi: FUEL → energia in batteria. <em>(Aggiorna la regola FUEL/serbatoio della decisione del 22/07 sulla progressione: ora vale energia/batterie.)</em></p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-22 — Raggio traente visibile, un oggetto alla volta</h4>
@@ -269,8 +298,38 @@
     <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
   </div>
 
-  <h3>Decisioni aperte <span class="badge open">0</span></h3>
-  <p><em>Nessuna al momento — aggiornato al 2026-07-22.</em></p>
+  <h3>Decisioni aperte <span class="badge open">1</span></h3>
+  <div class="decision-card">
+    <h4>Grammatica UI degli upgrade: pannello centrale o oggetti fisici?</h4>
+    <p>Dall'idea 5 del <a href="#idee">registro idee</a>: oggi tutti gli upgrade si comprano dal pannello della sala comandi; la proposta è potenziare gli strumenti <strong>cliccandoli fisicamente</strong> nella schermata interno nave (ed eventualmente raggrupparli in una stanza "Armeria/torrette"). Vale per raggi traenti, torretta e reattore/batterie: da decidere una volta sola, prima di aggiungere i raggi multipli.</p>
+  </div>
+</section>
+
+<!-- =========================== IDEE ============================ -->
+<section id="idee">
+  <h2>Registro delle idee</h2>
+
+  <blockquote>Le idee nascono nel documento Google condiviso, vengono valutate e finiscono <strong>in roadmap</strong> oppure tra le <strong>scartate</strong> (sempre con motivazione). Niente si perde. Fonte: <code>Docs/idee.md</code>.</blockquote>
+
+  <h3>Importate il 2026-07-23 <span class="badge done">11 in roadmap</span></h3>
+
+  <table>
+    <tr><th>#</th><th>Idea</th><th>Verdetto</th></tr>
+    <tr><td>1</td><td>Progresso offline con cap a 24 h e popup di recap</td><td>✅ Assorbita dal sistema energetico: il cap offline è la carica delle batterie (iniziale ~12–24 h); l'upgrade batterie sostituisce il vecchio upgrade serbatoio</td></tr>
+    <tr><td>2</td><td>Schermata di configurazione delle automazioni offline</td><td>✅ In roadmap avanzata come "quadro elettrico" della nave (quali sistemi lasciare attaccati alle batterie, ognuno col suo consumo); ha senso con ≥ 2 automazioni offline</td></tr>
+    <tr><td>3</td><td>Asteroide di deuterio (spawn 25%)</td><td>✅ In roadmap col sistema energetico: il deuterio è il combustibile del reattore</td></tr>
+    <tr><td>4</td><td>Fonderia comoda: X di chiusura, "produci tutti", "Crafta tutto"</td><td>✅ In roadmap subito — QoL a basso costo e alto valore</td></tr>
+    <tr><td>5</td><td>Più raggi traenti, potenziabili cliccandoli nell'interno nave</td><td>✅ Raggi multipli in roadmap (col viaggio); la grammatica UI "upgrade dagli oggetti fisici" è una decisione aperta</td></tr>
+    <tr><td>6</td><td>Mercantili e valuta galattica "Cookie"</td><td>✅ In roadmap dopo evoluzione 1b e deuterio; bilanciamento prezzi da progettare</td></tr>
+    <tr><td>7</td><td>Mappa stellare con punti di interesse</td><td>✅ In roadmap col viaggio 1b — ne è la spina dorsale; checkpoint col teletrasporto più avanti</td></tr>
+    <tr><td>8</td><td>Prima stazione spaziale (hub universo 1)</td><td>✅ In roadmap come milestone dopo il viaggio: rifornimento deuterio, commercio, hangar</td></tr>
+    <tr><td>9</td><td>Tier della strumentazione (solo agli hangar)</td><td>✅ In roadmap con la stazione: crescita "grande" esponenziale, gating dei minerali per tier</td></tr>
+    <tr><td>10</td><td>Nuovi minerali con spawn 0% fino alla prima stazione</td><td>✅ In roadmap con stazione + tier: regola di sblocco dei contenuti minerari</td></tr>
+    <tr><td>11</td><td>Stanze costruibili all'hangar (es. sala mappe)</td><td>✅ In roadmap con la stazione; richiede di ripensare la piantina della nave</td></tr>
+  </table>
+
+  <h3>Idee scartate <span class="badge open">0</span></h3>
+  <p><em>Ancora nessuna — le idee scartate resteranno qui con la motivazione.</em></p>
 </section>
 
 <!-- =========================== STATO =========================== -->
@@ -279,7 +338,7 @@
 
   <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
 
-  <h3>Aggiornato al 2026-07-22</h3>
+  <h3>Aggiornato al 2026-07-23</h3>
 
   <h4>Fatto</h4>
   <ul>
@@ -363,25 +422,32 @@
     <li><strong>Pulsante reset</strong> in mining: quadrato rosso con la X accanto a "INTERNO NAVE" → popup di conferma → cancella il salvataggio e riparte da capo</li>
     <li><strong>Raggio traente ora va installato</strong> (4 lingotti, sala comandi, come la torretta): senza raggio si raccoglie solo a mano e niente resa offline; i salvataggi con livelli già comprati migrano come "installato"</li>
     <li><strong>Auto-updater (stadio A)</strong>: ogni build incrementa la versione, scrive <code>version.json</code> e pubblica APK + json come <strong>release GitHub</strong> su <code>s-ricci/evolvingspace-builds</code>; all'avvio su dispositivo l'<code>UpdateChecker</code> confronta le versioni e propone il download (l'installazione sopra conserva i salvataggi)</li>
-    <li><strong>Documentazione online</strong>: i tre Markdown leggibili su <a href="https://github.com/s-ricci/evolvingspace-builds">github.com/s-ricci/evolvingspace-builds</a> (README indice) e questa pagina su <a href="https://s-ricci.github.io/evolvingspace-builds/">Pages</a>; <code>Tools/publish-docs.ps1</code> pubblica e allinea tutto</li>
+    <li><strong>Documentazione online</strong>: i Markdown leggibili su <a href="https://github.com/s-ricci/evolvingspace-builds">github.com/s-ricci/evolvingspace-builds</a> (README indice) e questa pagina su <a href="https://s-ricci.github.io/evolvingspace-builds/">Pages</a>; <code>Tools/publish-docs.ps1</code> pubblica e allinea tutto</li>
+    <li><strong>Registro delle idee creato</strong> (23/07): le proposte del documento Google condiviso vengono valutate in <code>idee.md</code> e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap</li>
+    <li><strong>Decisione presa: sistema energetico</strong> (23/07): deuterio → reattore → energia → batterie. Il FUEL sparisce, i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (~12–24 h iniziali). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia</li>
   </ul>
 
   <h4>In corso</h4>
   <ul>
+    <li>Build v0.2 con release GitHub e updater a bordo</li>
     <li>Test su telefono della v0.2: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio</li>
   </ul>
 
-  <h4>Prossimo passo</h4>
+  <h4>Prossimo passo (roadmap rivista il 23/07)</h4>
   <ol>
-    <li>Upgrade capacità serbatoio (ultimo tassello della catena prima del viaggio)</li>
-    <li>Evoluzione 1b della schermata mining: asteroidi in avvicinamento + barra velocità che consuma FUEL</li>
+    <li><strong>Fonderia comoda</strong>: X di chiusura, "produci tutti", "Crafta tutto" (QoL rapida)</li>
+    <li><strong>Sistema energetico</strong>: asteroide deuterio (spawn 25%) + reattore che brucia deuterio → energia → batterie; upgrade reattore e batterie; consumo dei sistemi online e offline; ribilanciamento offline verso 12–24 h; migrazione salvataggi</li>
+    <li><strong>Evoluzione 1b + mappa stellare</strong>: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)</li>
+    <li><strong>Mercantili e valuta "Cookie"</strong>: incontri casuali, compravendita ferro/deuterio a prezzi variabili</li>
+    <li><strong>Prima stazione spaziale</strong>: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali, stanze costruibili (sala mappe)</li>
+    <li><strong>Quadro elettrico</strong>: schermata automazioni offline (quando le automazioni saranno ≥ 2)</li>
   </ol>
 </section>
 
 </main>
 
 <footer>
-  EvolvingSpace — pagina generata dai file Markdown in <code>Docs/</code> · da rigenerare a ogni modifica di GDD.md, decisioni.md o stato.md<br>
+  EvolvingSpace — pagina generata dai file Markdown in <code>Docs/</code> · da rigenerare a ogni modifica di GDD.md, decisioni.md, idee.md o stato.md<br>
   versione online: <a href="https://s-ricci.github.io/evolvingspace-builds/">s-ricci.github.io/evolvingspace-builds</a> · build: <a href="https://github.com/s-ricci/evolvingspace-builds/releases">releases</a>
 </footer>
 
