@@ -78,13 +78,14 @@
 
 - **Registro delle idee creato** (23/07): le proposte del documento Google condiviso vengono valutate in [idee.md](idee.md) e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap
 - **Decisione presa: sistema energetico** (23/07, vedi [decisioni.md](decisioni.md)): deuterio → reattore → energia → batterie. Il FUEL sparisce (unica valuta energetica), i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (iniziale ~12–24 h). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia
+- **Fonderia comoda implementata** (tappa 1 della roadmap, 23/07): pulsante **X** in alto a destra che riporta alla nave (grigio-blu, per non confonderla con la X rossa del reset in mining) e pulsante **"PRODUCI TUTTI (×N)"** sotto la ricetta, che converte in un colpo tutto il ferro disponibile in lingotti (attivo solo con ≥ 3 minerali, mostra quanti lingotti produrrà). Il **"Crafta tutto"** globale è rinviato a quando ci saranno più materiali (deuterio): con una sola ricetta coinciderebbe col "produci tutti"
 
 **In corso:**
 - Build v0.2 con release GitHub e updater a bordo
 - Test su telefono: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio
 
 **Prossimo passo (roadmap rivista il 23/07 — dettagli in [idee.md](idee.md)):**
-1. **Fonderia comoda**: X di chiusura, "produci tutti", "Crafta tutto" (QoL rapida)
+1. ~~**Fonderia comoda**~~ ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)
 2. **Sistema energetico**: asteroide deuterio (spawn 25%) + reattore che brucia deuterio → energia → batterie; upgrade reattore e batterie; consumo dei sistemi online e offline; ribilanciamento offline verso 12–24 h; migrazione salvataggi
 3. **Evoluzione 1b + mappa stellare**: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)
 4. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita ferro/deuterio a prezzi variabili
