@@ -87,15 +87,22 @@
   - **Barra risorse a tre voci**: `IRON · DEUT · ENERGIA n/cap`; FUEL eliminato ovunque
   - **Salvataggio v3** con migrazione: 1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena), salvataggi v2 compatibili
 
-- **Build v0.3 pubblicata** (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive. Il sistema energetico è stato **testato in editor: tutto ok** (spawn deuterio, reattore, upgrade, migrazione, offline)
+- **Build v0.3 pubblicata** (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive. Testata in editor e **sul telefono: tutto ok** (auto-update, migrazione FUEL, touch)
+
+- **Direttive 12-13 dal Google Doc recepite** (23/07, sera — registrate in [idee.md](idee.md), decisioni in [decisioni.md](decisioni.md)): dopo il playtest della v0.3 si è deciso il **passo indietro sull'energia**. Chiusa anche la decisione aperta sulla grammatica UI: gli upgrade restano nel pannello della sala comandi
+- **Sistema energetico rimosso** (direttiva 12): via `EnergySystem`, deuterio (asteroide e minerale), riparazione/upgrade del reattore e batterie; la stanza del reattore resta nella piantina come flavor ("Spento. Per ora la nave non ne ha bisogno."). **Salvataggio v4** con migrazione: i campi energetici dei v2/v3 decadono senza risarcimento, tutto il resto sopravvive
+- **Deposito a peso del raggio traente** (direttiva 12): il grezzo non entra più in magazzino ma resta in un deposito con **limite in peso** (ferro = 1; base 20, upgrade "peso trasportabile" Lv 0–5 → 70, costi 4-20 lingotti — 4ª linea del pannello sala comandi, tutte cappate a Lv 5 = tier 1). A deposito pieno raggio fermo e raccolta bloccata ("Deposito pieno!"), si fonde per liberare peso. Il **magazzino è senza limite ma solo lingotti** (ora si vedono i lingotti sui pallet). Barra risorse: `IRON n · CARICO peso/max` (arancio a pieno). L'offline si ferma a deposito pieno, con tetto a 24 h (idea 1); rapporto di bordo aggiornato
+- **Schermata mining dinamica** (direttiva 13): stelle che pulsano e **scorrono verso il basso** (parallasse: le più luminose più veloci — la nave "avanza"); `FallingAsteroidSpawner` al posto delle ondate statiche: asteroidi random dalla cima (uno ogni 3,5–6,5 s, max 5 in campo), deriva laterale leggera, discesa costante 0,4 u/s, **despawn in fondo** (ferro perso); il laser automatico aggancia solo asteroidi interamente in campo sotto un margine d'ingresso (0,5 u) e dà priorità al più basso; minerali droppati **più piccoli** (scala 1,05 vs 1,5) che "scappano" dall'esplosione (1,6–2,4 u/s smorzati subito, catturabili dal raggio)
+- Verifica: **compilazione batch Unity pulita** (0 errori, 0 warning). Da provare in editor e su telefono
 
 **In corso:**
-- Test su telefono della v0.3: aggiornamento automatico sopra la versione precedente, migrazione del salvataggio con FUEL, deuterio e batterie in gioco reale, tap/drag su touch
+- Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti
+- Poi build **v0.4** da pubblicare (menu EvolvingSpace → Build APK Android)
 
-**Prossimo passo (roadmap rivista il 23/07 — dettagli in [idee.md](idee.md)):**
-1. ~~**Fonderia comoda**~~ ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)
-2. ~~**Sistema energetico**~~ ✓ fatto (23/07; numeri da validare col playtest — l'offline a 12 h si raggiunge già a batterie Lv 0)
-3. **Evoluzione 1b + mappa stellare**: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)
-4. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita ferro/deuterio a prezzi variabili
-5. **Prima stazione spaziale**: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali (spawn 0% fino all'arrivo), stanze costruibili (sala mappe)
-6. **Quadro elettrico**: schermata automazioni offline (quando le automazioni saranno ≥ 2)
+**Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
+1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
+2. ~~**Sistema energetico**~~ ✓ fatto e **ritirato lo stesso giorno** (direttiva 12: sostituito dal deposito a peso; reinseribile in futuro)
+3. ~~**Schermata mining dinamica**~~ ✓ fatta (23/07 sera, direttiva 13 — anticipa la parte visiva della 1b)
+4. **Viaggio (1b completa) + mappa stellare**: barra velocità, mappa con punti di interesse; raggi traenti multipli (la decisione sulla grammatica UI è chiusa: pannello sala comandi)
+5. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita a prezzi variabili
+6. **Prima stazione spaziale**: hub con missioni (→ Cookie → sblocco Tier), commercio, hangar, nuovi minerali (spawn 0% fino all'arrivo, pesi crescenti), stanze costruibili (sala mappe)
