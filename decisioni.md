@@ -31,6 +31,13 @@
 **Scelta:** il raggio traente è un **fascio visibile** (cono verde-acqua pulsante dalla pancia della nave) che aggancia **un minerale alla volta** — il più vicino — e lo traina a bordo. L'upgrade è la **forza di trazione** = velocità di traino (0,8 → 2,8 u/s sui 5 livelli, 4-20 lingotti). Sostituisce la deriva ambientale invisibile del recupero di bordo; la simulazione offline diventa sequenziale (minerali per ondata × distanza/forza).
 **Motivazione:** feedback visivo — si *vede* cosa sta facendo la nave, e l'upgrade si vede (traina più in fretta). "Un oggetto alla volta" dà un futuro alla statistica: con i prossimi tipi di asteroide/minerale la velocità diventerà `forza / massa` e sotto una forza minima i materiali pesanti non si solleveranno — gating naturale della progressione dei materiali. La raccolta sequenziale è più lenta della vecchia deriva parallela: l'idle rallenta un po' e il trascinamento manuale (parallelo e gratuito) guadagna ancora valore.
 
+### 2026-07-23 — Sistema energetico: deuterio → reattore → energia → batterie (il FUEL sparisce)
+**Scelta:** il reattore non produce più FUEL dal nulla: **brucia deuterio** (nuovo minerale, dall'asteroide di deuterio — idea 3 del [registro idee](idee.md)) e produce **energia**. L'energia alimenta i sistemi della nave e, se avanza, si accumula nelle **batterie**. Reattore (produzione) e batterie (capacità) sono upgradabili separatamente. Tre sotto-decisioni:
+1. **Il FUEL viene sostituito dall'ENERGIA** in tutto il gioco: anche il viaggio dell'evoluzione 1b consumerà energia (i motori sono un sistema di bordo come gli altri). Il "rifornimento fuel" della futura stazione spaziale diventa acquisto di deuterio. Niente doppia valuta energetica.
+2. **I sistemi consumano energia anche online** (torretta automatica, raggio traente, poi motori): online il reattore copre i consumi e l'avanzo carica le batterie. Da bilanciare perché l'inizio partita non sia frustrante.
+3. **Offline il reattore è in standby** (flavor: protocollo di sicurezza senza pilota a bordo) e i sistemi attingono solo dalle batterie: la carica delle batterie **è** il cap offline. Obiettivo di bilanciamento: capacità iniziale ≈ 12–24 h di offline (idea 1).
+**Motivazione:** il FUEL era l'unica risorsa prodotta "gratis" in un gioco dove tutto si estrae e si trasforma — incoerente. La catena deuterio → reattore → energia → batterie dà uno scopo immediato al deuterio, rende il cap offline perfettamente diegetico (reattore spento ⇒ durata offline = carica batterie) e trasforma la futura schermata delle automazioni offline (idea 2) nel "quadro elettrico" della nave: quali sistemi lasciare attaccati alle batterie, ognuno col suo consumo. Online si gioca finché c'è deuterio, offline finché c'è batteria: il gioco attivo continua a battere il passivo, come da regola fissa. Migrazione salvataggi: FUEL esistente → energia in batteria, reattore riparato resta riparato. *(Aggiorna la regola 3 della decisione del 22/07 sulla progressione: dove si legge FUEL/serbatoio, ora vale energia/batterie.)*
+
 <!-- Formato:
 ### AAAA-MM-GG — Titolo decisione
 **Scelta:** ...
@@ -39,4 +46,5 @@
 
 ## Decisioni aperte
 
-_(nessuna al momento — aggiornato al 2026-07-22)_
+### Grammatica UI degli upgrade: pannello centrale o oggetti fisici?
+Dall'idea 5 del [registro idee](idee.md): oggi tutti gli upgrade si comprano dal pannello della sala comandi; la proposta è potenziare gli strumenti **cliccandoli fisicamente** nella schermata interno nave (ed eventualmente raggrupparli in una stanza "Armeria/torrette"). Vale per raggi traenti, torretta e reattore/batterie: da decidere una volta sola, prima di aggiungere i raggi multipli.
