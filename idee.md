@@ -80,6 +80,25 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 
 ---
 
+## Importate il 2026-07-23, notte (direttive dopo la v0.4)
+
+### 14. Interno nave a lista di moduli, con costruzione e upgrade per modulo
+**Idea (direttiva):** refactoring dell'interno: per ora un **interno a "lista"** con i moduli costruiti elencati e in fondo un tasto **"Costruisci modulo"** che apre la lista dei moduli nuovi; ogni modulo ha un suo **tempo di costruzione**. Moduli di default a inizio gioco: **sala comandi, magazzino, motore a impulso, laser minerario**. Upgrade per modulo: la sala comandi per ora non ha upgrade; il **magazzino** ha 5 livelli per i **minerali grezzi** con lo stesso sistema attuale (il deposito esce dal dominio del raggio traente); il **laser minerario** ha velocità e danno (5 livelli ciascuno) più **un solo livello di "IA"** per automatizzarlo; il **motore a impulso** ha 5 livelli e aumenta la velocità di avanzamento della nave, che influisce sul **numero di asteroidi che entrano in mappa**. Moduli costruibili: **fonderia** (stesse funzionalità, nessun upgrade) e **raggio traente** (stessa funzionalità, upgrade forza di trazione).
+**Valutazione:** riorganizzazione pulita: ogni potenziamento vive nel suo modulo (la "grammatica UI" del pannello unico in sala comandi, decisa poche ore prima, viene superata), la torretta automatica diventa l'upgrade "IA" del laser, il deposito del grezzo passa al magazzino (più intuitivo), e il motore a impulso dà finalmente una leva sul ritmo del mining — primo assaggio della velocità di viaggio della 1b. La lista prepara anche le stanze costruibili future (idea 11).
+**Stato:** ✅ in roadmap — subito (v0.5)
+
+### 15. Fix: il mining automatico non deve fermarsi nei menù
+**Idea (segnalazione):** il mining automatico funziona solo nella schermata principale; navigando nei menù dell'interno nave (o altri) si blocca, e non dovrebbe.
+**Valutazione:** era un effetto dell'architettura (le schermate si disattivavano a vicenda). Fix strutturale: la schermata mining resta **sempre attiva** e i menù diventano **overlay a canvas opaco** sopra di lei — laser, raggio e spawner continuano a lavorare mentre si naviga, e la barra risorse dei menù si aggiorna in diretta.
+**Stato:** ✅ in roadmap — subito (v0.5)
+
+### 16. Musica leggermente più alta
+**Idea (direttiva):** aumentare leggermente il volume della musica.
+**Valutazione:** ritocco da 0,13 a 0,18 (laser ed effetti restano in primo piano).
+**Stato:** ✅ in roadmap — subito (v0.5)
+
+---
+
 ## Idee scartate
 
 - **Idea 3 — Asteroide di deuterio** (scartata *per ora* il 23/07 sera, direttiva 12): implementata nella v0.3 e rimossa lo stesso giorno insieme a reattore ed energia; se il sistema energetico tornerà, tornerà con lui.
