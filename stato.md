@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-22
+## Aggiornato al 2026-07-23
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -76,10 +76,17 @@
   - Permessi risolti: `gh` ora autenticata come `s-ricci` (ADMIN sul repo)
 - **Documentazione online**: i tre Markdown (GDD, decisioni, stato) sono leggibili direttamente su **github.com/s-ricci/evolvingspace-builds** (con README indice), e `documentazione.html` è la versione a pagina unica su **https://s-ricci.github.io/evolvingspace-builds/** (GitHub Pages). `Tools/publish-docs.ps1` pubblica tutto insieme e tiene le due versioni allineate
 
+- **Registro delle idee creato** (23/07): le proposte del documento Google condiviso vengono valutate in [idee.md](idee.md) e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap
+- **Decisione presa: sistema energetico** (23/07, vedi [decisioni.md](decisioni.md)): deuterio → reattore → energia → batterie. Il FUEL sparisce (unica valuta energetica), i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (iniziale ~12–24 h). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia
+
 **In corso:**
 - Build v0.2 con release GitHub e updater a bordo
 - Test su telefono: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio
 
-**Prossimo passo:**
-1. Upgrade capacità serbatoio (ultimo tassello della catena prima del viaggio)
-2. Evoluzione 1b della schermata mining: asteroidi in avvicinamento + barra velocità che consuma FUEL
+**Prossimo passo (roadmap rivista il 23/07 — dettagli in [idee.md](idee.md)):**
+1. **Fonderia comoda**: X di chiusura, "produci tutti", "Crafta tutto" (QoL rapida)
+2. **Sistema energetico**: asteroide deuterio (spawn 25%) + reattore che brucia deuterio → energia → batterie; upgrade reattore e batterie; consumo dei sistemi online e offline; ribilanciamento offline verso 12–24 h; migrazione salvataggi
+3. **Evoluzione 1b + mappa stellare**: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)
+4. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita ferro/deuterio a prezzi variabili
+5. **Prima stazione spaziale**: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali (spawn 0% fino all'arrivo), stanze costruibili (sala mappe)
+6. **Quadro elettrico**: schermata automazioni offline (quando le automazioni saranno ≥ 2)
