@@ -104,7 +104,7 @@
 - **Rifiniture su feedback** (23/07, sera — seconda passata):
   - **Torretta** più in basso (dentro lo scafo) e **dietro la sprite della nave**: spunta solo la punta della canna che ruota quando prende la mira
   - **Spawn distanziati**: il nuovo asteroide nasce ad almeno 1,4 unità dagli altri (10 tentativi, poi la posizione migliore)
-  - **Minerali in fuga radiale**: ventaglio regolare (~120° con jitter) in direzione opposta all'esplosione, velocità ridotta (1,2–1,7 u/s smorzate)
+  - **Minerali in fuga radiale**: ventaglio regolare (~120° con jitter) in direzione opposta all'esplosione, velocità ridotta (1,2–1,7 u/s smorzate); poi **non si fermano**: scendono "col cielo" alla velocità del mondo (0,4 u/s) verso la nave — al contatto col caccia si raccolgono da soli, se lo mancano escono in fondo (persi, come gli asteroidi ignorati)
   - **Stelle**: luccichio più marcato (base fioca + picchi luminosi netti, curva quadratica)
   - **Deposito in unità di carico**: capacità base **1000 unità** (Lv 0–5 → 3500); 1 ferro = 1 unità, 3 unità di ferro = 1 lingotto (invariato)
   - **Fonderia**: lista dei craft ancorata **in alto** (le prossime ricette si accoderanno sotto)
