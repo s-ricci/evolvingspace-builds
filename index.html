@@ -188,20 +188,17 @@
   </ul>
   <blockquote>✅ <strong>Deciso il 22/07/2026</strong> (vedi <a href="#decisioni">Decisioni</a>): meccanica tap + trascina (opzione 2a); le azioni manuali sono diventate gli upgrade automatici previsti (torretta automatica, raggio traente). Le ondate statiche dell'opzione 1a sono state <strong>superate il 23/07/2026</strong> dalla schermata dinamica (direttiva 13): per la 1b completa resta da aggiungere la barra velocità legata al viaggio.</blockquote>
 
-  <h4>Schermata 2 — Interno nave</h4>
-  <p>Piantina del caccia vista dall'alto, poche stanze:</p>
+  <h4>Schermata 2 — Interno nave (a lista di moduli, direttiva 14 del 23/07/2026)</h4>
+  <p>L'interno è una <strong>lista dei moduli costruiti</strong> (overlay opaco: il mining continua a girare sotto — segnalazione 15). Tap su un modulo → il suo pannello di dettaglio/upgrade. In fondo il tasto <strong>"COSTRUISCI MODULO"</strong>; ogni modulo ha un suo tempo di costruzione, con conto alla rovescia nella riga.</p>
   <table>
-    <tr><th>Stanza</th><th>Stato iniziale</th></tr>
-    <tr><td>Sala comandi</td><td>Poltrona con il personaggio seduto; pannello con le 4 linee di upgrade</td></tr>
-    <tr><td>Magazzino</td><td>Mezzo spoglio, un paio di pallet vuoti</td></tr>
-    <tr><td>Fonderia</td><td>Rotta, malandata, al centro della stanza</td></tr>
-    <tr><td>Reattore</td><td>Spento — tornerà in una fase futura (direttiva 12 del 23/07/2026)</td></tr>
+    <tr><th>Modulo</th><th>Di default?</th><th>Cosa fa / upgrade</th></tr>
+    <tr><td>Sala comandi</td><td>sì</td><td>Il ponte. Nessun upgrade, per ora</td></tr>
+    <tr><td>Magazzino</td><td>sì</td><td>Lingotti senza limite + <strong>minerale grezzo</strong> (limite in unità, 5 livelli — non più del raggio traente)</td></tr>
+    <tr><td>Motore a impulso</td><td>sì</td><td>5 livelli: più velocità ⇒ <strong>più asteroidi in mappa</strong></td></tr>
+    <tr><td>Laser minerario</td><td>sì</td><td>Velocità e danno (5 livelli) + <strong>1 livello di "IA"</strong> che lo automatizza</td></tr>
+    <tr><td>Fonderia</td><td>costruibile (gratis · 30 s)</td><td>3 grezzo → 1 lingotto; nessun upgrade; tap → crafting</td></tr>
+    <tr><td>Raggio traente</td><td>costruibile (4 lingotti · 20 s)</td><td>Traina i minerali; upgrade forza di trazione</td></tr>
   </table>
-  <ul>
-    <li><strong>Click sulla fonderia rotta</strong> → pop-up che spiega che è rotta; pulsante verde <strong>"Costruisci"</strong> con indicazione "(30 secondi)".</li>
-    <li>Premendo "Costruisci" parte una barra che si riempie in 30 secondi; al termine la stanza si trasforma: resta trasandata ma la fonderia diventa utilizzabile.</li>
-    <li>Il <strong>magazzino non ha limite ma non contiene minerale grezzo</strong>: sui pallet si vedono i <strong>lingotti</strong>. Il grezzo resta nel deposito del raggio traente (limite in peso).</li>
-  </ul>
 
   <h4>Schermata 3 — Crafting (fonderia)</h4>
   <p>Click sulla fonderia riparata → schermata di crafting. Ricetta disposta in orizzontale:</p>
@@ -214,35 +211,40 @@
   <h3>Progressione e potenziamenti</h3>
   <p>Catena decisa il 22/07/2026 e rivista il 23/07/2026 sera con la <strong>direttiva 12</strong> — via il sistema energetico, dentro il deposito a peso (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
   <pre><code>tap manuale (gratis, sempre)
-  → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
-  → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → raggio traente visibile: 1 minerale alla volta,
-    forza di trazione Lv 0–5 (4-20 lingotti/livello)             [implementato]
-  → deposito del raggio traente: il grezzo pesa, il peso
-    massimo trasportabile è la 4ª linea di upgrade               [implementato]
-  → mining offline: si ferma a deposito pieno, tetto 24 h        [implementato]
+  → "IA" del laser minerario (5 lingotti): spara da solo,
+    1 laserata/2,5 s; upgrade velocità e danni (Lv 0–5)          [implementata]
+  → raggio traente (modulo: 4 lingotti · 20 s): aggancia 1
+    minerale alla volta; forza di trazione Lv 0–5 = 0,8→2,8 u/s  [implementato]
+  → magazzino: il grezzo occupa unità di carico, la capacità
+    è l'upgrade del modulo (1000→3500)                           [implementato]
+  → motore a impulso Lv 0–5: più velocità ⇒ più asteroidi
+    in mappa (primo assaggio della velocità di viaggio)          [implementato]
+  → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
   → viaggio (evoluzione 1b): mappa stellare e barra velocità
   → stazione spaziale: missioni → Cookie → sblocco dei tier</code></pre>
 
-  <h4>Deposito a peso e upgrade del tier 1 (direttiva 12 del 23/07/2026, implementati)</h4>
-  <p>Il <strong>minerale grezzo non entra in magazzino</strong>: resta in un deposito interno al <strong>raggio traente</strong>, con un limite misurato in <strong>unità di carico</strong>. Ogni tipo di minerale vale le sue unità (il ferro vale 1; i minerali futuri ne varranno sempre di più) e la capacità si potenzia in sala comandi. Il <strong>magazzino</strong> non ha limite ma ospita solo materiali lavorati (lingotti). <em>(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è nel registro decisioni.)</em></p>
-  <p>Le <strong>4 linee di upgrade</strong> della sala comandi, tutte cappate a <strong>Lv 5 = tier 1</strong> (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):</p>
+  <h4>Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)</h4>
+  <p>Il <strong>minerale grezzo</strong> vive nel <strong>magazzino</strong>, con un limite misurato in <strong>unità di carico</strong> (il ferro vale 1; i minerali futuri ne varranno sempre di più); a magazzino pieno si fonde per liberare spazio. I <strong>lingotti</strong> non hanno limite. <em>(Il deposito era nato "dentro" il raggio traente con la direttiva 12; con la 14 è passato al magazzino. Energia, deuterio e reattore restano ritirati.)</em></p>
+  <p>Gli upgrade vivono <strong>nel pannello del proprio modulo</strong>, tutti cappati a <strong>Lv 5 = tier 1</strong> (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):</p>
   <table>
-    <tr><th>Linea</th><th>Effetto Lv 0 → 5</th><th>Costi (lingotti/livello)</th></tr>
-    <tr><td>Velocità di fuoco del laser</td><td>1 colpo/2,5 s → 1 colpo/1,25 s</td><td>3, 6, 9, 12, 15</td></tr>
-    <tr><td>Danni del laser</td><td>5 → 15 per colpo (vale anche per il tap)</td><td>3, 6, 9, 12, 15</td></tr>
-    <tr><td>Forza di trazione del raggio</td><td>0,8 → 2,8 u/s</td><td>4, 8, 12, 16, 20</td></tr>
-    <tr><td>Capacità del deposito</td><td>1000 → 3500 unità di carico</td><td>4, 8, 12, 16, 20</td></tr>
+    <tr><th>Modulo</th><th>Upgrade</th><th>Effetto Lv 0 → 5</th><th>Costi</th></tr>
+    <tr><td>Laser minerario</td><td>Velocità di fuoco (IA)</td><td>1 laserata/2,5 s → 1/1,25 s</td><td>3, 6, 9, 12, 15</td></tr>
+    <tr><td>Laser minerario</td><td>Danni</td><td>5 → 15 per laserata (anche per il tap)</td><td>3, 6, 9, 12, 15</td></tr>
+    <tr><td>Laser minerario</td><td>IA di mira (1 livello)</td><td>il laser spara da solo</td><td>5</td></tr>
+    <tr><td>Magazzino</td><td>Capacità grezzo</td><td>1000 → 3500 unità</td><td>4, 8, 12, 16, 20</td></tr>
+    <tr><td>Motore a impulso</td><td>Velocità</td><td>asteroidi in mappa ×1 → ×2,5 (mondo +40%)</td><td>5, 10, 15, 20, 25</td></tr>
+    <tr><td>Raggio traente</td><td>Forza di trazione</td><td>0,8 → 2,8 u/s</td><td>4, 8, 12, 16, 20</td></tr>
   </table>
   <p>Altri numeri della prima implementazione (da validare col playtest):</p>
   <table>
     <tr><th>Cosa</th><th>Valore</th></tr>
     <tr><td>Carico del ferro grezzo</td><td>1 unità per minerale (3 unità di ferro → 1 lingotto)</td></tr>
-    <tr><td>Mining offline</td><td>richiede torretta + raggio installati; resa = collo di bottiglia reale tra spawn, abbattimento e traino sequenziale; si ferma a <strong>deposito pieno</strong>; tetto <strong>24 h</strong></td></tr>
-    <tr><td>Schermata mining dinamica</td><td>spawn ogni 3,5–6,5 s (max 5 in campo); discesa 0,4 u/s; margine d'ingresso del laser automatico 0,5 u</td></tr>
-    <tr><td>Migrazione salvataggi v2/v3</td><td>energia, deuterio e livelli reattore/batterie decadono senza risarcimento; risorse, lingotti, livelli e installazioni sopravvivono</td></tr>
+    <tr><td>Mining offline</td><td>richiede IA del laser + raggio traente costruito; resa = collo di bottiglia reale tra spawn (accelerato dal motore), abbattimento e traino sequenziale; si ferma a <strong>magazzino pieno</strong>; tetto <strong>24 h</strong></td></tr>
+    <tr><td>Schermata mining dinamica</td><td>spawn ogni 3,5–6,5 s a motore base (÷ fattore motore; max in campo 5+livello); discesa 0,4 u/s × fattore mondo; margine d'ingresso del laser IA 0,5 u</td></tr>
+    <tr><td>Mining sempre attivo</td><td>la schermata mining non si ferma nei menù: interno e fonderia sono overlay (segnalazione 15)</td></tr>
+    <tr><td>Migrazione salvataggi</td><td>v2/v3: i campi energetici decadono; v4: "raggio installato" ⇒ modulo raggio costruito; il resto sopravvive sempre</td></tr>
   </table>
-  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a deposito pieno si fonde per liberare peso. Gli upgrade si comprano dal <strong>pannello della sala comandi</strong> (grammatica confermata dalla direttiva 12).</p>
+  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a magazzino pieno si fonde per liberare spazio. Ogni upgrade si compra <strong>nel pannello del suo modulo</strong> (direttiva 14: la sala comandi è il ponte, non il negozio).</p>
 
   <h3>Visione a medio-lungo termine</h3>
   <p>Idee valutate e messe in roadmap il 23/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
@@ -269,7 +271,19 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">9</span></h3>
+  <h3>Decisioni prese <span class="badge done">11</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-23 (notte) — Interno nave a lista di moduli; gli upgrade vivono nel loro modulo</h4>
+    <p><strong>Scelta:</strong> dal Google Doc dopo la v0.4 (direttiva 14): l'interno abbandona la piantina top-down ed è una <strong>lista dei moduli costruiti</strong> col tasto <strong>"Costruisci modulo"</strong> in fondo (ogni modulo ha un tempo di costruzione). Di partenza: sala comandi (senza upgrade), <strong>magazzino</strong> (eredita il deposito del grezzo dal raggio traente, 5 livelli), <strong>motore a impulso</strong> (nuovo: 5 livelli, più velocità ⇒ più asteroidi in mappa), <strong>laser minerario</strong> (velocità/danno a 5 livelli + 1 livello di <strong>"IA"</strong> — l'ex torretta automatica). Costruibili: fonderia (nessun upgrade) e raggio traente (trazione). Ogni modulo ha il suo pannello di upgrade.</p>
+    <p><strong>Motivazione:</strong> ogni potenziamento accanto alla cosa che potenzia — sparisce il pannellone unico della sala comandi (supera la decisione sulla grammatica UI presa poche ore prima). La lista prepara le stanze costruibili future e il motore a impulso introduce la manopola di ritmo che diventerà la velocità di viaggio della 1b.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-23 (notte) — Il mining non si ferma mai: schermata sempre attiva, menù come overlay</h4>
+    <p><strong>Scelta:</strong> la schermata mining resta <strong>sempre attiva</strong>; interno nave e fonderia diventano <strong>overlay a canvas opaco</strong> disegnati sopra (segnalazione 15).</p>
+    <p><strong>Motivazione:</strong> con l'architettura precedente laser automatico, raggio e spawner si congelavano nei menù — un idle che smette di essere idle quando lo guardi da dentro la nave. Con l'overlay il mondo continua a girare e la barra risorse si aggiorna in diretta; il canvas opaco blocca anche i tap verso la schermata sotto.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-23 (sera) — Passo indietro sull'energia: via deuterio e reattore, il grezzo pesa e vive nel raggio traente</h4>
@@ -287,6 +301,7 @@
     <h4>2026-07-23 (sera) — Grammatica UI degli upgrade: pannello della sala comandi</h4>
     <p><strong>Scelta:</strong> gli upgrade di bordo si comprano dal <strong>pannello della sala comandi</strong> (la direttiva 12 elenca le quattro linee "uppabili nella sala comandi"). La stanza "Armeria/torrette" col potenziamento a tap sugli oggetti fisici (idea 5) resta nel cassetto per quando arriveranno i raggi traenti multipli.</p>
     <p><strong>Motivazione:</strong> era la decisione aperta che bloccava i raggi multipli; il Google Doc l'ha chiusa confermando la grammatica attuale. Un pannello unico scala meglio con poche linee cappate a Lv 5.</p>
+    <p><em>Superata la notte stessa: con l'interno a lista di moduli (direttiva 14) ogni upgrade vive nel pannello del proprio modulo.</em></p>
   </div>
 
   <div class="decision-card">
@@ -359,6 +374,15 @@
     <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
     <tr><td>12</td><td>Passo indietro sull'energia: via deuterio e reattore; magazzino senza limite ma solo lingotti; grezzo in un deposito del raggio traente con limite in peso; 4 upgrade in sala comandi cappati a Lv 5 (tier 1); tier via missioni "Cookie" alla stazione</td><td>✅ Implementata subito (v0.4): rollback ragionato della v0.3 — l'economia energetica aggiungeva troppa gestione troppo presto. Chiude anche la decisione aperta sulla grammatica UI</td></tr>
     <tr><td>13</td><td>Dinamismo della schermata mining: stelle che pulsano e nave che avanza; asteroidi random dalla cima, discesa lenta, despawn in fondo; margine d'ingresso per il laser automatico; minerali piccoli che "scappano" dall'esplosione</td><td>✅ Implementata subito (v0.4): anticipa la parte visiva dell'evoluzione 1b e introduce la prima pressione temporale dolce del gioco</td></tr>
+  </table>
+
+  <h3>Importate il 2026-07-23, notte <span class="badge done">3 direttive</span></h3>
+
+  <table>
+    <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
+    <tr><td>14</td><td>Interno nave a "lista" di moduli costruiti + "Costruisci modulo" (con tempi di costruzione); upgrade per modulo: magazzino col deposito del grezzo (5 lv), laser con velocità/danno (5 lv) + "IA" (1 lv), nuovo motore a impulso (5 lv → più asteroidi in mappa); costruibili fonderia e raggio traente</td><td>✅ Implementata subito (v0.5): ogni upgrade accanto alla cosa che potenzia; supera la grammatica UI del pannello unico e prepara le stanze costruibili future</td></tr>
+    <tr><td>15</td><td>Bug: il mining automatico si blocca navigando nei menù</td><td>✅ Fix strutturale (v0.5): schermata mining sempre attiva, menù come overlay opachi — il mondo continua a girare</td></tr>
+    <tr><td>16</td><td>Aumentare leggermente il volume della musica</td><td>✅ Fatto: 0,13 → 0,18</td></tr>
   </table>
 
   <h3>Idee scartate <span class="badge open">1</span></h3>
@@ -471,9 +495,15 @@
     <li><strong>Asset dello store + colonna sonora</strong> (23/07, notte): fondale con lo <strong>Starfield Skybox</strong> dietro le stelle procedurali (URP 2D non renderizza skybox di camera: è una faccia del cubo a coprire lo schermo); musica <strong>"Dust and Static"</strong> in loop a volume basso; laserata a <strong>fascio pieno a due strati</strong> col materiale di "Full Opaque Spell" e <strong>colore modulato "flowing"</strong> (base rossiccia, banda calda che scorre verso il bersaglio, nucleo chiaro, bagliori di bocca e d'impatto — provato e scartato il prefab VFX_Flowing_Beam_Main: particellare difficile da domare in 2D); suono del laser più acuto (portante a 1500 Hz); <strong>ronzio in loop del raggio traente</strong> mentre traina</li>
   </ul>
 
+  <h4>Fatto (23/07, notte — dopo la v0.4)</h4>
+  <ul>
+    <li><strong>Build v0.4 pubblicata</strong> (release GitHub + Drive): rimozione energia, deposito a carico in unità, mining dinamico, grafica vera, laserata "flowing", musica e suoni</li>
+    <li><strong>Interno nave a lista di moduli</strong> (direttive 14-16): <code>ShipInteriorScreen</code> riscritta come overlay opaco con lista moduli e "COSTRUISCI MODULO" (fonderia gratis · 30 s, raggio 4 lingotti · 20 s); upgrade per modulo (magazzino col deposito grezzo, laser con IA a 1 livello, <strong>nuovo motore a impulso</strong> 5 livelli → spawn fino a ×2,5); <strong>mining sempre attivo nei menù</strong> (segnalazione 15); musica a 0,18; salvataggio v5 con migrazione</li>
+  </ul>
+
   <h4>In corso</h4>
   <ul>
-    <li><strong>Build v0.4 pubblicata</strong> (23/07 notte, release GitHub + Drive): rimozione energia, deposito a carico in unità, mining dinamico, grafica vera, laserata "flowing", musica e suoni. In test su telefono: auto-update sopra la v0.3, migrazione salvataggi, touch, volumi</li>
+    <li>Test in editor/telefono del nuovo interno a lista, del motore a impulso e del mining che continua nei menù; poi build v0.5</li>
   </ul>
 
   <h4>Prossimo passo (roadmap rivista il 23/07 sera)</h4>
