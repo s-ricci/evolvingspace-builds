@@ -143,8 +143,10 @@
 
 - **Fix offline su smartphone** (24/07, segnalazione 18): l'offline si calcolava solo all'avvio, ma su Android l'app viene sospesa e **ripresa**, non riavviata → al rientro non veniva conteggiato nulla. Ora `SaveManager` fa il **catch-up alla ripresa**: ricarica lo stato salvato in pausa (costruzioni + mining offline riapplicati) e mostra il Rapporto di bordo; guardia contro il "resume" fasullo del primo avvio Android
 
+- **Rifiniture del 24/07**: il popup "Costruisci modulo" **non mostra più i moduli già costruiti** (le voci rimaste risalgono; "Nessun nuovo modulo disponibile" quando la lista è vuota); [prompt-gemini.md](prompt-gemini.md) esteso con i prompt di **fonderia** e **pagina principale** (dal secondo si adotteranno solo HUD/menù)
+
 **In corso:**
-- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù; il fix dell'offline alla ripresa entrerà nella **v0.6**
+- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù; fix offline alla ripresa + popup costruzione filtrato entreranno nella **v0.6** (build su richiesta)
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
