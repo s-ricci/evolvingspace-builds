@@ -61,6 +61,15 @@
 ### 2026-07-23 (sera) — Grammatica UI degli upgrade: pannello della sala comandi
 **Scelta:** gli upgrade di bordo si comprano dal **pannello della sala comandi** (punto 3 della direttiva 12, che elenca esplicitamente le quattro linee "uppabili nella sala comandi"). L'idea della stanza "Armeria/torrette" con potenziamento a tap sugli oggetti fisici (idea 5) resta nel cassetto per quando arriveranno i raggi traenti multipli.
 **Motivazione:** era la decisione aperta che bloccava la tappa dei raggi multipli; il Google Doc l'ha chiusa confermando la grammatica attuale. Un pannello unico scala meglio con poche linee di upgrade cappate a Lv 5; il potenziamento "fisico" tornerà in discussione se gli strumenti da gestire diventeranno tanti.
+*(Superata la sera stessa: con l'interno a lista di moduli — direttiva 14 — ogni upgrade vive nel pannello del proprio modulo.)*
+
+### 2026-07-23 (notte) — Interno nave a lista di moduli; gli upgrade vivono nel loro modulo
+**Scelta:** dal Google Doc dopo la v0.4 (direttiva 14 del [registro idee](idee.md)). L'interno nave abbandona la piantina top-down: è una **lista dei moduli costruiti** con in fondo il tasto **"Costruisci modulo"** (ogni modulo ha un tempo di costruzione). Moduli di partenza: sala comandi (per ora senza upgrade), **magazzino** (che eredita il deposito del grezzo dal raggio traente: 5 livelli, stesso sistema a unità), **motore a impulso** (nuovo: 5 livelli, più velocità di avanzamento ⇒ più asteroidi in mappa), **laser minerario** (velocità e danno a 5 livelli + 1 livello di **"IA"** che lo automatizza — l'ex torretta automatica). Costruibili: **fonderia** (come oggi, nessun upgrade) e **raggio traente** (con l'upgrade di trazione). Ogni modulo ha il suo pannello di upgrade: tap sulla riga → dettaglio.
+**Motivazione:** ogni potenziamento accanto alla cosa che potenzia — sparisce il pannellone unico della sala comandi (supera la decisione sulla grammatica UI presa poche ore prima: la sala comandi resta il "ponte", non il negozio). La lista è pronta ad accogliere le stanze costruibili future (idea 11) e il motore a impulso introduce la manopola di ritmo che diventerà la velocità di viaggio della 1b.
+
+### 2026-07-23 (notte) — Il mining non si ferma mai: schermata sempre attiva, menù come overlay
+**Scelta:** la schermata mining resta **sempre attiva**; interno nave e fonderia diventano **overlay a canvas opaco** disegnati sopra (segnalazione 15). Niente più disattivazione reciproca delle schermate.
+**Motivazione:** con l'architettura precedente laser automatico, raggio traente e spawner si congelavano appena si apriva un menù — un idle che smette di essere idle quando lo guardi da dentro la nave. Con l'overlay il mondo continua a girare (si sente pure il laser lavorare mentre sei nei menù) e la barra risorse si aggiorna in diretta. Il canvas opaco blocca anche i tap verso la schermata sotto.
 
 ## Decisioni aperte
 
