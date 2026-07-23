@@ -102,6 +102,11 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 **Valutazione:** il reset esce dalla schermata di gioco (dov'era pericolosamente a portata di pollice) e finisce dietro le impostazioni + conferma; i volumi separati musica/effetti sono lo standard mobile. Preferenze salvate in PlayerPrefs: sopravvivono anche al reset del salvataggio. I prompt sono in [prompt-gemini.md](prompt-gemini.md).
 **Stato:** ✅ fatta (v0.5)
 
+### 18. Fix: l'offline non funzionava su smartphone (app ripresa, non riavviata)
+**Idea (segnalazione, 24/07):** su telefono il lavoro offline sembra non funzionare.
+**Valutazione:** vero, ed era strutturale: il calcolo dell'offline girava solo all'avvio (`GameBootstrap.Awake`), ma su Android l'app in genere **non viene riavviata** — viene sospesa e ripresa, e alla ripresa nessuno conteggiava il tempo passato in background. In editor non si vede mai (lì il riavvio c'è sempre). Fix: **catch-up alla ripresa** in `SaveManager` — alla pausa si salva (già così), al rientro si ricarica lo stato salvato (che riapplica costruzioni e mining offline) e si mostra il Rapporto di bordo; una guardia evita il doppio conteggio al primo avvio (Android chiama anche un "resume" iniziale).
+**Stato:** ✅ fatta (24/07, entrerà nella v0.6)
+
 ---
 
 ## Idee scartate
