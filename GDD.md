@@ -32,20 +32,18 @@ Il protagonista viveva sulla **Aeterna**, un'enorme stazione spaziale piena di p
 
 > ✅ **Deciso il 22/07/2026** (vedi [decisioni.md](decisioni.md)): meccanica tap + trascina (opzione 2a); le azioni manuali (tap, trascina) sono pensate per diventare upgrade automatici (torretta automatica, raggio traente — entrambi implementati). Le ondate statiche dell'opzione 1a sono state **superate il 23/07/2026** dalla schermata dinamica (direttiva 13): resta da aggiungere, per la 1b completa, la barra velocità legata al viaggio.
 
-### Schermata 2 — Interno nave
+### Schermata 2 — Interno nave (a lista di moduli, direttiva 14 del 23/07/2026)
 
-Piantina del caccia vista dall'alto, poche stanze:
+L'interno è una **lista dei moduli costruiti** (overlay opaco: il mining continua a girare sotto — segnalazione 15). Tap su un modulo → il suo pannello di dettaglio/upgrade. In fondo alla lista il tasto **"COSTRUISCI MODULO"**, che apre l'elenco dei moduli nuovi; **ogni modulo ha un suo tempo di costruzione** e mentre è in cantiere la sua riga mostra il conto alla rovescia.
 
-| Stanza | Stato iniziale |
-|---|---|
-| Sala comandi | Poltrona con il personaggio seduto; pannello con le 4 linee di upgrade |
-| Magazzino | Mezzo spoglio, un paio di pallet vuoti |
-| Fonderia | Rotta, malandata, al centro della stanza |
-| Reattore | Spento — tornerà in una fase futura (direttiva 12 del 23/07/2026) |
-
-- **Click sulla fonderia rotta** → pop-up che spiega che è rotta; pulsante verde **"Costruisci"** con indicazione "(30 secondi)".
-- Premendo "Costruisci" parte una barra che si riempie in 30 secondi; al termine la stanza si trasforma: resta trasandata ma la fonderia diventa utilizzabile.
-- Il **magazzino non ha limite ma non contiene minerale grezzo**: sui pallet si vedono i **lingotti**. Il grezzo resta nel deposito del raggio traente (limite in peso).
+| Modulo | Di default? | Cosa fa / upgrade |
+|---|---|---|
+| Sala comandi | sì | Il ponte. Nessun upgrade, per ora |
+| Magazzino | sì | Stiva i lingotti (senza limite) e il **minerale grezzo** (limite in unità di carico, 5 livelli — il deposito non è più del raggio traente) |
+| Motore a impulso | sì | 5 livelli: più velocità di avanzamento ⇒ **più asteroidi entrano in mappa** |
+| Laser minerario | sì | Upgrade velocità e danno (5 livelli l'uno) + **1 livello di "IA"** che lo automatizza (ex torretta automatica) |
+| Fonderia | costruibile (gratis · 30 s) | Come sempre: 3 grezzo → 1 lingotto; nessun upgrade. Tap sulla riga → schermata crafting |
+| Raggio traente | costruibile (4 lingotti · 20 s) | Traina i minerali a bordo; upgrade forza di trazione (5 livelli) |
 
 ### Schermata 3 — Crafting (fonderia)
 
@@ -64,42 +62,46 @@ Catena decisa il 22/07/2026 e rivista il 23/07/2026 sera con la **direttiva 12**
 
 ```
 tap manuale (gratis, sempre)
-  → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
-  → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → raggio traente visibile: fascio che aggancia 1 minerale
-    alla volta; forza di trazione Lv 0–5 = velocità di traino
-    0,8→2,8 u/s (4-20 lingotti/livello); in futuro i materiali
-    pesanti richiederanno più forza (velocità = forza/massa)     [implementato]
-  → deposito del raggio traente: il grezzo pesa, il peso
-    massimo trasportabile è la 4ª linea di upgrade               [implementato]
-  → mining offline: si ferma a deposito pieno, tetto 24 h        [implementato]
+  → "IA" del laser minerario (5 lingotti): spara da solo,
+    1 laserata/2,5 s; upgrade velocità e danni (Lv 0–5)          [implementata]
+  → raggio traente (modulo: 4 lingotti · 20 s): aggancia 1
+    minerale alla volta; forza di trazione Lv 0–5 = 0,8→2,8 u/s;
+    in futuro i materiali pesanti richiederanno più forza        [implementato]
+  → magazzino: il grezzo occupa unità di carico, la capacità
+    è l'upgrade del modulo (1000→3500)                           [implementato]
+  → motore a impulso Lv 0–5: più velocità ⇒ più asteroidi
+    in mappa (primo assaggio della velocità di viaggio)          [implementato]
+  → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
   → viaggio (evoluzione 1b): mappa stellare e barra velocità
   → stazione spaziale: missioni → Cookie → sblocco dei tier
 ```
 
-### Deposito a peso e upgrade del tier 1 (direttiva 12 del 23/07/2026, implementati)
+### Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)
 
-Il **minerale grezzo non entra in magazzino**: resta in un deposito interno al **raggio traente**, con un limite misurato in **unità di carico**. Ogni tipo di minerale vale le sue unità (il ferro vale 1; i minerali futuri ne varranno sempre di più) e la capacità si potenzia in sala comandi. Il **magazzino** non ha limite ma ospita solo materiali lavorati (lingotti). *(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è in decisioni.md.)*
+Il **minerale grezzo** vive nel **magazzino**, con un limite misurato in **unità di carico** (il ferro vale 1; i minerali futuri ne varranno sempre di più); a magazzino pieno si fonde per liberare spazio. I **lingotti** non hanno limite. *(Il deposito era nato "dentro" il raggio traente con la direttiva 12; con la 14 è passato al magazzino. Energia, deuterio e reattore restano ritirati — storia completa in decisioni.md.)*
 
-Le **4 linee di upgrade** della sala comandi, tutte cappate a **Lv 5 = tier 1** (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):
+Gli upgrade vivono **nel pannello del proprio modulo**, tutti cappati a **Lv 5 = tier 1** (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):
 
-| Linea | Effetto Lv 0 → 5 | Costi (lingotti/livello) |
-|---|---|---|
-| Velocità di fuoco del laser | 1 colpo/2,5 s → 1 colpo/1,25 s | 3, 6, 9, 12, 15 |
-| Danni del laser | 5 → 15 per colpo (vale anche per il tap) | 3, 6, 9, 12, 15 |
-| Forza di trazione del raggio | 0,8 → 2,8 u/s | 4, 8, 12, 16, 20 |
-| Capacità del deposito | 1000 → 3500 unità di carico | 4, 8, 12, 16, 20 |
+| Modulo | Upgrade | Effetto Lv 0 → 5 | Costi (lingotti/livello) |
+|---|---|---|---|
+| Laser minerario | Velocità di fuoco (IA) | 1 laserata/2,5 s → 1/1,25 s | 3, 6, 9, 12, 15 |
+| Laser minerario | Danni | 5 → 15 per laserata (vale anche per il tap) | 3, 6, 9, 12, 15 |
+| Laser minerario | IA di mira (1 livello) | il laser spara da solo | 5 |
+| Magazzino | Capacità grezzo | 1000 → 3500 unità | 4, 8, 12, 16, 20 |
+| Motore a impulso | Velocità | asteroidi in mappa ×1 → ×2,5 (mondo +40%) | 5, 10, 15, 20, 25 |
+| Raggio traente | Forza di trazione | 0,8 → 2,8 u/s | 4, 8, 12, 16, 20 |
 
 Altri numeri della prima implementazione (da validare col playtest):
 
 | Cosa | Valore |
 |---|---|
 | Carico del ferro grezzo | 1 unità per minerale (3 unità di ferro → 1 lingotto) |
-| Mining offline | richiede torretta + raggio installati; resa = collo di bottiglia reale tra spawn, abbattimento e traino sequenziale; si ferma a **deposito pieno**; tetto **24 h** (idea 1) |
-| Schermata mining dinamica | spawn ogni 3,5–6,5 s (max 5 in campo); discesa 0,4 u/s; margine d'ingresso del laser automatico 0,5 u |
-| Migrazione salvataggi v2/v3 | energia, deuterio e livelli reattore/batterie decadono senza risarcimento; risorse, lingotti, livelli e installazioni sopravvivono |
+| Mining offline | richiede IA del laser + raggio traente costruito; resa = collo di bottiglia reale tra spawn (accelerato dal motore), abbattimento e traino sequenziale; si ferma a **magazzino pieno**; tetto **24 h** (idea 1) |
+| Schermata mining dinamica | spawn ogni 3,5–6,5 s a motore base (÷ fattore motore; max in campo 5+livello motore); discesa 0,4 u/s × fattore mondo; margine d'ingresso del laser IA 0,5 u |
+| Mining sempre attivo | la schermata mining non si ferma nei menù: interno e fonderia sono overlay (segnalazione 15) |
+| Migrazione salvataggi | v2/v3: i campi energetici decadono; v4: "raggio installato" ⇒ modulo raggio costruito; il resto sopravvive sempre |
 
-Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a deposito pieno si fonde per liberare peso. Gli upgrade si comprano dal **pannello della sala comandi** (grammatica confermata dalla direttiva 12).
+Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a magazzino pieno si fonde per liberare spazio. Ogni upgrade si compra **nel pannello del suo modulo** (direttiva 14: la sala comandi è il ponte, non il negozio).
 
 ## Visione a medio-lungo termine
 
