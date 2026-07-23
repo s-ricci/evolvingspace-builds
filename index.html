@@ -382,7 +382,8 @@
     <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
     <tr><td>14</td><td>Interno nave a "lista" di moduli costruiti + "Costruisci modulo" (con tempi di costruzione); upgrade per modulo: magazzino col deposito del grezzo (5 lv), laser con velocità/danno (5 lv) + "IA" (1 lv), nuovo motore a impulso (5 lv → più asteroidi in mappa); costruibili fonderia e raggio traente</td><td>✅ Implementata subito (v0.5): ogni upgrade accanto alla cosa che potenzia; supera la grammatica UI del pannello unico e prepara le stanze costruibili future</td></tr>
     <tr><td>15</td><td>Bug: il mining automatico si blocca navigando nei menù</td><td>✅ Fix strutturale (v0.5): schermata mining sempre attiva, menù come overlay opachi — il mondo continua a girare</td></tr>
-    <tr><td>16</td><td>Aumentare leggermente il volume della musica</td><td>✅ Fatto: 0,13 → 0,18</td></tr>
+    <tr><td>16</td><td>Aumentare leggermente il volume della musica</td><td>✅ Fatto: 0,13 → 0,18 (e ora regolabile dal menù impostazioni)</td></tr>
+    <tr><td>17</td><td>X rossa → icona impostazioni tutta a destra; menù con slider+muto per musica ed effetti (in alto) e tasto rosso di reset (in fondo); file in Docs coi prompt Gemini per le schermate</td><td>✅ Fatta (v0.5): preferenze audio in PlayerPrefs (sopravvivono al reset), il reset esce dalla portata del pollice; prompt in <code>Docs/prompt-gemini.md</code></td></tr>
   </table>
 
   <h3>Idee scartate <span class="badge open">1</span></h3>
@@ -499,6 +500,7 @@
   <ul>
     <li><strong>Build v0.4 pubblicata</strong> (release GitHub + Drive): rimozione energia, deposito a carico in unità, mining dinamico, grafica vera, laserata "flowing", musica e suoni</li>
     <li><strong>Interno nave a lista di moduli</strong> (direttive 14-16): <code>ShipInteriorScreen</code> riscritta come overlay opaco con lista moduli e "COSTRUISCI MODULO" (fonderia gratis · 30 s, raggio 4 lingotti · 20 s); upgrade per modulo (magazzino col deposito grezzo, laser con IA a 1 livello, <strong>nuovo motore a impulso</strong> 5 livelli → spawn fino a ×2,5); <strong>mining sempre attivo nei menù</strong> (segnalazione 15); musica a 0,18; salvataggio v5 con migrazione</li>
+    <li><strong>Menù impostazioni</strong> (direttiva 17): icona impostazioni <strong>tutta a destra</strong> al posto della X rossa; slider+muto per musica ed effetti in alto (preferenze in PlayerPrefs, si riallineano in diretta), <strong>tasto rosso di reset in fondo</strong> con la solita conferma; creato <code>Docs/prompt-gemini.md</code> coi tre prompt richiesti</li>
   </ul>
 
   <h4>In corso</h4>
