@@ -79,14 +79,22 @@
 - **Registro delle idee creato** (23/07): le proposte del documento Google condiviso vengono valutate in [idee.md](idee.md) e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap
 - **Decisione presa: sistema energetico** (23/07, vedi [decisioni.md](decisioni.md)): deuterio → reattore → energia → batterie. Il FUEL sparisce (unica valuta energetica), i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (iniziale ~12–24 h). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia
 - **Fonderia comoda implementata** (tappa 1 della roadmap, 23/07): pulsante **X** in alto a destra che riporta alla nave (grigio-blu, per non confonderla con la X rossa del reset in mining) e pulsante **"PRODUCI TUTTI (×N)"** sotto la ricetta, che converte in un colpo tutto il ferro disponibile in lingotti (attivo solo con ≥ 3 minerali, mostra quanti lingotti produrrà). Il **"Crafta tutto"** globale è rinviato a quando ci saranno più materiali (deuterio): con una sola ricetta coinciderebbe col "produci tutti"
+- **Sistema energetico implementato** (tappa 2 della roadmap, 23/07 — numeri nel [GDD](GDD.md)):
+  - **Asteroide di deuterio**: 25% di probabilità per ondata che uno dei 4 asteroidi sia di deuterio (roccia bluastra, venature ciano); droppa 3 minerali di deuterio trascinabili/trainabili come il ferro
+  - **`EnergySystem`** (nuovo, tick in `GameBootstrap`): il reattore riparato brucia deuterio (1 = 10 energia) e produce 6–16 energia/min; l'energia alimenta torretta automatica (1 E/min) e raggio traente (0,5 E/min), l'avanzo carica le batterie; a batterie piene copre solo i consumi. Senza energia i sistemi automatici si fermano; tap e trascinamento manuali sempre gratis (anti-softlock)
+  - **Upgrade reattore** (produzione, Lv 0–5, 5-25 lingotti, solo a reattore riparato) e **batterie** (capacità 1080→3780 = 12→42 h offline, Lv 0–5, 4-20 lingotti) nel pannello sala comandi
+  - **Offline**: reattore in standby, i sistemi attingono solo dalle batterie — minuti = min(tempo passato, energia/1,5); resa con quota deuterio; "Rapporto di bordo" esteso (ferro, deuterio, energia consumata)
+  - **Barra risorse a tre voci**: `IRON · DEUT · ENERGIA n/cap`; FUEL eliminato ovunque
+  - **Salvataggio v3** con migrazione: 1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena), salvataggi v2 compatibili
 
 **In corso:**
 - Build v0.2 con release GitHub e updater a bordo
 - Test su telefono: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio
+- Test del sistema energetico in editor: spawn deuterio, reattore che brucia/carica, stop dei sistemi a batterie scariche, migrazione di un salvataggio v2, offline con le nuove batterie
 
 **Prossimo passo (roadmap rivista il 23/07 — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)
-2. **Sistema energetico**: asteroide deuterio (spawn 25%) + reattore che brucia deuterio → energia → batterie; upgrade reattore e batterie; consumo dei sistemi online e offline; ribilanciamento offline verso 12–24 h; migrazione salvataggi
+2. ~~**Sistema energetico**~~ ✓ fatto (23/07; numeri da validare col playtest — l'offline a 12 h si raggiunge già a batterie Lv 0)
 3. **Evoluzione 1b + mappa stellare**: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)
 4. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita ferro/deuterio a prezzi variabili
 5. **Prima stazione spaziale**: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali (spawn 0% fino all'arrivo), stanze costruibili (sala mappe)
