@@ -95,6 +95,12 @@
 - **Schermata mining dinamica** (direttiva 13): stelle che pulsano e **scorrono verso il basso** (parallasse: le più luminose più veloci — la nave "avanza"); `FallingAsteroidSpawner` al posto delle ondate statiche: asteroidi random dalla cima (uno ogni 3,5–6,5 s, max 5 in campo), deriva laterale leggera, discesa costante 0,4 u/s, **despawn in fondo** (ferro perso); il laser automatico aggancia solo asteroidi interamente in campo sotto un margine d'ingresso (0,5 u) e dà priorità al più basso; minerali droppati **più piccoli** (scala 1,05 vs 1,5) che "scappano" dall'esplosione (1,6–2,4 u/s smorzati subito, catturabili dal raggio)
 - Verifica: **compilazione batch Unity pulita** (0 errori, 0 warning). Da provare in editor e su telefono
 
+- **Prima grafica vera** (23/07, sera — 7 PNG pixel-art forniti via `Assets/downloads`, ora in `Assets/Resources/Sprites`):
+  - **6 varianti di asteroide** (`asteroid_iron_01..06`) scelte a caso a ogni spawn (`GameSprites.RandomAsteroid`); restano la rotazione a velocità random sobria (8–22°/s, verso casuale), lo scale-in, lo scurirsi col danno
+  - **Caccia `ship_level1`** (528×634) normalizzato alle dimensioni del segnaposto; **motori accesi** sui due ugelli veri della sprite: fiamma arancione che guizza + nucleo chiaro + alone caldo (`ShipVisuals` rifatta)
+  - **Esplosione potenziata** (`Debris.Burst`): lampo caldo + onda d'urto che si espande + 10 schegge nei toni di roccia dei PNG + 5 braci arancioni; nuovo sprite procedurale `Glow` (disco morbido) in `PlaceholderSprites`
+  - Infrastruttura: `GameSprites` (Core) carica i PNG da `Resources/Sprites`, li normalizza in unità mondo (asteroide largo 1, caccia 1,19) e **ripiega sui segnaposto se un file manca**; `Assets/Editor/SpriteImportSettings` forza l'import pixel-art (filtro Point, no mipmap, non compresso)
+
 **In corso:**
 - Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti
 - Poi build **v0.4** da pubblicare (menu EvolvingSpace → Build APK Android)
