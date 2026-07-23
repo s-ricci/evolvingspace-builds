@@ -215,16 +215,15 @@
   <pre><code>tap manuale (gratis, sempre)
   → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
   → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → riparazione reattore (10 lingotti · 60 s)                    [implementata*]
-  → mining offline limitato dall'energia accumulata              [implementato*]
+  → riparazione reattore (10 lingotti · 60 s)                    [implementata]
   → raggio traente visibile: 1 minerale alla volta,
     forza di trazione Lv 0–5 (4-20 lingotti/livello)             [implementato]
   → sistema energetico: deuterio → reattore → energia → batterie
-    (sostituisce il FUEL; upgrade reattore e batterie)
+    (sostituisce il FUEL; upgrade reattore e batterie)           [implementato]
+  → mining offline limitato dalla carica delle batterie          [implementato]
   → viaggio (evoluzione 1b): barra velocità che consuma energia</code></pre>
-  <p><em>* Implementati nella versione provvisoria a FUEL (il reattore produce 1 FUEL/20 s dal nulla, serbatoio da 30): sarà sostituita dal sistema energetico.</em></p>
 
-  <h4>Sistema energetico (deciso il 23/07/2026)</h4>
+  <h4>Sistema energetico (deciso e implementato il 23/07/2026)</h4>
   <p><strong>Deuterio → reattore → energia → batterie.</strong> Il deuterio è un nuovo minerale (asteroide dedicato, spawn 25% al posto di uno di ferro). Il reattore lo brucia e produce energia; l'energia alimenta i sistemi della nave (torretta automatica, raggio traente, poi i motori) e l'avanzo carica le batterie.</p>
   <ul>
     <li><strong>Il FUEL non esiste più</strong>: unica valuta energetica, l'ENERGIA. Anche il viaggio la consuma (i motori sono un sistema di bordo).</li>
@@ -232,6 +231,17 @@
     <li><strong>Offline</strong>: il reattore è in standby (protocollo di sicurezza senza pilota a bordo); i sistemi attingono solo dalle batterie → <strong>la carica delle batterie è il cap offline</strong>. Capacità iniziale tarata su 12–24 h.</li>
     <li><strong>Upgrade su due assi</strong>: reattore (produzione) e batterie (capacità), separati.</li>
   </ul>
+  <p><strong>Numeri della prima implementazione</strong> (da rivedere col playtest):</p>
+  <table>
+    <tr><th>Cosa</th><th>Valore</th></tr>
+    <tr><td>Consumo torretta automatica</td><td>1 energia/min (online e offline)</td></tr>
+    <tr><td>Consumo raggio traente</td><td>0,5 energia/min (online e offline)</td></tr>
+    <tr><td>Batterie Lv 0–5</td><td>capacità 1080 + 540/livello (= 12 h → 42 h offline); costi 4-20 lingotti</td></tr>
+    <tr><td>Reattore Lv 0–5</td><td>produzione 6 + 2/livello energia/min; costi 5-25 lingotti (solo a reattore riparato)</td></tr>
+    <tr><td>Resa del deuterio</td><td>1 deuterio = 10 energia; a batterie piene il reattore copre solo i consumi</td></tr>
+    <tr><td>Asteroide deuterio</td><td>25% di probabilità per ondata che 1 dei 4 asteroidi sia di deuterio</td></tr>
+    <tr><td>Migrazione salvataggi v2</td><td>1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena)</td></tr>
+  </table>
   <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai energia (anti-softlock); le batterie sono il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi) — <em>grammatica in discussione, vedi le decisioni aperte</em>.</p>
 
   <h3>Visione a medio-lungo termine</h3>
@@ -248,7 +258,7 @@
 
   <h3>UI generale</h3>
   <ul>
-    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>FUEL</strong> (vedi mockup <code>old/img3.jpeg</code>) — col sistema energetico diventerà <strong>IRON</strong> / <strong>DEUTERIO</strong> / <strong>ENERGIA</strong>.</li>
+    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>DEUT</strong> / <strong>ENERGIA n/capacità</strong> (dal 23/07/2026; il mockup <code>old/img3.jpeg</code> mostrava la vecchia coppia IRON/FUEL).</li>
     <li>Intro narrativa a fumetto prima del gameplay (vedi <code>old/img1.jpeg</code>), che termina con "[ INIZIA IL VIAGGIO ]".</li>
     <li>La mappa della stazione Aeterna (<code>old/img2.jpeg</code>) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.</li>
   </ul>
@@ -426,18 +436,20 @@
     <li><strong>Registro delle idee creato</strong> (23/07): le proposte del documento Google condiviso vengono valutate in <code>idee.md</code> e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap</li>
     <li><strong>Decisione presa: sistema energetico</strong> (23/07): deuterio → reattore → energia → batterie. Il FUEL sparisce, i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (~12–24 h iniziali). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia</li>
     <li><strong>Fonderia comoda implementata</strong> (tappa 1 della roadmap, 23/07): pulsante <strong>X</strong> in alto a destra che riporta alla nave (grigio-blu, per distinguerla dalla X rossa del reset) e pulsante <strong>"PRODUCI TUTTI (×N)"</strong> sotto la ricetta, che converte in un colpo tutto il ferro disponibile in lingotti. Il "Crafta tutto" globale è rinviato a quando ci saranno più materiali</li>
+    <li><strong>Sistema energetico implementato</strong> (tappa 2 della roadmap, 23/07 — numeri nella sezione GDD): asteroide di deuterio (25% per ondata, roccia bluastra a venature ciano, droppa 3 minerali di deuterio); nuovo <code>EnergySystem</code> — il reattore brucia deuterio (1 = 10 energia, 6–16 E/min) per alimentare torretta (1 E/min) e raggio traente (0,5 E/min), l'avanzo carica le batterie; upgrade reattore e batterie in sala comandi (batterie 1080→3780 = 12→42 h offline); offline con reattore in standby e batterie come cap; barra risorse <code>IRON · DEUT · ENERGIA n/cap</code>; salvataggio v3 con migrazione 1 FUEL → 36 energia. Senza energia i sistemi automatici si fermano, tap e trascinamento restano gratis</li>
   </ul>
 
   <h4>In corso</h4>
   <ul>
     <li>Build v0.2 con release GitHub e updater a bordo</li>
     <li>Test su telefono della v0.2: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio</li>
+    <li>Test del sistema energetico in editor: spawn deuterio, reattore che brucia/carica, stop dei sistemi a batterie scariche, migrazione di un salvataggio v2, offline con le nuove batterie</li>
   </ul>
 
   <h4>Prossimo passo (roadmap rivista il 23/07)</h4>
   <ol>
     <li><s><strong>Fonderia comoda</strong></s> ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)</li>
-    <li><strong>Sistema energetico</strong>: asteroide deuterio (spawn 25%) + reattore che brucia deuterio → energia → batterie; upgrade reattore e batterie; consumo dei sistemi online e offline; ribilanciamento offline verso 12–24 h; migrazione salvataggi</li>
+    <li><s><strong>Sistema energetico</strong></s> ✓ fatto (23/07; numeri da validare col playtest)</li>
     <li><strong>Evoluzione 1b + mappa stellare</strong>: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)</li>
     <li><strong>Mercantili e valuta "Cookie"</strong>: incontri casuali, compravendita ferro/deuterio a prezzi variabili</li>
     <li><strong>Prima stazione spaziale</strong>: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali, stanze costruibili (sala mappe)</li>
