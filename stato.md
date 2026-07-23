@@ -141,8 +141,10 @@
 
 - **Build v0.5 pubblicata** (23/07, notte): release su GitHub (APK + version.json) e copia su Drive. Contiene: interno a lista di moduli col design system dei mockup, motore a impulso, mining sempre attivo nei menù, menù impostazioni, salvataggio v5
 
+- **Fix offline su smartphone** (24/07, segnalazione 18): l'offline si calcolava solo all'avvio, ma su Android l'app viene sospesa e **ripresa**, non riavviata → al rientro non veniva conteggiato nulla. Ora `SaveManager` fa il **catch-up alla ripresa**: ricarica lo stato salvato in pausa (costruzioni + mining offline riapplicati) e mostra il Rapporto di bordo; guardia contro il "resume" fasullo del primo avvio Android
+
 **In corso:**
-- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù
+- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù; il fix dell'offline alla ripresa entrerà nella **v0.6**
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
