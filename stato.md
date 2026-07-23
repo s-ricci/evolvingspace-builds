@@ -132,8 +132,17 @@
   - In fondo il **tasto rosso "RESETTA IL GIOCO"** che apre la solita conferma (il reset non è più a portata di pollice in gioco)
   - Nuovi `UiKit.MakeSlider` e `SettingsPanel`; creato **[prompt-gemini.md](prompt-gemini.md)** in Docs con i tre prompt richiesti (interno nave a lista, pannello modulo con upgrade, menù impostazioni)
 
+- **Design system dai mockup Gemini** (23/07, notte — i tre mockup generati con [prompt-gemini.md](prompt-gemini.md) sono in `Docs/mockups/`):
+  - Nuovo **`UiTheme`** (palette condivisa: sfondo blu notte, card `#1C2330` bordate `#30363D`, titoli oro `#F0B429`, testo secondario grigio-azzurro, verde/grigio per gli upgrade, ambra per "in costruzione") e nuovi mattoni in `UiKit`: **card bordate** e **popup in stile mockup** (pannello bordato + X centrata sul bordo inferiore)
+  - **9 icone pixel-art ritagliate dai mockup** (`Resources/Sprites/Icons`): sedia, cassa, motore, laser, fonderia, raggio + cronometro, esplosione, chip
+  - **Interno nave ristilizzato**: righe = card bordate con icona, nome e stato; riga **ambrata con nome oro** durante la costruzione; "COSTRUISCI MODULO" azzurro
+  - **Pannelli dei moduli in stile mockup 2**: riga "LINGOTTI: N" con l'icona del lingotto sotto il titolo, card di upgrade con icona, descrizione dinamica, **badge livello**, costo con lingotto e pulsante **MIGLIORA verde/grigio** (anche le voci di costruzione usano le card, col badge che mostra il tempo)
+  - **Impostazioni allineate al mockup 3**: manopola crema, tasto muto scuro/ambrato, reset rosso `#C43B33`; fonderia su sfondo tema
+
+- **Build v0.5 pubblicata** (23/07, notte): release su GitHub (APK + version.json) e copia su Drive. Contiene: interno a lista di moduli col design system dei mockup, motore a impulso, mining sempre attivo nei menù, menù impostazioni, salvataggio v5
+
 **In corso:**
-- Test in editor/telefono del nuovo interno a lista, del motore a impulso, del mining che continua nei menù e del menù impostazioni; poi build v0.5
+- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
