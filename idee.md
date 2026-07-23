@@ -94,8 +94,13 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 
 ### 16. Musica leggermente più alta
 **Idea (direttiva):** aumentare leggermente il volume della musica.
-**Valutazione:** ritocco da 0,13 a 0,18 (laser ed effetti restano in primo piano).
-**Stato:** ✅ in roadmap — subito (v0.5)
+**Valutazione:** ritocco da 0,13 a 0,18 (laser ed effetti restano in primo piano); dal menù impostazioni (direttiva 17) il volume è comunque regolabile.
+**Stato:** ✅ fatta (v0.5)
+
+### 17. Icona impostazioni e menù con volumi e reset
+**Idea (direttiva):** nella pagina iniziale spostare la X rossa **tutta a destra** e farla diventare un'**icona impostazioni**; il menù impostazioni ha lo slider del volume musica col tasto per mutarla e lo slider degli effetti col tasto per mutarli (le due opzioni allineate in alto), e in fondo un **tasto rosso per resettare il gioco** da capo. Fatte le modifiche, creare un file in `Docs/` con i **prompt per Gemini** per generare le schermate: interno nave, esempio di modulo con upgrade, menù impostazioni.
+**Valutazione:** il reset esce dalla schermata di gioco (dov'era pericolosamente a portata di pollice) e finisce dietro le impostazioni + conferma; i volumi separati musica/effetti sono lo standard mobile. Preferenze salvate in PlayerPrefs: sopravvivono anche al reset del salvataggio. I prompt sono in [prompt-gemini.md](prompt-gemini.md).
+**Stato:** ✅ fatta (v0.5)
 
 ---
 
