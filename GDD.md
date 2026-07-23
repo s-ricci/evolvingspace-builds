@@ -23,8 +23,8 @@ Il protagonista viveva sulla **Aeterna**, un'enorme stazione spaziale piena di p
 
 - Il caccia è in basso al centro dello schermo, punta verso l'alto, con una mini torretta laser visibile sopra di esso.
 - La schermata è **dinamica** (direttiva 13 del 23/07/2026): le stelle pulsano e scorrono verso il basso — l'effetto è che la nave stia avanzando. Gli **asteroidi compaiono random dalla cima della mappa** (uno ogni 3,5–6,5 s, max 5 in campo), scendono lenti e costanti (0,4 u/s) con una piccola deriva laterale e, se nessuno li distrugge, **scompaiono in fondo** — ferro perso.
-- **Tap su un asteroide** → dalla torretta parte un raggio laser rapido verso il bersaglio → sopra l'asteroide compare il numero del danno ("5").
-- HP asteroide: **15** → servono 3 colpi da 5 per distruggerlo.
+- **Tap su un asteroide** → dalla torretta parte una **laserata continua di 1 secondo** che aggancia il bersaglio e lo segue mentre scende; il danno arriva spalmato in 5 tocchi regolari (numeri, scintille e vibrazione per tutta la durata), col ronzio del laser che dura quanto il fascio. Durante la laserata la torretta è occupata: altri tap vengono ignorati.
+- HP asteroide: **15**, danno base **5 per laserata** → servono 3 laserate per distruggerlo.
 - Alla distruzione: piccola animazione esplosiva, l'asteroide scompare e droppa **3 minerali di ferro grezzo**, piccoli, che "scappano" dall'esplosione con una spinta subito smorzata (il raggio traente riesce a riprenderli).
 - La **torretta automatica** aggancia solo asteroidi interamente dentro l'area di gioco, sotto un margine d'ingresso in alto, e dà priorità a quello più in basso (che sta per sfuggire); il tap manuale è libero.
 - **Trascina col dito** i minerali verso il caccia: quando sono abbastanza vicini scompaiono e appare un "+1" che svanisce rapidamente (feedback di raccolta). Il grezzo finisce nel **deposito del raggio traente** (limite in peso): a deposito pieno non si raccoglie finché non si fonde.
