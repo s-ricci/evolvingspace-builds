@@ -119,8 +119,15 @@
 
 - **Build v0.4 pubblicata** (23/07, notte): release su GitHub (APK 43 MB + version.json) e copia su Drive. Contiene tutto il lavoro della giornata: rimozione energia, deposito a carico in unità, schermata mining dinamica, grafica vera (asteroidi/nave PNG, fondale skybox), laserata da 1 s con colore "flowing", musica in loop, suoni rivisti
 
+- **Interno nave a lista di moduli** (23/07, notte — direttive 14-16, dopo la v0.4):
+  - `ShipInteriorScreen` riscritta: **overlay a canvas opaco** con la lista dei moduli costruiti (sala comandi, magazzino, motore a impulso, laser minerario + fonderia e raggio traente quando costruiti), tap sul modulo → pannello di dettaglio/upgrade; in fondo **"COSTRUISCI MODULO"** (fonderia gratis · 30 s; raggio traente 4 lingotti · 20 s), righe con conto alla rovescia durante la costruzione
+  - **Upgrade per modulo**: il deposito del grezzo passa al **magazzino** (stesso sistema a unità, 5 livelli); il laser minerario ha velocità/danni (5 livelli) + **"IA" a 1 livello** (ex torretta automatica, 5 lingotti — velocità e danni ora acquistabili anche senza IA); **nuovo motore a impulso** (5 livelli, 5-25 lingotti): più velocità ⇒ spawn fino a ×2,5, mondo (discesa/stelle) fino a +40%, max asteroidi in campo 5+livello. La sala comandi resta senza upgrade (è il ponte, non il negozio)
+  - **Fix segnalazione 15**: la schermata mining è **sempre attiva** — interno e fonderia sono overlay; laser IA, raggio e spawner continuano a lavorare nei menù e la barra risorse si aggiorna in diretta
+  - **Salvataggio v5**: raggio traente come modulo con stato/tempo di costruzione, livello motore; migrazione v4 ("installato" ⇒ costruito); offline aggiornato (spawn scalato dal motore, richiede IA + raggio costruito)
+  - **Musica a 0,18** (direttiva 16); compilazione batch pulita (0 errori; solo warning di deprecazione negli script del pacchetto spell)
+
 **In corso:**
-- Test su telefono della v0.4: auto-update sopra la v0.3, migrazione salvataggi v3 (energia che decade), deposito a carico, schermata dinamica su touch, volumi di musica/laser/raggio
+- Test in editor/telefono del nuovo interno a lista, del motore a impulso e del mining che continua nei menù; poi build v0.5
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
