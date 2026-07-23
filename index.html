@@ -178,28 +178,29 @@
   <h4>Schermata 1 — Mining</h4>
   <ul>
     <li>Il caccia è in basso al centro dello schermo, punta verso l'alto, con una mini torretta laser visibile sopra di esso.</li>
-    <li>Sopra il caccia: 4 piccoli asteroidi che danno l'idea di essere pieni di ferro <em>(erano 2 nel design iniziale; portati a 4 e rimpiccioliti nella revisione grafica del 22/07/2026)</em>.</li>
+    <li>La schermata è <strong>dinamica</strong> (direttiva 13 del 23/07/2026): le stelle pulsano e scorrono verso il basso — l'effetto è che la nave stia avanzando. Gli <strong>asteroidi compaiono random dalla cima della mappa</strong> (uno ogni 3,5–6,5 s, max 5 in campo), scendono lenti e costanti (0,4 u/s) con una piccola deriva laterale e, se nessuno li distrugge, <strong>scompaiono in fondo</strong> — ferro perso.</li>
     <li><strong>Tap su un asteroide</strong> → dalla torretta parte un raggio laser rapido verso il bersaglio → sopra l'asteroide compare il numero del danno ("5").</li>
     <li>HP asteroide: <strong>15</strong> → servono 3 colpi da 5 per distruggerlo.</li>
-    <li>Alla distruzione: piccola animazione esplosiva, l'asteroide scompare e droppa <strong>3 minerali di ferro grezzo</strong> nella stessa posizione.</li>
-    <li><strong>Trascina col dito</strong> i minerali verso il caccia: quando sono abbastanza vicini scompaiono e appare un "+1" che svanisce rapidamente (feedback di raccolta).</li>
+    <li>Alla distruzione: piccola animazione esplosiva, l'asteroide scompare e droppa <strong>3 minerali di ferro grezzo</strong>, piccoli, che "scappano" dall'esplosione con una spinta subito smorzata (il raggio traente riesce a riprenderli).</li>
+    <li>La <strong>torretta automatica</strong> aggancia solo asteroidi interamente dentro l'area di gioco, sotto un margine d'ingresso in alto, e dà priorità a quello più in basso (che sta per sfuggire); il tap manuale è libero.</li>
+    <li><strong>Trascina col dito</strong> i minerali verso il caccia: quando sono abbastanza vicini scompaiono e appare un "+1" (feedback di raccolta). Il grezzo finisce nel <strong>deposito del raggio traente</strong> (limite in peso): a deposito pieno non si raccoglie finché non si fonde.</li>
     <li>In basso: pulsante per passare alla schermata dell'interno nave.</li>
   </ul>
-  <blockquote>✅ <strong>Deciso il 22/07/2026</strong> (vedi <a href="#decisioni">Decisioni</a>): asteroidi statici a ondate (opzione 1a) e meccanica tap + trascina (opzione 2a). Lo spawner degli asteroidi è astratto (<code>IAsteroidSpawner</code>) per poter evolvere verso gli asteroidi in avvicinamento con barra velocità (opzione 1b). Le azioni manuali (tap, trascina) sono pensate per diventare upgrade automatici più avanti (torretta automatica, raggio traente).</blockquote>
+  <blockquote>✅ <strong>Deciso il 22/07/2026</strong> (vedi <a href="#decisioni">Decisioni</a>): meccanica tap + trascina (opzione 2a); le azioni manuali sono diventate gli upgrade automatici previsti (torretta automatica, raggio traente). Le ondate statiche dell'opzione 1a sono state <strong>superate il 23/07/2026</strong> dalla schermata dinamica (direttiva 13): per la 1b completa resta da aggiungere la barra velocità legata al viaggio.</blockquote>
 
   <h4>Schermata 2 — Interno nave</h4>
   <p>Piantina del caccia vista dall'alto, poche stanze:</p>
   <table>
     <tr><th>Stanza</th><th>Stato iniziale</th></tr>
-    <tr><td>Sala comandi</td><td>Poltrona con il personaggio seduto</td></tr>
+    <tr><td>Sala comandi</td><td>Poltrona con il personaggio seduto; pannello con le 4 linee di upgrade</td></tr>
     <tr><td>Magazzino</td><td>Mezzo spoglio, un paio di pallet vuoti</td></tr>
     <tr><td>Fonderia</td><td>Rotta, malandata, al centro della stanza</td></tr>
-    <tr><td>Reattore</td><td>Malandato ma funzionante</td></tr>
+    <tr><td>Reattore</td><td>Spento — tornerà in una fase futura (direttiva 12 del 23/07/2026)</td></tr>
   </table>
   <ul>
     <li><strong>Click sulla fonderia rotta</strong> → pop-up che spiega che è rotta; pulsante verde <strong>"Costruisci"</strong> con indicazione "(30 secondi)".</li>
     <li>Premendo "Costruisci" parte una barra che si riempie in 30 secondi; al termine la stanza si trasforma: resta trasandata ma la fonderia diventa utilizzabile.</li>
-    <li>I minerali di ferro grezzo raccolti vengono <strong>visualizzati automaticamente sui pallet</strong> del magazzino.</li>
+    <li>Il <strong>magazzino non ha limite ma non contiene minerale grezzo</strong>: sui pallet si vedono i <strong>lingotti</strong>. Il grezzo resta nel deposito del raggio traente (limite in peso).</li>
   </ul>
 
   <h4>Schermata 3 — Crafting (fonderia)</h4>
@@ -211,54 +212,52 @@
   </ul>
 
   <h3>Progressione e potenziamenti</h3>
-  <p>Catena decisa il 22/07/2026 e rivista il 23/07/2026 col <strong>sistema energetico</strong> (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
+  <p>Catena decisa il 22/07/2026 e rivista il 23/07/2026 sera con la <strong>direttiva 12</strong> — via il sistema energetico, dentro il deposito a peso (dettagli nella sezione <a href="#decisioni">Decisioni</a>):</p>
   <pre><code>tap manuale (gratis, sempre)
   → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
   → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → riparazione reattore (10 lingotti · 60 s)                    [implementata]
   → raggio traente visibile: 1 minerale alla volta,
     forza di trazione Lv 0–5 (4-20 lingotti/livello)             [implementato]
-  → sistema energetico: deuterio → reattore → energia → batterie
-    (sostituisce il FUEL; upgrade reattore e batterie)           [implementato]
-  → mining offline limitato dalla carica delle batterie          [implementato]
-  → viaggio (evoluzione 1b): barra velocità che consuma energia</code></pre>
+  → deposito del raggio traente: il grezzo pesa, il peso
+    massimo trasportabile è la 4ª linea di upgrade               [implementato]
+  → mining offline: si ferma a deposito pieno, tetto 24 h        [implementato]
+  → viaggio (evoluzione 1b): mappa stellare e barra velocità
+  → stazione spaziale: missioni → Cookie → sblocco dei tier</code></pre>
 
-  <h4>Sistema energetico (deciso e implementato il 23/07/2026)</h4>
-  <p><strong>Deuterio → reattore → energia → batterie.</strong> Il deuterio è un nuovo minerale (asteroide dedicato, spawn 25% al posto di uno di ferro). Il reattore lo brucia e produce energia; l'energia alimenta i sistemi della nave (torretta automatica, raggio traente, poi i motori) e l'avanzo carica le batterie.</p>
-  <ul>
-    <li><strong>Il FUEL non esiste più</strong>: unica valuta energetica, l'ENERGIA. Anche il viaggio la consuma (i motori sono un sistema di bordo).</li>
-    <li><strong>Online</strong>: il reattore copre i consumi finché c'è deuterio; l'avanzo va in batteria.</li>
-    <li><strong>Offline</strong>: il reattore è in standby (protocollo di sicurezza senza pilota a bordo); i sistemi attingono solo dalle batterie → <strong>la carica delle batterie è il cap offline</strong>. Capacità iniziale tarata su 12–24 h.</li>
-    <li><strong>Upgrade su due assi</strong>: reattore (produzione) e batterie (capacità), separati.</li>
-  </ul>
-  <p><strong>Numeri della prima implementazione</strong> (da rivedere col playtest):</p>
+  <h4>Deposito a peso e upgrade del tier 1 (direttiva 12 del 23/07/2026, implementati)</h4>
+  <p>Il <strong>minerale grezzo non entra in magazzino</strong>: resta in un deposito interno al <strong>raggio traente</strong>, con un limite in <strong>peso</strong>. Ogni tipo di minerale ha un suo peso (il ferro pesa 1; i minerali futuri peseranno sempre di più) e il peso massimo trasportabile si potenzia in sala comandi. Il <strong>magazzino</strong> non ha limite ma ospita solo materiali lavorati (lingotti). <em>(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è nel registro decisioni.)</em></p>
+  <p>Le <strong>4 linee di upgrade</strong> della sala comandi, tutte cappate a <strong>Lv 5 = tier 1</strong> (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):</p>
+  <table>
+    <tr><th>Linea</th><th>Effetto Lv 0 → 5</th><th>Costi (lingotti/livello)</th></tr>
+    <tr><td>Velocità di fuoco del laser</td><td>1 colpo/2,5 s → 1 colpo/1,25 s</td><td>3, 6, 9, 12, 15</td></tr>
+    <tr><td>Danni del laser</td><td>5 → 15 per colpo (vale anche per il tap)</td><td>3, 6, 9, 12, 15</td></tr>
+    <tr><td>Forza di trazione del raggio</td><td>0,8 → 2,8 u/s</td><td>4, 8, 12, 16, 20</td></tr>
+    <tr><td>Peso trasportabile (deposito)</td><td>20 → 70</td><td>4, 8, 12, 16, 20</td></tr>
+  </table>
+  <p>Altri numeri della prima implementazione (da validare col playtest):</p>
   <table>
     <tr><th>Cosa</th><th>Valore</th></tr>
-    <tr><td>Consumo torretta automatica</td><td>1 energia/min (online e offline)</td></tr>
-    <tr><td>Consumo raggio traente</td><td>0,5 energia/min (online e offline)</td></tr>
-    <tr><td>Batterie Lv 0–5</td><td>capacità 1080 + 540/livello (= 12 h → 42 h offline); costi 4-20 lingotti</td></tr>
-    <tr><td>Reattore Lv 0–5</td><td>produzione 6 + 2/livello energia/min; costi 5-25 lingotti (solo a reattore riparato)</td></tr>
-    <tr><td>Resa del deuterio</td><td>1 deuterio = 10 energia; a batterie piene il reattore copre solo i consumi</td></tr>
-    <tr><td>Asteroide deuterio</td><td>25% di probabilità per ondata che 1 dei 4 asteroidi sia di deuterio</td></tr>
-    <tr><td>Migrazione salvataggi v2</td><td>1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena)</td></tr>
+    <tr><td>Peso del ferro grezzo</td><td>1 per minerale</td></tr>
+    <tr><td>Mining offline</td><td>richiede torretta + raggio installati; resa = collo di bottiglia reale tra spawn, abbattimento e traino sequenziale; si ferma a <strong>deposito pieno</strong>; tetto <strong>24 h</strong></td></tr>
+    <tr><td>Schermata mining dinamica</td><td>spawn ogni 3,5–6,5 s (max 5 in campo); discesa 0,4 u/s; margine d'ingresso del laser automatico 0,5 u</td></tr>
+    <tr><td>Migrazione salvataggi v2/v3</td><td>energia, deuterio e livelli reattore/batterie decadono senza risarcimento; risorse, lingotti, livelli e installazioni sopravvivono</td></tr>
   </table>
-  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai energia (anti-softlock); le batterie sono il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi) — <em>grammatica in discussione, vedi le decisioni aperte</em>.</p>
+  <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a deposito pieno si fonde per liberare peso. Gli upgrade si comprano dal <strong>pannello della sala comandi</strong> (grammatica confermata dalla direttiva 12).</p>
 
   <h3>Visione a medio-lungo termine</h3>
   <p>Idee valutate e messe in roadmap il 23/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
   <ol>
-    <li><strong>Fonderia comoda</strong> — X di chiusura, "produci tutti", "Crafta tutto" (QoL immediata)</li>
-    <li><strong>Sistema energetico</strong> — deuterio, reattore, energia, batterie; offline fino a 12–24 h col popup di recap</li>
-    <li><strong>Viaggio (1b) + mappa stellare</strong> — asteroidi in avvicinamento, barra velocità, mappa con punti di interesse; raggi traenti multipli</li>
-    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali di commercio, valuta galattica, compravendita di ferro e deuterio a prezzi variabili</li>
-    <li><strong>Prima stazione spaziale</strong> — hub dell'universo 1: rifornimento deuterio, commercio, hangar. Con lei i <strong>Tier</strong> della strumentazione, i <strong>nuovi minerali</strong> (spawn 0% fino all'arrivo) e le <strong>stanze costruibili</strong> (es. sala mappe)</li>
-    <li><strong>Quadro elettrico</strong> — schermata di configurazione delle automazioni offline (quando le automazioni saranno ≥ 2)</li>
-    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto</li>
+    <li><s><strong>Fonderia comoda</strong></s> ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali</li>
+    <li><s><strong>Deposito a peso + schermata mining dinamica</strong></s> ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest</li>
+    <li><strong>Viaggio (1b completa) + mappa stellare</strong> — barra velocità, mappa con punti di interesse; raggi traenti multipli</li>
+    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali di commercio, valuta galattica, compravendita a prezzi variabili</li>
+    <li><strong>Prima stazione spaziale</strong> — hub dell'universo 1: <strong>missioni che danno Cookie e sbloccano i Tier</strong> della strumentazione, commercio, hangar, i <strong>nuovi minerali</strong> (spawn 0% fino all'arrivo, pesi crescenti) e le <strong>stanze costruibili</strong> (es. sala mappe)</li>
+    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà</li>
   </ol>
 
   <h3>UI generale</h3>
   <ul>
-    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>DEUT</strong> / <strong>ENERGIA n/capacità</strong> (dal 23/07/2026; il mockup <code>old/img3.jpeg</code> mostrava la vecchia coppia IRON/FUEL).</li>
+    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>CARICO peso/max</strong> (dal 23/07/2026 sera, direttiva 12; si tinge d'arancio a deposito pieno).</li>
     <li>Intro narrativa a fumetto prima del gameplay (vedi <code>old/img1.jpeg</code>), che termina con "[ INIZIA IL VIAGGIO ]".</li>
     <li>La mappa della stazione Aeterna (<code>old/img2.jpeg</code>) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.</li>
   </ul>
@@ -270,12 +269,31 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">6</span></h3>
+  <h3>Decisioni prese <span class="badge done">9</span></h3>
 
   <div class="decision-card">
-    <h4>2026-07-23 — Sistema energetico: deuterio → reattore → energia → batterie (il FUEL sparisce)</h4>
+    <h4>2026-07-23 (sera) — Passo indietro sull'energia: via deuterio e reattore, il grezzo pesa e vive nel raggio traente</h4>
+    <p><strong>Scelta:</strong> dal Google Doc, dopo il playtest della v0.3 (direttiva 12 del <a href="#idee">registro idee</a>). Quattro punti: 1) <strong>energia, deuterio e reattore rimossi</strong> dal gioco (asteroide di deuterio compreso); si reinseriranno più avanti se serviranno — i sistemi automatici tornano a non consumare nulla; 2) il <strong>magazzino non ha limite ma non contiene grezzo</strong> (solo lingotti): il grezzo sta in un <strong>deposito interno al raggio traente</strong> con <strong>limite in peso</strong> (ferro = 1, i minerali futuri peseranno di più; a deposito pieno si fonde per liberare spazio); 3) gli <strong>upgrade restano nel pannello della sala comandi</strong> — chiusa la decisione aperta sulla grammatica UI — su quattro linee (fuoco, danni, trazione, peso), tutte <strong>cappate a Lv 5 = tier 1</strong>; 4) i <strong>tier si sbloccheranno con le missioni "Cookie"</strong> della stazione spaziale (future).</p>
+    <p><strong>Motivazione:</strong> l'economia energetica introdotta il giorno prima aggiungeva troppa gestione troppo presto. Il limite in peso ricrea il ritmo "torna in fonderia e svuota" con una sola valuta, dà corpo al sistema forza/massa già previsto per il raggio traente e sposta il cap offline dalle batterie a <strong>deposito pieno + tetto di 24 h</strong>. Migrazione: i campi energetici dei salvataggi decadono senza risarcimento; tutto il resto sopravvive.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-23 (sera) — Schermata mining dinamica (supera la 1a)</h4>
+    <p><strong>Scelta:</strong> dal Google Doc (direttiva 13): stelle che pulsano ed effetto di nave in avanzamento; asteroidi che compaiono random dalla cima della mappa, con piccola deriva laterale e <strong>discesa lenta e costante</strong>, e che <strong>scompaiono in fondo</strong> se non distrutti; il <strong>laser automatico</strong> aggancia solo asteroidi interamente in campo, sotto un margine d'ingresso in alto; i minerali (più piccoli) <strong>"scappano" dall'esplosione</strong> con una spinta contenuta, catturabile dal raggio traente.</p>
+    <p><strong>Motivazione:</strong> è la componente visiva dell'evoluzione <strong>1b</strong> anticipata senza barra velocità né mappa: il mondo scorre, la nave "viaggia", e il despawn in fondo introduce la prima pressione temporale dolce del gioco (un asteroide ignorato è ferro perso).</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-23 (sera) — Grammatica UI degli upgrade: pannello della sala comandi</h4>
+    <p><strong>Scelta:</strong> gli upgrade di bordo si comprano dal <strong>pannello della sala comandi</strong> (la direttiva 12 elenca le quattro linee "uppabili nella sala comandi"). La stanza "Armeria/torrette" col potenziamento a tap sugli oggetti fisici (idea 5) resta nel cassetto per quando arriveranno i raggi traenti multipli.</p>
+    <p><strong>Motivazione:</strong> era la decisione aperta che bloccava i raggi multipli; il Google Doc l'ha chiusa confermando la grammatica attuale. Un pannello unico scala meglio con poche linee cappate a Lv 5.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-23 — Sistema energetico: deuterio → reattore → energia → batterie (il FUEL sparisce) <span class="badge open">superata</span></h4>
     <p><strong>Scelta:</strong> il reattore non produce più FUEL dal nulla: <strong>brucia deuterio</strong> (nuovo minerale, dall'asteroide dedicato) e produce <strong>energia</strong>. L'energia alimenta i sistemi della nave e, se avanza, si accumula nelle <strong>batterie</strong>. Reattore (produzione) e batterie (capacità) upgradabili separatamente. Tre sotto-decisioni: 1) il FUEL è sostituito dall'ENERGIA in tutto il gioco, viaggio compreso (niente doppia valuta energetica; il "rifornimento fuel" della futura stazione diventa acquisto di deuterio); 2) i sistemi consumano energia anche online (il reattore copre i consumi, l'avanzo carica le batterie); 3) offline il reattore è in standby (flavor: protocollo di sicurezza senza pilota) e i sistemi attingono solo dalle batterie: la carica delle batterie <strong>è</strong> il cap offline, iniziale ~12–24 h.</p>
     <p><strong>Motivazione:</strong> il FUEL era l'unica risorsa prodotta "gratis" in un gioco dove tutto si estrae e si trasforma. La catena dà uno scopo immediato al deuterio, rende il cap offline perfettamente diegetico e trasforma la futura schermata delle automazioni offline nel "quadro elettrico" della nave. Online si gioca finché c'è deuterio, offline finché c'è batteria: il gioco attivo continua a battere il passivo. Migrazione salvataggi: FUEL → energia in batteria. <em>(Aggiorna la regola FUEL/serbatoio della decisione del 22/07 sulla progressione: ora vale energia/batterie.)</em></p>
+    <p><em>Superata il 23/07 sera, dopo il playtest della v0.3: energia, deuterio e reattore sono stati ritirati — vedi "Passo indietro sull'energia".</em></p>
   </div>
 
   <div class="decision-card">
@@ -297,8 +315,8 @@
   </div>
 
   <div class="decision-card">
-    <h4>2026-07-22 — Comportamento della schermata mining</h4>
-    <p><strong>Scelta:</strong> opzione <strong>a)</strong> — 2 asteroidi statici; la nave aspetta che vengano distrutti e raccolti prima di avanzare (nuova ondata a campo libero).</p>
+    <h4>2026-07-22 — Comportamento della schermata mining <span class="badge open">superata</span></h4>
+    <p><strong>Scelta:</strong> opzione <strong>a)</strong> — 2 asteroidi statici; la nave aspetta che vengano distrutti e raccolti prima di avanzare (nuova ondata a campo libero). <em>Superata il 23/07 sera: gli asteroidi ora scendono dalla cima della mappa — vedi "Schermata mining dinamica".</em></p>
     <p><strong>Motivazione:</strong> è la versione già descritta nel GDD e la più rapida per arrivare a un primo giocabile che validi il loop "spara → raccogli → crafta". In un idle/incremental la prima schermata fa da tutorial: la semplicità è un pregio. L'opzione <strong>b)</strong> (asteroidi in avvicinamento + barra velocità) resta l'<strong>evoluzione naturale a medio termine</strong> — dà la sensazione di viaggio coerente con la lore — e per questo lo spawner degli asteroidi è astratto dietro un'interfaccia (<code>IAsteroidSpawner</code>). L'opzione <strong>c)</strong> (esplorazione procedurale con due levette) è <strong>scartata</strong>: cambia genere, richiede due mani e attenzione continua, l'opposto di un idle giocabile con un pollice.</p>
   </div>
 
@@ -308,11 +326,8 @@
     <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
   </div>
 
-  <h3>Decisioni aperte <span class="badge open">1</span></h3>
-  <div class="decision-card">
-    <h4>Grammatica UI degli upgrade: pannello centrale o oggetti fisici?</h4>
-    <p>Dall'idea 5 del <a href="#idee">registro idee</a>: oggi tutti gli upgrade si comprano dal pannello della sala comandi; la proposta è potenziare gli strumenti <strong>cliccandoli fisicamente</strong> nella schermata interno nave (ed eventualmente raggrupparli in una stanza "Armeria/torrette"). Vale per raggi traenti, torretta e reattore/batterie: da decidere una volta sola, prima di aggiungere i raggi multipli.</p>
-  </div>
+  <h3>Decisioni aperte <span class="badge done">0</span></h3>
+  <p><em>Nessuna al momento.</em></p>
 </section>
 
 <!-- =========================== IDEE ============================ -->
@@ -321,25 +336,33 @@
 
   <blockquote>Le idee nascono nel documento Google condiviso, vengono valutate e finiscono <strong>in roadmap</strong> oppure tra le <strong>scartate</strong> (sempre con motivazione). Niente si perde. Fonte: <code>Docs/idee.md</code>.</blockquote>
 
-  <h3>Importate il 2026-07-23 <span class="badge done">11 in roadmap</span></h3>
+  <h3>Importate il 2026-07-23 <span class="badge done">11 valutate</span></h3>
 
   <table>
     <tr><th>#</th><th>Idea</th><th>Verdetto</th></tr>
-    <tr><td>1</td><td>Progresso offline con cap a 24 h e popup di recap</td><td>✅ Assorbita dal sistema energetico: il cap offline è la carica delle batterie (iniziale ~12–24 h); l'upgrade batterie sostituisce il vecchio upgrade serbatoio</td></tr>
-    <tr><td>2</td><td>Schermata di configurazione delle automazioni offline</td><td>✅ In roadmap avanzata come "quadro elettrico" della nave (quali sistemi lasciare attaccati alle batterie, ognuno col suo consumo); ha senso con ≥ 2 automazioni offline</td></tr>
-    <tr><td>3</td><td>Asteroide di deuterio (spawn 25%)</td><td>✅ In roadmap col sistema energetico: il deuterio è il combustibile del reattore</td></tr>
-    <tr><td>4</td><td>Fonderia comoda: X di chiusura, "produci tutti", "Crafta tutto"</td><td>✅ In roadmap subito — QoL a basso costo e alto valore</td></tr>
-    <tr><td>5</td><td>Più raggi traenti, potenziabili cliccandoli nell'interno nave</td><td>✅ Raggi multipli in roadmap (col viaggio); la grammatica UI "upgrade dagli oggetti fisici" è una decisione aperta</td></tr>
-    <tr><td>6</td><td>Mercantili e valuta galattica "Cookie"</td><td>✅ In roadmap dopo evoluzione 1b e deuterio; bilanciamento prezzi da progettare</td></tr>
+    <tr><td>1</td><td>Progresso offline con cap a 24 h e popup di recap</td><td>✅ In roadmap. <em>Agg. 23/07 sera:</em> con l'energia ritirata il cap offline è tornato al tetto delle 24 h + il deposito a peso (l'offline si ferma quando è pieno)</td></tr>
+    <tr><td>2</td><td>Schermata di configurazione delle automazioni offline</td><td>✅ In roadmap ma <em>congelata</em> (23/07 sera): il "quadro elettrico" richiede il ritorno del sistema energetico, oltre a ≥ 2 automazioni offline</td></tr>
+    <tr><td>3</td><td>Asteroide di deuterio (spawn 25%)</td><td>❌ Scartata per ora (23/07 sera, direttiva 12): implementata nella v0.3 e poi rimossa insieme a reattore ed energia; reinseribile in futuro</td></tr>
+    <tr><td>4</td><td>Fonderia comoda: X di chiusura, "produci tutti", "Crafta tutto"</td><td>✅ Fatta (23/07) — QoL a basso costo e alto valore</td></tr>
+    <tr><td>5</td><td>Più raggi traenti, potenziabili cliccandoli nell'interno nave</td><td>✅ Raggi multipli in roadmap (col viaggio); grammatica UI decisa il 23/07 sera: upgrade dal pannello della sala comandi</td></tr>
+    <tr><td>6</td><td>Mercantili e valuta galattica "Cookie"</td><td>✅ In roadmap dopo l'evoluzione 1b; col deuterio ritirato si commercia per ora solo ferro/lingotti; la direttiva 12 aggiunge le missioni come fonte di Cookie</td></tr>
     <tr><td>7</td><td>Mappa stellare con punti di interesse</td><td>✅ In roadmap col viaggio 1b — ne è la spina dorsale; checkpoint col teletrasporto più avanti</td></tr>
-    <tr><td>8</td><td>Prima stazione spaziale (hub universo 1)</td><td>✅ In roadmap come milestone dopo il viaggio: rifornimento deuterio, commercio, hangar</td></tr>
-    <tr><td>9</td><td>Tier della strumentazione (solo agli hangar)</td><td>✅ In roadmap con la stazione: crescita "grande" esponenziale, gating dei minerali per tier</td></tr>
-    <tr><td>10</td><td>Nuovi minerali con spawn 0% fino alla prima stazione</td><td>✅ In roadmap con stazione + tier: regola di sblocco dei contenuti minerari</td></tr>
+    <tr><td>8</td><td>Prima stazione spaziale (hub universo 1)</td><td>✅ In roadmap come milestone dopo il viaggio: missioni (→ Cookie → tier), commercio, hangar; il servizio rifornimento è da ridefinire senza deuterio</td></tr>
+    <tr><td>9</td><td>Tier della strumentazione (solo agli hangar)</td><td>✅ In roadmap con la stazione: crescita "grande" esponenziale; i livelli di bordo sono cappati a 5 per il tier 1 (direttiva 12), i tier si sbloccano con le missioni Cookie</td></tr>
+    <tr><td>10</td><td>Nuovi minerali con spawn 0% fino alla prima stazione</td><td>✅ In roadmap con stazione + tier: regola di sblocco dei contenuti minerari (ciascuno col suo peso crescente)</td></tr>
     <tr><td>11</td><td>Stanze costruibili all'hangar (es. sala mappe)</td><td>✅ In roadmap con la stazione; richiede di ripensare la piantina della nave</td></tr>
   </table>
 
-  <h3>Idee scartate <span class="badge open">0</span></h3>
-  <p><em>Ancora nessuna — le idee scartate resteranno qui con la motivazione.</em></p>
+  <h3>Importate il 2026-07-23, sera <span class="badge done">2 direttive, fatte</span></h3>
+
+  <table>
+    <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
+    <tr><td>12</td><td>Passo indietro sull'energia: via deuterio e reattore; magazzino senza limite ma solo lingotti; grezzo in un deposito del raggio traente con limite in peso; 4 upgrade in sala comandi cappati a Lv 5 (tier 1); tier via missioni "Cookie" alla stazione</td><td>✅ Implementata subito (v0.4): rollback ragionato della v0.3 — l'economia energetica aggiungeva troppa gestione troppo presto. Chiude anche la decisione aperta sulla grammatica UI</td></tr>
+    <tr><td>13</td><td>Dinamismo della schermata mining: stelle che pulsano e nave che avanza; asteroidi random dalla cima, discesa lenta, despawn in fondo; margine d'ingresso per il laser automatico; minerali piccoli che "scappano" dall'esplosione</td><td>✅ Implementata subito (v0.4): anticipa la parte visiva dell'evoluzione 1b e introduce la prima pressione temporale dolce del gioco</td></tr>
+  </table>
+
+  <h3>Idee scartate <span class="badge open">1</span></h3>
+  <p>L'idea 3 (asteroide di deuterio) è scartata <em>per ora</em>: implementata nella v0.3, rimossa con la direttiva 12; se reattore ed energia torneranno, tornerà con loro.</p>
 </section>
 
 <!-- =========================== STATO =========================== -->
@@ -436,23 +459,29 @@
     <li><strong>Registro delle idee creato</strong> (23/07): le proposte del documento Google condiviso vengono valutate in <code>idee.md</code> e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap</li>
     <li><strong>Decisione presa: sistema energetico</strong> (23/07): deuterio → reattore → energia → batterie. Il FUEL sparisce, i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (~12–24 h iniziali). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia</li>
     <li><strong>Fonderia comoda implementata</strong> (tappa 1 della roadmap, 23/07): pulsante <strong>X</strong> in alto a destra che riporta alla nave (grigio-blu, per distinguerla dalla X rossa del reset) e pulsante <strong>"PRODUCI TUTTI (×N)"</strong> sotto la ricetta, che converte in un colpo tutto il ferro disponibile in lingotti. Il "Crafta tutto" globale è rinviato a quando ci saranno più materiali</li>
-    <li><strong>Sistema energetico implementato</strong> (tappa 2 della roadmap, 23/07 — numeri nella sezione GDD): asteroide di deuterio (25% per ondata, roccia bluastra a venature ciano, droppa 3 minerali di deuterio); nuovo <code>EnergySystem</code> — il reattore brucia deuterio (1 = 10 energia, 6–16 E/min) per alimentare torretta (1 E/min) e raggio traente (0,5 E/min), l'avanzo carica le batterie; upgrade reattore e batterie in sala comandi (batterie 1080→3780 = 12→42 h offline); offline con reattore in standby e batterie come cap; barra risorse <code>IRON · DEUT · ENERGIA n/cap</code>; salvataggio v3 con migrazione 1 FUEL → 36 energia. Senza energia i sistemi automatici si fermano, tap e trascinamento restano gratis. Testato in editor: tutto ok</li>
-    <li><strong>Build v0.3 pubblicata</strong> (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive</li>
+    <li><strong>Sistema energetico implementato</strong> (tappa 2 della roadmap, 23/07): asteroide di deuterio, <code>EnergySystem</code> (reattore che brucia deuterio, batterie come cap offline), upgrade reattore/batterie, salvataggio v3 con migrazione FUEL → energia. Testato in editor e su telefono con la v0.3 — poi <strong>ritirato la sera stessa</strong> (vedi sotto)</li>
+    <li><strong>Build v0.3 pubblicata</strong> (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive. Test su telefono ok (auto-update, migrazione FUEL, touch)</li>
+    <li><strong>Direttive 12-13 dal Google Doc recepite</strong> (23/07, sera): dopo il playtest della v0.3 deciso il <strong>passo indietro sull'energia</strong>; chiusa anche la decisione aperta sulla grammatica UI (upgrade dal pannello sala comandi)</li>
+    <li><strong>Sistema energetico rimosso</strong> (direttiva 12): via <code>EnergySystem</code>, deuterio, riparazione/upgrade reattore e batterie; la stanza del reattore resta come flavor ("Spento. Per ora la nave non ne ha bisogno."). <strong>Salvataggio v4</strong> con migrazione: i campi energetici dei v2/v3 decadono, tutto il resto sopravvive</li>
+    <li><strong>Deposito a peso del raggio traente</strong> (direttiva 12): il grezzo resta in un deposito con <strong>limite in peso</strong> (ferro = 1; base 20, upgrade "peso trasportabile" Lv 0–5 → 70 — 4ª linea del pannello sala comandi, tutte cappate a Lv 5 = tier 1). A deposito pieno raggio fermo e raccolta bloccata ("Deposito pieno!"), si fonde per liberare peso. Il <strong>magazzino è senza limite ma solo lingotti</strong> (lingotti sui pallet). Barra risorse <code>IRON · CARICO peso/max</code> (arancio a pieno). Offline: si ferma a deposito pieno, tetto 24 h; rapporto di bordo aggiornato</li>
+    <li><strong>Schermata mining dinamica</strong> (direttiva 13): stelle che pulsano e scorrono verso il basso (parallasse); <code>FallingAsteroidSpawner</code> al posto delle ondate statiche: asteroidi random dalla cima (uno ogni 3,5–6,5 s, max 5 in campo), deriva laterale, discesa costante 0,4 u/s, despawn in fondo (ferro perso); laser automatico solo su asteroidi interamente in campo sotto un margine d'ingresso (0,5 u), priorità al più basso; minerali più piccoli che "scappano" dall'esplosione</li>
+    <li>Verifica: <strong>compilazione batch Unity pulita</strong> (0 errori, 0 warning)</li>
   </ul>
 
   <h4>In corso</h4>
   <ul>
-    <li>Test su telefono della v0.3: aggiornamento automatico sopra la versione precedente, migrazione del salvataggio con FUEL, deuterio e batterie in gioco reale, tap/drag su touch</li>
+    <li>Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti</li>
+    <li>Poi build <strong>v0.4</strong> da pubblicare (menu EvolvingSpace → Build APK Android)</li>
   </ul>
 
-  <h4>Prossimo passo (roadmap rivista il 23/07)</h4>
+  <h4>Prossimo passo (roadmap rivista il 23/07 sera)</h4>
   <ol>
-    <li><s><strong>Fonderia comoda</strong></s> ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)</li>
-    <li><s><strong>Sistema energetico</strong></s> ✓ fatto (23/07; numeri da validare col playtest)</li>
-    <li><strong>Evoluzione 1b + mappa stellare</strong>: asteroidi in avvicinamento, barra velocità che consuma energia, mappa con punti di interesse; raggi traenti multipli (prima: chiudere la decisione aperta sulla grammatica UI degli upgrade)</li>
-    <li><strong>Mercantili e valuta "Cookie"</strong>: incontri casuali, compravendita ferro/deuterio a prezzi variabili</li>
-    <li><strong>Prima stazione spaziale</strong>: hub con rifornimento deuterio, commercio, hangar → Tier della strumentazione, nuovi minerali, stanze costruibili (sala mappe)</li>
-    <li><strong>Quadro elettrico</strong>: schermata automazioni offline (quando le automazioni saranno ≥ 2)</li>
+    <li><s><strong>Fonderia comoda</strong></s> ✓ fatta (23/07)</li>
+    <li><s><strong>Sistema energetico</strong></s> ✓ fatto e <strong>ritirato lo stesso giorno</strong> (direttiva 12: sostituito dal deposito a peso; reinseribile in futuro)</li>
+    <li><s><strong>Schermata mining dinamica</strong></s> ✓ fatta (23/07 sera, direttiva 13 — anticipa la parte visiva della 1b)</li>
+    <li><strong>Viaggio (1b completa) + mappa stellare</strong>: barra velocità, mappa con punti di interesse; raggi traenti multipli (grammatica UI chiusa: pannello sala comandi)</li>
+    <li><strong>Mercantili e valuta "Cookie"</strong>: incontri casuali, compravendita a prezzi variabili</li>
+    <li><strong>Prima stazione spaziale</strong>: hub con missioni (→ Cookie → sblocco Tier), commercio, hangar, nuovi minerali (spawn 0% fino all'arrivo, pesi crescenti), stanze costruibili (sala mappe)</li>
   </ol>
 </section>
 
