@@ -79,7 +79,7 @@ tap manuale (gratis, sempre)
 
 ### Deposito a peso e upgrade del tier 1 (direttiva 12 del 23/07/2026, implementati)
 
-Il **minerale grezzo non entra in magazzino**: resta in un deposito interno al **raggio traente**, con un limite in **peso**. Ogni tipo di minerale ha un suo peso (il ferro pesa 1; i minerali futuri peseranno sempre di più) e il peso massimo trasportabile si potenzia in sala comandi. Il **magazzino** non ha limite ma ospita solo materiali lavorati (lingotti). *(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è in decisioni.md.)*
+Il **minerale grezzo non entra in magazzino**: resta in un deposito interno al **raggio traente**, con un limite misurato in **unità di carico**. Ogni tipo di minerale vale le sue unità (il ferro vale 1; i minerali futuri ne varranno sempre di più) e la capacità si potenzia in sala comandi. Il **magazzino** non ha limite ma ospita solo materiali lavorati (lingotti). *(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è in decisioni.md.)*
 
 Le **4 linee di upgrade** della sala comandi, tutte cappate a **Lv 5 = tier 1** (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):
 
@@ -88,13 +88,13 @@ Le **4 linee di upgrade** della sala comandi, tutte cappate a **Lv 5 = tier 1** 
 | Velocità di fuoco del laser | 1 colpo/2,5 s → 1 colpo/1,25 s | 3, 6, 9, 12, 15 |
 | Danni del laser | 5 → 15 per colpo (vale anche per il tap) | 3, 6, 9, 12, 15 |
 | Forza di trazione del raggio | 0,8 → 2,8 u/s | 4, 8, 12, 16, 20 |
-| Peso trasportabile (deposito) | 20 → 70 | 4, 8, 12, 16, 20 |
+| Capacità del deposito | 1000 → 3500 unità di carico | 4, 8, 12, 16, 20 |
 
 Altri numeri della prima implementazione (da validare col playtest):
 
 | Cosa | Valore |
 |---|---|
-| Peso del ferro grezzo | 1 per minerale |
+| Carico del ferro grezzo | 1 unità per minerale (3 unità di ferro → 1 lingotto) |
 | Mining offline | richiede torretta + raggio installati; resa = collo di bottiglia reale tra spawn, abbattimento e traino sequenziale; si ferma a **deposito pieno**; tetto **24 h** (idea 1) |
 | Schermata mining dinamica | spawn ogni 3,5–6,5 s (max 5 in campo); discesa 0,4 u/s; margine d'ingresso del laser automatico 0,5 u |
 | Migrazione salvataggi v2/v3 | energia, deuterio e livelli reattore/batterie decadono senza risarcimento; risorse, lingotti, livelli e installazioni sopravvivono |
