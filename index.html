@@ -436,14 +436,13 @@
     <li><strong>Registro delle idee creato</strong> (23/07): le proposte del documento Google condiviso vengono valutate in <code>idee.md</code> e finiscono in roadmap o tra le scartate (con motivazione). Prime 11 idee importate e valutate: tutte in roadmap</li>
     <li><strong>Decisione presa: sistema energetico</strong> (23/07): deuterio → reattore → energia → batterie. Il FUEL sparisce, i sistemi consumano energia anche online, offline il reattore è in standby e le batterie sono il cap (~12–24 h iniziali). Sostituisce l'upgrade serbatoio in roadmap; migrazione salvataggi FUEL → energia</li>
     <li><strong>Fonderia comoda implementata</strong> (tappa 1 della roadmap, 23/07): pulsante <strong>X</strong> in alto a destra che riporta alla nave (grigio-blu, per distinguerla dalla X rossa del reset) e pulsante <strong>"PRODUCI TUTTI (×N)"</strong> sotto la ricetta, che converte in un colpo tutto il ferro disponibile in lingotti. Il "Crafta tutto" globale è rinviato a quando ci saranno più materiali</li>
-    <li><strong>Sistema energetico implementato</strong> (tappa 2 della roadmap, 23/07 — numeri nella sezione GDD): asteroide di deuterio (25% per ondata, roccia bluastra a venature ciano, droppa 3 minerali di deuterio); nuovo <code>EnergySystem</code> — il reattore brucia deuterio (1 = 10 energia, 6–16 E/min) per alimentare torretta (1 E/min) e raggio traente (0,5 E/min), l'avanzo carica le batterie; upgrade reattore e batterie in sala comandi (batterie 1080→3780 = 12→42 h offline); offline con reattore in standby e batterie come cap; barra risorse <code>IRON · DEUT · ENERGIA n/cap</code>; salvataggio v3 con migrazione 1 FUEL → 36 energia. Senza energia i sistemi automatici si fermano, tap e trascinamento restano gratis</li>
+    <li><strong>Sistema energetico implementato</strong> (tappa 2 della roadmap, 23/07 — numeri nella sezione GDD): asteroide di deuterio (25% per ondata, roccia bluastra a venature ciano, droppa 3 minerali di deuterio); nuovo <code>EnergySystem</code> — il reattore brucia deuterio (1 = 10 energia, 6–16 E/min) per alimentare torretta (1 E/min) e raggio traente (0,5 E/min), l'avanzo carica le batterie; upgrade reattore e batterie in sala comandi (batterie 1080→3780 = 12→42 h offline); offline con reattore in standby e batterie come cap; barra risorse <code>IRON · DEUT · ENERGIA n/cap</code>; salvataggio v3 con migrazione 1 FUEL → 36 energia. Senza energia i sistemi automatici si fermano, tap e trascinamento restano gratis. Testato in editor: tutto ok</li>
+    <li><strong>Build v0.3 pubblicata</strong> (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive</li>
   </ul>
 
   <h4>In corso</h4>
   <ul>
-    <li>Build v0.2 con release GitHub e updater a bordo</li>
-    <li>Test su telefono della v0.2: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio</li>
-    <li>Test del sistema energetico in editor: spawn deuterio, reattore che brucia/carica, stop dei sistemi a batterie scariche, migrazione di un salvataggio v2, offline con le nuove batterie</li>
+    <li>Test su telefono della v0.3: aggiornamento automatico sopra la versione precedente, migrazione del salvataggio con FUEL, deuterio e batterie in gioco reale, tap/drag su touch</li>
   </ul>
 
   <h4>Prossimo passo (roadmap rivista il 23/07)</h4>
