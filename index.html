@@ -225,19 +225,19 @@
   → stazione spaziale: missioni → Cookie → sblocco dei tier</code></pre>
 
   <h4>Deposito a peso e upgrade del tier 1 (direttiva 12 del 23/07/2026, implementati)</h4>
-  <p>Il <strong>minerale grezzo non entra in magazzino</strong>: resta in un deposito interno al <strong>raggio traente</strong>, con un limite in <strong>peso</strong>. Ogni tipo di minerale ha un suo peso (il ferro pesa 1; i minerali futuri peseranno sempre di più) e il peso massimo trasportabile si potenzia in sala comandi. Il <strong>magazzino</strong> non ha limite ma ospita solo materiali lavorati (lingotti). <em>(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è nel registro decisioni.)</em></p>
+  <p>Il <strong>minerale grezzo non entra in magazzino</strong>: resta in un deposito interno al <strong>raggio traente</strong>, con un limite misurato in <strong>unità di carico</strong>. Ogni tipo di minerale vale le sue unità (il ferro vale 1; i minerali futuri ne varranno sempre di più) e la capacità si potenzia in sala comandi. Il <strong>magazzino</strong> non ha limite ma ospita solo materiali lavorati (lingotti). <em>(Energia, deuterio e reattore sono stati ritirati: si reinseriranno più avanti se serviranno — la storia completa è nel registro decisioni.)</em></p>
   <p>Le <strong>4 linee di upgrade</strong> della sala comandi, tutte cappate a <strong>Lv 5 = tier 1</strong> (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):</p>
   <table>
     <tr><th>Linea</th><th>Effetto Lv 0 → 5</th><th>Costi (lingotti/livello)</th></tr>
     <tr><td>Velocità di fuoco del laser</td><td>1 colpo/2,5 s → 1 colpo/1,25 s</td><td>3, 6, 9, 12, 15</td></tr>
     <tr><td>Danni del laser</td><td>5 → 15 per colpo (vale anche per il tap)</td><td>3, 6, 9, 12, 15</td></tr>
     <tr><td>Forza di trazione del raggio</td><td>0,8 → 2,8 u/s</td><td>4, 8, 12, 16, 20</td></tr>
-    <tr><td>Peso trasportabile (deposito)</td><td>20 → 70</td><td>4, 8, 12, 16, 20</td></tr>
+    <tr><td>Capacità del deposito</td><td>1000 → 3500 unità di carico</td><td>4, 8, 12, 16, 20</td></tr>
   </table>
   <p>Altri numeri della prima implementazione (da validare col playtest):</p>
   <table>
     <tr><th>Cosa</th><th>Valore</th></tr>
-    <tr><td>Peso del ferro grezzo</td><td>1 per minerale</td></tr>
+    <tr><td>Carico del ferro grezzo</td><td>1 unità per minerale (3 unità di ferro → 1 lingotto)</td></tr>
     <tr><td>Mining offline</td><td>richiede torretta + raggio installati; resa = collo di bottiglia reale tra spawn, abbattimento e traino sequenziale; si ferma a <strong>deposito pieno</strong>; tetto <strong>24 h</strong></td></tr>
     <tr><td>Schermata mining dinamica</td><td>spawn ogni 3,5–6,5 s (max 5 in campo); discesa 0,4 u/s; margine d'ingresso del laser automatico 0,5 u</td></tr>
     <tr><td>Migrazione salvataggi v2/v3</td><td>energia, deuterio e livelli reattore/batterie decadono senza risarcimento; risorse, lingotti, livelli e installazioni sopravvivono</td></tr>
@@ -467,6 +467,7 @@
     <li><strong>Schermata mining dinamica</strong> (direttiva 13): stelle che pulsano e scorrono verso il basso (parallasse); <code>FallingAsteroidSpawner</code> al posto delle ondate statiche: asteroidi random dalla cima (uno ogni 3,5–6,5 s, max 5 in campo), deriva laterale, discesa costante 0,4 u/s, despawn in fondo (ferro perso); laser automatico solo su asteroidi interamente in campo sotto un margine d'ingresso (0,5 u), priorità al più basso; minerali più piccoli che "scappano" dall'esplosione</li>
     <li>Verifica: <strong>compilazione batch Unity pulita</strong> (0 errori, 0 warning)</li>
     <li><strong>Prima grafica vera</strong> (23/07, sera — 7 PNG pixel-art in <code>Assets/Resources/Sprites</code>): <strong>6 varianti di asteroide</strong> scelte a caso a ogni spawn (rotazione random sobria 8–22°/s invariata); <strong>caccia ship_level1</strong> con <strong>motori accesi</strong> sui due ugelli veri (fiamma che guizza + nucleo chiaro + alone caldo); <strong>esplosione potenziata</strong> (lampo + onda d'urto + schegge di roccia + braci). <code>GameSprites</code> normalizza i PNG in unità mondo e ripiega sui segnaposto se un file manca; import pixel-art automatico (Point, no mipmap, non compresso)</li>
+    <li><strong>Rifiniture su feedback</strong> (23/07, sera — seconda passata): torretta più in basso e <strong>dietro la nave</strong> (spunta solo la punta che ruota); spawn degli asteroidi <strong>distanziati</strong> (min 1,4 u); minerali in <strong>fuga radiale</strong> a ventaglio, velocità contenuta; stelle con <strong>luccichio più marcato</strong>; deposito in <strong>unità di carico</strong> (base 1000 → 3500, ferro = 1 unità); lista craft della fonderia <strong>ancorata in alto</strong></li>
   </ul>
 
   <h4>In corso</h4>
