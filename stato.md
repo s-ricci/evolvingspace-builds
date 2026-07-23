@@ -143,10 +143,18 @@
 
 - **Fix offline su smartphone** (24/07, segnalazione 18): l'offline si calcolava solo all'avvio, ma su Android l'app viene sospesa e **ripresa**, non riavviata → al rientro non veniva conteggiato nulla. Ora `SaveManager` fa il **catch-up alla ripresa**: ricarica lo stato salvato in pausa (costruzioni + mining offline riapplicati) e mostra il Rapporto di bordo; guardia contro il "resume" fasullo del primo avvio Android
 
-- **Rifiniture del 24/07**: il popup "Costruisci modulo" **non mostra più i moduli già costruiti** (le voci rimaste risalgono; "Nessun nuovo modulo disponibile" quando la lista è vuota); [prompt-gemini.md](prompt-gemini.md) esteso con i prompt di **fonderia** e **pagina principale** (dal secondo si adotteranno solo HUD/menù)
+- **Rifiniture del 24/07**: il popup "Costruisci modulo" **non mostra più i moduli già costruiti** (le voci rimaste risalgono; "Nessun nuovo modulo disponibile" quando la lista è vuota); [prompt-gemini.md](prompt-gemini.md) esteso con i prompt di **fonderia** e **pagina principale** (dal secondo si adottano solo HUD/menù)
+
+- **UI aggiornata coi mockup 4 e 5** (24/07 — in `Docs/mockups/`):
+  - **Barra risorse** in stile mockup 5: bordata, con **icona lingotto + conteggio lingotti a sinistra** e **icona cassa + carico grezzo/capacità a destra** (niente più etichette testuali; il carico si tinge d'arancio a pieno). Vale per tutte le schermate
+  - **Pulsante "INTERNO NAVE" azzurro** con l'icona della navicella (ritagliata dal mockup); impostazioni invariata a destra
+  - **Fonderia in stile mockup 4**: ricetta in **card bordata** con le icone vere di **grezzo e lingotto** (ritagliate dal mockup), freccia e **CRAFT rossi** `#C43B33`, "PRODUCI TUTTI" rosso a tutta larghezza, X e "TORNA ALLA NAVE" scuri da tema
+  - Le icone lingotto dei pannelli interni (header "LINGOTTI:" e costi) ora usano l'icona ritagliata; 5 nuovi ritagli in `Resources/Sprites/Icons` (ore, ingot, hud_ingot, hud_crate, ship)
+
+- **Build v0.6 pubblicata** (24/07): release su GitHub e copia su Drive. Contiene: **fix dell'offline alla ripresa dell'app** (segnalazione 18), popup costruzione senza i moduli già costruiti, UI aggiornata coi mockup 4-5 (barra risorse lingotti/carico con icone, INTERNO NAVE azzurro con navicella, fonderia a card con CRAFT/PRODUCI TUTTI rossi)
 
 **In corso:**
-- Test su telefono della v0.5: auto-update sopra la v0.4, migrazione salvataggio (raggio "installato" ⇒ modulo costruito), nuovo interno e pannelli su touch, impostazioni (volumi/muto/reset), mining che continua nei menù; fix offline alla ripresa + popup costruzione filtrato entreranno nella **v0.6** (build su richiesta)
+- Test su telefono della v0.6: **offline alla ripresa** (mandare in background qualche minuto e riaprire → Rapporto di bordo senza riavvio), nuova barra risorse e fonderia, migrazione salvataggi dalle versioni precedenti
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
