@@ -108,7 +108,14 @@
   - **Stelle**: luccichio più marcato (base fioca + picchi luminosi netti, curva quadratica)
   - **Deposito in unità di carico**: capacità base **1000 unità** (Lv 0–5 → 3500); 1 ferro = 1 unità, 3 unità di ferro = 1 lingotto (invariato)
   - **Fonderia**: lista dei craft ancorata **in alto** (le prossime ricette si accoderanno sotto)
-  - **Laserata continua** (terza passata): il colpo non è più un impulso — il laser resta acceso **1 secondo pieno**, aggancia e segue il bersaglio, spalma il danno in 5 tocchi (scintille + micro-shake a ogni tocco), fascio che trema e torretta che vibra; nuovo **ronzio sintetizzato da 1 s** (`ProceduralAudio.PlayLaserBeam`, sorgente dedicata che si ferma se il bersaglio esplode in anticipo). Mentre spara la torretta è occupata (tap ignorati). **Nota bilanciamento**: il ritmo manuale passa da ~3 tap/s a 1 laserata/s a parità di danno — da valutare col playtest se ritoccare danni o HP
+  - **Laserata continua** (terza passata): il colpo non è più un impulso — il laser resta acceso **1 secondo pieno**, aggancia e segue il bersaglio, spalma il danno in 5 tocchi (scintille + micro-shake a ogni tocco), fascio che trema e torretta che vibra; suono sintetizzato da 1 s su sorgente dedicata (si ferma se il bersaglio esplode in anticipo). Mentre spara la torretta è occupata (tap ignorati). **Nota bilanciamento**: il ritmo manuale passa da ~3 tap/s a 1 laserata/s a parità di danno — da valutare col playtest se ritoccare danni o HP
+
+- **Asset dello store + colonna sonora** (23/07, notte):
+  - **Sfondo "skybox"**: la pipeline è URP col renderer 2D (niente skybox di camera), quindi la faccia frontale dello **Starfield Skybox** (asset store) copre lo schermo come fondale dietro le stelle procedurali, leggermente scurita per leggibilità (copia in `Resources/Background/skybox_stars.png`; se manca si torna al colore pieno)
+  - **Colonna sonora**: `Dust and Static.mp3` in loop dal `GameBootstrap`, volume basso (0,13) per lasciare in primo piano laser e raggio traente (file in `Resources/Audio/`)
+  - **Laserata col look del pacchetto "Full Opaque Spell"**: fascio a due strati col materiale `M_BeamParticles_6000` (copiato in `Resources/VFX/`, shader URP del pacchetto, stile "pieno") — esterno rosso, nucleo quasi bianco, bagliore d'impatto pulsante sul bersaglio e alla bocca; essendo un materiale opaco il fascio è disegnato a z negativa (resta sopra le sprite via depth); fallback su Sprites/Default se il materiale manca
+  - **Suono del laser più acuto** (terza revisione): portante 880 → **1500 Hz**
+  - **Ronzio del raggio traente**: loop sintetizzato senza giunzioni (210/316/424 Hz, battito a 3 Hz) su sorgente dedicata, parte solo mentre sta trainando, volume 0,1
 
 **In corso:**
 - Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti
