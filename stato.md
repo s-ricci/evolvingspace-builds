@@ -108,6 +108,7 @@
   - **Stelle**: luccichio più marcato (base fioca + picchi luminosi netti, curva quadratica)
   - **Deposito in unità di carico**: capacità base **1000 unità** (Lv 0–5 → 3500); 1 ferro = 1 unità, 3 unità di ferro = 1 lingotto (invariato)
   - **Fonderia**: lista dei craft ancorata **in alto** (le prossime ricette si accoderanno sotto)
+  - **Laserata continua** (terza passata): il colpo non è più un impulso — il laser resta acceso **1 secondo pieno**, aggancia e segue il bersaglio, spalma il danno in 5 tocchi (scintille + micro-shake a ogni tocco), fascio che trema e torretta che vibra; nuovo **ronzio sintetizzato da 1 s** (`ProceduralAudio.PlayLaserBeam`, sorgente dedicata che si ferma se il bersaglio esplode in anticipo). Mentre spara la torretta è occupata (tap ignorati). **Nota bilanciamento**: il ritmo manuale passa da ~3 tap/s a 1 laserata/s a parità di danno — da valutare col playtest se ritoccare danni o HP
 
 **In corso:**
 - Test in editor/telefono delle novità del 23/07 sera: deposito a peso (pieno → fonde → riparte), schermata dinamica (ritmo di spawn e despawn), migrazione dei salvataggi v3 con energia, offline con i nuovi limiti
