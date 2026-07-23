@@ -6,6 +6,7 @@ Gioco mobile 2D **idle/incremental spaziale** in pixel art, orientamento portrai
 
 - [**GDD** — Game Design Document](GDD.md)
 - [**Registro decisioni**](decisioni.md)
+- [**Registro delle idee**](idee.md) — proposte valutate: in roadmap o scartate (con motivazione)
 - [**Stato dei lavori**](stato.md)
 - Versione HTML in un'unica pagina: **https://s-ricci.github.io/evolvingspace-builds/**
 
