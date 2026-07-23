@@ -65,20 +65,18 @@ Catena decisa il 22/07/2026 e rivista il 23/07/2026 col **sistema energetico** (
 tap manuale (gratis, sempre)
   → torretta automatica lenta (5 lingotti, 1 colpo/2,5 s)        [implementata]
   → upgrade torretta: velocità di fuoco, danni (Lv 0–5)          [implementati]
-  → riparazione reattore (10 lingotti · 60 s)                    [implementata*]
-  → mining offline limitato dall'energia accumulata              [implementato*]
+  → riparazione reattore (10 lingotti · 60 s)                    [implementata]
   → raggio traente visibile: fascio che aggancia 1 minerale
     alla volta; forza di trazione Lv 0–5 = velocità di traino
     0,8→2,8 u/s (4-20 lingotti/livello); in futuro i materiali
     pesanti richiederanno più forza (velocità = forza/massa)     [implementato]
   → sistema energetico: deuterio → reattore → energia → batterie
-    (sostituisce il FUEL; upgrade reattore e batterie)
+    (sostituisce il FUEL; upgrade reattore e batterie)           [implementato]
+  → mining offline limitato dalla carica delle batterie          [implementato]
   → viaggio (evoluzione 1b): barra velocità che consuma energia
 ```
 
-*\* Implementati nella versione provvisoria a FUEL (il reattore produce 1 FUEL/20 s dal nulla, serbatoio da 30): sarà sostituita dal sistema energetico qui sotto.*
-
-### Sistema energetico (deciso il 23/07/2026)
+### Sistema energetico (deciso il 23/07/2026, implementato il 23/07/2026)
 
 **Deuterio → reattore → energia → batterie.** Il deuterio è un nuovo minerale (asteroide dedicato, spawn 25% al posto di uno di ferro). Il reattore lo brucia e produce energia; l'energia alimenta i sistemi della nave (torretta automatica, raggio traente, poi i motori) e l'avanzo carica le batterie.
 
@@ -87,6 +85,18 @@ tap manuale (gratis, sempre)
 - **Offline**: il reattore è in standby (protocollo di sicurezza senza pilota a bordo); i sistemi attingono solo dalle batterie → **la carica delle batterie è il cap offline**. Capacità iniziale tarata su 12–24 h.
 - **Upgrade su due assi**: reattore (produzione) e batterie (capacità), separati.
 - Il mining manuale non consuma mai energia (anti-softlock, regola invariata).
+
+**Numeri della prima implementazione** (da rivedere col playtest):
+
+| Cosa | Valore |
+|---|---|
+| Consumo torretta automatica | 1 energia/min (online e offline) |
+| Consumo raggio traente | 0,5 energia/min (online e offline) |
+| Batterie Lv 0–5 | capacità 1080 + 540/livello (= 12 h → 42 h offline); costi 4, 8, 12, 16, 20 lingotti |
+| Reattore Lv 0–5 | produzione 6 + 2/livello energia/min; costi 5, 10, 15, 20, 25 lingotti (upgrade solo a reattore riparato) |
+| Resa del deuterio | 1 deuterio = 10 energia; a batterie piene il reattore copre solo i consumi (niente sprechi) |
+| Asteroide deuterio | 25% di probabilità per ondata che 1 dei 4 asteroidi sia di deuterio (3 minerali di deuterio) |
+| Migrazione salvataggi v2 | 1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena); reattore riparato resta riparato |
 
 Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale non consuma mai energia (anti-softlock); le batterie sono il cap offline del gioco. Gli upgrade si comprano dalle stanze della nave (popup della sala comandi, come per la fonderia) — *grammatica in discussione, vedi decisione aperta in [decisioni.md](decisioni.md)*.
 
@@ -104,6 +114,6 @@ Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), 
 
 ## UI generale
 
-- Barra risorse in alto: **IRON** / **FUEL** (vedi mockup `old/img3.jpeg`) — col sistema energetico diventerà **IRON** / **DEUTERIO** / **ENERGIA**.
+- Barra risorse in alto: **IRON** / **DEUT** / **ENERGIA n/capacità** (dal 23/07/2026; il mockup `old/img3.jpeg` mostrava la vecchia coppia IRON/FUEL).
 - Intro narrativa a fumetto prima del gameplay (vedi `old/img1.jpeg`), che termina con "[ INIZIA IL VIAGGIO ]".
 - La mappa della stazione Aeterna (`old/img2.jpeg`) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.
