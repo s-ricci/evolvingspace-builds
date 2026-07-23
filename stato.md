@@ -87,10 +87,10 @@
   - **Barra risorse a tre voci**: `IRON · DEUT · ENERGIA n/cap`; FUEL eliminato ovunque
   - **Salvataggio v3** con migrazione: 1 FUEL → 36 energia (serbatoio pieno = batteria Lv 0 piena), salvataggi v2 compatibili
 
+- **Build v0.3 pubblicata** (23/07, sera): prima build con fonderia comoda + sistema energetico; release su GitHub con APK e version.json, copia su Drive. Il sistema energetico è stato **testato in editor: tutto ok** (spawn deuterio, reattore, upgrade, migrazione, offline)
+
 **In corso:**
-- Build v0.2 con release GitHub e updater a bordo
-- Test su telefono: reset, installazione raggio, aggiornamento automatico, tap/drag su touch, latenza audio
-- Test del sistema energetico in editor: spawn deuterio, reattore che brucia/carica, stop dei sistemi a batterie scariche, migrazione di un salvataggio v2, offline con le nuove batterie
+- Test su telefono della v0.3: aggiornamento automatico sopra la versione precedente, migrazione del salvataggio con FUEL, deuterio e batterie in gioco reale, tap/drag su touch
 
 **Prossimo passo (roadmap rivista il 23/07 — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07; il "Crafta tutto" globale arriverà con più materiali)
