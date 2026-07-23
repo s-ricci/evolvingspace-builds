@@ -126,8 +126,14 @@
   - **Salvataggio v5**: raggio traente come modulo con stato/tempo di costruzione, livello motore; migrazione v4 ("installato" ⇒ costruito); offline aggiornato (spawn scalato dal motore, richiede IA + raggio costruito)
   - **Musica a 0,18** (direttiva 16); compilazione batch pulita (0 errori; solo warning di deprecazione negli script del pacchetto spell)
 
+- **Menù impostazioni** (23/07, notte — direttiva 17):
+  - In mining la **X rossa è sostituita da un'icona impostazioni** (tre slider stilizzati, sprite procedurale) **tutta a destra**; tap → popup "IMPOSTAZIONI"
+  - In alto le due opzioni audio: **slider volume musica + MUTA** e **slider volume effetti + MUTA** (nuovo `GameAudioSettings` su PlayerPrefs: le preferenze sopravvivono al reset del salvataggio; musica, laserata e ronzio del raggio si riallineano in diretta)
+  - In fondo il **tasto rosso "RESETTA IL GIOCO"** che apre la solita conferma (il reset non è più a portata di pollice in gioco)
+  - Nuovi `UiKit.MakeSlider` e `SettingsPanel`; creato **[prompt-gemini.md](prompt-gemini.md)** in Docs con i tre prompt richiesti (interno nave a lista, pannello modulo con upgrade, menù impostazioni)
+
 **In corso:**
-- Test in editor/telefono del nuovo interno a lista, del motore a impulso e del mining che continua nei menù; poi build v0.5
+- Test in editor/telefono del nuovo interno a lista, del motore a impulso, del mining che continua nei menù e del menù impostazioni; poi build v0.5
 
 **Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
 1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
