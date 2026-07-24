@@ -182,8 +182,15 @@
   - **Baratto solo verso il basso** (1 rame → 2 ferro, via la direzione ferro → rame), **rame a 80 HP**, **evoluzioni a 60/80/70 Cookie**, **mercantili proporzionali alla rotta** (~10%/min, primo garantito), nessun limite giornaliero
   - **Salvataggio v7** retrocompatibile; compilazione batch pulita (0 errori, 0 warning)
 
+- **Build v0.9 pubblicata e test superato** (24/07, notte): release su GitHub + Drive; il ribilanciamento regge al playtest — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto verso il basso, mercantili proporzionali alla rotta
+
 **In corso:**
-- Build v0.9 e playtest **da zero** del nuovo pacing (obiettivo: tier 1 ~1-2 giorni, tier 2 ~3-5)
+- Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
+
+**Prossimo passo (roadmap — dettagli nel [GDD](GDD.md)):**
+1. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" (IA Lv 3+, calibrazioni successive) è già pronto ad accoglierli
+2. **Altre stazioni** come checkpoint con gate di teletrasporto e milestone successive
+3. **Intro a fumetto**; più avanti l'**universo 2** come capitolo massimo
 
 **Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
 1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
