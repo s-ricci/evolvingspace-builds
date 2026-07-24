@@ -95,6 +95,18 @@
 4. La **sala mappe entra nella v0.7**: modulo costruibile (8 lingotti · 30 s) sbloccato dalla prima visita alla stazione; senza, i campi non ancora visitati mostrano "???" al posto della composizione.
 **Motivazione:** (1) un nome vero serve subito e ARGO suona bene; (2) lega le tappe in modo naturale — viaggi → incontri il commercio → scopri la stazione — e dà al primo mercantile un momento memorabile; (3) dà un sink immediato al rame appena sbloccato, senza aspettare contenuti futuri; (4) con la composizione dei campi nascosta la sala mappe ha uno scopo dal primo giorno.
 
+### 2026-07-24 (sera) — Fix post-v0.7: asteroidi densi, viaggio senza mining, mercantili a deviazione, stazione a baratto
+**Scelta:** tre direttive dopo la revisione della v0.7:
+1. **Asteroidi densi**: la densità alta di un campo non si traduce solo in più asteroidi ma in un **mix** con una nuova variante — roccia scura compatta, **45 HP**, droppa **5 minerali**, e una **corazza che chiede almeno 9 danni per colpo** (danni Lv 2): chi ha il laser al minimo non li scalfisce. Più densità ⇒ più densi in proporzione (Cintura Densa: spawn ×1,25 e 35% di densi — prima era solo ×1,6 di spawn; Campo del Rame: 20% di densi sul ferro). Così lo schermo non si affolla ma la resa cresce.
+2. **In viaggio non si mina**: niente spawn in rotta, il laser riposa; la nave si porta **verso il centro della visuale** coi motori spinti (fiamme ×2) e le stelle sfrecciano (mondo ×4-5) per dare l'idea dell'alta velocità. I **mercantili diventano rari** (~1 rotta su 5, il primo resta garantito) e non aprono più il banco a schermo pieno: compare un banner **"Mercantile in avvicinamento…"** e toccarlo devia verso di lui — **la rotta va in pausa** finché non si chiude il banco, poi riprende. Il primo mercantile **abbordato** (non solo avvistato) rivela la Stazione Argo.
+3. **Commercio di stazione = solo baratto tra lingotti**, molto meno redditizio dei mercantili e senza Cookie: 4 lingotti di ferro → 1 di rame; 1 di rame → 2 di ferro. I Cookie girano solo in rotta (e con le missioni).
+**Motivazione:** (1) varietà e progressione del danno senza saturare campo e pollice; (2) il viaggio diventa un momento con la sua identità (velocità, attesa, eventi) invece di un mining più povero, e i mercantili rari con la deviazione a scelta valgono di più; (3) se gli incontri sono rari devono restare la fonte buona di Cookie — la stazione copre solo la conversione di comodo tra metalli.
+**Coerenza offline**: in rotta non si mina nemmeno offline; i densi contano nella resa solo se il laser li rompe.
+
+### 2026-07-24 (sera) — Mappa stellare alleggerita: cluster piccoli e nomi in chip
+**Scelta:** i punti di interesse della mappa perdono le didascalie (restano nel popup di destinazione) e mostrano **solo il nome dentro una "chip" scura semitrasparente** sotto un cluster ridotto; l'immagine della stazione è più piccola. Se in futuro i campi cresceranno di numero, il passo successivo già individuato è la **mappa trascinabile (pan)** su un'area più grande.
+**Motivazione:** le scritte si sovrapponevano ai sassi e la mappa risultava piena; la chip dà uno sfondo costante al testo qualunque cosa ci sia dietro, e togliere le didascalie dimezza il testo a schermo senza perdere informazioni (sono a un tap di distanza).
+
 ## Decisioni aperte
 
 *(nessuna al momento)*
