@@ -237,12 +237,12 @@
     <tr><td>Stazione Argo</td><td>100% ferro</td><td>0,45</td><td>—</td><td>nascosta finché un mercantile non la rivela</td></tr>
     <tr><td>Campo del rame</td><td>65% ferro / 35% rame</td><td>1,05</td><td>20% (sul ferro)</td><td>si attiva alla prima visita alla stazione</td></tr>
   </table>
-  <p><strong>Asteroide denso</strong>: roccia scura, 45 HP, droppa 5, scala +15%; corazza: serve ≥ 9 danni per colpo (danni Lv 2).
-  <strong>Rame</strong>: asteroide da 40 HP, si rompe solo col laser Mk II; il grezzo pesa 2 unità (traino a metà velocità); 3 rame → 1 lingotto di rame.
-  <strong>Mercantili</strong>: si avvistano in rotta (primo garantito e aspetta fino all'arrivo, poi ~1 su 5 con finestra di 30 s); il tap sul banner devia e mette in pausa il timer; prezzi casuali (lingotti ferro 2-4 Cookie, rame 5-8; ferro grezzo 2-3 per 1 Cookie). <strong>Stazione: solo baratto</strong> (4 ferro → 1 rame · 1 rame → 2 ferro, niente Cookie).
+  <p><strong>Asteroide denso</strong>: roccia scura, 45 HP, droppa 5, scala +15%; corazza: serve ≥ 9 danni per colpo (≈ danni Lv 5 su 10 al Mk I).
+  <strong>Rame</strong>: asteroide da <strong>80 HP</strong>, si rompe solo col laser Mk II e l'IA lo bersaglia solo da IA Lv 2; il grezzo pesa 2 unità (traino a metà velocità); 3 rame → 1 lingotto di rame (dopo la calibrazione del forno al rame).
+  <strong>Mercantili</strong>: si avvistano in rotta (primo garantito e aspetta fino all'arrivo, poi probabilità ~10%/minuto di viaggio, finestra di 30 s); il tap sul banner devia e mette in pausa il timer; prezzi casuali (lingotti ferro 2-4 Cookie, rame 5-8; ferro grezzo 2-3 per 1 Cookie). <strong>Stazione: solo baratto verso il basso</strong> (1 rame → 2 ferro, niente Cookie).
   <strong>Missioni di Argo</strong> (2 attive alla volta): 50 lingotti → 20 · 30 asteroidi in Cintura Densa → 15 · vendi 20 lingotti → 15 · 60 ferro nella Vena Ricca → 20 Cookie.
-  <strong>Hangar Mk II</strong>: laser 40 Cookie (rompe il rame; danni 15→30, velocità 1,25→0,75 s) · raggio 35 (secondo fascio; 2,8→4,8 u/s) · magazzino 30 (3500→12000 unità); i livelli riaperti si pagano in lingotti di rame.
-  <strong>Offline</strong>: la rotta avanza a gioco chiuso (arrivo compreso) ma in rotta non si mina nemmeno offline; densi e rame contano solo se il laser li rompe; restano tetto 24 h e stop a magazzino pieno.</p>
+  <strong>Hangar Mk II</strong>: laser 60 Cookie (rompe il rame; danni 15→30, velocità 1,25→0,75 s) · raggio 80 (secondo fascio; 2,8→4,8 u/s) · magazzino 70 (3500→12000 unità); i livelli riaperti si pagano in lingotti di rame.
+  <strong>Offline</strong>: la rotta avanza a gioco chiuso (arrivo compreso) ma in rotta non si mina nemmeno offline; densi e rame contano solo se il laser li rompe (il rame anche solo con IA Lv 2); restano tetto 24 h e stop a magazzino pieno. <strong>Salvataggio v7</strong>: livelli migrati in proporzione, IA installata → Lv 1, fonderia costruita → forno al ferro.</p>
 
   <h4>Struttura della progressione a lungo termine (decisa il 24/07/2026)</h4>
   <p>Quattro piani, dal piccolo al grande (motivazioni nella sezione <a href="#decisioni">Decisioni</a>):</p>
@@ -265,16 +265,18 @@
 
   <h4>Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)</h4>
   <p>Il <strong>minerale grezzo</strong> vive nel <strong>magazzino</strong>, con un limite misurato in <strong>unità di carico</strong> (il ferro vale 1; i minerali futuri ne varranno sempre di più); a magazzino pieno si fonde per liberare spazio. I <strong>lingotti</strong> non hanno limite. <em>(Il deposito era nato "dentro" il raggio traente con la direttiva 12; con la 14 è passato al magazzino. Energia, deuterio e reattore restano ritirati.)</em></p>
-  <p>Gli upgrade vivono <strong>nel pannello del proprio modulo</strong>, tutti cappati a <strong>Lv 5 = tier 1</strong> (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):</p>
+  <p>Gli upgrade vivono <strong>nel pannello del proprio modulo</strong>. Dal ribilanciamento della v0.9 i livelli vanno da <strong>1 a 10</strong> con <strong>costi esponenziali ~×1,6 per livello</strong>; al Mk II le stesse tabelle si pagano in <strong>lingotti di rame</strong>:</p>
   <table>
-    <tr><th>Modulo</th><th>Upgrade</th><th>Effetto Lv 0 → 5</th><th>Costi</th></tr>
-    <tr><td>Laser minerario</td><td>Velocità di fuoco (IA)</td><td>1 laserata/2,5 s → 1/1,25 s</td><td>3, 6, 9, 12, 15</td></tr>
-    <tr><td>Laser minerario</td><td>Danni</td><td>5 → 15 per laserata (anche per il tap)</td><td>3, 6, 9, 12, 15</td></tr>
-    <tr><td>Laser minerario</td><td>IA di mira (1 livello)</td><td>il laser spara da solo</td><td>5</td></tr>
-    <tr><td>Magazzino</td><td>Capacità grezzo</td><td>1000 → 3500 unità</td><td>4, 8, 12, 16, 20</td></tr>
-    <tr><td>Motore a impulso</td><td>Velocità</td><td>asteroidi in mappa ×1 → ×2,5 (mondo +40%)</td><td>5, 10, 15, 20, 25</td></tr>
-    <tr><td>Raggio traente</td><td>Forza di trazione</td><td>0,8 → 2,8 u/s</td><td>4, 8, 12, 16, 20</td></tr>
+    <tr><th>Modulo</th><th>Upgrade</th><th>Effetto Lv 1 → 10 (Mk I)</th><th>Costi per livello</th></tr>
+    <tr><td>Laser minerario</td><td>Velocità di fuoco (IA)</td><td>1 laserata/2,5 s → 1/1,25 s</td><td>3, 5, 8, 12, 20, 30, 50, 80, 125</td></tr>
+    <tr><td>Laser minerario</td><td>Danni</td><td>5 → 15 per laserata (anche per il tap)</td><td>3, 5, 8, 12, 20, 30, 50, 80, 125</td></tr>
+    <tr><td>Laser minerario</td><td>IA di mira (per minerale)</td><td>Lv 1 riconosce il ferro · Lv 2 il rame</td><td>5 lingotti ferro · 10 lingotti rame</td></tr>
+    <tr><td>Magazzino</td><td>Capacità grezzo</td><td>1000 → 3500 unità</td><td>4, 7, 11, 16, 27, 40, 67, 105, 165</td></tr>
+    <tr><td>Motore a impulso</td><td>Velocità</td><td>asteroidi ×1 → ×2,5 · crociera ×1 → ×2</td><td>4, 7, 11, 16, 27, 40, 67, 105, 165</td></tr>
+    <tr><td>Raggio traente</td><td>Forza di trazione</td><td>0,8 → 2,8 u/s</td><td>4, 7, 11, 16, 27, 40, 67, 105, 165</td></tr>
+    <tr><td>Fonderia</td><td>Calibrazione (per minerale, in grezzo)</td><td>Lv 1 forno al ferro · Lv 2 forno al rame</td><td>10 ferro grezzo · 25 rame grezzo</td></tr>
   </table>
+  <p><strong>Il ciclo "a mano prima, automatico poi" vale per ogni minerale</strong>: lo mini a mano → calibri la fonderia in grezzo → fondi i primi lingotti → insegni all'IA a riconoscerlo pagando in quei lingotti. Senza IA Lv 2 la torretta ignora il rame anche col Mk II (il tap resta libero: anti-softlock).</p>
   <p>Altri numeri della prima implementazione (da validare col playtest):</p>
   <table>
     <tr><th>Cosa</th><th>Valore</th></tr>
@@ -312,7 +314,13 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">17</span></h3>
+  <h3>Decisioni prese <span class="badge done">18</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-24 (notte) — Ribilanciamento dell'economia + IA e fonderia "per minerale" (v0.9)</h4>
+    <p><strong>Contesto:</strong> playtest v0.8: tutto maxato in 1 ora anche da zero e senza baratto — costi aritmetici contro rendita crescente. <strong>Scelta (pacchetto approvato):</strong> 1) <strong>livelli 1-10</strong> con costi esponenziali ~×1,6 per livello (laser 3→125, altre linee 4→165; al Mk II le stesse tabelle in lingotti di rame; migrazione proporzionale Lv 3/5 → 6/10); 2) <strong>baratto solo verso il basso</strong> (1 rame → 2 ferro); 3) rame a <strong>80 HP</strong>; 4) evoluzioni a <strong>60/80/70 Cookie</strong>; 5) <strong>mercantili proporzionali alla rotta</strong> (~10%/min); 6) nessun limite giornaliero; 7) <strong>IA per minerale</strong>: Lv 1 riconosce il ferro (5 lingotti), Lv 2 il rame (10 lingotti di rame fatti a mano — senza, la torretta ignora il rame anche col Mk II); 8) <strong>calibrazione della fonderia</strong> in grezzo: forno al ferro (10) e forno al rame (25) — ogni minerale nuovo va minato a mano la prima volta.</p>
+    <p><strong>Motivazione:</strong> è lo scarto tra costi esponenziali e rendita lineare a creare i muri naturali del genere (senza limiti giornalieri, snervanti); il ciclo "a mano prima, automatico poi" è la regola fondativa del design trasformata in onboarding ripetibile per ogni metallo futuro. Obiettivo: tier 1 ~1-2 giorni, tier 2 ~3-5. Salvataggio v7 retrocompatibile.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-24 (sera) — Fix post-v0.7: asteroidi densi, viaggio senza mining, mercantili a deviazione, stazione a baratto</h4>
@@ -418,14 +426,8 @@
     <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
   </div>
 
-  <h3>Decisioni aperte <span class="badge open">1</span></h3>
-
-  <div class="decision-card">
-    <h4>Ribilanciamento dell'economia (playtest v0.8: tutto maxato in 1 ora anche da zero)</h4>
-    <p><strong>Contesto:</strong> costi dei livelli aritmetici (3, 6, 9, 12, 15) contro una rendita che cresce con gli upgrade: i livelli alti diventano più facili dei bassi e i due tier collassano in un'ora. Il baratto ferro → rame è una falla a qualunque rapporto; i limiti giornalieri sono scartati (snervanti).</p>
-    <p><strong>Proposta in valutazione (non implementata, in attesa di consenso):</strong> 1) <strong>costi esponenziali</strong> (raddoppio per livello: 4-64 laser, 5-80 raggio/magazzino/motore; Mk II in rame 6-96) senza toccare il flusso di minerali; 2) <strong>baratto solo verso il basso</strong> (1 rame → 2 ferro, via la direzione ferro → rame); 3) rame a <strong>80 HP</strong>; 4) evoluzioni Mk II a <strong>60 · 80 · 70 Cookie</strong>; 5) <strong>mercantili proporzionali alla lunghezza della rotta</strong>; 6) nessun limite giornaliero — l'unico tetto offline resta il magazzino pieno. Obiettivo: tier 1 ~1-2 giorni, tier 2 ~3-5; da rivalidare con playtest da zero.</p>
-    <p><strong>Variante in valutazione: livelli 1-10 invece di 0-5</strong> — 9 acquisti per linea (si parte da Lv 1) con fattore <strong>×1,6-1,7 per livello</strong> (es. 3, 5, 8, 12, 20, 30, 50, 80, 125 ≈ 330 lingotti a linea): quasi il doppio dei momenti d'acquisto, incrementi più fini, stesso muro totale spalmato meglio.</p>
-  </div>
+  <h3>Decisioni aperte <span class="badge done">0</span></h3>
+  <p><em>Nessuna al momento.</em></p>
 </section>
 
 <!-- =========================== IDEE ============================ -->
@@ -615,9 +617,16 @@
     <li><strong>Build v0.8 pubblicata</strong> (release GitHub + Drive): tutte le tappe 3-5 più i fix della revisione</li>
   </ul>
 
+  <h4>Fatto (24/07, notte — la v0.9)</h4>
+  <ul>
+    <li><strong>Ribilanciamento approvato e implementato</strong>: livelli 1-10 a costi esponenziali (~×1,6/livello), baratto solo verso il basso, rame a 80 HP, evoluzioni a 60/80/70 Cookie, mercantili proporzionali alla rotta, nessun limite giornaliero</li>
+    <li><strong>IA per minerale</strong> (Lv 1 ferro · Lv 2 rame, pagata nei lingotti del metallo che impara) e <strong>calibrazione della fonderia</strong> in grezzo (forno al ferro 10 · forno al rame 25): ogni minerale nuovo va lavorato a mano la prima volta</li>
+    <li><strong>Salvataggio v7</strong> con migrazione proporzionale dei livelli; compilazione batch pulita</li>
+  </ul>
+
   <h4>In corso</h4>
   <ul>
-    <li><strong>v0.8 testata</strong>: funziona, ma il pacing non regge — tutto maxato in 1 ora anche da zero e senza baratto. <strong>Ribilanciamento dell'economia in discussione</strong> (vedi la decisione aperta): costi esponenziali, baratto solo verso il basso, rame più duro, evoluzioni più care, mercantili proporzionali alla rotta. Nessuna modifica senza consenso</li>
+    <li>Build v0.9 e playtest <strong>da zero</strong> del nuovo pacing (obiettivo: tier 1 ~1-2 giorni, tier 2 ~3-5)</li>
   </ul>
 
   <h4>Prossimo passo (roadmap aggiornata il 24/07)</h4>
