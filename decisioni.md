@@ -87,6 +87,14 @@
 **Scelta:** sulla mappa si sceglie il punto di interesse e la nave **viaggia in tempo reale**: durata = distanza / velocità (livello del motore a impulso, che diventa ciò che il nome promette). Durante la rotta il mining **non si ferma**: tabella "spazio aperto" (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il **viaggio avanza anche offline**. Nessun costo in carburante (l'energia è ritirata; il tempo è già un costo — se l'energia tornerà, il viaggio è il posto ovvio dove riattaccarla). I **mercantili** (idea 6) diventano **incontri casuali in rotta**.
 **Motivazione:** la selezione istantanea del campo (alla Idle Planet Miner) sarebbe più comoda ma ucciderebbe la fantasia del viaggio, cuore della lore; il mining in rotta rende il viaggio tempo di gioco degradato anziché tempo morto, e "parto e chiudo l'app" è un'ottima azione idle.
 
+### 2026-07-24 (pomeriggio) — Dettagli della v0.7: nome ARGO, scoperta via mercantile, rame = valuta dei livelli Mk II, sala mappe inclusa
+**Scelta:** quattro punti chiusi prima dell'implementazione delle tappe 3-5 (tutte confluite nella v0.7):
+1. La prima stazione si chiama **ARGO** (il nome del mockup diventa definitivo).
+2. La stazione è nascosta sulla mappa ("???" / zona sconosciuta) e **la rivela il primo mercantile** incontrato in rotta, trasmettendone le coordinate. Il primo incontro è garantito sul primo viaggio; poi ~1 rotta su 2.
+3. **Il rame paga i livelli Mk II**: in fonderia 3 rame grezzo → 1 lingotto di rame; dopo l'evoluzione Mk II di un modulo, i suoi livelli 1–5 riaperti si comprano in lingotti di rame (il ferro resta la valuta dei moduli Mk I). Il rame grezzo pesa **2 unità** di carico e il raggio lo traina a metà velocità (velocità = forza/massa).
+4. La **sala mappe entra nella v0.7**: modulo costruibile (8 lingotti · 30 s) sbloccato dalla prima visita alla stazione; senza, i campi non ancora visitati mostrano "???" al posto della composizione.
+**Motivazione:** (1) un nome vero serve subito e ARGO suona bene; (2) lega le tappe in modo naturale — viaggi → incontri il commercio → scopri la stazione — e dà al primo mercantile un momento memorabile; (3) dà un sink immediato al rame appena sbloccato, senza aspettare contenuti futuri; (4) con la composizione dei campi nascosta la sala mappe ha uno scopo dal primo giorno.
+
 ## Decisioni aperte
 
 *(nessuna al momento)*
