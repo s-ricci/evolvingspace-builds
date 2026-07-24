@@ -196,8 +196,9 @@
     <tr><td>Magazzino</td><td>sì</td><td>Lingotti senza limite + <strong>minerale grezzo</strong> (limite in unità, 5 livelli — non più del raggio traente)</td></tr>
     <tr><td>Motore a impulso</td><td>sì</td><td>5 livelli: più velocità ⇒ <strong>più asteroidi in mappa</strong></td></tr>
     <tr><td>Laser minerario</td><td>sì</td><td>Velocità e danno (5 livelli) + <strong>1 livello di "IA"</strong> che lo automatizza</td></tr>
-    <tr><td>Fonderia</td><td>costruibile (gratis · 30 s)</td><td>3 grezzo → 1 lingotto; nessun upgrade; tap → crafting</td></tr>
-    <tr><td>Raggio traente</td><td>costruibile (4 lingotti · 20 s)</td><td>Traina i minerali; upgrade forza di trazione</td></tr>
+    <tr><td>Fonderia</td><td>costruibile (gratis · 30 s)</td><td>3 grezzo → 1 lingotto (ferro e, dalla v0.7, rame); tap → crafting</td></tr>
+    <tr><td>Raggio traente</td><td>costruibile (4 lingotti · 20 s)</td><td>Traina i minerali (velocità = forza / massa); upgrade trazione; <strong>Mk II: secondo fascio</strong></td></tr>
+    <tr><td>Sala mappe</td><td>costruibile (8 lingotti · 30 s), sbloccata alla stazione</td><td>Rivela la composizione dei campi non visitati sulla mappa</td></tr>
   </table>
 
   <h4>Schermata 3 — Crafting (fonderia)</h4>
@@ -221,9 +222,26 @@
     in mappa (primo assaggio della velocità di viaggio)          [implementato]
   → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
   → viaggio (evoluzione 1b): mappa stellare, campi di asteroidi
-    con tabelle di spawn, rotte a tempo reale (mining in rotta)
-  → stazione spaziale: missioni → Cookie → tier Mk II all'hangar
-    + nuovi minerali (i loro campi si attivano)</code></pre>
+    con tabelle di spawn, rotte a tempo reale (mining in rotta)   [implementato, v0.7]
+  → mercantili in rotta → Cookie (il primo rivela la stazione)    [implementato, v0.7]
+  → stazione ARGO: missioni → Cookie → tier Mk II all'hangar
+    + rame (il suo campo si attiva) + sala mappe                  [implementato, v0.7]</code></pre>
+
+  <h4>Numeri della v0.7 (implementati il 24/07/2026, da validare col playtest)</h4>
+  <p><strong>Campi dell'universo 1</strong> (crociera 3 UA/min, +20% per livello del motore; in rotta tabella "spazio aperto": densità 0,4, solo ferro):</p>
+  <table>
+    <tr><th>Campo</th><th>Composizione</th><th>Densità</th><th>Note</th></tr>
+    <tr><td>Campo di partenza</td><td>100% ferro</td><td>1,0 (bassa)</td><td>casa</td></tr>
+    <tr><td>Cintura densa</td><td>100% ferro</td><td>1,6 (alta)</td><td>~12 UA dalla partenza (4 min a motore base)</td></tr>
+    <tr><td>Vena ricca</td><td>100% ferro</td><td>0,8</td><td>asteroidi grossi: HP ×2, drop ×2</td></tr>
+    <tr><td>Stazione Argo</td><td>100% ferro</td><td>0,45</td><td>nascosta finché un mercantile non la rivela</td></tr>
+    <tr><td>Campo del rame</td><td>65% ferro / 35% rame</td><td>1,1</td><td>si attiva alla prima visita alla stazione</td></tr>
+  </table>
+  <p><strong>Rame</strong>: asteroide da 40 HP (vs 15), si rompe solo col laser Mk II; il grezzo pesa 2 unità (traino a metà velocità); 3 rame → 1 lingotto di rame.
+  <strong>Mercantili</strong>: prezzi casuali (lingotti ferro 2-4 Cookie, rame 5-8; ferro grezzo 2-3 per 1 Cookie); stazione a prezzi fissi (3 / 7 / 2 per 1).
+  <strong>Missioni di Argo</strong> (2 attive alla volta): 50 lingotti → 20 · 30 asteroidi in Cintura Densa → 15 · vendi 20 lingotti → 15 · 60 ferro nella Vena Ricca → 20 Cookie.
+  <strong>Hangar Mk II</strong>: laser 40 Cookie (rompe il rame; danni 15→30, velocità 1,25→0,75 s) · raggio 35 (secondo fascio; 2,8→4,8 u/s) · magazzino 30 (3500→12000 unità); i livelli riaperti si pagano in lingotti di rame.
+  <strong>Offline</strong>: la rotta avanza a gioco chiuso (arrivo compreso); mining in due fasi (spazio aperto + campo d'arrivo); restano tetto 24 h e stop a magazzino pieno.</p>
 
   <h4>Struttura della progressione a lungo termine (decisa il 24/07/2026)</h4>
   <p>Quattro piani, dal piccolo al grande (motivazioni nella sezione <a href="#decisioni">Decisioni</a>):</p>
@@ -272,15 +290,16 @@
   <ol>
     <li><s><strong>Fonderia comoda</strong></s> ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali</li>
     <li><s><strong>Deposito a peso + schermata mining dinamica</strong></s> ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest</li>
-    <li><strong>Mappa stellare + viaggio (1b completa)</strong> — mappa dell'universo 1 con i campi di asteroidi (per ora solo ferro, con densità/ricchezza diverse), rotte a tempo reale (durata = distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline</li>
-    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali <strong>in rotta</strong>, valuta galattica, compravendita di ferro/lingotti a prezzi variabili</li>
-    <li><strong>Prima stazione spaziale</strong> (milestone nominata) — hub dell'universo 1: <strong>missioni → Cookie → tier Mk II all'hangar</strong> (nuovi cap dei livelli, il laser Mk II rompe il rame), i <strong>campi del rame si attivano</strong> (poi silicio, titanio, alluminio con i Mk successivi — ciascuno col suo peso crescente), ricette nuove in fonderia, commercio, <strong>stanze costruibili</strong> (la sala mappe rivela la composizione dei campi), <strong>raggio traente Mk II = secondo fascio</strong></li>
-    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
+    <li><s><strong>Mappa stellare + viaggio (1b completa)</strong></s> ✓ (24/07, v0.7) — mappa dell'universo 1 coi campi, rotte a tempo reale, mining in rotta, viaggio offline</li>
+    <li><s><strong>Mercantili e "Cookie"</strong></s> ✓ (24/07, v0.7) — incontri casuali in rotta a prezzi variabili; il primo rivela la Stazione Argo</li>
+    <li><s><strong>Prima stazione spaziale</strong></s> ✓ (24/07, v0.7) — la <strong>Stazione Argo</strong>: missioni → Cookie → evoluzioni Mk II all'hangar, campo del rame attivato, ricetta del rame in fonderia, commercio, sala mappe costruibile, raggio Mk II = secondo fascio</li>
+    <li>Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
   </ol>
 
   <h3>UI generale</h3>
   <ul>
-    <li>Barra risorse in alto: <strong>IRON</strong> / <strong>CARICO peso/max</strong> (dal 23/07/2026 sera, direttiva 12; si tinge d'arancio a deposito pieno).</li>
+    <li>Barra risorse in alto: <strong>lingotti</strong> a sinistra, <strong>Cookie</strong> al centro (compaiono quando la valuta entra in gioco), <strong>CARICO peso/max</strong> a destra (arancio a pieno).</li>
+    <li>In basso nel mining: quadrato <strong>mappa stellare</strong> a sinistra, <strong>INTERNO NAVE</strong> al centro, <strong>impostazioni</strong> a destra; in rotta compare il <strong>banner di viaggio</strong> sotto la barra risorse.</li>
     <li>Intro narrativa a fumetto prima del gameplay (vedi <code>old/img1.jpeg</code>), che termina con "[ INIZIA IL VIAGGIO ]".</li>
     <li>La mappa della stazione Aeterna (<code>old/img2.jpeg</code>) è il riferimento del "prima" — utile per l'intro ed eventualmente come visione a lungo termine della progressione.</li>
   </ul>
@@ -292,7 +311,13 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">14</span></h3>
+  <h3>Decisioni prese <span class="badge done">15</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-24 (pomeriggio) — Dettagli della v0.7: nome ARGO, scoperta via mercantile, rame = valuta dei livelli Mk II, sala mappe inclusa</h4>
+    <p><strong>Scelta:</strong> quattro punti chiusi prima dell'implementazione delle tappe 3-5 (tutte confluite nella v0.7): 1) la prima stazione si chiama <strong>ARGO</strong>; 2) la stazione è nascosta sulla mappa ("???") e <strong>la rivela il primo mercantile</strong> incontrato in rotta (primo incontro garantito, poi ~1 rotta su 2); 3) <strong>il rame paga i livelli Mk II</strong>: 3 rame grezzo → 1 lingotto di rame in fonderia; i livelli 1–5 riaperti dall'evoluzione si comprano in lingotti di rame (il ferro resta la valuta dei moduli Mk I); il rame grezzo pesa <strong>2 unità</strong> e si traina a metà velocità (forza/massa); 4) la <strong>sala mappe entra nella v0.7</strong>: costruibile (8 lingotti · 30 s) dopo la prima visita alla stazione; senza, i campi non visitati mostrano "???" al posto della composizione.</p>
+    <p><strong>Motivazione:</strong> un nome vero serve subito; la rivelazione via mercantile lega le tappe (viaggi → commerci → scopri la stazione) e dà al primo incontro un momento memorabile; il rame ha un sink dal primo giorno; la sala mappe ha uno scopo immediato.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-24 — Progressione a lungo termine: livelli → tier "Mk" → milestone nominate → universi</h4>
@@ -552,18 +577,26 @@
     <li><strong>Decisa la progressione a lungo termine</strong> (tre decisioni confermate, vedi <a href="#decisioni">Decisioni</a>): gerarchia a quattro piani (livelli → tier "Mk" → milestone nominate → universi), campi di asteroidi discreti con tabelle di spawn e doppio gating, viaggio a tempo reale con mining in rotta</li>
   </ul>
 
-  <h4>In corso</h4>
+  <h4>Fatto (24/07, pomeriggio — la v0.7)</h4>
   <ul>
-    <li>Avvio della tappa 3: <strong>mappa stellare + viaggio</strong> (design confermato, da implementare)</li>
-    <li><code>Docs/prompt-gemini.md</code> esteso coi <strong>prompt 6-12</strong> per i mockup delle schermate delle tappe 3-5 (mappa stellare, pannello del campo, mining in rotta, mercantile, hub stazione, missioni, hangar Mk); in attesa dei mockup in <code>Docs/mockups/</code> — numeri e nome della stazione ("ARGO") sono segnaposto</li>
+    <li><strong>Mockup 6-12 ricevuti</strong> e <strong>tappe 3-4-5 implementate in un colpo solo</strong>, con quattro decisioni chiuse prima di partire (nome ARGO, stazione rivelata dal primo mercantile, rame = valuta dei livelli Mk II, sala mappe inclusa)</li>
+    <li><strong>Mappa stellare + viaggio</strong> (<code>Assets/Scripts/Travel/</code>): campi con tabelle di spawn, rotte a tempo reale (3 UA/min +20%/lv motore), schermata mappa con POI/rotta a puntini/popup destinazione, banner di viaggio e pulsante mappa in mining; lo spawner legge densità/mix/taglia dal campo corrente</li>
+    <li><strong>Mercantili e Cookie</strong>: popup di compravendita a prezzi casuali con stepper di quantità; il primo incontro rivela la Stazione Argo; Cookie in barra risorse</li>
+    <li><strong>Stazione Argo</strong>: hub con immagine dal mockup; <strong>missioni</strong> in catena (70 Cookie totali), <strong>commercio</strong> a prezzi fissi, <strong>hangar Mk II</strong> (laser 40 · raggio 35 · magazzino 30 Cookie); il laser Mk II rompe il <strong>rame</strong> (40 HP, peso 2), il raggio Mk II ha il secondo fascio, i livelli riaperti si pagano in lingotti di rame (ricetta nuova in fonderia); <strong>sala mappe</strong> costruibile</li>
+    <li><strong>Salvataggio v6</strong> retrocompatibile e offline esteso: la rotta avanza a gioco chiuso (attracco compreso), mining offline in due fasi col mix ferro/rame, Rapporto di bordo esteso</li>
+    <li>7 icone nuove ritagliate dai mockup; compilazione batch pulita; <strong>build v0.7 pubblicata</strong> (release GitHub + Drive)</li>
   </ul>
 
-  <h4>Prossimo passo (roadmap confermata il 24/07)</h4>
+  <h4>In corso</h4>
+  <ul>
+    <li>Test su telefono della v0.7: primo viaggio e mappa, mercantile (rivelazione di Argo), attracco e missioni, evoluzioni Mk II, campo del rame, sala mappe, offline con rotta in corso, migrazione salvataggi</li>
+  </ul>
+
+  <h4>Prossimo passo (roadmap aggiornata il 24/07)</h4>
   <ol>
-    <li><strong>Mappa stellare + viaggio (1b completa)</strong> → v0.7: mappa dell'universo 1 con i campi (per ora solo ferro, densità/ricchezza diverse), rotte a tempo reale (distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline</li>
-    <li><strong>Mercantili e "Cookie"</strong> → v0.8: incontri casuali in rotta, compravendita ferro/lingotti a prezzi variabili, valuta galattica</li>
-    <li><strong>Prima stazione spaziale</strong> (milestone nominata) → v0.9: missioni → Cookie → <strong>tier Mk II all'hangar</strong>; si attivano i campi del rame, ricette nuove in fonderia, stanze costruibili (sala mappe), raggio traente Mk II = secondo fascio</li>
-    <li>Più avanti: silicio/titanio/alluminio coi Mk successivi, altre stazioni e gate di teletrasporto, intro a fumetto, universo 2</li>
+    <li><strong>Playtest e bilanciamento della v0.7</strong> (prezzi, tempi di rotta, resa del rame, costi Mk II)</li>
+    <li><strong>Silicio, titanio, alluminio</strong> coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette</li>
+    <li><strong>Altre stazioni</strong> come checkpoint con gate di teletrasporto e milestone successive; <strong>intro a fumetto</strong>; l'<strong>universo 2</strong></li>
   </ol>
 </section>
 
