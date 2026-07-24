@@ -277,6 +277,7 @@
     <li><strong>Doppio gating</strong> dei minerali nuovi: il <strong>tier del laser</strong> decide quali asteroidi si rompono, la <strong>forza/massa del raggio traente</strong> quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.</li>
     <li><strong>Viaggio a tempo reale</strong>: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella <strong>"spazio aperto"</strong> (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche <strong>offline</strong>. Nessun costo in carburante. I <strong>mercantili</strong> sono incontri casuali in rotta.</li>
     <li>La <strong>sala mappe</strong> (stanza costruibile futura) rivelerà la composizione dei campi.</li>
+    <li><strong>Evoluzione decisa (idea 38, tappa 3):</strong> questa mappa piatta diventerà un <strong>grafo di sistemi solari</strong> — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, campi e stazioni <em>dentro</em> ogni sistema; i <strong>mercanti percorreranno rotte visibili sugli archi</strong> e si potranno intercettare invece di comparire a caso. I gate di teletrasporto delle stazioni-checkpoint saranno archi speciali.</li>
   </ul>
 
   <h4>Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)</h4>
@@ -316,7 +317,8 @@
     <li><s><strong>Ribilanciamento del pacing</strong></s> ✓ (24/07, v0.9) — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto solo verso il basso</li>
     <li><strong>Rifiniture e fix</strong> (idee 20-26, 29, 30, 32) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa</li>
     <li><strong>Riassetto dell'economia</strong> (idee 31, 33-37) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame</li>
-    <li>Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
+    <li><strong>Mappa stellare a sistemi solari</strong> (idea 38) — la mappa diventa un <strong>grafo</strong>: sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i <strong>mercanti</strong> smettono di essere casuali e percorrono rotte visibili sugli archi, intercettabili</li>
+    <li>Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
     <li><strong>Milestone "Relitti"</strong> (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. <strong>In fondo alla roadmap</strong>, dopo tutto il resto</li>
   </ol>
 
@@ -335,7 +337,15 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">27</span></h3>
+  <h3>Decisioni prese <span class="badge done">28</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-24 (dopo la roadmap) — La mappa diventa un grafo di sistemi solari; i mercanti si intercettano</h4>
+    <p><strong>Scelta:</strong> la mappa stellare viene rifatta come <strong>rete di sistemi solari</strong> — sistemi come <strong>nodi</strong>, tratte come <strong>archi</strong>, viaggio da sistema a sistema, e ogni sistema coi suoi <strong>campi di asteroidi, stazioni e altro</strong>. I <strong>mercanti smettono di essere incontri casuali</strong>: percorrono rotte <strong>visibili sugli archi</strong> e si possono <strong>intercettare</strong>. Entra in roadmap come <strong>tappa 3</strong>, subito prima dei nuovi minerali; i dettagli si chiudono quando ci si arriverà.</p>
+    <p><strong>Motivazione:</strong> la mappa piatta a punti di interesse regge 5-7 campi e diventa una nuvola indistinta con silicio, titanio, alluminio e le stazioni successive. Il grafo dà gerarchia (dentro il sistema / tra i sistemi), rende la distanza leggibile come numero di salti e scala senza affollare lo schermo; i <strong>gate di teletrasporto</strong> previsti per le stazioni-checkpoint diventano archi speciali. Il guadagno maggiore è sul mercante: da lotteria (~10% al minuto di rotta) a <strong>decisione informata</strong> — lo vedi muoversi, valuti la deviazione, scegli — che è la direzione già presa da tutto il resto del gioco e toglie il caso dall'unica fonte di Cookie.</p>
+    <p><strong>Cosa supera:</strong> le decisioni del 24/07 su "mercantili come incontri casuali in rotta" e sul banner di avvistamento con deviazione; da decidere quanto sopravvive (in particolare il primo mercantile garantito che rivela Argo).</p>
+    <p><strong>Da chiudere quando toccherà:</strong> se i mercanti si muovono anche a gioco chiuso (serve una simulazione deterministica, altrimenti il salvataggio non regge); rotte <strong>multi-salto</strong> anche offline, con arrivi e attracchi intermedi; cosa rivela cosa (sala mappe sui sistemi, eventuale modulo sensori per le rotte dei mercanti); migrazione del salvataggio da <code>campo</code> a <code>sistema + campo</code>; rivalidazione del rubinetto dei Cookie, oggi tarato sui ~7-10 minuti di rotta verso Argo.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-24 (dopo la v0.9) — Economia dei Cookie: il rubinetto sono le missioni ripetibili</h4>
@@ -574,6 +584,13 @@
     <tr><td>37</td><td>Campi misti ferro+rame: il primo più 50/50 e 20/80</td><td>✅ Con l'economia. Progressione geografica del secondo metallo; non serve un gate esplicito, ci pensa il laser</td></tr>
   </table>
 
+  <h3>Importata il 2026-07-24, dopo la roadmap <span class="badge done">1 direttiva</span></h3>
+
+  <table>
+    <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
+    <tr><td>38</td><td>Mappa stellare a <strong>sistemi solari</strong>: nodi collegati da archi, viaggio da sistema a sistema, ogni sistema coi suoi campi di asteroidi e stazioni; i <strong>mercanti</strong> non sono più eventi casuali — le loro rotte si vedono sugli archi e si possono intercettare</td><td>✅ In roadmap come <strong>tappa 3</strong>. È il salto che la mappa chiedeva: quella piatta regge 5-7 campi e diventa una nuvola con i minerali e le stazioni futuri. Il grafo dà gerarchia e scala; i gate di teletrasporto diventano archi speciali. Il pezzo migliore è il mercante intercettabile: da lotteria a decisione informata. Da chiudere: movimento dei mercanti a gioco chiuso, rotte multi-salto offline, cosa rivela la sala mappe, migrazione <code>campo</code> → <code>sistema + campo</code>, rivalidazione del rubinetto Cookie</td></tr>
+  </table>
+
   <h3>Idee scartate <span class="badge open">1</span></h3>
   <p>L'idea 3 (asteroide di deuterio) è scartata <em>per ora</em>: implementata nella v0.3, rimossa con la direttiva 12; se reattore ed energia torneranno, tornerà con loro.</p>
 </section>
@@ -749,8 +766,9 @@
   <ol>
     <li><strong>Pacchetto rifiniture</strong> (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica</li>
     <li><strong>Riassetto dell'economia</strong> (idee 31, 33-37) in un colpo solo, perché sono tutte lo stesso numero: missioni ripetibili, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame. <strong>Salvataggio v8</strong> con migrazione (missioni vecchie, semantica dei livelli della fonderia, Cookie guadagnati col listino vecchio)</li>
+    <li><strong>Refactoring della mappa stellare a sistemi solari</strong> (idea 38): mappa a <strong>grafo</strong> — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i <strong>mercanti</strong> percorrono <strong>rotte visibili sugli archi</strong> e si intercettano. Supera le decisioni del 24/07 sui mercantili casuali</li>
     <li><strong>Silicio, titanio, alluminio</strong> coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette</li>
-    <li><strong>Altre stazioni</strong> come checkpoint con gate di teletrasporto e milestone successive; <strong>intro a fumetto</strong>; l'<strong>universo 2</strong></li>
+    <li><strong>Altre stazioni</strong> come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; <strong>intro a fumetto</strong>; l'<strong>universo 2</strong></li>
     <li><strong>Milestone "Relitti"</strong>: relitti esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto</li>
   </ol>
 </section>
