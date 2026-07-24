@@ -109,4 +109,13 @@
 
 ## Decisioni aperte
 
-*(nessuna al momento)*
+### Ribilanciamento dell'economia (playtest v0.8: tutto maxato in 1 ora anche da zero, senza baratto)
+**Contesto:** i costi dei livelli sono aritmetici (3, 6, 9, 12, 15) mentre la rendita cresce con gli upgrade: i livelli alti diventano più facili dei bassi e i due tier collassano in un'ora. Il baratto ferro → rame è una falla a qualunque rapporto. I limiti giornalieri sono scartati (snervanti: dicono "smetti di giocare").
+**Proposta in valutazione (Claude, 24/07 sera) — non implementata, in attesa di consenso:**
+1. **Costi esponenziali** (raddoppio per livello): 4, 8, 16, 32, 64 (linee laser) · 5, 10, 20, 40, 80 (raggio/magazzino/motore); Mk II in rame: 6, 12, 24, 48, 96. Il flusso di minerali NON si tocca (è la parte divertente): la leva sono i costi.
+2. **Baratto solo verso il basso** (idea confermata dal playtest): 1 rame → 2 ferro; la direzione ferro → rame sparisce. Il baratto è una valvola di comodo, mai una scorciatoia.
+3. **Rame più duro**: asteroide 40 → 80 HP.
+4. **Evoluzioni Mk II**: 60 (laser) · 80 (raggio) · 70 (magazzino) Cookie; missioni invariate (70 totali).
+5. **Mercantili proporzionali alla rotta**: probabilità d'avvistamento legata alla lunghezza del viaggio (rotte lunghe ≈ garantite) — niente attesa RNG pura per i Cookie.
+6. **Nessun limite giornaliero**; l'unico tetto offline resta il magazzino pieno (diegetico).
+**Obiettivo di pacing:** tier 1 ~1-2 giorni, tier 2 ~3-5 giorni (giocatore attivo 30-60 min/giorno + offline); da rivalidare con playtest da zero. Se il capitolo 2 resta corto, la leva successiva è contenuto (silicio/Mk III), non altri numeri.
