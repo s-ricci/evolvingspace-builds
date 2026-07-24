@@ -72,9 +72,31 @@ tap manuale (gratis, sempre)
   → motore a impulso Lv 0–5: più velocità ⇒ più asteroidi
     in mappa (primo assaggio della velocità di viaggio)          [implementato]
   → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
-  → viaggio (evoluzione 1b): mappa stellare e barra velocità
-  → stazione spaziale: missioni → Cookie → sblocco dei tier
+  → viaggio (evoluzione 1b): mappa stellare, campi di asteroidi
+    con tabelle di spawn, rotte a tempo reale (mining in rotta)
+  → stazione spaziale: missioni → Cookie → tier Mk II all'hangar
+    + nuovi minerali (i loro campi si attivano)
 ```
+
+### Struttura della progressione a lungo termine (decisa il 24/07/2026)
+
+Quattro piani, dal piccolo al grande (motivazioni in [decisioni.md](decisioni.md)):
+
+| Piano | Cos'è | Scala | Esempio |
+|---|---|---|---|
+| **Livelli (1–5)** | crescita quotidiana a bordo, per linea di upgrade | minuti/ore | Danni del laser Lv 3 |
+| **Tier "Mk"** | il gradino grosso di un modulo, all'**hangar** delle stazioni, sbloccato dalle missioni Cookie; il conteggio resta basso perché gated dalle stazioni raggiunte | giorni | Laser minerario **Mk II** (rompe il rame, riapre i livelli 1–5) |
+| **Milestone nominate** | eventi unici della mappa, mai numerati; ognuna sblocca contenuto (minerali, moduli, meccaniche) e prende il nome dalla storia | settimane | l'arrivo alla prima stazione |
+| **Universi** | i capitoli massimi (l'universo 1 è quello attuale); eventuale sede di un futuro prestige | mesi | universo 2, oltre un nuovo buco nero |
+
+Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 da ~24 h va bene così); ogni capitolo punta a durare 2-3 volte il precedente.
+
+### Campi di asteroidi e viaggio (decisi il 24/07/2026)
+
+- L'universo è fatto di **campi di asteroidi discreti** sulla mappa stellare, ognuno con la sua **tabella di spawn** (es. campo di partenza 100% ferro; campo del rame 65% ferro / 35% rame; campo del silicio 40/40/20; rare "vene pure" come punti di interesse speciali). Il minerale vecchio non sparisce mai del tutto (serve alle ricette).
+- **Doppio gating** dei minerali nuovi: il **tier del laser** decide quali asteroidi si rompono, la **forza/massa del raggio traente** quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.
+- **Viaggio a tempo reale**: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella **"spazio aperto"** (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche **offline**. Nessun costo in carburante. I **mercantili** sono incontri casuali in rotta.
+- La **sala mappe** (stanza costruibile futura) rivelerà la composizione dei campi.
 
 ### Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)
 
@@ -109,10 +131,10 @@ Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), 
 
 1. ~~**Fonderia comoda**~~ ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali
 2. ~~**Deposito a peso + schermata mining dinamica**~~ ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest
-3. **Viaggio (1b completa) + mappa stellare** — barra velocità, mappa con punti di interesse; raggi traenti multipli
-4. **Mercantili e "Cookie"** — incontri casuali di commercio, valuta galattica, compravendita a prezzi variabili
-5. **Prima stazione spaziale** — hub dell'universo 1: **missioni che danno Cookie e sbloccano i Tier** della strumentazione (evoluzioni esponenziali, solo agli hangar), commercio, hangar, i **nuovi minerali** (rame, silicio, poi titanio, alluminio — spawn 0% fino all'arrivo, ciascuno col suo peso crescente) e le **stanze costruibili** (es. sala mappe)
-6. Più avanti: altre stazioni come checkpoint con gate di teletrasporto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà
+3. **Mappa stellare + viaggio (1b completa)** — mappa dell'universo 1 con i campi di asteroidi (per ora solo ferro, con densità/ricchezza diverse), rotte a tempo reale (durata = distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline
+4. **Mercantili e "Cookie"** — incontri casuali **in rotta**, valuta galattica, compravendita di ferro/lingotti a prezzi variabili
+5. **Prima stazione spaziale** (milestone nominata) — hub dell'universo 1: **missioni → Cookie → tier Mk II all'hangar** (nuovi cap dei livelli, il laser Mk II rompe il rame), i **campi del rame si attivano** (poi silicio, titanio, alluminio con i Mk successivi — ciascuno col suo peso crescente), ricette nuove in fonderia, commercio, **stanze costruibili** (la sala mappe rivela la composizione dei campi), **raggio traente Mk II = secondo fascio** (i raggi multipli dell'idea 5)
+6. Più avanti: altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
 
 ## UI generale
 
