@@ -193,7 +193,9 @@
 
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
-- Nessuna riga di codice scritta per le direttive 19-37: è tutto ancora sulla carta
+- Nessuna riga di codice scritta per le direttive 19-38: è tutto ancora sulla carta
+
+> **Ripresa dei lavori:** la sessione del 24/07 si chiude con la sola progettazione (idee 19-38 valutate, dieci decisioni chiuse, roadmap riscritta). Si riparte dalla **tappa 1 — pacchetto rifiniture**, che si chiude con una build di verifica; il primo pezzo è la **cadenza unica del laser** (con la resa offline da ricalcolare) e la **fonderia a livelli**.
 
 **Prossimo passo (roadmap aggiornata il 24/07 dopo la v0.9 — dettagli nel [GDD](GDD.md)):**
 1. **Pacchetto rifiniture** (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica
