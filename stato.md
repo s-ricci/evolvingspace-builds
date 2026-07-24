@@ -164,8 +164,15 @@
 - **7 icone nuove ritagliate dai mockup** (cookie, mercantile, stazione, missioni, commercio, hangar, mappa) in `Resources/Sprites/Icons`
 - **Compilazione batch pulita** (0 errori, 0 warning di progetto) e **build v0.7 pubblicata** (24/07): APK su release GitHub + copia su Drive
 
+- **Fix su revisione della v0.7** (24/07, sera — tre direttive, decisioni in [decisioni.md](decisioni.md), numeri nel [GDD](GDD.md)):
+  1. **Asteroidi densi**: roccia scura da 45 HP che droppa 5 minerali, corazza che chiede ≥ 9 danni per colpo (danni Lv 2); la densità dei campi diventa un mix spawn+densi (Cintura Densa: ×1,25 e 35% densi; Campo del Rame: 20% sul ferro) — lo schermo non si affolla ma la resa cresce
+  2. **Viaggio senza mining**: in rotta niente spawn e laser a riposo; la nave si porta al centro della visuale coi motori spinti (fiamme ×2) e le stelle sfrecciano (×5); i **mercantili sono rari** (~1 su 5, primo garantito) e si **avvistano** col banner "Mercantile in avvicinamento…" — il tap devia e **mette in pausa il timer di viaggio**, che riprende chiudendo il banco; il primo **abbordato** rivela Argo
+  3. **Stazione a baratto**: il commercio di Argo scambia solo lingotti (4 ferro → 1 rame · 1 rame → 2 ferro), niente Cookie — che restano ai mercantili e alle missioni
+  4. **Mappa alleggerita**: cluster più piccoli, via le didascalie (restano nel popup), nomi in chip scure semitrasparenti; se i campi cresceranno, il passo dopo è la mappa trascinabile
+  - Offline coerente (in rotta non si mina nemmeno da chiusi; densi/rame contano solo se rompibili); compilazione batch pulita (0 errori, 0 warning). **Build v0.8 non ancora lanciata**
+
 **In corso:**
-- Test su telefono della v0.7: primo viaggio e mappa, incontro col mercantile (rivelazione di Argo), attracco e missioni, evoluzioni Mk II, campo del rame, sala mappe, offline con rotta in corso, migrazione salvataggi v5 → v6
+- Da buildare la **v0.8** coi fix, poi test su telefono: viaggio "pulito" con banner mercantile e pausa, asteroidi densi in Cintura, baratto in stazione, mappa alleggerita — più tutto il giro della v0.7 (Argo, missioni, Mk II, rame, sala mappe, offline, migrazioni)
 
 **Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
 1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
