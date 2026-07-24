@@ -112,38 +112,43 @@ Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 d
 | Stazione Argo | 100% ferro | 0,45 | — | nascosta ("???") finché un mercantile non la rivela |
 | Campo del rame | 65% ferro / 35% rame | 1,05 | 20% (sul ferro) | si attiva alla prima visita alla stazione |
 
-**Asteroide denso** (fix post-v0.7): roccia scura compatta, **45 HP**, droppa **5 minerali**, scala +15%; la **corazza chiede ≥ 9 danni per colpo** (danni Lv 2) — col laser al minimo non si scalfisce. La densità alta di un campo è nel mix di densi, non solo nello spawn: lo schermo non si affolla.
+**Asteroide denso** (fix post-v0.7): roccia scura compatta, **45 HP**, droppa **5 minerali**, scala +15%; la **corazza chiede ≥ 9 danni per colpo** (≈ danni Lv 5 su 10 al Mk I) — col laser al minimo non si scalfisce. La densità alta di un campo è nel mix di densi, non solo nello spawn: lo schermo non si affolla.
 
-**Rame**: asteroide da **40 HP** (vs 15 del ferro), si rompe solo col **laser Mk II**; il grezzo pesa **2 unità** e il raggio lo traina a metà velocità; 3 rame → 1 lingotto di rame in fonderia.
+**Rame**: asteroide da **80 HP** (vs 15 del ferro), si rompe solo col **laser Mk II** e l'IA lo bersaglia solo da **IA Lv 2**; il grezzo pesa **2 unità** e il raggio lo traina a metà velocità; 3 rame → 1 lingotto di rame in fonderia (dopo la calibrazione del forno al rame: 25 grezzo).
 
-**Mercantili** (fix post-v0.7): si **avvistano** in rotta — primo garantito (va abbordato per rivelare Argo, e aspetta fino all'arrivo), poi **rari** (~1 rotta su 5, finestra di 30 s tra il 35% e il 70% del tragitto). Banner "Mercantile in avvicinamento…": il tap devia verso di lui e **mette in pausa il timer di viaggio**, che riprende alla chiusura del banco. Prezzi casuali: vende lingotti di ferro a 2-4 Cookie, di rame a 5-8; compra ferro grezzo a 2-3 per 1 Cookie. **Alla stazione solo baratto tra lingotti** (niente Cookie, tassi peggiori): 4 ferro → 1 rame · 1 rame → 2 ferro.
+**Mercantili** (fix post-v0.7 + ribilanciamento): si **avvistano** in rotta — primo garantito (va abbordato per rivelare Argo, e aspetta fino all'arrivo), poi probabilità **proporzionale alla rotta** (~10%/minuto di viaggio: 10 min ≈ garantito; finestra di 30 s tra il 35% e il 70% del tragitto). Banner "Mercantile in avvicinamento…": il tap devia verso di lui e **mette in pausa il timer di viaggio**, che riprende alla chiusura del banco. Prezzi casuali: vende lingotti di ferro a 2-4 Cookie, di rame a 5-8; compra ferro grezzo a 2-3 per 1 Cookie. **Alla stazione solo baratto VERSO IL BASSO** (niente Cookie, mai verso l'alto): 1 rame → 2 ferro.
 
 **Missioni di Argo** (2 attive alla volta, in catena): Consegna di ferro (50 lingotti → 20 Cookie) · Sciame in arrivo (30 asteroidi nella Cintura Densa → 15) · Rotta commerciale (vendi 20 lingotti ai mercantili → 15) · Spedizione mineraria (60 ferro nella Vena Ricca → 20).
 
-**Hangar — evoluzioni Mk II** (in Cookie; la base Mk II = il massimo del Mk I, i livelli 1–5 si riaprono e si pagano in lingotti di rame):
+**Hangar — evoluzioni Mk II** (in Cookie; la base Mk II = il massimo del Mk I, i livelli 1–10 si riaprono e si pagano in lingotti di rame):
 
-| Modulo | Costo | Effetto Mk II (Lv 0 → 5) |
+| Modulo | Costo | Effetto Mk II (Lv 1 → 10) |
 |---|---|---|
-| Laser minerario | 40 Cookie | rompe il rame; danni 15 → 30, velocità 1,25 → 0,75 s |
-| Raggio traente | 35 Cookie | **secondo fascio**; trazione 2,8 → 4,8 u/s |
-| Magazzino | 30 Cookie | capacità 3500 → 12000 unità |
+| Laser minerario | 60 Cookie | rompe il rame; danni 15 → 30, velocità 1,25 → 0,75 s |
+| Raggio traente | 80 Cookie | **secondo fascio**; trazione 2,8 → 4,8 u/s |
+| Magazzino | 70 Cookie | capacità 3500 → 12000 unità |
 
-**Offline**: la rotta avanza a gioco chiuso (arrivo compreso, stazione inclusa) ma **in rotta non si mina nemmeno offline**; il mining offline usa la tabella del campo di arrivo/corrente, e densi e rame contano solo se il laser li rompe. Restano il tetto delle 24 h e lo stop a magazzino pieno.
+**Offline**: la rotta avanza a gioco chiuso (arrivo compreso, stazione inclusa) ma **in rotta non si mina nemmeno offline**; il mining offline usa la tabella del campo di arrivo/corrente, e densi e rame contano solo se il laser li rompe (il rame anche solo con **IA Lv 2**). Restano il tetto delle 24 h e lo stop a magazzino pieno.
+
+**Salvataggio v7** (migrazione automatica): livelli 0-5 → 1-10 in proporzione (Lv 3/5 → Lv 6/10), IA installata → IA Lv 1, fonderia costruita → forno al ferro (anche al rame se ci sono già lingotti di rame).
 
 ### Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)
 
 Il **minerale grezzo** vive nel **magazzino**, con un limite misurato in **unità di carico** (il ferro vale 1; i minerali futuri ne varranno sempre di più); a magazzino pieno si fonde per liberare spazio. I **lingotti** non hanno limite. *(Il deposito era nato "dentro" il raggio traente con la direttiva 12; con la 14 è passato al magazzino. Energia, deuterio e reattore restano ritirati — storia completa in decisioni.md.)*
 
-Gli upgrade vivono **nel pannello del proprio modulo**, tutti cappati a **Lv 5 = tier 1** (i tier successivi arriveranno con le missioni "Cookie" della stazione spaziale):
+Gli upgrade vivono **nel pannello del proprio modulo**. Dal ribilanciamento del 24/07 (v0.9) i livelli vanno da **1 a 10** (9 acquisti, si parte da Lv 1) con **costi esponenziali ~×1,6 per livello**: è lo scarto tra costi esponenziali e rendita lineare a creare i muri naturali del genere, senza limiti giornalieri. Al Mk II le stesse tabelle si pagano in **lingotti di rame**.
 
-| Modulo | Upgrade | Effetto Lv 0 → 5 | Costi (lingotti/livello) |
+| Modulo | Upgrade | Effetto Lv 1 → 10 (Mk I) | Costi per livello (lingotti) |
 |---|---|---|---|
-| Laser minerario | Velocità di fuoco (IA) | 1 laserata/2,5 s → 1/1,25 s | 3, 6, 9, 12, 15 |
-| Laser minerario | Danni | 5 → 15 per laserata (vale anche per il tap) | 3, 6, 9, 12, 15 |
-| Laser minerario | IA di mira (1 livello) | il laser spara da solo | 5 |
-| Magazzino | Capacità grezzo | 1000 → 3500 unità | 4, 8, 12, 16, 20 |
-| Motore a impulso | Velocità | asteroidi in mappa ×1 → ×2,5 (mondo +40%) | 5, 10, 15, 20, 25 |
-| Raggio traente | Forza di trazione | 0,8 → 2,8 u/s | 4, 8, 12, 16, 20 |
+| Laser minerario | Velocità di fuoco (IA) | 1 laserata/2,5 s → 1/1,25 s | 3, 5, 8, 12, 20, 30, 50, 80, 125 |
+| Laser minerario | Danni | 5 → 15 per laserata (vale anche per il tap) | 3, 5, 8, 12, 20, 30, 50, 80, 125 |
+| Laser minerario | IA di mira (per minerale) | Lv 1 riconosce il ferro · Lv 2 il rame | 5 lingotti ferro · 10 lingotti rame |
+| Magazzino | Capacità grezzo | 1000 → 3500 unità | 4, 7, 11, 16, 27, 40, 67, 105, 165 |
+| Motore a impulso | Velocità | asteroidi ×1 → ×2,5 · crociera ×1 → ×2 | 4, 7, 11, 16, 27, 40, 67, 105, 165 |
+| Raggio traente | Forza di trazione | 0,8 → 2,8 u/s | 4, 7, 11, 16, 27, 40, 67, 105, 165 |
+| Fonderia | Calibrazione (per minerale, in GREZZO) | Lv 1 forno al ferro · Lv 2 forno al rame | 10 ferro grezzo · 25 rame grezzo |
+
+**Il ciclo "a mano prima, automatico poi" vale per ogni minerale** (decisione 24/07 notte): nuovo minerale → lo mini a mano (gate del laser Mk) → calibri la fonderia in grezzo → fondi i primi lingotti → insegni all'IA a riconoscerlo pagando in quei lingotti → automazione completa. Senza IA Lv 2 la torretta ignora il rame anche col laser Mk II (il tap resta libero: anti-softlock).
 
 Altri numeri della prima implementazione (da validare col playtest):
 
