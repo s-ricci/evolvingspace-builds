@@ -102,19 +102,21 @@ Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 d
 
 ### Numeri della v0.7 (implementati il 24/07/2026, da validare col playtest)
 
-**Campi dell'universo 1** (velocità di crociera: 3 UA/min, +20% per livello del motore a impulso; in rotta vale la tabella "spazio aperto": densità 0,4, solo ferro, max 3 asteroidi in campo):
+**Campi dell'universo 1** (velocità di crociera: 3 UA/min, +20% per livello del motore a impulso; **in rotta non si mina**: niente spawn, laser a riposo, nave verso il centro della visuale a motori spinti, stelle e mondo accelerati ×4-5):
 
-| Campo | Composizione | Densità | Note |
-|---|---|---|---|
-| Campo di partenza | 100% ferro | 1,0 (bassa) | casa |
-| Cintura densa | 100% ferro | 1,6 (alta) | ~12 UA dalla partenza (4 min a motore base) |
-| Vena ricca | 100% ferro | 0,8 | asteroidi grossi: scala 1,25–1,6, **HP ×2, drop ×2** |
-| Stazione Argo | 100% ferro | 0,45 | nascosta ("???") finché un mercantile non la rivela |
-| Campo del rame | 65% ferro / 35% rame | 1,1 | si attiva alla prima visita alla stazione |
+| Campo | Composizione | Densità (spawn) | Asteroidi densi | Note |
+|---|---|---|---|---|
+| Campo di partenza | 100% ferro | 1,0 (bassa) | — | casa |
+| Cintura densa | 100% ferro | 1,25 (alta) | **35%** | ~12 UA dalla partenza (4 min a motore base) |
+| Vena ricca | 100% ferro | 0,8 | — | asteroidi grossi: scala 1,25–1,6, **HP ×2, drop ×2** |
+| Stazione Argo | 100% ferro | 0,45 | — | nascosta ("???") finché un mercantile non la rivela |
+| Campo del rame | 65% ferro / 35% rame | 1,05 | 20% (sul ferro) | si attiva alla prima visita alla stazione |
+
+**Asteroide denso** (fix post-v0.7): roccia scura compatta, **45 HP**, droppa **5 minerali**, scala +15%; la **corazza chiede ≥ 9 danni per colpo** (danni Lv 2) — col laser al minimo non si scalfisce. La densità alta di un campo è nel mix di densi, non solo nello spawn: lo schermo non si affolla.
 
 **Rame**: asteroide da **40 HP** (vs 15 del ferro), si rompe solo col **laser Mk II**; il grezzo pesa **2 unità** e il raggio lo traina a metà velocità; 3 rame → 1 lingotto di rame in fonderia.
 
-**Mercantili** (in rotta): primo incontro garantito (rivela Argo), poi ~45% per rotta, tra il 35% e il 70% del tragitto. Prezzi casuali: vende lingotti di ferro a 2-4 Cookie, di rame a 5-8; compra ferro grezzo a 2-3 per 1 Cookie. Alla stazione prezzi fissi: 3 / 7 / 2 per 1.
+**Mercantili** (fix post-v0.7): si **avvistano** in rotta — primo garantito (va abbordato per rivelare Argo, e aspetta fino all'arrivo), poi **rari** (~1 rotta su 5, finestra di 30 s tra il 35% e il 70% del tragitto). Banner "Mercantile in avvicinamento…": il tap devia verso di lui e **mette in pausa il timer di viaggio**, che riprende alla chiusura del banco. Prezzi casuali: vende lingotti di ferro a 2-4 Cookie, di rame a 5-8; compra ferro grezzo a 2-3 per 1 Cookie. **Alla stazione solo baratto tra lingotti** (niente Cookie, tassi peggiori): 4 ferro → 1 rame · 1 rame → 2 ferro.
 
 **Missioni di Argo** (2 attive alla volta, in catena): Consegna di ferro (50 lingotti → 20 Cookie) · Sciame in arrivo (30 asteroidi nella Cintura Densa → 15) · Rotta commerciale (vendi 20 lingotti ai mercantili → 15) · Spedizione mineraria (60 ferro nella Vena Ricca → 20).
 
@@ -126,7 +128,7 @@ Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 d
 | Raggio traente | 35 Cookie | **secondo fascio**; trazione 2,8 → 4,8 u/s |
 | Magazzino | 30 Cookie | capacità 3500 → 12000 unità |
 
-**Offline**: la rotta avanza a gioco chiuso (arrivo compreso, stazione inclusa); il mining offline usa la tabella "spazio aperto" durante il tragitto e quella del campo dopo l'arrivo; il rame conta solo col laser Mk II. Restano il tetto delle 24 h e lo stop a magazzino pieno.
+**Offline**: la rotta avanza a gioco chiuso (arrivo compreso, stazione inclusa) ma **in rotta non si mina nemmeno offline**; il mining offline usa la tabella del campo di arrivo/corrente, e densi e rame contano solo se il laser li rompe. Restano il tetto delle 24 h e lo stop a magazzino pieno.
 
 ### Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)
 
