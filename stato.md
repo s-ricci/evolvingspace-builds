@@ -169,10 +169,12 @@
   2. **Viaggio senza mining**: in rotta niente spawn e laser a riposo; la nave si porta al centro della visuale coi motori spinti (fiamme ×2) e le stelle sfrecciano (×5); i **mercantili sono rari** (~1 su 5, primo garantito) e si **avvistano** col banner "Mercantile in avvicinamento…" — il tap devia e **mette in pausa il timer di viaggio**, che riprende chiudendo il banco; il primo **abbordato** rivela Argo
   3. **Stazione a baratto**: il commercio di Argo scambia solo lingotti (4 ferro → 1 rame · 1 rame → 2 ferro), niente Cookie — che restano ai mercantili e alle missioni
   4. **Mappa alleggerita e trascinabile**: area virtuale ~860×1500 esplorabile col drag (il tap sui campi resta tap), centratura automatica sul campo corrente all'apertura, cluster più piccoli, via le didascalie (restano nel popup), nomi in chip scure semitrasparenti, pulsante "TORNA AL MINING" in fondo
-  - Offline coerente (in rotta non si mina nemmeno da chiusi; densi/rame contano solo se rompibili); compilazione batch pulita (0 errori, 0 warning). **Build v0.8 non ancora lanciata**
+  - Offline coerente (in rotta non si mina nemmeno da chiusi; densi/rame contano solo se rompibili); compilazione batch pulita (0 errori, 0 warning)
+
+- **Build v0.8 pubblicata** (24/07): release su GitHub (APK + version.json) e copia su Drive. Contiene tutte le tappe 3-5 della v0.7 più i fix della revisione: asteroidi densi, viaggio senza mining con mercantili a deviazione (pausa del timer), stazione a baratto, mappa trascinabile
 
 **In corso:**
-- Da buildare la **v0.8** coi fix, poi test su telefono: viaggio "pulito" con banner mercantile e pausa, asteroidi densi in Cintura, baratto in stazione, mappa alleggerita — più tutto il giro della v0.7 (Argo, missioni, Mk II, rame, sala mappe, offline, migrazioni)
+- Test su telefono della v0.8: viaggio "pulito" (nave al centro, stelle veloci) con banner mercantile e pausa del timer, asteroidi densi in Cintura, baratto in stazione, mappa trascinabile — più tutto il giro nuovo (rivelazione di Argo, missioni, Mk II, rame, sala mappe, offline con rotta, migrazione salvataggi)
 
 **Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
 1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
