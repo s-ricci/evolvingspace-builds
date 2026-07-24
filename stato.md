@@ -158,6 +158,7 @@
 
 **In corso:**
 - Avvio della tappa 3: **mappa stellare + viaggio** (design confermato, da implementare)
+- [prompt-gemini.md](prompt-gemini.md) esteso coi **prompt 6-12** per i mockup delle schermate delle tappe 3-5 (mappa stellare, pannello del campo, mining in rotta, mercantile, hub stazione, missioni, hangar Mk); in attesa dei mockup in `Docs/mockups/` — numeri e nome della stazione ("ARGO") sono segnaposto
 
 **Prossimo passo (roadmap confermata il 24/07 — dettagli nel [GDD](GDD.md), sezione "Visione a medio-lungo termine"):**
 1. **Mappa stellare + viaggio (1b completa)** → v0.7: mappa dell'universo 1 con i campi (per ora solo ferro, densità/ricchezza diverse), rotte a tempo reale (distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline
