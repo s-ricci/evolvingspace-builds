@@ -175,8 +175,15 @@
 
 - **v0.8 testata** (24/07, sera): funziona, ma **playtest impietoso sul pacing** — tutto maxato in 1 ora anche partendo da zero e senza mai barattare. Diagnosi: costi aritmetici in un genere a costi esponenziali + baratto verso l'alto concettualmente sbagliato. **Ribilanciamento in discussione** (decisione aperta in [decisioni.md](decisioni.md)): costi a raddoppio per livello, baratto solo verso il basso, rame 80 HP, evoluzioni più care, mercantili proporzionali alla rotta, niente limiti giornalieri. Nessuna modifica senza consenso
 
+- **Ribilanciamento v0.9 implementato** (24/07, notte — pacchetto approvato + estensione IA/fonderia, decisione in [decisioni.md](decisioni.md), numeri nel [GDD](GDD.md)):
+  - **Livelli 1-10** con costi esponenziali ~×1,6 (laser 3→125, altre linee 4→165 per livello); al Mk II le stesse tabelle in lingotti di rame; migrazione proporzionale (Lv 3/5 → Lv 6/10)
+  - **IA per minerale**: Lv 1 riconosce il ferro (5 lingotti), Lv 2 il rame (10 lingotti di rame — fatti a mano per forza); senza IA Lv 2 la torretta ignora il rame anche col Mk II (tap libero, offline coerente)
+  - **Calibrazione fonderia**: costruzione gratis, poi forno al ferro (10 grezzo) e forno al rame (25 grezzo) — il pulsante CRAFT diventa CALIBRA finché il forno non è tarato; ogni minerale nuovo va minato a mano la prima volta
+  - **Baratto solo verso il basso** (1 rame → 2 ferro, via la direzione ferro → rame), **rame a 80 HP**, **evoluzioni a 60/80/70 Cookie**, **mercantili proporzionali alla rotta** (~10%/min, primo garantito), nessun limite giornaliero
+  - **Salvataggio v7** retrocompatibile; compilazione batch pulita (0 errori, 0 warning)
+
 **In corso:**
-- Discussione del ribilanciamento dell'economia (decisione aperta, da chiudere in due prima di implementare la v0.9)
+- Build v0.9 e playtest **da zero** del nuovo pacing (obiettivo: tier 1 ~1-2 giorni, tier 2 ~3-5)
 
 **Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
 1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
