@@ -109,6 +109,107 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 
 ---
 
+## Importate il 2026-07-24 (dopo la v0.9) — 19 voci in coda al documento
+
+> Valutate tutte insieme: sono un pacchetto coerente (economia dei Cookie + missioni + fonderia + rifiniture), più una feature grossa a sé (i relitti). Le decisioni relative sono in [decisioni.md](decisioni.md).
+
+### 19. Relitti di stazione esplorabili
+**Idea:** incontro casuale (~1% al minuto di gioco online) con un relitto che scivola in schermata con luci d'emergenza; tap → `[ESPLORA RELITTO]` / `[IGNORA E PROSEGUI]`; minigioco a 3-7 stanze procedurali (casse, trappole, droni/alieni, stanza di controllo col bottino principale), navigazione con frecce ai lati e stanza a tutto schermo; **barra HP della tuta** (a 0 si perde tutto o parte del bottino) e **4 slot di equipaggiamento** (arma, corazza, utensile, visore) gestiti dalla nave.
+**Valutazione:** ottima sul piano della lore (il gioco nasce da una stazione distrutta) e del design — è contenuto **solo-online**, quindi rinforza la regola "il gioco attivo batte il passivo" senza toccare i numeri del mining, e dà finalmente una destinazione agli oggetti. È però la feature più grande mai messa in cantiere: stanze procedurali, combattimento, inventario, arte a schermo pieno (oggi la grafica è pixel art procedurale o ritagliata dai mockup). Tre rischi da chiudere quando toccherà: alla frequenza proposta si vede **un relitto ogni ~100 minuti di gioco** (settimane di lavoro per contenuto raro: serve un pity timer); una spedizione in corso deve **sopravvivere alla sospensione dell'app** su Android (la trappola della segnalazione 18); e perdere tutto il bottino a 0 HP è duro per il genere (meglio la percentuale già citata). Nota di design: se il relitto vive **nel campo**, diventa il contraltare naturale dei mercantili, che vivono **nel viaggio** — e riequilibra il fatto che i Cookie stiano quasi tutti dalla parte in cui non si mina.
+**Stato:** ✅ in roadmap — **milestone nominata, dopo tutto il resto**
+
+### 20. Mercante: quantità multiple e "+" a ripetizione
+**Idea:** comprare/vendere più pezzi in un colpo solo; tenendo premuto il "+" la quantità sale in fretta.
+**Valutazione:** QoL puro, il banco ha già stepper e tetto: manca la pressione prolungata (e un "MAX"). Con l'eliminazione della vendita (idea 33) riguarderà solo gli acquisti.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 21. Barra risorse: via i lingotti, restano Cookie e carico
+**Idea:** togliere l'indicatore dei lingotti in alto, lasciare solo Cookie e carico.
+**Valutazione:** giusto — il carico è l'unico numero *azionabile* mentre si mina (a magazzino pieno si smette di raccogliere), i lingotti si guardano dove si spendono. Da verificare che i pannelli mostrino anche i **lingotti di rame**, che dal Mk II in poi sono la valuta dei livelli.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 22. La disponibilità del materiale si vede dove si costruisce
+**Idea:** quando si vuole costruire qualcosa, la disponibilità di quel materiale compare direttamente lì, in chiaro.
+**Valutazione:** complementare alla 21: se il totale sparisce dalla barra deve comparire nel punto di spesa. In buona parte già così (pannelli modulo e fonderia): è più una verifica che un lavoro, estesa a rame e grezzo.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 23. Magazzino: indicatore dei lingotti a sinistra
+**Idea:** nella schermata magazzino l'indicatore dei lingotti va a sinistra, non al centro.
+**Valutazione:** allineamento, nessun effetto sul gioco.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 24. Il tap punta anche l'IA
+**Idea:** se si mina a mano mentre la torretta automatica è attiva, il tap su un asteroide deve far agganciare **quello** anche all'IA.
+**Valutazione:** trasforma il tap da "colpo in più" a **comando di puntamento**, che è il ruolo giusto per il giocatore attivo una volta che l'automazione esiste. Banale da implementare (l'IA ha già una funzione di scelta bersaglio).
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 25. Cadenza unica del laser (manuale e automatico)
+**Idea:** la velocità d'attacco dev'essere una sola e valere per entrambi; oggi appena finisce la laserata manuale ne parte una automatica su un asteroide a caso.
+**Valutazione:** il difetto è reale e strutturale — manuale e IA hanno due orologi separati e quello dell'IA avanza solo quando spara lei. Ma "cadenza unica" ha tre letture con effetti opposti sul bilanciamento; scelta quella che non rompe l'early game né la regola "attivo batte passivo": **timer unico dettato dal fascio** (l'upgrade accorcia il fascio, 1,00 → 0,55 s, e si vede su entrambi), **tap con prelazione** che può ridirigere il fascio acceso, **IA con 0,4 s di tempo di reazione**. Dettagli e conseguenze in [decisioni.md](decisioni.md); la resa offline va ricalcolata.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 26. Più velocità percepita in viaggio
+**Idea:** aumentare la velocità che si percepisce mentre la nave viaggia; la nave parte a razzo e lascia gli asteroidi indietro, e alla partenza smette di sparare e disabilita il raggio traente.
+**Valutazione:** una manciata di numeri (il mondo passa da ×4 a ×8, stelle in scia) più lo stacco di laser e raggio, che rende il viaggio coerente con "in rotta non si mina" e regala una piccola scelta al giocatore: partire subito o finire di raccogliere il campo.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 27. Tetto agli asteroidi grossi (1 in Vena Ricca, 2 nel campo denso)
+**Idea:** nei campi ricchi un solo asteroide grosso in campo visivo alla volta (se il random ne vuole un altro, lo genera piccolo); nel campo denso al massimo due.
+**Valutazione:** il principio è quello giusto (la densità non deve affollare schermo e pollice), ma nella **Vena Ricca tutti** gli asteroidi sono grossi e ce ne sono ~3 in campo: un tetto a 1 taglierebbe la resa di circa il 40% e il campo diventerebbe peggiore della Cintura Densa, perdendo la sua identità. Andrebbe compensato (grosso più ricco o densità più alta). Nel campo denso l'impatto sarebbe lieve (~1,75 densi attesi contro un tetto di 2).
+**Stato:** ⏸️ **rinviata** su richiesta — numeri invariati per ora
+
+### 28. Limitare quanti lingotti compra un mercante
+**Idea:** ridurre a qualche centinaio i lingotti che un mercante acquista, per non svuotare di senso le missioni in Cookie.
+**Valutazione:** diagnosi giusta (i mercantili erano un rubinetto di Cookie proporzionale al tempo, non al contenuto), ma **superata dall'idea 33**: se la vendita dei lingotti sparisce del tutto, il tetto non ha più oggetto.
+**Stato:** ➡️ superata dalla 33
+
+### 29. Impostazioni: X più grande e staccata dal reset
+**Idea:** rimpicciolire "RESETTA IL GIOCO", ingrandire la X di chiusura e spostarla più in basso, che ora è attaccata al pulsante di reset.
+**Valutazione:** oltre all'estetica toglie un rischio vero: due bersagli adiacenti di cui uno cancella la partita.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 30. Zoom sulla mappa stellare
+**Idea:** poter zoomare e de-zoomare la mappa, con un po' più di spazio ai lati anche dove non c'è nulla.
+**Valutazione:** sensato adesso che i campi passano da 5 a 7 (idea 37) e cresceranno ancora. Unica accortezza: il pinch non deve essere mangiato dalla soglia di trascinamento introdotta con la mappa trascinabile.
+**Stato:** ✅ in roadmap — pacchetto rifiniture
+
+### 31. A cosa servono i Cookie
+**Idea:** i Cookie servono a evolvere i tier delle strutture, a comprare altre tipologie di lingotti (in abbondanza alle stazioni, in minor quantità dai mercanti) liberandosi di quelli che non servono, e in futuro a comprare oggetti per il crafting.
+**Valutazione:** dà finalmente tre sbocchi alla valuta forte. Attenzione a uno: **comprare lingotti coi Cookie riapre dalla finestra il baratto verso l'alto** chiuso il 24/07 (ferro → missione → Cookie → rame). Non è fatale se il prezzo è alto: fissato a **10 Cookie per lingotto di rame**, cioè il doppio del suo valore in "equivalenti asteroide", con la regola permanente che il prezzo non scenda mai sotto il valore equo. Gli oggetti per il crafting arrivano coi relitti (idea 19).
+**Stato:** ✅ in roadmap — con l'economia; oggetti rinviati alla milestone dei relitti
+
+### 32. Fonderia a livelli, niente calibrazioni
+**Idea:** la fonderia si potenzia come gli altri moduli — costruirla la prima volta costa **ferro grezzo** (Lv 1, fonde il ferro), portarla a Lv 2 costa **rame grezzo** (fonde il rame). Niente calibrazioni. Quando si scopre un minerale nuovo, la sua ricetta compare **subito** nella lista anche se non è fondibile, avvisando che serve un upgrade.
+**Valutazione:** semplificazione netta — un concetto solo (il livello del modulo) al posto di due, e la fonderia entra nella stessa grammatica degli altri moduli. Il ciclo fondativo "ogni minerale nuovo si mina prima a mano" **si rafforza**: il rame grezzo del Lv 2 va estratto a mano per forza (l'IA lo ignora finché non è Lv 2, e l'IA Lv 2 si paga in lingotti di rame che senza fonderia Lv 2 non esistono). Mostrare le ricette bloccate rende visibile il prossimo obiettivo. Nota obbligata: la prima fonderia si paga in grezzo perché senza fonderia i lingotti non esistono.
+**Stato:** ✅ in roadmap — subito
+
+### 33. Eliminare la vendita dei lingotti
+**Idea:** togliere la possibilità di vendere lingotti, limitarla allo scambio verso quelli di tier più basso.
+**Valutazione:** coerente con la decisione del 24/07 (baratto solo verso il basso) e chiude il rubinetto "tempo di mining → Cookie". Due conseguenze da gestire: muore la missione **"Rotta commerciale — vendi 20 lingotti ai mercantili"** (da sostituire, con migrazione per chi ce l'ha in corso) e il mercantile resta senza il suo banco principale — il suo nuovo valore diventa **offrire incarichi** (idea 34) e vendere lingotti in cambio di Cookie (idea 31).
+**Stato:** ✅ in roadmap — con l'economia
+
+### 34. Missioni migliori, più numerose, ripetibili e anche dai mercanti
+**Idea:** migliorare le ricompense delle missioni di stazione, aggiungerne di nuove, renderle ripetibili con richieste e ricompense leggermente diverse ogni volta, e permettere anche ai mercanti di darne.
+**Valutazione:** è il pezzo che tiene in piedi tutto il resto: senza un rubinetto **ripetibile** la catena chiusa di 4 missioni (70 Cookie totali) non paga nemmeno un tier da 500. Impostate come missioni generate con valore in **equivalenti asteroide**, ricompensa 0,75-1,00 Cookie per equivalente e tetto di 200 (idea 36); il freno del rubinetto è il **viaggio ad Argo** (bacheca che si rinnova a ogni attracco) più un incarico per mercantile abbordato — nessun limite giornaliero, come da decisione del 24/07.
+**Stato:** ✅ in roadmap — con l'economia
+
+### 35. Sala comunicazioni
+**Idea:** nuova stanza dell'interno nave con le missioni in corso e il loro avanzamento; da qui si concludono le missioni completate e si riscuotono le ricompense. Potenziandola aumentano le ricompense.
+**Valutazione:** incastra nella lista moduli (è la "stanza costruibile" che l'idea 11 prevedeva) e toglie un fastidio vero (oggi le missioni si vedono solo attraccando). Due avvertenze: la stazione perde uno dei suoi tre servizi — si tiene il motivo di tornarci facendo sì che gli **incarichi si prendano** ad Argo (o dai mercanti) e **si consegnino** da bordo; e il bonus alle ricompense è un moltiplicatore sulla valuta forte, quindi resta piccolo e cappato (+3% per livello). In compenso le si dà un secondo ruolo che serviva all'economia: **quante missioni puoi tenere attive** (2 → 5 coi livelli).
+**Stato:** ✅ in roadmap — con l'economia
+
+### 36. Costi e ricompense in Cookie
+**Idea:** il passaggio da tier 1 a tier 2 delle strutture costa **500 Cookie**; missioni di esempio: consegna 200 lingotti di ferro → 150, abbatti 30 asteroidi → 200, consegna 50 lingotti di rame → 200.
+**Valutazione:** il prezzo dei tier sale da 210 a 1500 Cookie complessivi ed è la scelta giusta (210 erano un pomeriggio), ma richiede il rubinetto ripetibile dell'idea 34. Sulle tre missioni di esempio c'era un'inversione sforzo/premio: 200 lingotti di ferro sono ~200 asteroidi per 150 Cookie (0,75 a testa), 30 asteroidi ne pagavano 200 (6,7 a testa, **9 volte tanto**, senza consumare nulla). Risolta con la banda fissa **0,75-1,00 Cookie per equivalente asteroide** e il tetto di 200 a missione, con cifre tonde (asteroidi a multipli di 5, lingotti di 10, grezzo di 30); il rame vale 5 equivalenti perché ha 80 HP contro 15 — con questa scala la "consegna 50 lingotti di rame → 200" torna esatta.
+**Stato:** ✅ in roadmap — con l'economia
+
+### 37. Campi misti ferro + rame
+**Idea:** dopo il campo del rame, un campo misto ferro/rame; più altri due campi con rapporti 50/50 e 20/80.
+**Valutazione:** coerente con i campi discreti e con la regola "il minerale vecchio non sparisce mai del tutto" (anche il 20/80 conserva un quinto di ferro). Dà una progressione geografica al secondo metallo e un motivo per rimettersi in viaggio dopo la stazione. Non serve un gate esplicito: senza laser Mk II il rame non si scalfisce, quindi un campo 20/80 si auto-esclude da solo per chi non è pronto. Da tenere a mente per il futuro: la variante **densa** oggi esiste solo sul ferro.
+**Stato:** ✅ in roadmap — con l'economia
+
+---
+
 ## Idee scartate
 
 - **Idea 3 — Asteroide di deuterio** (scartata *per ora* il 23/07 sera, direttiva 12): implementata nella v0.3 e rimossa lo stesso giorno insieme a reattore ed energia; se il sistema energetico tornerà, tornerà con lui.
