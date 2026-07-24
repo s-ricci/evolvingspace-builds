@@ -107,17 +107,20 @@
 **Scelta:** la mappa diventa **trascinabile (pan)**: l'area virtuale è ~860×1500 su uno schermo da 720×1280, i campi respirano e all'apertura la vista si **centra sul campo corrente** (o sul punto medio della rotta in corso). In più i punti di interesse perdono le didascalie (restano nel popup di destinazione) e mostrano **solo il nome dentro una "chip" scura semitrasparente** sotto un cluster ridotto. Il drag parte da qualunque punto (anche sopra un campo: il tap resta tap sotto la soglia di trascinamento) e un suggerimento discreto in basso dice "trascina per esplorare la mappa".
 **Motivazione:** le scritte si sovrapponevano ai sassi e la mappa risultava piena; il pan risolve alla radice (spazio virtuale invece di compressione) e scala già ai campi futuri, la chip dà uno sfondo costante al testo, e togliere le didascalie dimezza il testo a schermo senza perdere informazioni (sono a un tap di distanza).
 
-## Decisioni aperte
-
-### Ribilanciamento dell'economia (playtest v0.8: tutto maxato in 1 ora anche da zero, senza baratto)
-**Contesto:** i costi dei livelli sono aritmetici (3, 6, 9, 12, 15) mentre la rendita cresce con gli upgrade: i livelli alti diventano più facili dei bassi e i due tier collassano in un'ora. Il baratto ferro → rame è una falla a qualunque rapporto. I limiti giornalieri sono scartati (snervanti: dicono "smetti di giocare").
-**Proposta in valutazione (Claude, 24/07 sera) — non implementata, in attesa di consenso:**
-1. **Costi esponenziali** (raddoppio per livello): 4, 8, 16, 32, 64 (linee laser) · 5, 10, 20, 40, 80 (raggio/magazzino/motore); Mk II in rame: 6, 12, 24, 48, 96. Il flusso di minerali NON si tocca (è la parte divertente): la leva sono i costi.
-2. **Baratto solo verso il basso** (idea confermata dal playtest): 1 rame → 2 ferro; la direzione ferro → rame sparisce. Il baratto è una valvola di comodo, mai una scorciatoia.
+### 2026-07-24 (notte) — Ribilanciamento dell'economia (playtest v0.8: tutto maxato in 1 ora anche da zero) + IA e fonderia "per minerale"
+**Contesto:** i costi dei livelli erano aritmetici (3, 6, 9, 12, 15) mentre la rendita cresce con gli upgrade: i livelli alti diventavano più facili dei bassi e i due tier collassavano in un'ora, anche partendo da zero e senza baratto. Il baratto ferro → rame era una falla a qualunque rapporto. I limiti giornalieri sono scartati (snervanti: dicono "smetti di giocare").
+**Scelta (pacchetto approvato, implementato nella v0.9):**
+1. **Livelli 1-10** (si parte da Lv 1: la nave ha già qualcosa) con **costi esponenziali ~×1,6 per livello**: linee laser 3, 5, 8, 12, 20, 30, 50, 80, 125 (≈ 330 lingotti a linea); raggio/magazzino/motore 4, 7, 11, 16, 27, 40, 67, 105, 165 (≈ 440). Al Mk II le stesse tabelle si pagano in lingotti di rame. Il flusso di minerali NON si tocca (è la parte divertente): la leva sono i costi. Migrazione proporzionale: Lv 3/5 → Lv 6/10.
+2. **Baratto solo verso il basso**: 1 rame → 2 ferro; la direzione ferro → rame sparisce (qualunque rapporto verso l'alto prima o poi diventa una scorciatoia).
 3. **Rame più duro**: asteroide 40 → 80 HP.
 4. **Evoluzioni Mk II**: 60 (laser) · 80 (raggio) · 70 (magazzino) Cookie; missioni invariate (70 totali).
-5. **Mercantili proporzionali alla rotta**: probabilità d'avvistamento legata alla lunghezza del viaggio (rotte lunghe ≈ garantite) — niente attesa RNG pura per i Cookie.
+5. **Mercantili proporzionali alla rotta**: probabilità ≈ 10%/minuto di viaggio (10 min ≈ garantito) — niente attesa RNG pura per i Cookie; il primo resta garantito.
 6. **Nessun limite giornaliero**; l'unico tetto offline resta il magazzino pieno (diegetico).
+7. **IA per minerale** (proposta accolta): l'IA impara un minerale alla volta — Lv 1 riconosce il ferro (5 lingotti di ferro), Lv 2 il rame (10 lingotti di rame, fatti a mano per forza); senza IA Lv 2 la torretta ignora il rame anche col laser Mk II (il tap manuale resta libero, anti-softlock; l'offline segue).
+8. **Calibrazione della fonderia** (proposta accolta): costruzione gratis come oggi, poi il forno si tara su ogni minerale pagando in grezzo — Lv 1 "forno al ferro" (10 ferro grezzo), Lv 2 "forno al rame" (25 rame grezzo). Ogni minerale nuovo va **minato a mano la prima volta**: è la regola fondativa ("le azioni manuali di oggi sono gli upgrade automatici di domani") trasformata in ciclo ripetibile per ogni metallo futuro.
 **Obiettivo di pacing:** tier 1 ~1-2 giorni, tier 2 ~3-5 giorni (giocatore attivo 30-60 min/giorno + offline); da rivalidare con playtest da zero. Se il capitolo 2 resta corto, la leva successiva è contenuto (silicio/Mk III), non altri numeri.
+**Migrazione (salvataggio v7):** livelli in proporzione; IA installata ⇒ IA Lv 1; fonderia costruita ⇒ forno al ferro (⇒ anche al rame se ci sono già lingotti di rame).
 
-**Variante in valutazione (proposta del 24/07 sera, accolta positivamente da Claude): livelli 1-10 invece di 0-5.** Ogni linea passa a 9 acquisti (si parte da Lv 1: "la nave ha già un laser di livello 1"), con fattore di crescita **×1,6-1,7 per livello** (il raddoppio secco su 10 livelli esploderebbe: l'ultimo costerebbe 2048× la base). Esempio linea laser: 3, 5, 8, 12, 20, 30, 50, 80, 125 ≈ 330 lingotti totali; linee a base 4 ≈ 440. Benefici: quasi il doppio dei momenti d'acquisto (il ritmo degli acquisti conta quanto la potenza), incrementi di potenza dimezzati e quindi bilanciamento più fine, scala che comunica meglio la progressione coi tier ("Lv 7/10 Mk II"). Stesso muro totale della proposta a 6 livelli, spalmato meglio.
+## Decisioni aperte
+
+*(nessuna al momento)*
