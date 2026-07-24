@@ -184,15 +184,20 @@
 
 - **Build v0.9 pubblicata e test superato** (24/07, notte): release su GitHub + Drive; il ribilanciamento regge al playtest — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto verso il basso, mercantili proporzionali alla rotta
 
+- **19 direttive nuove dal Google Doc valutate e recepite** (24/07, dopo la v0.9 — idee **19-37** in [idee.md](idee.md), otto decisioni chiuse in [decisioni.md](decisioni.md)). La revisione ha trovato quattro incongruenze, tutte risolte prima di scrivere codice:
+  1. **Il rubinetto dei Cookie si chiudeva mentre il prezzo saliva** (tier da 210 → 1500 Cookie complessivi, con la vendita dei lingotti eliminata e una catena di sole 4 missioni da 70 Cookie): le **missioni diventano ripetibili e randomizzate**, con la bacheca di Argo che si rinnova a ogni attracco e un incarico per mercantile abbordato
+  2. **"Limitare quanto compra il mercante" vs "eliminare la vendita dei lingotti"**: vince la seconda — i mercantili non comprano più nulla, vendono e danno incarichi; la missione "Rotta commerciale" (vendi 20 lingotti) va sostituita e migrata
+  3. **I Cookie che comprano lingotti riaprivano il baratto verso l'alto** chiuso in v0.9: prezzo fissato al doppio del valore equo (10 Cookie il lingotto di rame) e regola permanente che non scenda mai sotto il valore in equivalenti
+  4. **Sforzo e premio erano invertiti** nelle missioni di esempio (200 lingotti di ferro = ~200 asteroidi per 150 Cookie, contro 30 asteroidi per 200): tutte le missioni ora si pagano in **equivalenti asteroide**, 0,75-1,00 Cookie l'uno, tetto 200, cifre tonde
+- **Decisioni prese in questa sessione** (dettagli e motivazioni in [decisioni.md](decisioni.md), numeri nel [GDD](GDD.md)): economia dei Cookie · missioni in equivalenti asteroide · **Sala comunicazioni** (nuovo modulo: slot missioni 2→5, consegna a distanza, +3% ricompense per livello) · **fonderia a livelli per minerale** (via le calibrazioni: Lv 1 = costruzione a 30 ferro grezzo, Lv 2 = 60 rame grezzo; le ricette dei minerali scoperti compaiono anche se bloccate) · **cadenza unica del laser** (timer del fascio, tap con prelazione che ridirige il fascio e punta anche l'IA, IA con 0,4 s di reazione) · **partenza a razzo** (laser e raggio staccati, campo che resta indietro, mondo ×8) · **due campi nuovi** (Vena mista 50/50, Filone di rame 20/80) · **relitti esplorabili = milestone in fondo alla roadmap**, insieme agli oggetti come ricompensa · tetto agli asteroidi grossi **rinviato**
+
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
+- Nessuna riga di codice scritta per le direttive 19-37: è tutto ancora sulla carta
 
-**Prossimo passo (roadmap — dettagli nel [GDD](GDD.md)):**
-1. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" (IA Lv 3+, calibrazioni successive) è già pronto ad accoglierli
-2. **Altre stazioni** come checkpoint con gate di teletrasporto e milestone successive
-3. **Intro a fumetto**; più avanti l'**universo 2** come capitolo massimo
-
-**Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
-1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
-2. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette
-3. **Altre stazioni** come checkpoint con gate di teletrasporto e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
+**Prossimo passo (roadmap aggiornata il 24/07 dopo la v0.9 — dettagli nel [GDD](GDD.md)):**
+1. **Pacchetto rifiniture** (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica
+2. **Riassetto dell'economia** (idee 31, 33-37) in un colpo solo, perché sono tutte lo stesso numero: missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame. **Salvataggio v8** con migrazione (missioni vecchie, semantica dei livelli della fonderia, Cookie già guadagnati col listino vecchio)
+3. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli
+4. **Altre stazioni** come checkpoint con gate di teletrasporto e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
+5. **Milestone "Relitti"**: relitti di stazione esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto
