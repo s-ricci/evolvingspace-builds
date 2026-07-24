@@ -173,8 +173,10 @@
 
 - **Build v0.8 pubblicata** (24/07): release su GitHub (APK + version.json) e copia su Drive. Contiene tutte le tappe 3-5 della v0.7 più i fix della revisione: asteroidi densi, viaggio senza mining con mercantili a deviazione (pausa del timer), stazione a baratto, mappa trascinabile
 
+- **v0.8 testata** (24/07, sera): funziona, ma **playtest impietoso sul pacing** — tutto maxato in 1 ora anche partendo da zero e senza mai barattare. Diagnosi: costi aritmetici in un genere a costi esponenziali + baratto verso l'alto concettualmente sbagliato. **Ribilanciamento in discussione** (decisione aperta in [decisioni.md](decisioni.md)): costi a raddoppio per livello, baratto solo verso il basso, rame 80 HP, evoluzioni più care, mercantili proporzionali alla rotta, niente limiti giornalieri. Nessuna modifica senza consenso
+
 **In corso:**
-- Test su telefono della v0.8: viaggio "pulito" (nave al centro, stelle veloci) con banner mercantile e pausa del timer, asteroidi densi in Cintura, baratto in stazione, mappa trascinabile — più tutto il giro nuovo (rivelazione di Argo, missioni, Mk II, rame, sala mappe, offline con rotta, migrazione salvataggi)
+- Discussione del ribilanciamento dell'economia (decisione aperta, da chiudere in due prima di implementare la v0.9)
 
 **Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
 1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
