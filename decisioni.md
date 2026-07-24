@@ -121,6 +121,75 @@
 **Obiettivo di pacing:** tier 1 ~1-2 giorni, tier 2 ~3-5 giorni (giocatore attivo 30-60 min/giorno + offline); da rivalidare con playtest da zero. Se il capitolo 2 resta corto, la leva successiva è contenuto (silicio/Mk III), non altri numeri.
 **Migrazione (salvataggio v7):** livelli in proporzione; IA installata ⇒ IA Lv 1; fonderia costruita ⇒ forno al ferro (⇒ anche al rame se ci sono già lingotti di rame).
 
+### 2026-07-24 (dopo la v0.9) — Economia dei Cookie: il rubinetto sono le missioni ripetibili
+**Contesto:** dal Google Doc (idee 31, 33, 34, 36). Il listino delle evoluzioni sale da 60-80-70 a **500 Cookie per il primo tier**, mentre la vendita dei lingotti ai mercantili — l'unica fonte davvero ripetibile — viene eliminata. Con le missioni di allora (catena chiusa da 70 Cookie totali) il tier 2 sarebbe diventato irraggiungibile.
+**Scelta:**
+1. **Via il canale lingotti → Cookie**: i mercantili non comprano più lingotti (né la stazione, che baratta solo verso il basso). Il rubinetto dei Cookie sono le **missioni**, che diventano **ripetibili e randomizzate**.
+2. **500 Cookie il passaggio a Mk II** di ogni modulo; i tier successivi si decideranno più avanti.
+3. **I Cookie comprano lingotti** (idea 31): ad Argo in quantità, dai mercantili poca roba e a prezzo peggiore. Prezzo di riferimento **10 Cookie per lingotto di rame** — il *doppio* del valore equo (un lingotto di rame vale ~5 "equivalenti asteroide", cioè ~5 Cookie al tasso delle missioni): resta la comodità per colmare l'ultimo buco, mai una scorciatoia. Regola permanente: **il prezzo d'acquisto di un lingotto non scende mai sotto il suo valore in equivalenti**, altrimenti torna dalla finestra il baratto verso l'alto chiuso il 24/07.
+**Motivazione:** una valuta forte con un solo rubinetto è più facile da bilanciare di tre canali che si scavalcano; e legare i Cookie alle missioni (cioè a obiettivi progettati) invece che alla vendita (cioè al tempo di mining) permette di alzare il prezzo dei tier senza rendere il gioco un macinino.
+
+### 2026-07-24 (dopo la v0.9) — Missioni ripetibili: valore in "equivalenti asteroide", randomizzate
+**Scelta:** ogni missione ha un valore calcolato in **equivalenti asteroide (eq)** — l'unità di lavoro del giocatore — e paga **0,75-1,00 Cookie per eq**, con **tetto di 200 Cookie a missione**.
+
+| Cosa | Vale |
+|---|---|
+| 1 asteroide di ferro (15 HP, 3 grezzo) | **1 eq** |
+| 1 lingotto di ferro (3 grezzo) | **1 eq** |
+| 1 asteroide denso (45 HP, 5 grezzo) | 3 eq |
+| 1 asteroide di rame (80 HP) | **5 eq** |
+| 1 lingotto di rame | **5 eq** |
+| 30 unità di ferro grezzo | 10 eq |
+
+- **Tasso**: 0,85-1,00 per le missioni che *consumano* materiale (consegne), 0,75-0,90 per quelle che non consumano nulla (abbattimenti, raccolte) — restano tutte dentro la banda 0,75-1,00 richiesta.
+- **Cifre tonde**: asteroidi a multipli di **5**, lingotti a multipli di **10**, grezzo a multipli di **30**, ricompensa arrotondata alle **decine**.
+- **Archetipi** (il campo, quando serve, è scelto tra quelli già visitati): consegna lingotti di ferro 60-200 · consegna lingotti di rame 10-40 · abbatti asteroidi in un campo 30-200 · raccogli grezzo in un campo 90-600.
+- **Rigenerazione**: la **bacheca di Argo si rinnova a ogni attracco** e ogni **mercantile abbordato offre un incarico**. Missioni attive contemporaneamente: **2**, che salgono con la Sala comunicazioni. Niente rigenerazione automatica a tempo: **nessun limite giornaliero** (regola del 24/07 confermata), il freno è il viaggio.
+**Motivazione:** gli "equivalenti asteroide" sono l'unico modo di pagare allo stesso prezzo lavori diversi (rompere, raccogliere, fondere, consegnare) senza creare la scorciatoia del momento — è la lezione della v0.8, dove i costi aritmetici avevano invertito il rapporto sforzo/premio. Il tetto a 200 impedisce alla missione singola di regalare mezzo tier; la banda randomizzata dà varietà senza cambiare il pacing. Il freno del rubinetto è **il viaggio ad Argo**, che è già tempo in cui non si mina: costa senza dire al giocatore di smettere di giocare.
+**Stima di pacing:** ~2-4 missioni per ciclo, ~500 Cookie per ora di gioco attivo → un tier ogni ~1-2 ore giocate, i tre tier del capitolo in ~3-6 giorni a 30-60 min/giorno. Da rivalidare col playtest; la leva di taratura è la banda 0,75-1,00.
+
+### 2026-07-24 (dopo la v0.9) — Sala comunicazioni: la manopola del rubinetto
+**Scelta:** nuovo modulo costruibile (**10 lingotti · 60 s**, sbloccato dalla prima visita ad Argo) con la lista delle missioni in corso e il loro avanzamento.
+- Senza la sala: le missioni si prendono e si consegnano **solo ad Argo**, 2 slot attivi.
+- Con la sala: si **consegna a distanza** e si ricevono incarichi via radio dai mercantili; **slot = 2 + (Lv-1)/3** → 2 slot a Lv 1, 3 a Lv 4, 4 a Lv 7, 5 a Lv 10.
+- **Ricompense +3% per livello** (+27% a Lv 10), costi della linea standard (4, 7, 11, 16, 27, 40, 67, 105, 165 lingotti).
+**Motivazione:** la direttiva chiedeva una stanza per vedere e chiudere le missioni; le si dà anche il ruolo di **regolare la portata del rubinetto** (quante missioni puoi tenere aperte), che è esattamente la manopola che serviva all'economia. Il bonus alle ricompense resta piccolo e cappato apposta: è un moltiplicatore sulla valuta forte, se cresce troppo svuota il prezzo dei tier.
+
+### 2026-07-24 (dopo la v0.9) — Fonderia a livelli per minerale: via le calibrazioni
+**Scelta:** la fonderia diventa un modulo come gli altri, con **livelli che corrispondono ai minerali fondibili** (niente più "calibrazione"):
+- **Lv 1 = costruzione: 30 ferro grezzo · 30 s** → produce lingotti di ferro.
+- **Lv 2 = 60 rame grezzo · 60 s** → produce lingotti di rame.
+- Ogni minerale futuro sarà un livello in più, pagato **nel grezzo di quel minerale**.
+- Nella schermata della fonderia **compaiono tutte le ricette dei minerali scoperti**, anche quelle non ancora fondibili: la riga è spenta e avvisa *"serve fonderia Lv N"*.
+**Motivazione:** un solo concetto (il livello del modulo) al posto di due (costruzione + calibrazione), e la fonderia entra nella grammatica degli altri moduli. Il ciclo fondativo **"ogni minerale nuovo si mina prima a mano"** sopravvive intatto, anzi si rafforza: il rame grezzo per il Lv 2 va estratto a mano (l'IA lo ignora finché non è Lv 2, e l'IA Lv 2 si paga in lingotti di rame che senza fonderia Lv 2 non esistono). Mostrare le ricette bloccate rende visibile il prossimo obiettivo invece di nasconderlo.
+**Nota:** la prima fonderia costa **grezzo** e non lingotti per forza di cose — senza fonderia i lingotti non esistono.
+
+### 2026-07-24 (dopo la v0.9) — Cadenza unica del laser: il tempo lo detta il fascio, l'IA ha un tempo di reazione
+**Contesto:** oggi manuale e automatico hanno due orologi separati (`MiningScreen._nextAutoShot` avanza solo quando spara l'IA), quindi appena finisce una laserata manuale ne parte una automatica su un bersaglio scelto da lei. La direttiva chiede **una sola cadenza**, valida per entrambi.
+**Scelta:**
+1. **Un solo timer per il laser**: la cadenza è **durata del fascio + 0,12 s di respiro**, chiunque prema il grilletto.
+2. La linea di upgrade **"velocità di fuoco" accorcia il fascio**: **1,00 s → 0,55 s** sui livelli 1-10 (cadenza ~1,12 s → ~0,67 s). Così l'upgrade **si vede su entrambi**, come chiesto.
+3. Il **tap manuale ha la prelazione**: spara appena il laser è carico e, se il fascio è già acceso, **lo ridirige** sul nuovo bersaglio. L'IA invece spara solo dopo **0,4 s di "tempo di reazione"** da quando il laser è pronto.
+4. Il **tap punta anche l'IA**: dopo un tap, il bersaglio scelto dal giocatore resta quello dell'IA finché è vivo e agganciabile.
+**Motivazione:** è l'unica delle tre letture di "cadenza unica" che non rompe niente. Tenere la cadenza dell'IA (2,5 s) anche per il tap dimezzerebbe il ritmo dell'early game, che è il tutorial del gioco; togliere del tutto il vantaggio manuale contraddirebbe la regola fissa *"il gioco attivo batte sempre il passivo"*. Il tempo di reazione di 0,4 s conserva quella regola a costo quasi zero di complessità: chi gioca attivo spara sempre per primo e sceglie il bersaglio, chi lascia fare all'IA perde un'incollatura a colpo.
+**Conseguenza da tenere d'occhio:** il laser IA a Lv 1 passa da 2,5 s a ~1,1 s di cadenza. L'effetto è **auto-limitato dallo spawn** (a motore base arriva un asteroide ogni ~5 s: il collo di bottiglia si sposta su spawn e traino, +50% circa di resa invece del +120% teorico) e rende il **motore a impulso** più prezioso. La formula del mining offline va ricalcolata sulla nuova cadenza.
+
+### 2026-07-24 (dopo la v0.9) — La partenza è una scelta: si stacca tutto e il campo resta indietro
+**Scelta:** quando parte una rotta la nave **accelera davvero** (mondo ×8 invece di ×4, stelle in scia), gli asteroidi e i minerali non raccolti **restano indietro**, il **laser smette di sparare** e il **raggio traente si spegne** per tutta la durata del viaggio.
+**Motivazione:** la direttiva chiedeva più velocità percepita; staccare laser e raggio la rende anche coerente (in crociera non si mina già oggi) e trasforma la partenza in una piccola decisione di gioco — *parto adesso o finisco di raccogliere quello che ho in campo?* — che è esattamente il tipo di scelta che un idle deve offrire senza costare nulla in complessità.
+
+### 2026-07-24 (dopo la v0.9) — Due campi di rame oltre il primo
+**Scelta:** oltre al Campo del Rame (65/35) la mappa guadagna **Vena Mista (50/50)** e **Filone di Rame (20/80)**, sempre più lontani. Nessun gate esplicito: senza **laser Mk II** il rame non si scalfisce, quindi un campo 20/80 è già di per sé inutile a chi non è pronto — la regola *"se un campo è troppo avanzato è il laser a non scalfire"* fa da sola il lavoro. La composizione resta "???" senza sala mappe.
+**Motivazione:** un solo campo di rame rendeva il rame un rubinetto a portata fissa; tre campi con quote crescenti danno una progressione geografica al secondo metallo (e un motivo per rimettersi in viaggio) senza inventare meccaniche. Il ferro non sparisce mai del tutto neanche nel 20/80, come da regola dei campi discreti.
+
+### 2026-07-24 (dopo la v0.9) — Relitti esplorabili: milestone, in fondo alla roadmap
+**Scelta:** i **relitti di stazione esplorabili** (incontro casuale, minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili) sono una **milestone nominata**, da affrontare **dopo tutto il resto della roadmap**; gli **oggetti come ricompensa delle missioni** entrano insieme a loro, non prima.
+**Motivazione:** è la feature più grande mai messa in cantiere (stanze procedurali, combattimento, inventario, arte a schermo pieno) e l'unica che porta contenuto **solo-online**, quindi rinforza la regola "attivo batte passivo" senza toccare i numeri del mining. Ma va progettata con calma: alla frequenza proposta (1% al minuto ≈ un relitto ogni 100 minuti di gioco) rischia di costare settimane per contenuto che si vede ogni due o tre giorni, e una spedizione in corso deve sopravvivere alla sospensione dell'app su Android (la trappola della segnalazione 18). Punti da chiudere quando toccherà: frequenza e pity timer, se il relitto vive nel campo (contraltare dei mercantili, che vivono nel viaggio), perdita totale o parziale del bottino a 0 HP, e la pipeline grafica delle stanze.
+
+### 2026-07-24 (dopo la v0.9) — Rinviato: tetto agli asteroidi grossi nei campi
+**Scelta:** il tetto a "1 grosso in Vena Ricca / 2 nel campo denso" **non si tocca per ora** (numeri invariati), su richiesta esplicita.
+**Motivazione:** registrata per non perderla. Quando si riprenderà: nella Vena Ricca **tutti** gli asteroidi sono grossi (scala 1,25-1,6, HP ×2, drop ×2) e ce ne sono ~3 in campo, quindi un tetto a 1 taglierebbe la resa di circa il 40% e renderebbe la Vena Ricca peggiore della Cintura Densa — il tetto va accompagnato da una compensazione (grosso ancora più ricco, o densità più alta).
+
 ## Decisioni aperte
 
 *(nessuna al momento)*
