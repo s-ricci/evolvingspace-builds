@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-23
+## Aggiornato al 2026-07-24
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -153,13 +153,14 @@
 
 - **Build v0.6 pubblicata** (24/07): release su GitHub e copia su Drive. Contiene: **fix dell'offline alla ripresa dell'app** (segnalazione 18), popup costruzione senza i moduli già costruiti, UI aggiornata coi mockup 4-5 (barra risorse lingotti/carico con icone, INTERNO NAVE azzurro con navicella, fonderia a card con CRAFT/PRODUCI TUTTI rossi)
 
-**In corso:**
-- Test su telefono della v0.6: **offline alla ripresa** (mandare in background qualche minuto e riaprire → Rapporto di bordo senza riavvio), nuova barra risorse e fonderia, migrazione salvataggi dalle versioni precedenti
+- **v0.6 testata su telefono: tutto ok** (24/07). Feedback dal playtest: in ~24 h si raggiunge il cap di tutti gli upgrade (Lv 5 tier 1) — il contenuto attuale "finisce"
+- **Decisa la progressione a lungo termine** (24/07, tre decisioni confermate — vedi [decisioni.md](decisioni.md) e il [GDD](GDD.md)): gerarchia a quattro piani (livelli 1–5 → tier **"Mk"** per modulo, all'hangar, gated dalle stazioni → **milestone nominate** → universi); **campi di asteroidi discreti** con tabelle di spawn e doppio gating (tier del laser per rompere, forza/massa del raggio per trainare); **viaggio a tempo reale** sulla mappa con mining in rotta ("spazio aperto"), avanzamento offline, mercantili come incontri in rotta
 
-**Prossimo passo (roadmap rivista il 23/07 sera — dettagli in [idee.md](idee.md)):**
-1. ~~**Fonderia comoda**~~ ✓ fatta (23/07)
-2. ~~**Sistema energetico**~~ ✓ fatto e **ritirato lo stesso giorno** (direttiva 12: sostituito dal deposito a peso; reinseribile in futuro)
-3. ~~**Schermata mining dinamica**~~ ✓ fatta (23/07 sera, direttiva 13 — anticipa la parte visiva della 1b)
-4. **Viaggio (1b completa) + mappa stellare**: barra velocità, mappa con punti di interesse; raggi traenti multipli (la decisione sulla grammatica UI è chiusa: pannello sala comandi)
-5. **Mercantili e valuta "Cookie"**: incontri casuali, compravendita a prezzi variabili
-6. **Prima stazione spaziale**: hub con missioni (→ Cookie → sblocco Tier), commercio, hangar, nuovi minerali (spawn 0% fino all'arrivo, pesi crescenti), stanze costruibili (sala mappe)
+**In corso:**
+- Avvio della tappa 3: **mappa stellare + viaggio** (design confermato, da implementare)
+
+**Prossimo passo (roadmap confermata il 24/07 — dettagli nel [GDD](GDD.md), sezione "Visione a medio-lungo termine"):**
+1. **Mappa stellare + viaggio (1b completa)** → v0.7: mappa dell'universo 1 con i campi (per ora solo ferro, densità/ricchezza diverse), rotte a tempo reale (distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline
+2. **Mercantili e "Cookie"** → v0.8: incontri casuali in rotta, compravendita ferro/lingotti a prezzi variabili, valuta galattica
+3. **Prima stazione spaziale** (milestone nominata) → v0.9: missioni → Cookie → **tier Mk II all'hangar**; si attivano i campi del rame, ricette nuove in fonderia, stanze costruibili (sala mappe), raggio traente Mk II = secondo fascio
+4. Più avanti: silicio/titanio/alluminio coi Mk successivi, altre stazioni e gate di teletrasporto, intro a fumetto, universo 2
