@@ -103,9 +103,9 @@
 **Motivazione:** (1) varietà e progressione del danno senza saturare campo e pollice; (2) il viaggio diventa un momento con la sua identità (velocità, attesa, eventi) invece di un mining più povero, e i mercantili rari con la deviazione a scelta valgono di più; (3) se gli incontri sono rari devono restare la fonte buona di Cookie — la stazione copre solo la conversione di comodo tra metalli.
 **Coerenza offline**: in rotta non si mina nemmeno offline; i densi contano nella resa solo se il laser li rompe.
 
-### 2026-07-24 (sera) — Mappa stellare alleggerita: cluster piccoli e nomi in chip
-**Scelta:** i punti di interesse della mappa perdono le didascalie (restano nel popup di destinazione) e mostrano **solo il nome dentro una "chip" scura semitrasparente** sotto un cluster ridotto; l'immagine della stazione è più piccola. Se in futuro i campi cresceranno di numero, il passo successivo già individuato è la **mappa trascinabile (pan)** su un'area più grande.
-**Motivazione:** le scritte si sovrapponevano ai sassi e la mappa risultava piena; la chip dà uno sfondo costante al testo qualunque cosa ci sia dietro, e togliere le didascalie dimezza il testo a schermo senza perdere informazioni (sono a un tap di distanza).
+### 2026-07-24 (sera) — Mappa stellare alleggerita: trascinabile, cluster piccoli e nomi in chip
+**Scelta:** la mappa diventa **trascinabile (pan)**: l'area virtuale è ~860×1500 su uno schermo da 720×1280, i campi respirano e all'apertura la vista si **centra sul campo corrente** (o sul punto medio della rotta in corso). In più i punti di interesse perdono le didascalie (restano nel popup di destinazione) e mostrano **solo il nome dentro una "chip" scura semitrasparente** sotto un cluster ridotto. Il drag parte da qualunque punto (anche sopra un campo: il tap resta tap sotto la soglia di trascinamento) e un suggerimento discreto in basso dice "trascina per esplorare la mappa".
+**Motivazione:** le scritte si sovrapponevano ai sassi e la mappa risultava piena; il pan risolve alla radice (spazio virtuale invece di compressione) e scala già ai campi futuri, la chip dà uno sfondo costante al testo, e togliere le didascalie dimezza il testo a schermo senza perdere informazioni (sono a un tap di distanza).
 
 ## Decisioni aperte
 
