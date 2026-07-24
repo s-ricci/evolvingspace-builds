@@ -145,7 +145,7 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-23</span>
+  <span class="updated">Aggiornato al 2026-07-24</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
@@ -220,8 +220,29 @@
   → motore a impulso Lv 0–5: più velocità ⇒ più asteroidi
     in mappa (primo assaggio della velocità di viaggio)          [implementato]
   → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
-  → viaggio (evoluzione 1b): mappa stellare e barra velocità
-  → stazione spaziale: missioni → Cookie → sblocco dei tier</code></pre>
+  → viaggio (evoluzione 1b): mappa stellare, campi di asteroidi
+    con tabelle di spawn, rotte a tempo reale (mining in rotta)
+  → stazione spaziale: missioni → Cookie → tier Mk II all'hangar
+    + nuovi minerali (i loro campi si attivano)</code></pre>
+
+  <h4>Struttura della progressione a lungo termine (decisa il 24/07/2026)</h4>
+  <p>Quattro piani, dal piccolo al grande (motivazioni nella sezione <a href="#decisioni">Decisioni</a>):</p>
+  <table>
+    <tr><th>Piano</th><th>Cos'è</th><th>Scala</th><th>Esempio</th></tr>
+    <tr><td><strong>Livelli (1–5)</strong></td><td>crescita quotidiana a bordo, per linea di upgrade</td><td>minuti/ore</td><td>Danni del laser Lv 3</td></tr>
+    <tr><td><strong>Tier "Mk"</strong></td><td>il gradino grosso di un modulo, all'<strong>hangar</strong> delle stazioni, sbloccato dalle missioni Cookie; il conteggio resta basso perché gated dalle stazioni raggiunte</td><td>giorni</td><td>Laser minerario <strong>Mk II</strong> (rompe il rame, riapre i livelli 1–5)</td></tr>
+    <tr><td><strong>Milestone nominate</strong></td><td>eventi unici della mappa, mai numerati; ognuna sblocca contenuto (minerali, moduli, meccaniche) e prende il nome dalla storia</td><td>settimane</td><td>l'arrivo alla prima stazione</td></tr>
+    <tr><td><strong>Universi</strong></td><td>i capitoli massimi (l'universo 1 è quello attuale); eventuale sede di un futuro prestige</td><td>mesi</td><td>universo 2, oltre un nuovo buco nero</td></tr>
+  </table>
+  <p>Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 da ~24 h va bene così); ogni capitolo punta a durare 2-3 volte il precedente.</p>
+
+  <h4>Campi di asteroidi e viaggio (decisi il 24/07/2026)</h4>
+  <ul>
+    <li>L'universo è fatto di <strong>campi di asteroidi discreti</strong> sulla mappa stellare, ognuno con la sua <strong>tabella di spawn</strong> (es. campo di partenza 100% ferro; campo del rame 65% ferro / 35% rame; campo del silicio 40/40/20; rare "vene pure" come punti di interesse speciali). Il minerale vecchio non sparisce mai del tutto (serve alle ricette).</li>
+    <li><strong>Doppio gating</strong> dei minerali nuovi: il <strong>tier del laser</strong> decide quali asteroidi si rompono, la <strong>forza/massa del raggio traente</strong> quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.</li>
+    <li><strong>Viaggio a tempo reale</strong>: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella <strong>"spazio aperto"</strong> (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche <strong>offline</strong>. Nessun costo in carburante. I <strong>mercantili</strong> sono incontri casuali in rotta.</li>
+    <li>La <strong>sala mappe</strong> (stanza costruibile futura) rivelerà la composizione dei campi.</li>
+  </ul>
 
   <h4>Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)</h4>
   <p>Il <strong>minerale grezzo</strong> vive nel <strong>magazzino</strong>, con un limite misurato in <strong>unità di carico</strong> (il ferro vale 1; i minerali futuri ne varranno sempre di più); a magazzino pieno si fonde per liberare spazio. I <strong>lingotti</strong> non hanno limite. <em>(Il deposito era nato "dentro" il raggio traente con la direttiva 12; con la 14 è passato al magazzino. Energia, deuterio e reattore restano ritirati.)</em></p>
@@ -247,14 +268,14 @@
   <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a magazzino pieno si fonde per liberare spazio. Ogni upgrade si compra <strong>nel pannello del suo modulo</strong> (direttiva 14: la sala comandi è il ponte, non il negozio).</p>
 
   <h3>Visione a medio-lungo termine</h3>
-  <p>Idee valutate e messe in roadmap il 23/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
+  <p>Roadmap confermata il 24/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
   <ol>
     <li><s><strong>Fonderia comoda</strong></s> ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali</li>
     <li><s><strong>Deposito a peso + schermata mining dinamica</strong></s> ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest</li>
-    <li><strong>Viaggio (1b completa) + mappa stellare</strong> — barra velocità, mappa con punti di interesse; raggi traenti multipli</li>
-    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali di commercio, valuta galattica, compravendita a prezzi variabili</li>
-    <li><strong>Prima stazione spaziale</strong> — hub dell'universo 1: <strong>missioni che danno Cookie e sbloccano i Tier</strong> della strumentazione, commercio, hangar, i <strong>nuovi minerali</strong> (spawn 0% fino all'arrivo, pesi crescenti) e le <strong>stanze costruibili</strong> (es. sala mappe)</li>
-    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà</li>
+    <li><strong>Mappa stellare + viaggio (1b completa)</strong> — mappa dell'universo 1 con i campi di asteroidi (per ora solo ferro, con densità/ricchezza diverse), rotte a tempo reale (durata = distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline</li>
+    <li><strong>Mercantili e "Cookie"</strong> — incontri casuali <strong>in rotta</strong>, valuta galattica, compravendita di ferro/lingotti a prezzi variabili</li>
+    <li><strong>Prima stazione spaziale</strong> (milestone nominata) — hub dell'universo 1: <strong>missioni → Cookie → tier Mk II all'hangar</strong> (nuovi cap dei livelli, il laser Mk II rompe il rame), i <strong>campi del rame si attivano</strong> (poi silicio, titanio, alluminio con i Mk successivi — ciascuno col suo peso crescente), ricette nuove in fonderia, commercio, <strong>stanze costruibili</strong> (la sala mappe rivela la composizione dei campi), <strong>raggio traente Mk II = secondo fascio</strong></li>
+    <li>Più avanti: altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
   </ol>
 
   <h3>UI generale</h3>
@@ -271,7 +292,25 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">11</span></h3>
+  <h3>Decisioni prese <span class="badge done">14</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-24 — Progressione a lungo termine: livelli → tier "Mk" → milestone nominate → universi</h4>
+    <p><strong>Scelta:</strong> confermata la gerarchia a <strong>quattro piani</strong> proposta dopo il playtest della v0.6 (in ~24 h si raggiungeva il cap Lv 5 tier 1 e il contenuto finiva): 1) <strong>livelli (1–5)</strong> — la crescita quotidiana a bordo, per linea di upgrade; 2) <strong>tier per modulo</strong>, mostrati come <strong>"Mk II", "Mk III"…</strong> — l'acquisto grosso all'<strong>hangar</strong> delle stazioni, sbloccato dalle missioni Cookie; il numero resta strutturalmente basso perché <strong>gated dalle stazioni raggiunte</strong>: mai un "tier 400"; 3) <strong>milestone nominate</strong> — gli unlock maggiori: eventi unici della mappa (prima stazione, portale…), mai numerate; ognuna sblocca contenuto nuovo e prende il nome dalla storia; 4) <strong>universi</strong> — i capitoli a lunghissimo termine; eventuale sede di un futuro prestige.</p>
+    <p><strong>Motivazione:</strong> i numeri infiniti stanno nei livelli piccoli, i gradini grossi sono pochi, nominati e fatti di contenuto — la lezione dei giochi che invecchiano bene (Egg Inc. coi capitoli nominati, Idle Planet Miner, Deep Town); quelli che numerano i gradini grossi li svuotano di significato. "Mk" è la grammatica sci-fi da equipaggiamento (FTL, Elite Dangerous), non da contatore. Non si allunga il tier 1 gonfiando i numeri: un capitolo 1 da ~24 h è nella norma del genere, i capitoli successivi dureranno ciascuno 2-3 volte il precedente.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-24 — Campi di asteroidi discreti con tabelle di spawn; doppio gating dei minerali nuovi</h4>
+    <p><strong>Scelta:</strong> i nuovi minerali arrivano per <strong>campi discreti sulla mappa stellare</strong>, ognuno con la sua tabella di spawn (es. campo di partenza 100% ferro; campo del rame 65% ferro / 35% rame; campo del silicio 40/40/20; più rare "vene pure" come punti di interesse speciali). Regole: il <strong>minerale vecchio non sparisce mai del tutto</strong> (serve alle ricette); il gating dei minerali nuovi è doppio — il <strong>tier del laser</strong> decide quali asteroidi si rompono, la <strong>forza/massa del raggio traente</strong> quali minerali si trainano. <strong>Niente asteroidi rompibili con drop non raccoglibili</strong> (frustrazione pura): se un campo è troppo avanzato, è il laser a non scalfire. La <strong>sala mappe</strong> rivelerà la composizione dei campi.</p>
+    <p><strong>Motivazione:</strong> rispetto a una tabella globale che cambia con la distanza (alla Mr. Mine), i campi discreti danno uno scopo alla mappa stellare, danno agency ("mi serve rame → vado al campo del rame", alla Idle Planet Miner), si bilanciano a tabelle e fanno da sponda alla sala mappe.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-24 — Viaggio a tempo reale tra i campi; mining in rotta; mercantili come incontri</h4>
+    <p><strong>Scelta:</strong> sulla mappa si sceglie il punto di interesse e la nave <strong>viaggia in tempo reale</strong>: durata = distanza / velocità (livello del motore a impulso, che diventa ciò che il nome promette). Durante la rotta il mining <strong>non si ferma</strong>: tabella <strong>"spazio aperto"</strong> (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il <strong>viaggio avanza anche offline</strong>. Nessun costo in carburante (l'energia è ritirata; il tempo è già un costo). I <strong>mercantili</strong> diventano <strong>incontri casuali in rotta</strong>.</p>
+    <p><strong>Motivazione:</strong> la selezione istantanea del campo (alla Idle Planet Miner) sarebbe più comoda ma ucciderebbe la fantasia del viaggio, cuore della lore; il mining in rotta rende il viaggio tempo di gioco degradato anziché tempo morto, e "parto e chiudo l'app" è un'ottima azione idle.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-23 (notte) — Interno nave a lista di moduli; gli upgrade vivono nel loro modulo</h4>
@@ -397,7 +436,7 @@
 
   <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
 
-  <h3>Aggiornato al 2026-07-23</h3>
+  <h3>Aggiornato al 2026-07-24</h3>
 
   <h4>Fatto</h4>
   <ul>
@@ -506,19 +545,24 @@
     <li><strong>UI dai mockup 4 e 5</strong> (24/07): barra risorse bordata con <strong>lingotti (icona) a sinistra e carico (cassa) a destra</strong>; "INTERNO NAVE" <strong>azzurro con l'icona della navicella</strong>; fonderia con ricetta in card bordata, icone vere di grezzo/lingotto e pulsanti <strong>CRAFT / PRODUCI TUTTI rossi</strong>; popup "Costruisci modulo" senza i moduli già costruiti; +5 icone ritagliate</li>
   </ul>
 
-  <h4>In corso</h4>
+  <h4>Fatto (24/07)</h4>
   <ul>
-    <li><strong>Build v0.6 pubblicata</strong> (24/07, release GitHub + Drive): fix dell'<strong>offline alla ripresa dell'app</strong> (su Android l'app viene ripresa, non riavviata: ora al rientro si fa il catch-up e compare il Rapporto di bordo), popup costruzione senza moduli già costruiti, UI dai mockup 4-5. In test su telefono: offline alla ripresa, nuova barra risorse, fonderia, migrazioni</li>
+    <li><strong>Build v0.6 pubblicata e testata su telefono: tutto ok</strong> (release GitHub + Drive): fix dell'<strong>offline alla ripresa dell'app</strong> (su Android l'app viene ripresa, non riavviata: ora al rientro si fa il catch-up e compare il Rapporto di bordo), popup costruzione senza moduli già costruiti, UI dai mockup 4-5</li>
+    <li>Feedback dal playtest: in ~24 h si raggiunge il cap di tutti gli upgrade (Lv 5 tier 1) — il contenuto attuale "finisce"</li>
+    <li><strong>Decisa la progressione a lungo termine</strong> (tre decisioni confermate, vedi <a href="#decisioni">Decisioni</a>): gerarchia a quattro piani (livelli → tier "Mk" → milestone nominate → universi), campi di asteroidi discreti con tabelle di spawn e doppio gating, viaggio a tempo reale con mining in rotta</li>
   </ul>
 
-  <h4>Prossimo passo (roadmap rivista il 23/07 sera)</h4>
+  <h4>In corso</h4>
+  <ul>
+    <li>Avvio della tappa 3: <strong>mappa stellare + viaggio</strong> (design confermato, da implementare)</li>
+  </ul>
+
+  <h4>Prossimo passo (roadmap confermata il 24/07)</h4>
   <ol>
-    <li><s><strong>Fonderia comoda</strong></s> ✓ fatta (23/07)</li>
-    <li><s><strong>Sistema energetico</strong></s> ✓ fatto e <strong>ritirato lo stesso giorno</strong> (direttiva 12: sostituito dal deposito a peso; reinseribile in futuro)</li>
-    <li><s><strong>Schermata mining dinamica</strong></s> ✓ fatta (23/07 sera, direttiva 13 — anticipa la parte visiva della 1b)</li>
-    <li><strong>Viaggio (1b completa) + mappa stellare</strong>: barra velocità, mappa con punti di interesse; raggi traenti multipli (grammatica UI chiusa: pannello sala comandi)</li>
-    <li><strong>Mercantili e valuta "Cookie"</strong>: incontri casuali, compravendita a prezzi variabili</li>
-    <li><strong>Prima stazione spaziale</strong>: hub con missioni (→ Cookie → sblocco Tier), commercio, hangar, nuovi minerali (spawn 0% fino all'arrivo, pesi crescenti), stanze costruibili (sala mappe)</li>
+    <li><strong>Mappa stellare + viaggio (1b completa)</strong> → v0.7: mappa dell'universo 1 con i campi (per ora solo ferro, densità/ricchezza diverse), rotte a tempo reale (distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline</li>
+    <li><strong>Mercantili e "Cookie"</strong> → v0.8: incontri casuali in rotta, compravendita ferro/lingotti a prezzi variabili, valuta galattica</li>
+    <li><strong>Prima stazione spaziale</strong> (milestone nominata) → v0.9: missioni → Cookie → <strong>tier Mk II all'hangar</strong>; si attivano i campi del rame, ricette nuove in fonderia, stanze costruibili (sala mappe), raggio traente Mk II = secondo fascio</li>
+    <li>Più avanti: silicio/titanio/alluminio coi Mk successivi, altre stazioni e gate di teletrasporto, intro a fumetto, universo 2</li>
   </ol>
 </section>
 
