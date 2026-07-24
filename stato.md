@@ -156,12 +156,18 @@
 - **v0.6 testata su telefono: tutto ok** (24/07). Feedback dal playtest: in ~24 h si raggiunge il cap di tutti gli upgrade (Lv 5 tier 1) — il contenuto attuale "finisce"
 - **Decisa la progressione a lungo termine** (24/07, tre decisioni confermate — vedi [decisioni.md](decisioni.md) e il [GDD](GDD.md)): gerarchia a quattro piani (livelli 1–5 → tier **"Mk"** per modulo, all'hangar, gated dalle stazioni → **milestone nominate** → universi); **campi di asteroidi discreti** con tabelle di spawn e doppio gating (tier del laser per rompere, forza/massa del raggio per trainare); **viaggio a tempo reale** sulla mappa con mining in rotta ("spazio aperto"), avanzamento offline, mercantili come incontri in rotta
 
-**In corso:**
-- Avvio della tappa 3: **mappa stellare + viaggio** (design confermato, da implementare)
-- [prompt-gemini.md](prompt-gemini.md) esteso coi **prompt 6-12** per i mockup delle schermate delle tappe 3-5 (mappa stellare, pannello del campo, mining in rotta, mercantile, hub stazione, missioni, hangar Mk); in attesa dei mockup in `Docs/mockups/` — numeri e nome della stazione ("ARGO") sono segnaposto
+- **Mockup 6-12 ricevuti** (24/07, da [prompt-gemini.md](prompt-gemini.md)) e **tappe 3-4-5 implementate in un colpo solo** su richiesta, con quattro decisioni chiuse prima di partire (vedi [decisioni.md](decisioni.md)): nome **ARGO** confermato, stazione rivelata dal **primo mercantile**, **rame = valuta dei livelli Mk II**, **sala mappe inclusa**
+- **Tappa 3 — Mappa stellare + viaggio** (`Assets/Scripts/Travel/`): `StarMap` (campi con tabelle di spawn: partenza, cintura densa, vena ricca con asteroidi grossi HP×2/drop×2, stazione, campo del rame 65/35 — numeri nel [GDD](GDD.md)), `TravelSystem` (rotte a tempo reale: 3 UA/min +20%/lv motore; in rotta tabella "spazio aperto"), `StarMapScreen` (mappa in stile mockup 6: POI, nave, rotta a puntini col tempo, popup destinazione con barre di composizione — "???" se campo non visitato e senza sala mappe), banner di viaggio e **pulsante mappa** in mining (mockup 8); lo spawner legge densità/mix/taglia dal campo corrente
+- **Tappa 4 — Mercantili e Cookie**: `TradePopup` (mockup 9) con prezzi casuali a ogni incontro, quantità a stepper, compra/vendi; primo incontro garantito in rotta che **rivela la Stazione Argo**, poi ~1 rotta su 2; valuta **Cookie** in `GameResources` e terza voce della barra risorse (compare quando la valuta entra in gioco)
+- **Tappa 5 — Stazione Argo** (`StationScreen`, mockup 10-12): hub con immagine ritagliata dal mockup e tre servizi; **missioni** in catena (2 attive alla volta: consegna 50 lingotti, 30 asteroidi in Cintura Densa, vendi 20 lingotti ai mercantili, 60 ferro nella Vena Ricca → 70 Cookie totali); **commercio** a prezzi fissi; **hangar** con evoluzioni **Mk II** (laser 40 · raggio 35 · magazzino 30 Cookie): il laser Mk II rompe gli asteroidi di **rame** (40 HP, grezzo da 2 unità trainato a metà velocità), il raggio Mk II ha il **secondo fascio**, i livelli 1–5 riaperti si pagano in **lingotti di rame** (ricetta nuova in fonderia, con "PRODUCI TUTTI" su entrambe); **sala mappe** costruibile (8 lingotti · 30 s) che rivela la composizione dei campi
+- **Salvataggio v6** (retrocompatibile) e **offline esteso**: campo corrente, rotta in corso (avanza a gioco chiuso, arrivo e attracco compresi), campi visitati, Cookie/rame/Mk/missioni/sala mappe; mining offline in due fasi (spazio aperto lungo la rotta + campo d'arrivo, col mix ferro/rame); Rapporto di bordo esteso (arrivo, ferro, rame)
+- **7 icone nuove ritagliate dai mockup** (cookie, mercantile, stazione, missioni, commercio, hangar, mappa) in `Resources/Sprites/Icons`
+- **Compilazione batch pulita** (0 errori, 0 warning di progetto) e **build v0.7 pubblicata** (24/07): APK su release GitHub + copia su Drive
 
-**Prossimo passo (roadmap confermata il 24/07 — dettagli nel [GDD](GDD.md), sezione "Visione a medio-lungo termine"):**
-1. **Mappa stellare + viaggio (1b completa)** → v0.7: mappa dell'universo 1 con i campi (per ora solo ferro, densità/ricchezza diverse), rotte a tempo reale (distanza / motore a impulso), mining in rotta con tabella "spazio aperto", viaggio anche offline
-2. **Mercantili e "Cookie"** → v0.8: incontri casuali in rotta, compravendita ferro/lingotti a prezzi variabili, valuta galattica
-3. **Prima stazione spaziale** (milestone nominata) → v0.9: missioni → Cookie → **tier Mk II all'hangar**; si attivano i campi del rame, ricette nuove in fonderia, stanze costruibili (sala mappe), raggio traente Mk II = secondo fascio
-4. Più avanti: silicio/titanio/alluminio coi Mk successivi, altre stazioni e gate di teletrasporto, intro a fumetto, universo 2
+**In corso:**
+- Test su telefono della v0.7: primo viaggio e mappa, incontro col mercantile (rivelazione di Argo), attracco e missioni, evoluzioni Mk II, campo del rame, sala mappe, offline con rotta in corso, migrazione salvataggi v5 → v6
+
+**Prossimo passo (roadmap aggiornata il 24/07 — dettagli nel [GDD](GDD.md)):**
+1. **Playtest e bilanciamento della v0.7** (prezzi, tempi di rotta, resa del rame, costi Mk II)
+2. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette
+3. **Altre stazioni** come checkpoint con gate di teletrasporto e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
