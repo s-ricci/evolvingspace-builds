@@ -210,6 +210,25 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 
 ---
 
+## Importata il 2026-07-24 (dopo la roadmap)
+
+### 38. Mappa stellare a sistemi solari: nodi, archi e rotte dei mercanti
+**Idea (direttiva):** rifare la mappa stellare come una **rete di sistemi solari** — i sistemi sono **nodi**, collegati tra loro da **archi**. Il viaggio avviene **da sistema a sistema** lungo gli archi; ogni sistema contiene i propri **campi di asteroidi, stazioni spaziali e altro**. I **mercanti non sono più incontri casuali**: le loro **rotte sono visibili sugli archi** e si possono **intercettare**. *(Dettagli quando si arriverà a quel punto.)*
+**Valutazione:** è il salto che la mappa attuale chiedeva. Oggi i punti di interesse stanno su un piano euclideo con distanze in linea d'aria: funziona con 5-7 campi, diventa una nuvola indistinta quando arriveranno silicio, titanio, alluminio e le altre stazioni. Il grafo dà **struttura e gerarchia** (dentro il sistema / tra i sistemi), rende leggibile la distanza come numero di salti invece che come pixel, e scala all'infinito senza affollare lo schermo. Due guadagni di design che non erano cercati ma arrivano gratis: i **gate di teletrasporto** già previsti per le stazioni-checkpoint diventano semplicemente **archi speciali**, e "il sistema di partenza" prende un senso narrativo che oggi non ha.
+
+Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'incontro da lotteria (~10% al minuto di rotta) in **decisione informata** — lo vedi muoversi, calcoli se ti conviene deviare, scegli. È coerente con la direzione presa da tutto il resto del gioco (il tap che punta, la partenza che è una scelta) e risolve alla radice il difetto strutturale dei mercanti: erano l'unica fonte di Cookie e dipendevano dal caso.
+
+**Punti da chiudere quando toccherà:**
+1. **Supera due decisioni del 24/07**: "mercantili come incontri casuali in rotta" e il banner di avvistamento con deviazione. Va deciso cosa sopravvive — il primo mercantile garantito che rivela la stazione ha ancora senso in un mondo dove le rotte si vedono?
+2. **I mercanti si muovono anche a gioco chiuso?** Se sì serve una simulazione delle loro posizioni nel tempo (deterministica, altrimenti il salvataggio non regge); se no, la mappa "riparte" a ogni apertura e l'intercettazione perde credibilità.
+3. **Rotte multi-salto**: il viaggio offline oggi gestisce una tratta sola. Con un grafo servono percorsi a più archi, con arrivo e attracco intermedi calcolati a gioco chiuso.
+4. **Cosa rivela cosa**: la sala mappe oggi svela la composizione dei campi; nel grafo può svelare il contenuto dei sistemi non visitati, e le rotte dei mercanti possono chiedere un modulo dedicato (sensori/radar) — un nuovo scopo per l'interno nave.
+5. **Salvataggio**: i campi attuali diventano i campi del sistema di partenza; serve una migrazione `campo` → `sistema + campo`.
+6. **Ricadute sul pacing dell'economia**: il rubinetto dei Cookie è tarato sul viaggio ad Argo (~7-10 minuti); se i tempi cambiano col grafo, la banda 0,75-1,00 Cookie per equivalente va rivalidata.
+**Stato:** ✅ in roadmap — **tappa 3**, subito prima dei nuovi minerali
+
+---
+
 ## Idee scartate
 
 - **Idea 3 — Asteroide di deuterio** (scartata *per ora* il 23/07 sera, direttiva 12): implementata nella v0.3 e rimossa lo stesso giorno insieme a reattore ed energia; se il sistema energetico tornerà, tornerà con lui.
