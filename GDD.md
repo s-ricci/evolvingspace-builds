@@ -103,6 +103,7 @@ Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 d
 - **Doppio gating** dei minerali nuovi: il **tier del laser** decide quali asteroidi si rompono, la **forza/massa del raggio traente** quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.
 - **Viaggio a tempo reale**: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella **"spazio aperto"** (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche **offline**. Nessun costo in carburante. I **mercantili** sono incontri casuali in rotta.
 - La **sala mappe** (costruibile dopo la prima visita alla stazione) rivela la composizione dei campi non visitati; senza, i loro pannelli mostrano "???".
+- **Evoluzione decisa (idea 38, tappa 3 della roadmap):** questa mappa piatta a punti di interesse diventerà un **grafo di sistemi solari** — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, campi e stazioni *dentro* ogni sistema; i **mercanti percorreranno rotte visibili sugli archi** e si potranno intercettare invece di comparire a caso. I gate di teletrasporto delle stazioni-checkpoint saranno archi speciali.
 
 ### Numeri della v0.7 (implementati il 24/07/2026, da validare col playtest)
 
@@ -192,8 +193,9 @@ Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), 
 6. ~~**Ribilanciamento del pacing**~~ ✓ (24/07, v0.9) — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto solo verso il basso
 7. **Rifiniture e fix** (idee 20-26, 29, 30, 32) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa
 8. **Riassetto dell'economia** (idee 31, 33-37) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame
-9. Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
-10. **Milestone "Relitti"** (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. **In fondo alla roadmap**, dopo tutto il resto
+9. **Mappa stellare a sistemi solari** (idea 38) — la mappa diventa un **grafo**: sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i **mercanti smettono di essere casuali** e percorrono rotte visibili sugli archi, intercettabili
+10. Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (che nel grafo sono archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
+11. **Milestone "Relitti"** (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. **In fondo alla roadmap**, dopo tutto il resto
 
 ## UI generale
 
