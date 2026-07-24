@@ -227,21 +227,22 @@
   → stazione ARGO: missioni → Cookie → tier Mk II all'hangar
     + rame (il suo campo si attiva) + sala mappe                  [implementato, v0.7]</code></pre>
 
-  <h4>Numeri della v0.7 (implementati il 24/07/2026, da validare col playtest)</h4>
-  <p><strong>Campi dell'universo 1</strong> (crociera 3 UA/min, +20% per livello del motore; in rotta tabella "spazio aperto": densità 0,4, solo ferro):</p>
+  <h4>Numeri della v0.7 + fix (24/07/2026, da validare col playtest)</h4>
+  <p><strong>Campi dell'universo 1</strong> (crociera 3 UA/min, +20% per livello del motore; <strong>in rotta non si mina</strong>: nave al centro della visuale a motori spinti, stelle accelerate):</p>
   <table>
-    <tr><th>Campo</th><th>Composizione</th><th>Densità</th><th>Note</th></tr>
-    <tr><td>Campo di partenza</td><td>100% ferro</td><td>1,0 (bassa)</td><td>casa</td></tr>
-    <tr><td>Cintura densa</td><td>100% ferro</td><td>1,6 (alta)</td><td>~12 UA dalla partenza (4 min a motore base)</td></tr>
-    <tr><td>Vena ricca</td><td>100% ferro</td><td>0,8</td><td>asteroidi grossi: HP ×2, drop ×2</td></tr>
-    <tr><td>Stazione Argo</td><td>100% ferro</td><td>0,45</td><td>nascosta finché un mercantile non la rivela</td></tr>
-    <tr><td>Campo del rame</td><td>65% ferro / 35% rame</td><td>1,1</td><td>si attiva alla prima visita alla stazione</td></tr>
+    <tr><th>Campo</th><th>Composizione</th><th>Densità (spawn)</th><th>Densi</th><th>Note</th></tr>
+    <tr><td>Campo di partenza</td><td>100% ferro</td><td>1,0 (bassa)</td><td>—</td><td>casa</td></tr>
+    <tr><td>Cintura densa</td><td>100% ferro</td><td>1,25 (alta)</td><td>35%</td><td>~12 UA dalla partenza (4 min a motore base)</td></tr>
+    <tr><td>Vena ricca</td><td>100% ferro</td><td>0,8</td><td>—</td><td>asteroidi grossi: HP ×2, drop ×2</td></tr>
+    <tr><td>Stazione Argo</td><td>100% ferro</td><td>0,45</td><td>—</td><td>nascosta finché un mercantile non la rivela</td></tr>
+    <tr><td>Campo del rame</td><td>65% ferro / 35% rame</td><td>1,05</td><td>20% (sul ferro)</td><td>si attiva alla prima visita alla stazione</td></tr>
   </table>
-  <p><strong>Rame</strong>: asteroide da 40 HP (vs 15), si rompe solo col laser Mk II; il grezzo pesa 2 unità (traino a metà velocità); 3 rame → 1 lingotto di rame.
-  <strong>Mercantili</strong>: prezzi casuali (lingotti ferro 2-4 Cookie, rame 5-8; ferro grezzo 2-3 per 1 Cookie); stazione a prezzi fissi (3 / 7 / 2 per 1).
+  <p><strong>Asteroide denso</strong>: roccia scura, 45 HP, droppa 5, scala +15%; corazza: serve ≥ 9 danni per colpo (danni Lv 2).
+  <strong>Rame</strong>: asteroide da 40 HP, si rompe solo col laser Mk II; il grezzo pesa 2 unità (traino a metà velocità); 3 rame → 1 lingotto di rame.
+  <strong>Mercantili</strong>: si avvistano in rotta (primo garantito e aspetta fino all'arrivo, poi ~1 su 5 con finestra di 30 s); il tap sul banner devia e mette in pausa il timer; prezzi casuali (lingotti ferro 2-4 Cookie, rame 5-8; ferro grezzo 2-3 per 1 Cookie). <strong>Stazione: solo baratto</strong> (4 ferro → 1 rame · 1 rame → 2 ferro, niente Cookie).
   <strong>Missioni di Argo</strong> (2 attive alla volta): 50 lingotti → 20 · 30 asteroidi in Cintura Densa → 15 · vendi 20 lingotti → 15 · 60 ferro nella Vena Ricca → 20 Cookie.
   <strong>Hangar Mk II</strong>: laser 40 Cookie (rompe il rame; danni 15→30, velocità 1,25→0,75 s) · raggio 35 (secondo fascio; 2,8→4,8 u/s) · magazzino 30 (3500→12000 unità); i livelli riaperti si pagano in lingotti di rame.
-  <strong>Offline</strong>: la rotta avanza a gioco chiuso (arrivo compreso); mining in due fasi (spazio aperto + campo d'arrivo); restano tetto 24 h e stop a magazzino pieno.</p>
+  <strong>Offline</strong>: la rotta avanza a gioco chiuso (arrivo compreso) ma in rotta non si mina nemmeno offline; densi e rame contano solo se il laser li rompe; restano tetto 24 h e stop a magazzino pieno.</p>
 
   <h4>Struttura della progressione a lungo termine (decisa il 24/07/2026)</h4>
   <p>Quattro piani, dal piccolo al grande (motivazioni nella sezione <a href="#decisioni">Decisioni</a>):</p>
@@ -311,7 +312,19 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">15</span></h3>
+  <h3>Decisioni prese <span class="badge done">17</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-24 (sera) — Fix post-v0.7: asteroidi densi, viaggio senza mining, mercantili a deviazione, stazione a baratto</h4>
+    <p><strong>Scelta:</strong> 1) <strong>asteroidi densi</strong> — roccia scura da <strong>45 HP</strong> che droppa <strong>5 minerali</strong>, corazza che chiede ≥ 9 danni per colpo (danni Lv 2); la densità dei campi diventa un mix spawn+densi (Cintura Densa ×1,25 e 35% densi; Campo del Rame 20% sul ferro): lo schermo non si affolla ma la resa cresce. 2) <strong>in viaggio non si mina</strong>: niente spawn, laser a riposo, nave verso il centro della visuale a motori spinti, stelle accelerate; i <strong>mercantili sono rari</strong> (~1 rotta su 5, primo garantito) e si avvistano col banner <em>"Mercantile in avvicinamento…"</em> — il tap devia e <strong>mette in pausa il timer</strong>, che riprende chiudendo il banco; il primo <strong>abbordato</strong> rivela Argo. 3) <strong>stazione a baratto</strong>: solo scambi tra lingotti (4 ferro → 1 rame · 1 rame → 2 ferro), niente Cookie.</p>
+    <p><strong>Motivazione:</strong> varietà e progressione del danno senza saturare campo e pollice; il viaggio ha una sua identità (velocità, attesa, eventi) invece di essere un mining più povero; con incontri rari i mercantili restano la fonte buona di Cookie e la stazione copre solo la conversione di comodo. Offline coerente su tutta la linea.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-24 (sera) — Mappa stellare alleggerita: cluster piccoli e nomi in chip</h4>
+    <p><strong>Scelta:</strong> i POI perdono le didascalie (restano nel popup di destinazione) e mostrano solo il nome in una <strong>chip scura semitrasparente</strong> sotto un cluster ridotto. Se i campi cresceranno di numero, il passo successivo già individuato è la mappa trascinabile (pan).</p>
+    <p><strong>Motivazione:</strong> le scritte si sovrapponevano ai sassi; la chip dà uno sfondo costante al testo e togliere le didascalie dimezza il testo a schermo senza perdere informazioni.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-24 (pomeriggio) — Dettagli della v0.7: nome ARGO, scoperta via mercantile, rame = valuta dei livelli Mk II, sala mappe inclusa</h4>
@@ -587,9 +600,17 @@
     <li>7 icone nuove ritagliate dai mockup; compilazione batch pulita; <strong>build v0.7 pubblicata</strong> (release GitHub + Drive)</li>
   </ul>
 
+  <h4>Fatto (24/07, sera — fix su revisione della v0.7)</h4>
+  <ul>
+    <li><strong>Asteroidi densi</strong> (45 HP, 5 drop, corazza ≥ 9 danni): la densità dei campi è un mix spawn+densi — Cintura ×1,25 e 35% densi, Campo del Rame 20%</li>
+    <li><strong>Viaggio senza mining</strong>: nave al centro a motori spinti, stelle ×5; mercantili rari avvistati col banner "in avvicinamento…" — il tap devia e mette in pausa il timer; il primo abbordato rivela Argo</li>
+    <li><strong>Stazione a baratto</strong> (4 ferro → 1 rame · 1 rame → 2 ferro, niente Cookie) e <strong>mappa alleggerita</strong> (cluster piccoli, nomi in chip, didascalie nel popup)</li>
+    <li>Offline coerente; compilazione batch pulita. <strong>Build v0.8 non ancora lanciata</strong></li>
+  </ul>
+
   <h4>In corso</h4>
   <ul>
-    <li>Test su telefono della v0.7: primo viaggio e mappa, mercantile (rivelazione di Argo), attracco e missioni, evoluzioni Mk II, campo del rame, sala mappe, offline con rotta in corso, migrazione salvataggi</li>
+    <li>Da buildare la <strong>v0.8</strong> coi fix, poi test su telefono: viaggio "pulito" con banner mercantile e pausa, densi in Cintura, baratto, mappa — più tutto il giro della v0.7 (Argo, missioni, Mk II, rame, sala mappe, offline, migrazioni)</li>
   </ul>
 
   <h4>Prossimo passo (roadmap aggiornata il 24/07)</h4>
