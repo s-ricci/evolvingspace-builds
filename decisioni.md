@@ -71,6 +71,22 @@
 **Scelta:** la schermata mining resta **sempre attiva**; interno nave e fonderia diventano **overlay a canvas opaco** disegnati sopra (segnalazione 15). Niente più disattivazione reciproca delle schermate.
 **Motivazione:** con l'architettura precedente laser automatico, raggio traente e spawner si congelavano appena si apriva un menù — un idle che smette di essere idle quando lo guardi da dentro la nave. Con l'overlay il mondo continua a girare (si sente pure il laser lavorare mentre sei nei menù) e la barra risorse si aggiorna in diretta. Il canvas opaco blocca anche i tap verso la schermata sotto.
 
+### 2026-07-24 — Progressione a lungo termine: livelli → tier "Mk" → milestone nominate → universi
+**Scelta:** confermata la gerarchia a **quattro piani** proposta dopo il playtest della v0.6 (in ~24 h si raggiungeva il cap Lv 5 tier 1 e il contenuto finiva):
+1. **Livelli (1–5)** — la crescita quotidiana a bordo, per linea di upgrade. Scala dei minuti/ore.
+2. **Tier per modulo**, mostrati come **"Mk II", "Mk III"…** — l'acquisto grosso all'**hangar** delle stazioni, sbloccato dalle missioni Cookie (idea 9). Il numero resta strutturalmente basso perché **gated dalle stazioni raggiunte**: mai un "tier 400".
+3. **Milestone nominate** — gli unlock maggiori: eventi unici della mappa (prima stazione, portale…), mai numerate; ognuna sblocca contenuto nuovo (minerali, moduli, meccaniche). Prendono il nome dalla storia.
+4. **Universi** — i capitoli a lunghissimo termine (l'"universo 1" è già nel GDD); eventuale sede di un futuro prestige.
+**Motivazione:** i numeri infiniti stanno nei livelli piccoli, i gradini grossi sono pochi, nominati e fatti di contenuto — la lezione dei giochi che invecchiano bene (Egg Inc. coi capitoli nominati, Idle Planet Miner, Deep Town); quelli che numerano i gradini grossi li svuotano di significato. "Mk" è la grammatica sci-fi da equipaggiamento (FTL, Elite Dangerous), non da contatore. Non si allunga il tier 1 gonfiando i numeri: un capitolo 1 da ~24 h è nella norma del genere, i capitoli successivi dureranno ciascuno 2-3 volte il precedente.
+
+### 2026-07-24 — Campi di asteroidi discreti con tabelle di spawn; doppio gating dei minerali nuovi
+**Scelta:** i nuovi minerali arrivano per **campi discreti sulla mappa stellare**, ognuno con la sua tabella di spawn (es. campo di partenza 100% ferro; campo del rame 65% ferro / 35% rame; campo del silicio 40/40/20; più rare "vene pure" come punti di interesse speciali). Regole: il **minerale vecchio non sparisce mai del tutto** (serve alle ricette); il gating dei minerali nuovi è doppio e già previsto dal design — il **tier del laser** decide quali asteroidi si rompono (idea 9), la **forza/massa del raggio traente** quali minerali si trainano. **Niente asteroidi rompibili con drop non raccoglibili** (frustrazione pura): se un campo è troppo avanzato, è il laser a non scalfire. La **sala mappe** (idea 11) rivelerà la composizione dei campi.
+**Motivazione:** rispetto a una tabella globale che cambia con la distanza (alla Mr. Mine), i campi discreti danno uno scopo alla mappa stellare, danno agency ("mi serve rame → vado al campo del rame", alla Idle Planet Miner), si bilanciano a tabelle e fanno da sponda alla sala mappe.
+
+### 2026-07-24 — Viaggio a tempo reale tra i campi; mining in rotta; mercantili come incontri
+**Scelta:** sulla mappa si sceglie il punto di interesse e la nave **viaggia in tempo reale**: durata = distanza / velocità (livello del motore a impulso, che diventa ciò che il nome promette). Durante la rotta il mining **non si ferma**: tabella "spazio aperto" (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il **viaggio avanza anche offline**. Nessun costo in carburante (l'energia è ritirata; il tempo è già un costo — se l'energia tornerà, il viaggio è il posto ovvio dove riattaccarla). I **mercantili** (idea 6) diventano **incontri casuali in rotta**.
+**Motivazione:** la selezione istantanea del campo (alla Idle Planet Miner) sarebbe più comoda ma ucciderebbe la fantasia del viaggio, cuore della lore; il mining in rotta rende il viaggio tempo di gioco degradato anziché tempo morto, e "parto e chiudo l'app" è un'ottima azione idle.
+
 ## Decisioni aperte
 
 *(nessuna al momento)*
