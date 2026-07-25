@@ -238,6 +238,12 @@
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
 - Da validare col gioco vero: la nuova cadenza del laser (l'IA a Lv 1 passa da 2,5 s a ~1,1 s: l'effetto è auto-limitato dallo spawn), il rubinetto dei Cookie con le missioni ripetibili, e i tempi di viaggio sul grafo (il rubinetto era tarato sui ~7-10 minuti verso Argo)
 
+> **Ripresa dei lavori (scritta il 25/07 a fine giornata):** il progetto è alla **v0.11**, pubblicata su GitHub e Drive; le tappe 1-4 della roadmap sono chiuse, la documentazione è online e allineata. La v0.11 è stata provata **in editor**, non ancora sul telefono: la prima cosa da fare è il **playtest sul dispositivo**, guardando in particolare l'**attracco** (è la nuova schermata di casa: i tre pulsanti in basso e il laser che deve restare zitto), la **mappa** (banner di rotta, sistemi non esplorati, tratteggi) e i **costi** nei pannelli dei moduli, visti finora solo a valori bassi.
+>
+> Prima di una build: `Assets/Editor/SmokeTest.cs` (menu **EvolvingSpace → Prova di fumo**, o `-executeMethod EvolvingSpace.EditorTools.SmokeTest.Run`) fa un giro completo in play mode e fallisce se qualcosa lancia. Attenzione: **la prova cancella il salvataggio locale** dell'editor (regala risorse di test e poi ripulisce) — se serve una partita di prova, rifarla dopo.
+>
+> Poi si riparte dalla roadmap qui sotto: il prossimo blocco di contenuto sono i **minerali nuovi** (silicio, titanio, alluminio), che la fonderia a livelli e il ciclo "a mano prima, automatico poi" sono già pronti ad accogliere.
+
 **Prossimo passo (roadmap aggiornata il 25/07 — dettagli nel [GDD](GDD.md)):**
 1. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli, e la fonderia a livelli lo rende meccanico: un livello per minerale
 2. **Altre stazioni** come checkpoint con gate di teletrasporto (nel grafo: **archi speciali**) e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
