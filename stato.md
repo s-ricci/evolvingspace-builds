@@ -193,6 +193,8 @@
 
 - **Idee 39-40 registrate** (25/07, direttiva): **changelog delle versioni** e **strumenti di sviluppo** nelle impostazioni — nuova **tappa 4** della roadmap, subito dopo la mappa a sistemi solari. I tre punti aperti sono stati **chiusi in giornata** (decisione in [decisioni.md](decisioni.md)): pannello **"SVILUPPATORE" separato** in fondo alle impostazioni per le risorse (il changelog resta un tasto normale), **"»" verde dentro la scheda** di viaggio e di costruzione per saltare l'attesa, risorse di test **sempre disponibili senza gate**
 
+- **[changelog.md](changelog.md) creato** (25/07): storico delle 8 release pubblicate (v0.2 → v0.9) ricostruito da questo documento, scritto per chi gioca. È la **fonte del changelog in gioco** (idea 39); in gioco si mostreranno solo le ultime 10 versioni. Pubblicato anche sul repo delle build e nella pagina unica. **Regola nuova: una voce va scritta a ogni build, prima di pubblicare la release** — l'aggancio ad `AndroidBuilder` si fa con la tappa 4
+
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
 - Nessuna riga di codice scritta per le direttive 19-40: è tutto ancora sulla carta
