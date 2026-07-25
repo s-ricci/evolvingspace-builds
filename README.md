@@ -8,6 +8,7 @@ Gioco mobile 2D **idle/incremental spaziale** in pixel art, orientamento portrai
 - [**Registro decisioni**](decisioni.md)
 - [**Registro delle idee**](idee.md) — proposte valutate: in roadmap o scartate (con motivazione)
 - [**Stato dei lavori**](stato.md)
+- [**Changelog**](changelog.md) — cosa cambia a ogni versione pubblicata
 - Versione HTML in un'unica pagina: **https://s-ricci.github.io/evolvingspace-builds/**
 
 ## 📱 Build Android
