@@ -145,7 +145,7 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-25</span>
+  <span class="updated">Aggiornato al 2026-07-25 — v0.10</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
@@ -240,7 +240,10 @@
     <tr><td>Cintura densa</td><td>100% ferro</td><td>1,25 (alta)</td><td>35%</td><td>~12 UA dalla partenza (4 min a motore base)</td></tr>
     <tr><td>Vena ricca</td><td>100% ferro</td><td>0,8</td><td>—</td><td>asteroidi grossi: HP ×2, drop ×2</td></tr>
     <tr><td>Stazione Argo</td><td>100% ferro</td><td>0,45</td><td>—</td><td>nascosta finché un mercantile non la rivela</td></tr>
-    <tr><td>Campo del rame</td><td>65% ferro / 35% rame</td><td>1,05</td><td>20% (sul ferro)</td><td>si attiva alla prima visita alla stazione</td></tr>
+    <tr><td>Campo del rame <em>(ARGO)</em></td><td>65% ferro / 35% rame</td><td>1,05</td><td>20% (sul ferro)</td><td>si attiva alla prima visita alla stazione</td></tr>
+    <tr><td>Anello esterno <em>(VESTA)</em></td><td>100% ferro</td><td>1,1</td><td>25%</td><td>il secondo campo di Vesta (v0.10)</td></tr>
+    <tr><td>Vena mista <em>(KORAX)</em></td><td>50% ferro / 50% rame</td><td>1,0</td><td>20% (sul ferro)</td><td>oltre il campo del rame</td></tr>
+    <tr><td>Filone di rame <em>(THULE)</em></td><td>20% ferro / 80% rame</td><td>0,9</td><td>15% (sul ferro)</td><td>il più lontano; senza laser Mk II è inutilizzabile</td></tr>
     <tr><td>Vena mista</td><td>50% ferro / 50% rame</td><td>1,0</td><td>20% (sul ferro)</td><td>oltre il campo del rame</td></tr>
     <tr><td>Filone di rame</td><td>20% ferro / 80% rame</td><td>0,9</td><td>15% (sul ferro)</td><td>il più lontano; senza laser Mk II è inutilizzabile da sé</td></tr>
   </table>
@@ -278,7 +281,7 @@
     <li><strong>Doppio gating</strong> dei minerali nuovi: il <strong>tier del laser</strong> decide quali asteroidi si rompono, la <strong>forza/massa del raggio traente</strong> quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.</li>
     <li><strong>Viaggio a tempo reale</strong>: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella <strong>"spazio aperto"</strong> (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche <strong>offline</strong>. Nessun costo in carburante. I <strong>mercantili</strong> sono incontri casuali in rotta.</li>
     <li>La <strong>sala mappe</strong> (stanza costruibile futura) rivelerà la composizione dei campi.</li>
-    <li><strong>Evoluzione decisa (idea 38, tappa 3):</strong> questa mappa piatta diventerà un <strong>grafo di sistemi solari</strong> — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, campi e stazioni <em>dentro</em> ogni sistema; i <strong>mercanti percorreranno rotte visibili sugli archi</strong> e si potranno intercettare invece di comparire a caso. I gate di teletrasporto delle stazioni-checkpoint saranno archi speciali.</li>
+    <li><strong>Dalla v0.10 la mappa è un GRAFO DI SISTEMI SOLARI</strong> (idea 38): i <strong>sistemi</strong> sono nodi, le <strong>tratte</strong> archi, si viaggia da sistema a sistema anche a <strong>più salti</strong> (percorso minimo sul grafo) e ogni sistema contiene i suoi campi e le sue stazioni. L'universo 1 ha <strong>5 sistemi</strong> — <strong>EOS</strong> (campo di partenza, cintura densa), <strong>VESTA</strong> (vena ricca, anello esterno), <strong>ARGO</strong> (stazione, campo del rame), <strong>KORAX</strong> (vena mista), <strong>THULE</strong> (filone di rame) — e <strong>7 tratte</strong>. I <strong>mercanti</strong> percorrono i loro archi con moto deterministico (si muovono anche a gioco chiuso, senza salvare nulla) e si <strong>intercettano</strong> passando entro 3,5 UA: deviare diventa una decisione informata. Le rotte multi-salto non prevedono attracchi intermedi; i <strong>gate di teletrasporto</strong> futuri saranno archi speciali.</li>
   </ul>
 
   <h4>Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)</h4>
@@ -339,7 +342,26 @@
 
   <blockquote>Quando una decisione viene presa, spostarla da "Aperte" a "Prese" con data e motivazione. Fonte: <code>Docs/decisioni.md</code>.</blockquote>
 
-  <h3>Decisioni prese <span class="badge done">29</span></h3>
+  <h3>Decisioni prese <span class="badge done">32</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-25 (sera, implementando la tappa 3) — I punti aperti del grafo di sistemi solari</h4>
+    <p><strong>Contesto:</strong> l'idea 38 lasciava sei punti da chiudere "quando toccherà". Toccava: ecco cosa si è deciso implementando.</p>
+    <p><strong>Scelta:</strong> (1) i <strong>mercanti si muovono anche a gioco chiuso</strong> con una funzione deterministica dell'orologio UTC — niente stato da salvare; (2) <strong>intercettazione per prossimità</strong>: se la rotta passa entro <strong>3,5 UA</strong> da un mercante scatta il solito banner e il tap devia; (3) il <strong>primo mercantile garantito sopravvive</strong> come rete di sicurezza a metà della prima rotta, altrimenti Argo potrebbe restare nascosta per sempre; (4) le <strong>rotte multi-salto non prevedono attracchi intermedi</strong> — si attraversa e basta, l'arrivo è uno solo anche offline; (5) <strong>migrazione gratuita</strong>: il sistema si deduce dal campo, il salvataggio non cambia; (6) la <strong>sala mappe</strong> svela anche i nomi dei sistemi mai raggiunti, le rotte dei mercanti si vedono dopo il primo incontro.</p>
+    <p><strong>Motivazione:</strong> il grafo doveva dare struttura senza gonfiare il salvataggio né moltiplicare i casi limite dell'offline, che è la parte più fragile del gioco (segnalazione 18 docet). Tutte e sei le scelte vanno nella stessa direzione: <strong>stato minimo, comportamento leggibile</strong>.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-25 (sera) — Cinque sistemi, non tre: quanto grande farlo</h4>
+    <p><strong>Scelta:</strong> l'universo 1 nasce con <strong>5 sistemi</strong> (EOS di casa, VESTA, ARGO, KORAX, THULE) e <strong>7 tratte</strong>, con più di un percorso verso quasi tutte le mete. VESTA guadagna un campo nuovo (<strong>Anello esterno</strong>): un sistema con un campo solo non è un sistema.</p>
+    <p><strong>Motivazione:</strong> con 3 nodi il grafo non si sarebbe distinto dalla mappa piatta; con 8-10 sarebbe stato vuoto di contenuto. Cinque bastano a rendere leggibile la distanza in salti, a dare due strade alternative (quindi una scelta) e a lasciare spazio ai sistemi che arriveranno coi minerali nuovi. I gate di teletrasporto entreranno come archi speciali.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-25 (sera) — Prova di fumo automatica prima delle build</h4>
+    <p><strong>Scelta:</strong> il progetto ha ora una <strong>prova di fumo</strong> (<code>Assets/Editor/SmokeTest.cs</code>, anche da riga di comando) che apre la scena in play mode, gira tutte le schermate e simula un giro di gioco (risorse, fonderia, viaggio interno, salto verso Argo, mercantile, missioni), fallendo se qualcosa lancia a runtime.</p>
+    <p><strong>Motivazione:</strong> qui la compilazione pulita dice poco — <strong>quasi tutta l'interfaccia nasce da codice a runtime</strong>, quindi un riferimento nullo non si vede finché non si apre quel pannello, e con l'auto-updater l'errore arriva dritto sui telefoni. Dieci secondi di play mode in batch costano molto meno di una build da ritirare.</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-25 — Menù sviluppatore separato, "finisci subito" dentro la scheda, nessun gate sulle risorse di test</h4>
@@ -532,6 +554,8 @@
 
   <blockquote>Le idee nascono nel documento Google condiviso, vengono valutate e finiscono <strong>in roadmap</strong> oppure tra le <strong>scartate</strong> (sempre con motivazione). Niente si perde. Fonte: <code>Docs/idee.md</code>.</blockquote>
 
+  <p><strong>Stato al 25/07/2026 (v0.10):</strong> le idee <strong>20-26 e 29-40 sono implementate</strong>. Restano fuori solo la <strong>19</strong> (relitti esplorabili, milestone in fondo alla roadmap), la <strong>27</strong> (tetto agli asteroidi grossi, rinviata) e la <strong>2</strong> (quadro elettrico, congelata col sistema energetico).</p>
+
   <h3>Importate il 2026-07-23 <span class="badge done">11 valutate</span></h3>
 
   <table>
@@ -617,6 +641,32 @@
   <h2>Stato dei lavori</h2>
 
   <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
+
+  <h3>Aggiornato al 2026-07-25 (sera) — v0.10</h3>
+
+  <h4>Tappe 1-4 della roadmap implementate in sequenza</h4>
+  <p>Tutto quello che era rimasto sulla carta dalle idee 19-40 è ora codice. Quattro blocchi, una sola build.</p>
+  <ul>
+    <li><strong>Tappa 1 — pacchetto rifiniture</strong> (idee 20-26, 29, 30, 32):
+      <ul>
+        <li><strong>Cadenza unica del laser</strong>: un solo timer (fascio + 0,12 s) per tap e IA; la "velocità di fuoco" <strong>accorcia il fascio</strong> (1,00 → 0,55 s ai Lv 1-10). Il <strong>tap ha la prelazione</strong>, a fascio acceso lo <strong>ridirige</strong>, e <strong>indica il bersaglio all'IA</strong>, che aspetta 0,4 s di reazione. Resa offline ricalcolata</li>
+        <li><strong>Fonderia a livelli</strong>: Lv 1 = costruzione (30 ferro grezzo · 30 s), Lv 2 = 60 rame grezzo · 60 s; pannello suo e ricette bloccate ma visibili</li>
+        <li><strong>Partenza a razzo</strong>: mondo ×8, stelle in scia, laser e raggio staccati, campo che resta indietro</li>
+        <li>QoL: barra risorse con Cookie e carico (via i lingotti), lingotti di ferro <em>e rame</em> dove si spendono, magazzino allineato a sinistra, "+" a ripetizione e <strong>MAX</strong> al banco, X delle impostazioni grande e lontana dal reset, <strong>zoom a pinch</strong> sulla mappa</li>
+      </ul>
+    </li>
+    <li><strong>Tappa 2 — riassetto dell'economia</strong> (idee 31, 33-37): missioni <strong>generate, ripetibili e randomizzate</strong> in equivalenti asteroide (0,75-1,00 Cookie/eq, tetto 200), bacheca che si rinnova <strong>a ogni attracco</strong> e un incarico per mercantile abbordato; nuovo modulo <strong>Sala comunicazioni</strong> (slot 2 → 5, +3% ricompense per livello, consegna a distanza); evoluzioni Mk II a <strong>500 Cookie</strong>; i mercanti non comprano più lingotti — vendono ferro grezzo e lingotti di rame; campi nuovi <strong>Vena mista</strong> e <strong>Filone di rame</strong></li>
+    <li><strong>Tappa 3 — mappa a grafo di sistemi solari</strong> (idea 38): <strong>5 sistemi</strong> come nodi e <strong>7 tratte</strong> come archi, percorsi minimi con Dijkstra e viaggio <strong>multi-salto</strong>; <strong>5 mercanti</strong> che percorrono i loro archi con moto <strong>deterministico</strong> (si muovono anche a gioco chiuso) e si intercettano passando a 3,5 UA; mappa a <strong>due viste</strong> (grafo e dettaglio del sistema) con distanza in <strong>salti</strong></li>
+    <li><strong>Tappa 4 — changelog e strumenti di sviluppo</strong> (idee 39-40): tasto <strong>CHANGELOG</strong> nelle impostazioni (le ultime 10 versioni, generate a ogni build da <code>changelog.md</code>), pulsante <strong>SVILUPPATORE</strong> separato con le risorse di test, pulsantino verde <strong>»</strong> dentro le schede di viaggio e costruzione</li>
+    <li><strong>Salvataggio v8</strong> con migrazione: la calibrazione della fonderia diventa il suo livello, le missioni della vecchia catena decadono (la bacheca si rigenera al primo attracco), sala comunicazioni salvata; la mappa a grafo non richiede conversioni</li>
+    <li><strong>Prova di fumo automatica</strong> (<code>Assets/Editor/SmokeTest.cs</code>): play mode in batch che gira tutte le schermate e un giro di gioco completo — la compilazione pulita non basta, quasi tutta l'UI nasce da codice</li>
+  </ul>
+
+  <h4>Da validare col playtest</h4>
+  <ul>
+    <li>La nuova cadenza del laser (l'IA a Lv 1 passa da 2,5 s a ~1,1 s: l'effetto è auto-limitato dallo spawn)</li>
+    <li>Il rubinetto dei Cookie con le missioni ripetibili, e i tempi di viaggio sul grafo (la banda 0,75-1,00 era tarata sui ~7-10 minuti verso Argo)</li>
+  </ul>
 
   <h3>Aggiornato al 2026-07-24</h3>
 
@@ -803,6 +853,20 @@
   <blockquote>Storico delle versioni pubblicate, scritto <strong>per chi gioca</strong>. È la fonte del changelog <strong>in gioco</strong> (idea 39): lì si mostreranno solo le ultime 10 versioni. Una voce nuova va scritta <strong>a ogni build</strong>, prima di pubblicare la release. Fonte: <code>Docs/changelog.md</code>.</blockquote>
 
   <p>Le APK sono nelle <a href="https://github.com/s-ricci/evolvingspace-builds/releases">Releases</a>. La <strong>v0.1</strong> fu il primo APK, prima che esistesse l'auto-updater: è finita solo su Drive e non ha una release.</p>
+
+  <h3>v0.10 <span class="updated">25/07/2026</span></h3>
+  <ul>
+    <li><strong>Il laser ha una cadenza sola</strong>, tap o IA che sia: l'upgrade di velocità accorcia la laserata (1,00 → 0,55 s) e si vede su entrambi. Il tap ha la precedenza, può spostare il fascio già acceso e <strong>decide il bersaglio anche per l'IA</strong></li>
+    <li>La <strong>fonderia diventa un modulo a livelli</strong>: Lv 1 (30 ferro grezzo) fonde il ferro, Lv 2 (60 rame grezzo) il rame. Le ricette dei minerali scoperti si vedono sempre, anche quando servirebbe un forno migliore</li>
+    <li><strong>Partenza a razzo</strong>: alla partenza la nave scatta, le stelle diventano scie, laser e raggio si staccano e il campo resta indietro</li>
+    <li><strong>Mappa a sistemi solari</strong>: i sistemi sono nodi collegati da tratte, si viaggia da un sistema all'altro (anche a più salti) e dentro ogni sistema ci sono i suoi campi. I <strong>mercanti si vedono muoversi sulle rotte</strong> e si intercettano scegliendo dove passare</li>
+    <li><strong>Missioni ripetibili</strong>: la bacheca di Argo si rinnova a ogni attracco, ogni mercantile abbordato offre un incarico, e le ricompense sono proporzionate al lavoro</li>
+    <li>Nuovo modulo <strong>Sala comunicazioni</strong>: segui e consegna le missioni da bordo, più slot e ricompense migliori salendo di livello</li>
+    <li>I mercanti <strong>non comprano più lingotti</strong>: vendono ferro grezzo e lingotti di rame in cambio di Cookie. Le evoluzioni Mk II costano <strong>500 Cookie</strong></li>
+    <li>Due campi nuovi: <strong>Vena mista</strong> e <strong>Filone di rame</strong></li>
+    <li><strong>Changelog in gioco</strong> e menù <strong>Sviluppatore</strong> nelle impostazioni; pulsantino verde <strong>»</strong> per chiudere subito viaggi e costruzioni</li>
+    <li>Barra risorse più pulita (Cookie e carico), zoom sulla mappa, mercante con <strong>MAX</strong> e "+" a ripetizione, magazzino e impostazioni sistemati</li>
+  </ul>
 
   <h3>v0.9 <span class="updated">24/07/2026</span></h3>
   <ul>
