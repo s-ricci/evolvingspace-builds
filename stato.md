@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-24
+## Aggiornato al 2026-07-25
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -199,7 +199,14 @@
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
 - Nessuna riga di codice scritta per le direttive 19-40: è tutto ancora sulla carta
 
-> **Ripresa dei lavori:** la sessione del 24/07 si chiude con la sola progettazione (idee 19-38 valutate, dieci decisioni chiuse, roadmap riscritta); il 25/07 si aggiungono le idee 39-40, sempre sulla carta. Si riparte dalla **tappa 1 — pacchetto rifiniture**, che si chiude con una build di verifica; il primo pezzo è la **cadenza unica del laser** (con la resa offline da ricalcolare) e la **fonderia a livelli**.
+> **Ripresa dei lavori (scritta il 25/07, per la sessione successiva):** dalla v0.9 in poi si è fatta **solo progettazione** — idee 19-40 valutate, undici decisioni chiuse, roadmap riscritta, changelog creato. **Nessuna riga di codice nuova: il progetto è fermo alla v0.9, che è testata e funzionante.**
+>
+> Si riparte dalla **tappa 1 — pacchetto rifiniture** (idee 20-26, 29, 30, 32), che si chiude con una build di verifica. Ordine consigliato, dal più delicato al più meccanico:
+> 1. **Cadenza unica del laser** (idee 24-25) — il pezzo più invasivo: timer del fascio unico, tap con prelazione che ridirige il fascio e punta anche l'IA, IA con 0,4 s di reazione. **Attenzione: va ricalcolata la resa offline**, che oggi assume il ritmo vecchio
+> 2. **Fonderia a livelli** (idea 32) — via le calibrazioni: Lv 1 = costruzione a 30 ferro grezzo, Lv 2 = 60 rame grezzo; le ricette dei minerali scoperti si vedono anche se bloccate
+> 3. **Partenza a razzo** (idea 26), poi le QoL di UI: barra risorse senza lingotti, materiali visibili dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa
+>
+> Prima di toccare il codice: aprire [decisioni.md](decisioni.md) alle voci del 24/07 (dopo la v0.9) e del 25/07 — i dettagli sono già chiusi lì, non vanno ridecisi. **La build si fa solo su richiesta** (incrementa la versione e va sui telefoni via auto-updater), e va accompagnata dalla voce nuova in [changelog.md](changelog.md).
 
 **Prossimo passo (roadmap aggiornata il 25/07 — dettagli nel [GDD](GDD.md)):**
 1. **Pacchetto rifiniture** (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica
