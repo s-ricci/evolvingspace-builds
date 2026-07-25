@@ -145,7 +145,7 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-25 — v0.10</span>
+  <span class="updated">Aggiornato al 2026-07-25 — v0.11</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
@@ -642,7 +642,19 @@
 
   <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
 
-  <h3>Aggiornato al 2026-07-25 (sera) — v0.10</h3>
+  <h3>Aggiornato al 2026-07-25 (sera) — v0.11</h3>
+
+  <h4>Rifiniture dopo il playtest in editor (v0.11)</h4>
+  <ul>
+    <li><strong>Barra risorse</strong>: Cookie sempre visibili (anche a zero) e ogni numero attaccato alla sua icona</li>
+    <li><strong>Mappa stellare</strong>: fondale skybox proprio, rotte <strong>tratteggiate da centro-sole a centro-sole</strong>, targhetta del nome stretta sul testo e vicina alla stella, nave accanto al nome (e non sparisce più tornando dalla vista di un sistema — era un bug)</li>
+    <li><strong>Banner di rotta anche sulla mappa</strong> (componente condiviso col mining): destinazione, conto alla rovescia e deviazione verso il mercantile da qualunque schermata</li>
+    <li><strong>Sistemi non esplorati chiusi</strong>: il tap apre la scheda di rotta ("sistema non esplorato"), non la mappa interna; la <strong>composizione</strong> dei campi si legge solo a casa o con la Sala Mappe</li>
+    <li><strong>All'ormeggio non si mina</strong>, né online né offline: la pagina di attracco è la schermata di casa, con mappa stellare · interno nave · impostazioni in basso e niente tasto "RIPARTI"</li>
+    <li><strong>Interno nave</strong>: lista che si ricompatta e <strong>"+ COSTRUISCI MODULO"</strong> in coda; nei pannelli il costo si legge <code>[icona] necessari/in magazzino</code> con le cifre abbreviate</li>
+  </ul>
+
+  <h4>Le quattro tappe della v0.10</h4>
 
   <h4>Tappe 1-4 della roadmap implementate in sequenza</h4>
   <p>Tutto quello che era rimasto sulla carta dalle idee 19-40 è ora codice. Quattro blocchi, una sola build.</p>
@@ -853,6 +865,17 @@
   <blockquote>Storico delle versioni pubblicate, scritto <strong>per chi gioca</strong>. È la fonte del changelog <strong>in gioco</strong> (idea 39): lì si mostreranno solo le ultime 10 versioni. Una voce nuova va scritta <strong>a ogni build</strong>, prima di pubblicare la release. Fonte: <code>Docs/changelog.md</code>.</blockquote>
 
   <p>Le APK sono nelle <a href="https://github.com/s-ricci/evolvingspace-builds/releases">Releases</a>. La <strong>v0.1</strong> fu il primo APK, prima che esistesse l'auto-updater: è finita solo su Drive e non ha una release.</p>
+
+  <h3>v0.11 <span class="updated">25/07/2026</span></h3>
+  <ul>
+    <li><strong>Alla stazione non si mina più</strong>: la pagina di attracco prende il posto della schermata principale e si riparte scegliendo una rotta dalla <strong>mappa stellare</strong>, raggiungibile dalla stazione insieme a interno nave e impostazioni</li>
+    <li>Il <strong>banner di rotta</strong> si vede anche sulla mappa stellare: sai sempre dove stai andando e puoi deviare verso un mercantile da qualunque schermata</li>
+    <li>I <strong>sistemi mai raggiunti</strong> non si possono più sbirciare: si apre la scheda di rotta ("sistema non esplorato")</li>
+    <li>La <strong>composizione dei campi</strong> si legge solo nel campo di casa o con la Sala Mappe costruita</li>
+    <li>I <strong>Cookie</strong> si vedono sempre nella barra in alto, anche a zero, e ogni numero sta attaccato alla sua icona</li>
+    <li>Mappa: fondale nuovo, rotte <strong>tratteggiate</strong> da sole a sole, targhetta del nome più stretta, navicella accanto al nome</li>
+    <li>Interno nave: <strong>"+ COSTRUISCI MODULO"</strong> in coda alla lista, che ora si ricompatta senza buchi; nei pannelli il costo si legge <strong>necessari/in magazzino</strong> con le cifre grandi abbreviate</li>
+  </ul>
 
   <h3>v0.10 <span class="updated">25/07/2026</span></h3>
   <ul>
