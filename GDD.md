@@ -40,12 +40,12 @@ L'interno è una **lista dei moduli costruiti** (overlay opaco: il mining contin
 | Modulo | Di default? | Cosa fa / upgrade |
 |---|---|---|
 | Sala comandi | sì | Il ponte. Nessun upgrade, per ora |
-| Magazzino | sì | Stiva i lingotti (senza limite) e il **minerale grezzo** (limite in unità di carico, 5 livelli — il deposito non è più del raggio traente) |
-| Motore a impulso | sì | 5 livelli: più velocità di avanzamento ⇒ **più asteroidi entrano in mappa** |
-| Laser minerario | sì | Upgrade velocità e danno (5 livelli l'uno) + **1 livello di "IA"** che lo automatizza (ex torretta automatica) |
+| Magazzino | sì | Stiva i lingotti (senza limite) e il **minerale grezzo** (limite in unità di carico, 10 livelli — il deposito non è più del raggio traente) |
+| Motore a impulso | sì | 10 livelli: più velocità di avanzamento ⇒ **più asteroidi entrano in mappa** (e rotte più rapide) |
+| Laser minerario | sì | Upgrade velocità e danno (10 livelli l'uno) + **IA a livelli per minerale** (Lv 1 ferro, Lv 2 rame) |
 | Fonderia | costruibile (**30 ferro grezzo** · 30 s) | 3 grezzo → 1 lingotto. **I livelli sono i minerali fondibili**: Lv 1 ferro (la costruzione stessa), Lv 2 rame (**60 rame grezzo** · 60 s), e un livello per ogni metallo futuro pagato nel suo grezzo. Tap sulla riga → schermata crafting |
-| Raggio traente | costruibile (4 lingotti · 20 s) | Traina i minerali a bordo (velocità = forza / massa); upgrade forza di trazione (5 livelli); **Mk II: secondo fascio** |
-| Sala mappe | costruibile (8 lingotti · 30 s), sbloccata dalla prima visita alla stazione | Rivela la composizione dei campi non visitati sulla mappa stellare |
+| Raggio traente | costruibile (4 lingotti · 20 s) | Traina i minerali a bordo (velocità = forza / massa); upgrade forza di trazione (10 livelli); **Mk II: secondo fascio**. In rotta si spegne |
+| Sala mappe | costruibile (8 lingotti · 30 s), sbloccata dalla prima visita alla stazione | Rivela la composizione dei campi non visitati e i nomi dei sistemi mai raggiunti |
 | Sala comunicazioni | costruibile (10 lingotti · 60 s), sbloccata dalla prima visita alla stazione | Missioni in corso e avanzamento; **consegna a distanza** (senza, si consegna solo ad Argo) e incarichi via radio dai mercantili. Livelli: **slot missioni** 2 → 5 e **ricompense +3% per livello** |
 
 ### Schermata 3 — Crafting (fonderia)
@@ -67,14 +67,15 @@ Catena decisa il 22/07/2026 e rivista il 23/07/2026 sera con la **direttiva 12**
 
 ```
 tap manuale (gratis, sempre)
-  → "IA" del laser minerario (5 lingotti): spara da solo,
-    1 laserata/2,5 s; upgrade velocità e danni (Lv 0–5)          [implementata]
+  → "IA" del laser minerario (5 lingotti): spara da solo, con la
+    STESSA CADENZA del tap (fascio + 0,12 s) più 0,4 s di reazione
+    — il tap ha la prelazione e le indica il bersaglio             [implementata]
   → raggio traente (modulo: 4 lingotti · 20 s): aggancia 1
-    minerale alla volta; forza di trazione Lv 0–5 = 0,8→2,8 u/s;
+    minerale alla volta; forza di trazione Lv 1–10 = 0,8→2,8 u/s;
     in futuro i materiali pesanti richiederanno più forza        [implementato]
   → magazzino: il grezzo occupa unità di carico, la capacità
     è l'upgrade del modulo (1000→3500)                           [implementato]
-  → motore a impulso Lv 0–5: più velocità ⇒ più asteroidi
+  → motore a impulso Lv 1–10: più velocità ⇒ più asteroidi
     in mappa (primo assaggio della velocità di viaggio)          [implementato]
   → mining offline: si ferma a magazzino pieno, tetto 24 h       [implementato]
   → viaggio (evoluzione 1b): mappa stellare, campi di asteroidi
@@ -103,27 +104,43 @@ Regole di pacing: non si allunga un capitolo gonfiando i numeri (il capitolo 1 d
 - **Doppio gating** dei minerali nuovi: il **tier del laser** decide quali asteroidi si rompono, la **forza/massa del raggio traente** quali minerali si trainano. Mai asteroidi rompibili con drop non raccoglibili: se un campo è troppo avanzato, è il laser a non scalfire.
 - **Viaggio a tempo reale**: si sceglie il punto di interesse sulla mappa, durata = distanza / velocità (livello del motore a impulso). In rotta il mining continua con la tabella **"spazio aperto"** (spawn rarefatto e povero); all'arrivo scatta la tabella del campo. Il viaggio avanza anche **offline**. Nessun costo in carburante. I **mercantili** sono incontri casuali in rotta.
 - La **sala mappe** (costruibile dopo la prima visita alla stazione) rivela la composizione dei campi non visitati; senza, i loro pannelli mostrano "???".
-- **Evoluzione decisa (idea 38, tappa 3 della roadmap):** questa mappa piatta a punti di interesse diventerà un **grafo di sistemi solari** — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, campi e stazioni *dentro* ogni sistema; i **mercanti percorreranno rotte visibili sugli archi** e si potranno intercettare invece di comparire a caso. I gate di teletrasporto delle stazioni-checkpoint saranno archi speciali.
+### La mappa è un grafo di sistemi solari (idea 38, implementata nella v0.10)
 
-### Numeri della v0.7 (implementati il 24/07/2026, da validare col playtest)
+- I **sistemi solari** sono i **nodi**, le tratte percorribili sono gli **archi**: si viaggia da sistema a sistema, anche a **più salti** (percorso minimo calcolato sul grafo), e ogni sistema contiene i propri **campi di asteroidi e stazioni**. La distanza si legge come **numero di salti**, non come pixel.
+- L'universo 1 ha **5 sistemi** e **7 tratte**:
+
+| Sistema | Contiene | Note |
+|---|---|---|
+| **EOS** | Campo di partenza · Cintura densa | il sistema di casa |
+| **VESTA** | Vena ricca · Anello esterno | rocce grosse e vecchie |
+| **ARGO** | Stazione Argo · Campo del rame | la milestone: hangar, missioni, primo rame |
+| **KORAX** | Vena mista | metà ferro, metà rame |
+| **THULE** | Filone di rame | il più lontano |
+
+- I **mercanti** non sono più incontri casuali: **cinque navi percorrono i loro archi** avanti e indietro con moto **deterministico** (funzione dell'orologio UTC: si muovono anche a gioco chiuso, senza salvare nulla) e si **intercettano** passando entro 3,5 UA. Si vedono muoversi sulla mappa dopo il primo incontro: deviare diventa una **decisione informata**. Il primo mercantile resta garantito a metà della prima rotta — deve rivelare Argo.
+- Le rotte multi-salto **non prevedono attracchi intermedi**: si attraversa e basta, l'arrivo è uno solo (anche offline). I **gate di teletrasporto** delle stazioni-checkpoint future saranno archi speciali.
+- La **sala mappe** svela la composizione dei campi e i nomi dei sistemi non ancora visitati.
+
+### Numeri correnti (v0.10 del 25/07/2026, da validare col playtest)
 
 **Campi dell'universo 1** (velocità di crociera: 3 UA/min, +20% per livello del motore a impulso; **in rotta non si mina**: alla partenza la nave **scatta in avanti**, il **laser smette di sparare** e il **raggio traente si spegne**, gli asteroidi e i minerali non raccolti restano indietro, la nave va verso il centro della visuale a motori spinti e stelle e mondo accelerano **×8** con le stelle in scia. Partire è una scelta: adesso, o dopo aver ripulito il campo):
 
-| Campo | Composizione | Densità (spawn) | Asteroidi densi | Note |
-|---|---|---|---|---|
-| Campo di partenza | 100% ferro | 1,0 (bassa) | — | casa |
-| Cintura densa | 100% ferro | 1,25 (alta) | **35%** | ~12 UA dalla partenza (4 min a motore base) |
-| Vena ricca | 100% ferro | 0,8 | — | asteroidi grossi: scala 1,25–1,6, **HP ×2, drop ×2** |
-| Stazione Argo | 100% ferro | 0,45 | — | nascosta ("???") finché un mercantile non la rivela |
-| Campo del rame | 65% ferro / 35% rame | 1,05 | 20% (sul ferro) | si attiva alla prima visita alla stazione |
-| Vena mista | 50% ferro / 50% rame | 1,0 | 20% (sul ferro) | oltre il campo del rame |
-| Filone di rame | 20% ferro / 80% rame | 0,9 | 15% (sul ferro) | il più lontano; senza laser Mk II è inutilizzabile da sé |
+| Campo | Sistema | Composizione | Densità (spawn) | Asteroidi densi | Note |
+|---|---|---|---|---|---|
+| Campo di partenza | EOS | 100% ferro | 1,0 (bassa) | — | casa |
+| Cintura densa | EOS | 100% ferro | 1,25 (alta) | **35%** | stesso sistema: ci si sposta in meno di un minuto |
+| Vena ricca | VESTA | 100% ferro | 0,8 | — | asteroidi grossi: scala 1,25–1,6, **HP ×2, drop ×2** |
+| Anello esterno | VESTA | 100% ferro | 1,1 | 25% | il secondo campo di Vesta |
+| Stazione Argo | ARGO | 100% ferro | 0,45 | — | nascosta ("???") finché un mercantile non la rivela |
+| Campo del rame | ARGO | 65% ferro / 35% rame | 1,05 | 20% (sul ferro) | si attiva alla prima visita alla stazione |
+| Vena mista | KORAX | 50% ferro / 50% rame | 1,0 | 20% (sul ferro) | oltre il campo del rame |
+| Filone di rame | THULE | 20% ferro / 80% rame | 0,9 | 15% (sul ferro) | il più lontano; senza laser Mk II è inutilizzabile da sé |
 
 **Asteroide denso** (fix post-v0.7): roccia scura compatta, **45 HP**, droppa **5 minerali**, scala +15%; la **corazza chiede ≥ 9 danni per colpo** (≈ danni Lv 5 su 10 al Mk I) — col laser al minimo non si scalfisce. La densità alta di un campo è nel mix di densi, non solo nello spawn: lo schermo non si affolla.
 
 **Rame**: asteroide da **80 HP** (vs 15 del ferro), si rompe solo col **laser Mk II** e l'IA lo bersaglia solo da **IA Lv 2**; il grezzo pesa **2 unità** e il raggio lo traina a metà velocità; 3 rame → 1 lingotto di rame in fonderia (serve la **fonderia Lv 2**: 60 rame grezzo, per forza minati a mano).
 
-**Mercantili** (fix post-v0.7 + ribilanciamento + revisione post-v0.9): si **avvistano** in rotta — primo garantito (va abbordato per rivelare Argo, e aspetta fino all'arrivo), poi probabilità **proporzionale alla rotta** (~10%/minuto di viaggio: 10 min ≈ garantito; finestra di 30 s tra il 35% e il 70% del tragitto). Banner "Mercantile in avvicinamento…": il tap devia verso di lui e **mette in pausa il timer di viaggio**, che riprende alla chiusura del banco. **Non comprano più lingotti** (il canale lingotti → Cookie è chiuso): al banco si **compra** ferro grezzo (2-3 per 1 Cookie) e lingotti di rame (12-15 Cookie l'uno, poche decine per incontro), e ogni mercantile abbordato **offre un incarico**. **Alla stazione solo baratto VERSO IL BASSO** (niente Cookie, mai verso l'alto): 1 rame → 2 ferro; ad Argo si comprano lingotti di rame a **10 Cookie** in quantità.
+**Mercantili** (dalla v0.10 vivono sul grafo, vedi sopra): si **incrociano** lungo la rotta quando la nave passa entro **3,5 UA** da uno di loro — primo garantito (va abbordato per rivelare Argo, e aspetta fino all'arrivo), gli altri restano a tiro **30 secondi**. Banner "Mercantile in avvicinamento…": il tap devia verso di lui e **mette in pausa il timer di viaggio**, che riprende alla chiusura del banco. **Non comprano più lingotti** (il canale lingotti → Cookie è chiuso): al banco si **compra** ferro grezzo (2-3 per 1 Cookie) e lingotti di rame (12-15 Cookie l'uno, poche decine per incontro), e ogni mercantile abbordato **offre un incarico**. **Alla stazione solo baratto VERSO IL BASSO** (niente Cookie, mai verso l'alto): 1 rame → 2 ferro; ad Argo si comprano lingotti di rame a **10 Cookie** in quantità.
 
 **Missioni** (ripetibili e randomizzate, decisione del 24/07 dopo la v0.9). Ogni missione vale un numero di **equivalenti asteroide (eq)** e paga **0,75-1,00 Cookie per eq**, con **tetto di 200 Cookie**:
 
@@ -148,7 +165,7 @@ Tasso **0,85-1,00** per le missioni che consumano materiale (consegne), **0,75-0
 
 **Offline**: la rotta avanza a gioco chiuso (arrivo compreso, stazione inclusa) ma **in rotta non si mina nemmeno offline**; il mining offline usa la tabella del campo di arrivo/corrente, e densi e rame contano solo se il laser li rompe (il rame anche solo con **IA Lv 2**). Restano il tetto delle 24 h e lo stop a magazzino pieno.
 
-**Salvataggio v7** (migrazione automatica): livelli 0-5 → 1-10 in proporzione (Lv 3/5 → Lv 6/10), IA installata → IA Lv 1, fonderia costruita → forno al ferro (anche al rame se ci sono già lingotti di rame).
+**Salvataggio v8** (migrazione automatica): la calibrazione della fonderia diventa il **livello** del modulo (fonderia costruita ⇒ almeno Lv 1); le missioni della vecchia catena fissa decadono e la bacheca si rigenera al primo attracco; la sala comunicazioni entra nel salvataggio; il sistema si deduce dal campo, quindi la mappa a grafo non richiede conversioni. *(v7: livelli 0-5 → 1-10 in proporzione, IA installata → IA Lv 1.)*
 
 ### Deposito a unità e upgrade del tier 1 (direttive 12 e 14 del 23/07/2026, implementati)
 
@@ -191,11 +208,11 @@ Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), 
 4. ~~**Mercantili e "Cookie"**~~ ✓ (24/07, v0.7) — incontri casuali in rotta a prezzi variabili; il primo rivela la Stazione Argo
 5. ~~**Prima stazione spaziale**~~ ✓ (24/07, v0.7) — la **Stazione Argo**: missioni → Cookie → evoluzioni Mk II all'hangar, campo del rame attivato, ricetta del rame in fonderia, commercio, sala mappe costruibile, raggio traente Mk II = secondo fascio
 6. ~~**Ribilanciamento del pacing**~~ ✓ (24/07, v0.9) — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto solo verso il basso
-7. **Rifiniture e fix** (idee 20-26, 29, 30, 32) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa
-8. **Riassetto dell'economia** (idee 31, 33-37) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame
-9. **Mappa stellare a sistemi solari** (idea 38) — la mappa diventa un **grafo**: sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i **mercanti smettono di essere casuali** e percorrono rotte visibili sugli archi, intercettabili
-10. **Changelog e strumenti di sviluppo** (idee 39, 40) — nelle impostazioni: **changelog delle versioni** (tasto normale) con le implementazioni e i fix di ciascuna; **pulsante "SVILUPPATORE" separato**, in fondo sotto il reset, che apre un pannello con **+1000 lingotti di ferro**, **+1000 lingotti di rame**, **+1000 Cookie** — sempre disponibili, senza gate. Il **"finisci subito"** sta invece **dentro la scheda** dell'attesa: pulsantino quadrato verde **"»"** accanto alla barra di progresso, nel banner di viaggio e nella riga del modulo in costruzione. Serve a testare i contenuti tardivi senza ricominciare da capo
-11. Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (che nel grafo sono archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
+7. ~~**Rifiniture e fix**~~ ✓ (25/07, v0.10) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa
+8. ~~**Riassetto dell'economia**~~ ✓ (25/07, v0.10) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame
+9. ~~**Mappa stellare a sistemi solari**~~ ✓ (25/07, v0.10) — 5 sistemi come nodi, 7 tratte come archi, viaggio multi-salto, campi e stazioni dentro i sistemi; i **mercanti percorrono rotte visibili** e si intercettano (moto deterministico, anche a gioco chiuso)
+10. ~~**Changelog e strumenti di sviluppo**~~ ✓ (25/07, v0.10) — tasto **CHANGELOG** nelle impostazioni (ultime 10 versioni, testo generato a ogni build da `changelog.md`), pulsante **SVILUPPATORE** separato con le risorse di test, e il **"»" verde** dentro le schede di viaggio e costruzione per chiudere subito l'attesa
+11. **Prossimo**: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (che nel grafo sono archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
 12. **Milestone "Relitti"** (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. **In fondo alla roadmap**, dopo tutto il resto
 
 ## UI generale
