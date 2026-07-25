@@ -229,6 +229,25 @@ Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'inco
 
 ---
 
+## Importate il 2026-07-25
+
+### 39. Changelog delle versioni nelle impostazioni
+**Idea (direttiva):** un tasto nel menù impostazioni che apre il **changelog delle varie versioni**, con una breve descrizione delle implementazioni e dei fix di ciascuna.
+**Valutazione:** naturale complemento dell'auto-updater: oggi il gioco si aggiorna da solo sul telefono e chi gioca si ritrova cose nuove senza sapere quali. Il materiale esiste già ed è scritto — [stato.md](stato.md) registra ogni build con il suo contenuto — quindi il lavoro è di sintesi e formato, non di ricerca. Costo basso, valore alto per il playtest a due: permette di sapere *cosa* provare dopo un aggiornamento. Da tenere: il changelog va **compilato a mano a ogni build** (una riga per versione, poche voci), altrimenti si sfalda; il posto giusto è dentro l'APK, non online, così si legge anche offline.
+**Punti da chiudere:** dove vive il testo (file in `Resources` compilato a build vs. costante nel codice) e se la versione corrente va evidenziata in cima.
+**Stato:** ✅ in roadmap — tappa 10 (strumenti), dopo la mappa a sistemi solari
+
+### 40. Strumenti di sviluppo: risorse a comando e "finisci subito"
+**Idea (direttiva):** nel menù impostazioni, tre tasti che generano **1000 lingotti di ferro**, **1000 lingotti di rame** e **1000 Cookie**; inoltre, **ogni azione che richiede tempo deve avere un pulsante per finirla istantaneamente** — costruzione dei moduli e viaggi. Servono a debuggare e testare il gioco senza ricominciare da capo ogni volta perdendo molto tempo.
+**Valutazione:** è la lacuna più costosa del progetto in questo momento. Ogni verifica di un contenuto tardivo (hangar Mk II, campo del rame, missioni di Argo) chiede oggi ore di gioco reale o un playtest da zero; con i costi esponenziali della v0.9 la distanza cresce ancora. Il "finisci subito" sui tempi vale quanto le risorse: viaggi e costruzioni sono minuti di attesa che non si possono saltare nemmeno chiudendo l'app, perché l'offline li fa avanzare in tempo reale. Costo implementativo minimo — le funzioni esistono già (`AddIngots`, `TrySpend...`, i timer di costruzione e di rotta su `Time.time`): si tratta di esporle.
+**Punti da chiudere:**
+1. **Visibili sempre o dietro una "modalità sviluppatore"?** Le build finiscono sui telefoni via auto-updater: finché i giocatori siamo noi due va bene averli in chiaro, ma vanno separati graficamente dal resto (sezione a parte, colore d'allarme) per non premerli per sbaglio — e va deciso ora come si spengono il giorno che il gioco esce.
+2. **Dove sta il "finisci subito"**: un tasto unico nelle impostazioni che chiude *tutto* quello che è in corso, oppure un tasto accanto a ogni barra di progresso (costruzione modulo, banner di viaggio). Il secondo è più preciso, il primo più rapido.
+3. **I 1000 di rame** hanno senso solo dopo la fonderia Lv 2: da capire se il tasto li dà comunque (bypassando il gate) o se resta grigio.
+**Stato:** ✅ in roadmap — tappa 10 (strumenti), dopo la mappa a sistemi solari
+
+---
+
 ## Idee scartate
 
 - **Idea 3 — Asteroide di deuterio** (scartata *per ora* il 23/07 sera, direttiva 12): implementata nella v0.3 e rimossa lo stesso giorno insieme a reattore ed energia; se il sistema energetico tornerà, tornerà con lui.
