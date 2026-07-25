@@ -307,7 +307,7 @@
   <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a magazzino pieno si fonde per liberare spazio. Ogni upgrade si compra <strong>nel pannello del suo modulo</strong> (direttiva 14: la sala comandi è il ponte, non il negozio).</p>
 
   <h3>Visione a medio-lungo termine</h3>
-  <p>Roadmap confermata il 24/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
+  <p>Roadmap aggiornata il 25/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
   <ol>
     <li><s><strong>Fonderia comoda</strong></s> ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali</li>
     <li><s><strong>Deposito a peso + schermata mining dinamica</strong></s> ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest</li>
@@ -318,6 +318,7 @@
     <li><strong>Rifiniture e fix</strong> (idee 20-26, 29, 30, 32) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa</li>
     <li><strong>Riassetto dell'economia</strong> (idee 31, 33-37) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame</li>
     <li><strong>Mappa stellare a sistemi solari</strong> (idea 38) — la mappa diventa un <strong>grafo</strong>: sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i <strong>mercanti</strong> smettono di essere casuali e percorrono rotte visibili sugli archi, intercettabili</li>
+    <li><strong>Changelog e strumenti di sviluppo</strong> (idee 39, 40) — nelle impostazioni: <strong>changelog delle versioni</strong> con implementazioni e fix di ciascuna; sezione di sviluppo con <strong>+1000 lingotti di ferro</strong>, <strong>+1000 lingotti di rame</strong>, <strong>+1000 Cookie</strong>; e un <strong>"finisci subito"</strong> su tutte le azioni a tempo (costruzione dei moduli, viaggi), per testare i contenuti tardivi senza ricominciare da capo</li>
     <li>Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
     <li><strong>Milestone "Relitti"</strong> (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. <strong>In fondo alla roadmap</strong>, dopo tutto il resto</li>
   </ol>
@@ -591,6 +592,14 @@
     <tr><td>38</td><td>Mappa stellare a <strong>sistemi solari</strong>: nodi collegati da archi, viaggio da sistema a sistema, ogni sistema coi suoi campi di asteroidi e stazioni; i <strong>mercanti</strong> non sono più eventi casuali — le loro rotte si vedono sugli archi e si possono intercettare</td><td>✅ In roadmap come <strong>tappa 3</strong>. È il salto che la mappa chiedeva: quella piatta regge 5-7 campi e diventa una nuvola con i minerali e le stazioni futuri. Il grafo dà gerarchia e scala; i gate di teletrasporto diventano archi speciali. Il pezzo migliore è il mercante intercettabile: da lotteria a decisione informata. Da chiudere: movimento dei mercanti a gioco chiuso, rotte multi-salto offline, cosa rivela la sala mappe, migrazione <code>campo</code> → <code>sistema + campo</code>, rivalidazione del rubinetto Cookie</td></tr>
   </table>
 
+  <h3>Importate il 2026-07-25 <span class="badge done">2 direttive</span></h3>
+
+  <table>
+    <tr><th>#</th><th>Direttiva</th><th>Verdetto</th></tr>
+    <tr><td>39</td><td>Tasto nelle impostazioni che apre il <strong>changelog delle varie versioni</strong>, con una breve descrizione di implementazioni e fix</td><td>✅ In roadmap come <strong>tappa 4</strong>. Complemento naturale dell'auto-updater: il gioco si aggiorna da solo sul telefono e chi gioca non sa cosa è cambiato. Il materiale è già scritto in <code>stato.md</code>, resta la sintesi. Va compilato a mano a ogni build (una riga per versione) e vive dentro l'APK, così si legge offline</td></tr>
+    <tr><td>40</td><td><strong>Strumenti di sviluppo</strong> nelle impostazioni: <strong>+1000 lingotti di ferro</strong>, <strong>+1000 lingotti di rame</strong>, <strong>+1000 Cookie</strong>, e un <strong>"finisci subito"</strong> su ogni azione a tempo (costruzione dei moduli, viaggi) — per debuggare e testare senza ricominciare da capo</td><td>✅ In roadmap come <strong>tappa 4</strong>. È la lacuna più costosa del progetto: ogni verifica di un contenuto tardivo (hangar Mk II, campo del rame, missioni) chiede ore di gioco reale, e coi costi esponenziali della v0.9 la distanza cresce. Il "finisci subito" vale quanto le risorse: viaggi e costruzioni avanzano in tempo reale anche a gioco chiuso, non si saltano in alcun modo. Costo implementativo minimo, le funzioni esistono già. Da chiudere: se stiano dietro una "modalità sviluppatore" (le build vanno sui telefoni via auto-updater), se il "finisci subito" sia un tasto unico o uno per barra di progresso, e se i 1000 di rame arrivino anche senza fonderia Lv 2</td></tr>
+  </table>
+
   <h3>Idee scartate <span class="badge open">1</span></h3>
   <p>L'idea 3 (asteroide di deuterio) è scartata <em>per ora</em>: implementata nella v0.3, rimossa con la direttiva 12; se reattore ed energia torneranno, tornerà con loro.</p>
 </section>
@@ -759,15 +768,17 @@
   <h4>In corso</h4>
   <ul>
     <li><strong>Build v0.9 pubblicata e test superato</strong>: il ribilanciamento regge al playtest. Resta il playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5)</li>
-    <li>Nessuna riga di codice scritta per le direttive 19-38: è tutto ancora sulla carta</li>
+    <li><strong>Idee 39-40 registrate</strong> (25/07, direttiva): <strong>changelog delle versioni</strong> e <strong>strumenti di sviluppo</strong> (risorse a comando + "finisci subito" su costruzioni e viaggi) nelle impostazioni — nuova <strong>tappa 4</strong>, dopo la mappa a sistemi solari. Restano aperti: modalità sviluppatore sì/no, "finisci subito" unico o per barra, rame senza fonderia Lv 2</li>
+    <li>Nessuna riga di codice scritta per le direttive 19-40: è tutto ancora sulla carta</li>
   </ul>
-  <blockquote><strong>Ripresa dei lavori:</strong> la sessione del 24/07 si chiude con la sola progettazione (idee 19-38 valutate, dieci decisioni chiuse, roadmap riscritta). Si riparte dalla <strong>tappa 1 — pacchetto rifiniture</strong>, che si chiude con una build di verifica; il primo pezzo è la <strong>cadenza unica del laser</strong> (con la resa offline da ricalcolare) e la <strong>fonderia a livelli</strong>.</blockquote>
+  <blockquote><strong>Ripresa dei lavori:</strong> la sessione del 24/07 si chiude con la sola progettazione (idee 19-38 valutate, dieci decisioni chiuse, roadmap riscritta); il 25/07 si aggiungono le idee 39-40, sempre sulla carta. Si riparte dalla <strong>tappa 1 — pacchetto rifiniture</strong>, che si chiude con una build di verifica; il primo pezzo è la <strong>cadenza unica del laser</strong> (con la resa offline da ricalcolare) e la <strong>fonderia a livelli</strong>.</blockquote>
 
-  <h4>Prossimo passo (roadmap aggiornata il 24/07, dopo la v0.9)</h4>
+  <h4>Prossimo passo (roadmap aggiornata il 25/07)</h4>
   <ol>
     <li><strong>Pacchetto rifiniture</strong> (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica</li>
     <li><strong>Riassetto dell'economia</strong> (idee 31, 33-37) in un colpo solo, perché sono tutte lo stesso numero: missioni ripetibili, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame. <strong>Salvataggio v8</strong> con migrazione (missioni vecchie, semantica dei livelli della fonderia, Cookie guadagnati col listino vecchio)</li>
     <li><strong>Refactoring della mappa stellare a sistemi solari</strong> (idea 38): mappa a <strong>grafo</strong> — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i <strong>mercanti</strong> percorrono <strong>rotte visibili sugli archi</strong> e si intercettano. Supera le decisioni del 24/07 sui mercantili casuali</li>
+    <li><strong>Changelog e strumenti di sviluppo</strong> (idee 39-40, direttiva del 25/07): tasto <strong>changelog</strong> nelle impostazioni (una voce per versione, implementazioni e fix in breve); sezione di sviluppo con <strong>+1000 lingotti di ferro</strong>, <strong>+1000 lingotti di rame</strong>, <strong>+1000 Cookie</strong>; <strong>"finisci subito"</strong> su ogni azione a tempo — costruzione dei moduli e viaggi</li>
     <li><strong>Silicio, titanio, alluminio</strong> coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette</li>
     <li><strong>Altre stazioni</strong> come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; <strong>intro a fumetto</strong>; l'<strong>universo 2</strong></li>
     <li><strong>Milestone "Relitti"</strong>: relitti esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto</li>
