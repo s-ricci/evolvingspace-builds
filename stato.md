@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-25
+## Aggiornato al 2026-07-25 (sera — v0.10)
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -195,24 +195,41 @@
 
 - **[changelog.md](changelog.md) creato** (25/07): storico delle 8 release pubblicate (v0.2 → v0.9) ricostruito da questo documento, scritto per chi gioca. È la **fonte del changelog in gioco** (idea 39); in gioco si mostreranno solo le ultime 10 versioni. Pubblicato anche sul repo delle build e nella pagina unica. **Regola nuova: una voce va scritta a ogni build, prima di pubblicare la release** — l'aggancio ad `AndroidBuilder` si fa con la tappa 4
 
+- **Tappe 1-4 della roadmap implementate in sequenza** (25/07): tutto quello che era rimasto sulla carta dalle idee 19-40 è ora codice. Quattro blocchi:
+
+  **Tappa 1 — pacchetto rifiniture** (idee 20-26, 29, 30, 32):
+  - **Cadenza unica del laser**: un solo timer (durata del fascio + 0,12 s di respiro) per tap e IA; la linea "velocità di fuoco" ora **accorcia il fascio** (1,00 → 0,55 s ai Lv 1-10, Mk II 0,55 → 0,35) e si vede su entrambi. Il **tap ha la prelazione** e a fascio acceso lo **ridirige**; l'IA aspetta **0,4 s di reazione** e **punta il bersaglio scelto col tap** finché è vivo (idea 24). Resa offline ricalcolata sulla nuova cadenza (`ShipState.AiShotInterval`)
+  - **Fonderia a livelli** (idea 32): via le calibrazioni — è un modulo come gli altri, Lv 1 = costruzione a **30 ferro grezzo · 30 s**, Lv 2 = **60 rame grezzo · 60 s**. Pannello suo (con "APRI IL FORNO"), ricette dei minerali scoperti sempre visibili e spente con "serve fonderia Lv N"
+  - **Partenza a razzo** (idea 26): mondo **×8**, stelle allungate in scia con transizione morbida, laser e **raggio traente staccati** per tutta la rotta, il campo resta indietro
+  - QoL: **barra risorse** con Cookie a sinistra e carico a destra (via i lingotti, idea 21); i **lingotti — ferro e rame — si leggono dove si spendono** (idea 22) e nel magazzino stanno a sinistra (idea 23); banco del mercante con **"+" a ripetizione e MAX** (idea 20, nuovo `RepeatPress`); impostazioni con **X grande e staccata dal reset** (idea 29); **zoom a pinch** sulla mappa (idea 30, nuovo `MapPanZoom` riusabile)
+
+  **Tappa 2 — riassetto dell'economia** (idee 31, 33-37):
+  - `Missions` riscritto: missioni **generate, ripetibili e randomizzate**, valore in **equivalenti asteroide** (0,75-1,00 Cookie/eq, tetto 200, cifre tonde). Quattro archetipi: consegna lingotti di ferro/rame, abbatti asteroidi in un campo, raccogli grezzo in un campo. **Bacheca di Argo che si rinnova a ogni attracco** (e solo lì: riaprire il pannello non la rigenera) e **un incarico per mercantile abbordato**
+  - Nuovo modulo **SALA COMUNICAZIONI** (10 lingotti · 60 s, sbloccata dalla stazione): missioni seguite e **consegnate da bordo**, slot 2 → 5 (`2 + (Lv-1)/3`), ricompense **+3% per livello**
+  - **Evoluzioni Mk II a 500 Cookie**; i mercantili **non comprano più lingotti**: vendono ferro grezzo (2-3 per Cookie) e **lingotti di rame** (12-15 Cookie, scorte limitate), ad Argo a **10 Cookie** — il doppio del valore equo, mai una scorciatoia. Baratto di stazione invariato (1 rame → 2 ferro)
+  - Due campi nuovi: **Vena mista** (50/50) e **Filone di rame** (20/80); nuova vista a lista scorrevole delle missioni (`MissionListView`, condivisa tra stazione e sala comunicazioni)
+
+  **Tappa 3 — mappa stellare a grafo di sistemi solari** (idea 38):
+  - `StarMap` rifatto: **5 sistemi** (EOS, VESTA, ARGO, KORAX, THULE) come nodi, **7 tratte** come archi, i campi vivono *dentro* i sistemi con coordinate locali. Percorsi con **Dijkstra**: si viaggia da sistema a sistema, anche a **più salti**, e la durata è la lunghezza del percorso più l'avvicinamento al campo
+  - `MerchantTraffic`: **5 mercanti** che percorrono i loro archi avanti e indietro con moto **deterministico dall'orologio UTC** — si muovono davvero anche a gioco chiuso, senza salvare nulla. Si **intercettano** passando loro vicino (raggio 3,5 UA); il primo incontro resta garantito a metà della prima rotta, perché deve rivelare Argo
+  - `StarMapScreen` a **due viste**: il grafo dei sistemi (archi accesi sulla rotta, mercanti in movimento, alone sul sistema corrente) e il dettaglio di un sistema coi suoi campi. Il popup di destinazione dice ora la distanza in **salti**
+  - Migrazione gratis: il sistema si deduce dal campo, i salvataggi vecchi restano validi
+
+  **Tappa 4 — changelog e strumenti di sviluppo** (idee 39-40):
+  - `ChangelogImporter` (editor) porta le **ultime 10 versioni** di [changelog.md](changelog.md) in `Resources/Text/changelog.txt`; gira da solo a ogni build. In gioco, tasto **CHANGELOG** nelle impostazioni con la lista scorrevole
+  - Pulsante **SVILUPPATORE** separato in fondo alle impostazioni: +1000 lingotti di ferro, +1000 di rame, +1000 Cookie, sempre disponibili
+  - Pulsantino verde **"»"** dentro la scheda dell'attesa: banner di viaggio e riga del modulo in costruzione (fonderia compresa, anche in upgrade)
+
+- **Salvataggio v8** con migrazione: la "calibrazione" della fonderia diventa il suo **livello** (fonderia costruita ⇒ almeno Lv 1), le missioni della vecchia catena fissa **decadono** (compresa "vendi 20 lingotti", che non esiste più) e la bacheca si rigenera al primo attracco; sala comunicazioni salvata
+- **Prova di fumo automatica** (`Assets/Editor/SmokeTest.cs`, menu **EvolvingSpace → Prova di fumo**): apre la scena in play mode e fa un giro completo (risorse, fonderia, tutte le schermate, viaggio interno, salto verso Argo, mercantile, missioni), fallendo se qualcosa lancia a runtime. La compilazione pulita non bastava: quasi tutta l'UI nasce da codice
+- Verifica: **compilazione batch pulita** (0 errori, 0 warning di progetto) e **prova di fumo superata**
+
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
-- Nessuna riga di codice scritta per le direttive 19-40: è tutto ancora sulla carta
-
-> **Ripresa dei lavori (scritta il 25/07, per la sessione successiva):** dalla v0.9 in poi si è fatta **solo progettazione** — idee 19-40 valutate, undici decisioni chiuse, roadmap riscritta, changelog creato. **Nessuna riga di codice nuova: il progetto è fermo alla v0.9, che è testata e funzionante.**
->
-> Si riparte dalla **tappa 1 — pacchetto rifiniture** (idee 20-26, 29, 30, 32), che si chiude con una build di verifica. Ordine consigliato, dal più delicato al più meccanico:
-> 1. **Cadenza unica del laser** (idee 24-25) — il pezzo più invasivo: timer del fascio unico, tap con prelazione che ridirige il fascio e punta anche l'IA, IA con 0,4 s di reazione. **Attenzione: va ricalcolata la resa offline**, che oggi assume il ritmo vecchio
-> 2. **Fonderia a livelli** (idea 32) — via le calibrazioni: Lv 1 = costruzione a 30 ferro grezzo, Lv 2 = 60 rame grezzo; le ricette dei minerali scoperti si vedono anche se bloccate
-> 3. **Partenza a razzo** (idea 26), poi le QoL di UI: barra risorse senza lingotti, materiali visibili dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa
->
-> Prima di toccare il codice: aprire [decisioni.md](decisioni.md) alle voci del 24/07 (dopo la v0.9) e del 25/07 — i dettagli sono già chiusi lì, non vanno ridecisi. **La build si fa solo su richiesta** (incrementa la versione e va sui telefoni via auto-updater), e va accompagnata dalla voce nuova in [changelog.md](changelog.md).
+- Da validare col gioco vero: la nuova cadenza del laser (l'IA a Lv 1 passa da 2,5 s a ~1,1 s: l'effetto è auto-limitato dallo spawn), il rubinetto dei Cookie con le missioni ripetibili, e i tempi di viaggio sul grafo (il rubinetto era tarato sui ~7-10 minuti verso Argo)
 
 **Prossimo passo (roadmap aggiornata il 25/07 — dettagli nel [GDD](GDD.md)):**
-1. **Pacchetto rifiniture** (idee 20-26, 29, 30, 32): cadenza unica del laser + tap che punta l'IA, fonderia a livelli, partenza a razzo, barra risorse senza lingotti, disponibilità dei materiali dove si spende, magazzino, mercante con quantità rapide, impostazioni, zoom sulla mappa → build di verifica
-2. **Riassetto dell'economia** (idee 31, 33-37) in un colpo solo, perché sono tutte lo stesso numero: missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame. **Salvataggio v8** con migrazione (missioni vecchie, semantica dei livelli della fonderia, Cookie già guadagnati col listino vecchio)
-3. **Refactoring della mappa stellare a sistemi solari** (idea 38): mappa a **grafo** — sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i **mercanti** smettono di essere incontri casuali e percorrono **rotte visibili sugli archi**, intercettabili. Supera le decisioni del 24/07 sui mercantili casuali; dettagli da chiudere quando ci si arriva (movimento dei mercanti a gioco chiuso, rotte multi-salto offline, migrazione `campo` → `sistema + campo`)
-4. **Changelog e strumenti di sviluppo** (idee 39-40, direttiva del 25/07): tasto **changelog** nelle impostazioni (una voce per versione, implementazioni e fix in breve, compilata a ogni build); pulsante **"SVILUPPATORE"** a parte, in fondo sotto il reset, con **+1000 lingotti di ferro**, **+1000 lingotti di rame**, **+1000 Cookie** sempre disponibili; **"»" verde** accanto alle barre di progresso di viaggio e costruzione per finire subito. Motivo: provare i contenuti tardivi senza ricominciare da zero e senza aspettare i timer reali
-5. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli
-6. **Altre stazioni** come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
-7. **Milestone "Relitti"**: relitti di stazione esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto
+1. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli, e la fonderia a livelli lo rende meccanico: un livello per minerale
+2. **Altre stazioni** come checkpoint con gate di teletrasporto (nel grafo: **archi speciali**) e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
+3. **Milestone "Relitti"**: relitti di stazione esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto
+4. Da rivedere dopo il playtest della v0.10: taratura della banda 0,75-1,00 Cookie/eq se i tempi di viaggio sul grafo si rivelano diversi; eventuale **modulo sensori** per vedere le rotte dei mercanti da più lontano (oggi si vedono tutte dopo il primo incontro); tetto agli asteroidi grossi (idea 27, rinviata)
