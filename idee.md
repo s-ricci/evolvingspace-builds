@@ -121,37 +121,37 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 ### 20. Mercante: quantità multiple e "+" a ripetizione
 **Idea:** comprare/vendere più pezzi in un colpo solo; tenendo premuto il "+" la quantità sale in fretta.
 **Valutazione:** QoL puro, il banco ha già stepper e tetto: manca la pressione prolungata (e un "MAX"). Con l'eliminazione della vendita (idea 33) riguarderà solo gli acquisti.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — "+"/"−" a ripetizione con accelerazione e tasto **MAX** su ogni banco
 
 ### 21. Barra risorse: via i lingotti, restano Cookie e carico
 **Idea:** togliere l'indicatore dei lingotti in alto, lasciare solo Cookie e carico.
 **Valutazione:** giusto — il carico è l'unico numero *azionabile* mentre si mina (a magazzino pieno si smette di raccogliere), i lingotti si guardano dove si spendono. Da verificare che i pannelli mostrino anche i **lingotti di rame**, che dal Mk II in poi sono la valuta dei livelli.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — barra con Cookie a sinistra e carico a destra; i lingotti (ferro **e rame**) si leggono dove si spendono
 
 ### 22. La disponibilità del materiale si vede dove si costruisce
 **Idea:** quando si vuole costruire qualcosa, la disponibilità di quel materiale compare direttamente lì, in chiaro.
 **Valutazione:** complementare alla 21: se il totale sparisce dalla barra deve comparire nel punto di spesa. In buona parte già così (pannelli modulo e fonderia): è più una verifica che un lavoro, estesa a rame e grezzo.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — header "FERRO: n · RAME: m" nei pannelli dei moduli, grezzo mostrato dove si paga in grezzo (fonderia)
 
 ### 23. Magazzino: indicatore dei lingotti a sinistra
 **Idea:** nella schermata magazzino l'indicatore dei lingotti va a sinistra, non al centro.
 **Valutazione:** allineamento, nessun effetto sul gioco.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10)
 
 ### 24. Il tap punta anche l'IA
 **Idea:** se si mina a mano mentre la torretta automatica è attiva, il tap su un asteroide deve far agganciare **quello** anche all'IA.
 **Valutazione:** trasforma il tap da "colpo in più" a **comando di puntamento**, che è il ruolo giusto per il giocatore attivo una volta che l'automazione esiste. Banale da implementare (l'IA ha già una funzione di scelta bersaglio).
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — dopo un tap l'IA tiene quel bersaglio finché è vivo e agganciabile
 
 ### 25. Cadenza unica del laser (manuale e automatico)
 **Idea:** la velocità d'attacco dev'essere una sola e valere per entrambi; oggi appena finisce la laserata manuale ne parte una automatica su un asteroide a caso.
 **Valutazione:** il difetto è reale e strutturale — manuale e IA hanno due orologi separati e quello dell'IA avanza solo quando spara lei. Ma "cadenza unica" ha tre letture con effetti opposti sul bilanciamento; scelta quella che non rompe l'early game né la regola "attivo batte passivo": **timer unico dettato dal fascio** (l'upgrade accorcia il fascio, 1,00 → 0,55 s, e si vede su entrambi), **tap con prelazione** che può ridirigere il fascio acceso, **IA con 0,4 s di tempo di reazione**. Dettagli e conseguenze in [decisioni.md](decisioni.md); la resa offline va ricalcolata.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — timer unico dettato dal fascio, tap con prelazione che lo ridirige, IA con 0,4 s di reazione; resa offline ricalcolata
 
 ### 26. Più velocità percepita in viaggio
 **Idea:** aumentare la velocità che si percepisce mentre la nave viaggia; la nave parte a razzo e lascia gli asteroidi indietro, e alla partenza smette di sparare e disabilita il raggio traente.
 **Valutazione:** una manciata di numeri (il mondo passa da ×4 a ×8, stelle in scia) più lo stacco di laser e raggio, che rende il viaggio coerente con "in rotta non si mina" e regala una piccola scelta al giocatore: partire subito o finire di raccogliere il campo.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — mondo ×8, stelle in scia, laser e raggio staccati per tutta la rotta
 
 ### 27. Tetto agli asteroidi grossi (1 in Vena Ricca, 2 nel campo denso)
 **Idea:** nei campi ricchi un solo asteroide grosso in campo visivo alla volta (se il random ne vuole un altro, lo genera piccolo); nel campo denso al massimo due.
@@ -166,47 +166,47 @@ Stati possibili: `🔎 in valutazione` · `✅ in roadmap` · `❌ scartata`
 ### 29. Impostazioni: X più grande e staccata dal reset
 **Idea:** rimpicciolire "RESETTA IL GIOCO", ingrandire la X di chiusura e spostarla più in basso, che ora è attaccata al pulsante di reset.
 **Valutazione:** oltre all'estetica toglie un rischio vero: due bersagli adiacenti di cui uno cancella la partita.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10)
 
 ### 30. Zoom sulla mappa stellare
 **Idea:** poter zoomare e de-zoomare la mappa, con un po' più di spazio ai lati anche dove non c'è nulla.
 **Valutazione:** sensato adesso che i campi passano da 5 a 7 (idea 37) e cresceranno ancora. Unica accortezza: il pinch non deve essere mangiato dalla soglia di trascinamento introdotta con la mappa trascinabile.
-**Stato:** ✅ in roadmap — pacchetto rifiniture
+**Stato:** ✅ fatta (v0.10) — pinch a due dita (che sospende il pan), limiti di trascinamento che crescono con lo zoom
 
 ### 31. A cosa servono i Cookie
 **Idea:** i Cookie servono a evolvere i tier delle strutture, a comprare altre tipologie di lingotti (in abbondanza alle stazioni, in minor quantità dai mercanti) liberandosi di quelli che non servono, e in futuro a comprare oggetti per il crafting.
 **Valutazione:** dà finalmente tre sbocchi alla valuta forte. Attenzione a uno: **comprare lingotti coi Cookie riapre dalla finestra il baratto verso l'alto** chiuso il 24/07 (ferro → missione → Cookie → rame). Non è fatale se il prezzo è alto: fissato a **10 Cookie per lingotto di rame**, cioè il doppio del suo valore in "equivalenti asteroide", con la regola permanente che il prezzo non scenda mai sotto il valore equo. Gli oggetti per il crafting arrivano coi relitti (idea 19).
-**Stato:** ✅ in roadmap — con l'economia; oggetti rinviati alla milestone dei relitti
+**Stato:** ✅ fatta (v0.10) — tier a 500 Cookie e acquisto di lingotti di rame (10 ad Argo, 12-15 dai mercanti); oggetti rinviati alla milestone dei relitti
 
 ### 32. Fonderia a livelli, niente calibrazioni
 **Idea:** la fonderia si potenzia come gli altri moduli — costruirla la prima volta costa **ferro grezzo** (Lv 1, fonde il ferro), portarla a Lv 2 costa **rame grezzo** (fonde il rame). Niente calibrazioni. Quando si scopre un minerale nuovo, la sua ricetta compare **subito** nella lista anche se non è fondibile, avvisando che serve un upgrade.
 **Valutazione:** semplificazione netta — un concetto solo (il livello del modulo) al posto di due, e la fonderia entra nella stessa grammatica degli altri moduli. Il ciclo fondativo "ogni minerale nuovo si mina prima a mano" **si rafforza**: il rame grezzo del Lv 2 va estratto a mano per forza (l'IA lo ignora finché non è Lv 2, e l'IA Lv 2 si paga in lingotti di rame che senza fonderia Lv 2 non esistono). Mostrare le ricette bloccate rende visibile il prossimo obiettivo. Nota obbligata: la prima fonderia si paga in grezzo perché senza fonderia i lingotti non esistono.
-**Stato:** ✅ in roadmap — subito
+**Stato:** ✅ fatta (v0.10) — Lv 1 = costruzione (30 ferro grezzo · 30 s), Lv 2 = 60 rame grezzo · 60 s; ricette bloccate visibili
 
 ### 33. Eliminare la vendita dei lingotti
 **Idea:** togliere la possibilità di vendere lingotti, limitarla allo scambio verso quelli di tier più basso.
 **Valutazione:** coerente con la decisione del 24/07 (baratto solo verso il basso) e chiude il rubinetto "tempo di mining → Cookie". Due conseguenze da gestire: muore la missione **"Rotta commerciale — vendi 20 lingotti ai mercantili"** (da sostituire, con migrazione per chi ce l'ha in corso) e il mercantile resta senza il suo banco principale — il suo nuovo valore diventa **offrire incarichi** (idea 34) e vendere lingotti in cambio di Cookie (idea 31).
-**Stato:** ✅ in roadmap — con l'economia
+**Stato:** ✅ fatta (v0.10) — i mercanti vendono e danno incarichi, non comprano più nulla
 
 ### 34. Missioni migliori, più numerose, ripetibili e anche dai mercanti
 **Idea:** migliorare le ricompense delle missioni di stazione, aggiungerne di nuove, renderle ripetibili con richieste e ricompense leggermente diverse ogni volta, e permettere anche ai mercanti di darne.
 **Valutazione:** è il pezzo che tiene in piedi tutto il resto: senza un rubinetto **ripetibile** la catena chiusa di 4 missioni (70 Cookie totali) non paga nemmeno un tier da 500. Impostate come missioni generate con valore in **equivalenti asteroide**, ricompensa 0,75-1,00 Cookie per equivalente e tetto di 200 (idea 36); il freno del rubinetto è il **viaggio ad Argo** (bacheca che si rinnova a ogni attracco) più un incarico per mercantile abbordato — nessun limite giornaliero, come da decisione del 24/07.
-**Stato:** ✅ in roadmap — con l'economia
+**Stato:** ✅ fatta (v0.10) — generate e ripetibili, bacheca che si rinnova a ogni attracco, un incarico per mercantile abbordato
 
 ### 35. Sala comunicazioni
 **Idea:** nuova stanza dell'interno nave con le missioni in corso e il loro avanzamento; da qui si concludono le missioni completate e si riscuotono le ricompense. Potenziandola aumentano le ricompense.
 **Valutazione:** incastra nella lista moduli (è la "stanza costruibile" che l'idea 11 prevedeva) e toglie un fastidio vero (oggi le missioni si vedono solo attraccando). Due avvertenze: la stazione perde uno dei suoi tre servizi — si tiene il motivo di tornarci facendo sì che gli **incarichi si prendano** ad Argo (o dai mercanti) e **si consegnino** da bordo; e il bonus alle ricompense è un moltiplicatore sulla valuta forte, quindi resta piccolo e cappato (+3% per livello). In compenso le si dà un secondo ruolo che serviva all'economia: **quante missioni puoi tenere attive** (2 → 5 coi livelli).
-**Stato:** ✅ in roadmap — con l'economia
+**Stato:** ✅ fatta (v0.10) — modulo costruibile (10 lingotti · 60 s): missioni da bordo, slot 2 → 5, ricompense +3%/livello
 
 ### 36. Costi e ricompense in Cookie
 **Idea:** il passaggio da tier 1 a tier 2 delle strutture costa **500 Cookie**; missioni di esempio: consegna 200 lingotti di ferro → 150, abbatti 30 asteroidi → 200, consegna 50 lingotti di rame → 200.
 **Valutazione:** il prezzo dei tier sale da 210 a 1500 Cookie complessivi ed è la scelta giusta (210 erano un pomeriggio), ma richiede il rubinetto ripetibile dell'idea 34. Sulle tre missioni di esempio c'era un'inversione sforzo/premio: 200 lingotti di ferro sono ~200 asteroidi per 150 Cookie (0,75 a testa), 30 asteroidi ne pagavano 200 (6,7 a testa, **9 volte tanto**, senza consumare nulla). Risolta con la banda fissa **0,75-1,00 Cookie per equivalente asteroide** e il tetto di 200 a missione, con cifre tonde (asteroidi a multipli di 5, lingotti di 10, grezzo di 30); il rame vale 5 equivalenti perché ha 80 HP contro 15 — con questa scala la "consegna 50 lingotti di rame → 200" torna esatta.
-**Stato:** ✅ in roadmap — con l'economia
+**Stato:** ✅ fatta (v0.10) — 500 Cookie a tier, ricompense in equivalenti asteroide (0,75-1,00, tetto 200)
 
 ### 37. Campi misti ferro + rame
 **Idea:** dopo il campo del rame, un campo misto ferro/rame; più altri due campi con rapporti 50/50 e 20/80.
 **Valutazione:** coerente con i campi discreti e con la regola "il minerale vecchio non sparisce mai del tutto" (anche il 20/80 conserva un quinto di ferro). Dà una progressione geografica al secondo metallo e un motivo per rimettersi in viaggio dopo la stazione. Non serve un gate esplicito: senza laser Mk II il rame non si scalfisce, quindi un campo 20/80 si auto-esclude da solo per chi non è pronto. Da tenere a mente per il futuro: la variante **densa** oggi esiste solo sul ferro.
-**Stato:** ✅ in roadmap — con l'economia
+**Stato:** ✅ fatta (v0.10) — Vena mista (50/50) e Filone di rame (20/80)
 
 ---
 
@@ -225,7 +225,7 @@ Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'inco
 4. **Cosa rivela cosa**: la sala mappe oggi svela la composizione dei campi; nel grafo può svelare il contenuto dei sistemi non visitati, e le rotte dei mercanti possono chiedere un modulo dedicato (sensori/radar) — un nuovo scopo per l'interno nave.
 5. **Salvataggio**: i campi attuali diventano i campi del sistema di partenza; serve una migrazione `campo` → `sistema + campo`.
 6. **Ricadute sul pacing dell'economia**: il rubinetto dei Cookie è tarato sul viaggio ad Argo (~7-10 minuti); se i tempi cambiano col grafo, la banda 0,75-1,00 Cookie per equivalente va rivalidata.
-**Stato:** ✅ in roadmap — **tappa 3**, subito prima dei nuovi minerali
+**Stato:** ✅ fatta (v0.10) — 5 sistemi, 7 tratte, percorsi multi-salto e mercanti deterministici intercettabili; i sei punti aperti sono stati chiusi implementando (vedi [decisioni.md](decisioni.md))
 
 ---
 
@@ -235,17 +235,17 @@ Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'inco
 **Idea (direttiva):** un tasto nel menù impostazioni che apre il **changelog delle varie versioni**, con una breve descrizione delle implementazioni e dei fix di ciascuna.
 **Valutazione:** naturale complemento dell'auto-updater: oggi il gioco si aggiorna da solo sul telefono e chi gioca si ritrova cose nuove senza sapere quali. Il materiale esiste già ed è scritto — [stato.md](stato.md) registra ogni build con il suo contenuto — quindi il lavoro è di sintesi e formato, non di ricerca. Costo basso, valore alto per il playtest a due: permette di sapere *cosa* provare dopo un aggiornamento. Da tenere: il changelog va **compilato a mano a ogni build** (una riga per versione, poche voci), altrimenti si sfalda; il posto giusto è dentro l'APK, non online, così si legge anche offline.
 **Punti da chiudere:** dove vive il testo (file in `Resources` compilato a build vs. costante nel codice) e se la versione corrente va evidenziata in cima.
-**Stato:** ✅ in roadmap — tappa 10 (strumenti), dopo la mappa a sistemi solari
+**Stato:** ✅ fatta (v0.10) — testo generato a ogni build da changelog.md in `Resources/Text`, tasto CHANGELOG nelle impostazioni (ultime 10 versioni, la corrente in cima)
 
 ### 40. Strumenti di sviluppo: risorse a comando e "finisci subito"
 **Idea (direttiva):** nel menù impostazioni, tre tasti che generano **1000 lingotti di ferro**, **1000 lingotti di rame** e **1000 Cookie**; inoltre, **ogni azione che richiede tempo deve avere un pulsante per finirla istantaneamente** — costruzione dei moduli e viaggi. Servono a debuggare e testare il gioco senza ricominciare da capo ogni volta perdendo molto tempo.
 **Valutazione:** è la lacuna più costosa del progetto in questo momento. Ogni verifica di un contenuto tardivo (hangar Mk II, campo del rame, missioni di Argo) chiede oggi ore di gioco reale o un playtest da zero; con i costi esponenziali della v0.9 la distanza cresce ancora. Il "finisci subito" sui tempi vale quanto le risorse: viaggi e costruzioni sono minuti di attesa che non si possono saltare nemmeno chiudendo l'app, perché l'offline li fa avanzare in tempo reale. Costo implementativo minimo — le funzioni esistono già (`AddIngots`, `TrySpend...`, i timer di costruzione e di rotta su `Time.time`): si tratta di esporle.
-**Punti chiusi il 25/07** (vedi [decisioni.md](decisioni.md)):
+**Punti chiusi il 25/07** (vedi [decisioni.md](decisioni.md)), tutti implementati nella v0.10:
 1. **Pulsante a parte**: le tre voci di risorse stanno dietro un tasto **"SVILUPPATORE"** in fondo alle impostazioni (sotto il reset), che apre un pannello suo — non sparse tra gli slider del volume, dove si premono per sbaglio. Il **changelog** resta invece un tasto normale del menù: è roba da giocatore.
 2. **Il "finisci subito" vive nella scheda**, non nelle impostazioni: **pulsantino quadrato verde con "»"** accanto alla barra di progresso, nel banner di viaggio e nella riga del modulo in costruzione. Si salta esattamente la cosa che si sta guardando.
 3. **Sempre tutto disponibile**, nessun gate: i 1000 lingotti di rame arrivano anche senza fonderia Lv 2 — sono strumenti di test, un gate li renderebbe inutili proprio nel caso che serve provare.
 **Resta da chiudere:** se il pannello sviluppatore vada nascosto in release con una costante di compilazione.
-**Stato:** ✅ in roadmap — tappa 10 (strumenti), dopo la mappa a sistemi solari
+**Stato:** ✅ fatta (v0.10) — pannello SVILUPPATORE separato e "»" verde nelle schede di viaggio e costruzione
 
 ---
 
