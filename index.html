@@ -145,12 +145,13 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-24</span>
+  <span class="updated">Aggiornato al 2026-07-25</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
     <a href="#idee">Idee</a>
     <a href="#stato">Stato</a>
+    <a href="#changelog">Changelog</a>
   </nav>
 </header>
 
@@ -776,6 +777,7 @@
   <ul>
     <li><strong>Build v0.9 pubblicata e test superato</strong>: il ribilanciamento regge al playtest. Resta il playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5)</li>
     <li><strong>Idee 39-40 registrate</strong> (25/07, direttiva): <strong>changelog delle versioni</strong> e <strong>strumenti di sviluppo</strong> nelle impostazioni — nuova <strong>tappa 4</strong>, dopo la mappa a sistemi solari. I tre punti aperti sono stati <strong>chiusi in giornata</strong>: pannello <strong>"SVILUPPATORE" separato</strong> per le risorse, <strong>"»" verde dentro la scheda</strong> di viaggio e costruzione, risorse <strong>sempre disponibili senza gate</strong></li>
+    <li><strong>Changelog creato</strong> (25/07): storico delle 8 release (v0.2 → v0.9) in <code>Docs/changelog.md</code>, sezione qui sotto e sul repo delle build. È la fonte del changelog in gioco. <strong>Regola nuova: una voce a ogni build, prima della release</strong></li>
     <li>Nessuna riga di codice scritta per le direttive 19-40: è tutto ancora sulla carta</li>
   </ul>
   <blockquote><strong>Ripresa dei lavori:</strong> la sessione del 24/07 si chiude con la sola progettazione (idee 19-38 valutate, dieci decisioni chiuse, roadmap riscritta); il 25/07 si aggiungono le idee 39-40, sempre sulla carta. Si riparte dalla <strong>tappa 1 — pacchetto rifiniture</strong>, che si chiude con una build di verifica; il primo pezzo è la <strong>cadenza unica del laser</strong> (con la resa offline da ricalcolare) e la <strong>fonderia a livelli</strong>.</blockquote>
@@ -790,6 +792,73 @@
     <li><strong>Altre stazioni</strong> come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; <strong>intro a fumetto</strong>; l'<strong>universo 2</strong></li>
     <li><strong>Milestone "Relitti"</strong>: relitti esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto</li>
   </ol>
+</section>
+
+<!-- ========================= CHANGELOG ========================= -->
+<section id="changelog">
+  <h2>Changelog</h2>
+
+  <blockquote>Storico delle versioni pubblicate, scritto <strong>per chi gioca</strong>. È la fonte del changelog <strong>in gioco</strong> (idea 39): lì si mostreranno solo le ultime 10 versioni. Una voce nuova va scritta <strong>a ogni build</strong>, prima di pubblicare la release. Fonte: <code>Docs/changelog.md</code>.</blockquote>
+
+  <p>Le APK sono nelle <a href="https://github.com/s-ricci/evolvingspace-builds/releases">Releases</a>. La <strong>v0.1</strong> fu il primo APK, prima che esistesse l'auto-updater: è finita solo su Drive e non ha una release.</p>
+
+  <h3>v0.9 <span class="updated">24/07/2026</span></h3>
+  <ul>
+    <li>Ribilanciamento del pacing: livelli <strong>1-10</strong> con costi esponenziali (~×1,6) invece di 1-5 aritmetici</li>
+    <li>L'<strong>IA del laser</strong> ora va per minerale: Lv 1 riconosce il ferro, Lv 2 il rame</li>
+    <li>La <strong>fonderia</strong> va calibrata su ogni minerale nuovo: il primo va sempre minato a mano</li>
+    <li>Baratto solo verso il basso (1 rame → 2 ferro), rame a <strong>80 HP</strong>, evoluzioni più care, mercantili proporzionali alla durata della rotta</li>
+  </ul>
+
+  <h3>v0.8 <span class="updated">24/07/2026</span></h3>
+  <ul>
+    <li><strong>Asteroidi densi</strong>: roccia da 45 HP che droppa 5 minerali, ma serve un laser da ≥ 9 danni per scalfirla</li>
+    <li>In viaggio non si mina più: la nave sfreccia e i <strong>mercantili si avvistano</strong>, il tap devia e mette in pausa il timer</li>
+    <li>Ad Argo si baratta (4 ferro → 1 rame), niente Cookie</li>
+    <li>Mappa stellare <strong>trascinabile</strong>, centrata sul campo dove ti trovi</li>
+  </ul>
+
+  <h3>v0.7 <span class="updated">24/07/2026</span></h3>
+  <ul>
+    <li><strong>Mappa stellare e viaggio</strong>: rotte a tempo reale tra i campi, che avanzano anche a gioco chiuso</li>
+    <li><strong>Mercantili</strong> in rotta e valuta <strong>Cookie</strong>; il primo incontro rivela la Stazione Argo</li>
+    <li><strong>Stazione Argo</strong>: missioni, commercio, hangar con le evoluzioni <strong>Mk II</strong> (il laser Mk II rompe il rame, il raggio Mk II ha due fasci), sala mappe costruibile</li>
+  </ul>
+
+  <h3>v0.6 <span class="updated">24/07/2026</span></h3>
+  <ul>
+    <li><strong>Fix</strong>: su Android l'app viene sospesa e ripresa, non riavviata — al rientro il mining offline non veniva conteggiato. Ora c'è il recupero alla ripresa</li>
+    <li>Il popup di costruzione non mostra più i moduli già costruiti</li>
+    <li>Barra risorse, pulsante nave e fonderia rifatti sui mockup</li>
+  </ul>
+
+  <h3>v0.5 <span class="updated">23/07/2026</span></h3>
+  <ul>
+    <li><strong>Interno nave a lista di moduli</strong> con pannelli di dettaglio e upgrade, in stile grafico nuovo</li>
+    <li>Nuovo modulo <strong>motore a impulso</strong>: più velocità, più asteroidi</li>
+    <li>Il mining non si ferma più nei menù: continua a lavorare in sottofondo</li>
+    <li><strong>Menù impostazioni</strong> con volumi separati per musica ed effetti</li>
+  </ul>
+
+  <h3>v0.4 <span class="updated">23/07/2026</span></h3>
+  <ul>
+    <li>Il sistema energetico è stato <strong>ritirato</strong> dopo il playtest</li>
+    <li>Il grezzo ora <strong>pesa</strong>: deposito a capacità limitata, si fonde per liberare spazio</li>
+    <li>Schermata mining <strong>dinamica</strong>: la nave avanza, gli asteroidi cadono dall'alto e vanno colpiti prima che escano</li>
+    <li><strong>Prima grafica vera</strong> (asteroidi e caccia disegnati), laserata continua da 1 secondo, musica in loop</li>
+  </ul>
+
+  <h3>v0.3 <span class="updated">23/07/2026</span></h3>
+  <ul>
+    <li><strong>Sistema energetico</strong>: asteroidi di deuterio, reattore che li brucia, batterie come cap dell'offline <em>(ritirato nella v0.4)</em></li>
+    <li>Fonderia più comoda: X di chiusura e "produci tutti"</li>
+  </ul>
+
+  <h3>v0.2 <span class="updated">22/07/2026</span></h3>
+  <ul>
+    <li>Prima build con <strong>auto-aggiornamento</strong>: il gioco si accorge da solo delle versioni nuove</li>
+    <li>Mining, interno nave, fonderia, salvataggio con progresso offline, torretta automatica e raggio traente</li>
+  </ul>
 </section>
 
 </main>
