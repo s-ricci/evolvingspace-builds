@@ -201,6 +201,24 @@
 **Motivazione:** il pulsante separato risolve il rischio del pollice — con quattro tasti che regalano risorse in mezzo agli slider del volume, prima o poi se ne preme uno per sbaglio e il salvataggio è rovinato; e il giorno dell'uscita si spegne un pulsante solo invece di ripulire un menù. Il "»" nella scheda è più preciso di un tasto unico "chiudi tutto": si salta esattamente la cosa che si sta guardando, senza toccare le altre in corso, e non serve navigare in un altro menù mentre si aspetta. Sulle risorse vince la ragione per cui esistono: sono strumenti di test, un gate le renderebbe inutili proprio nel caso che serve provare (verificare il rame *prima* di aver fatto la fonderia Lv 2). Il rame di test entra come lingotti già fatti, quindi non scavalca nessuna regola di gioco vera — scavalca solo il tempo.
 **Da chiudere quando toccherà:** se il pannello sviluppatore vada nascosto in release con una costante di compilazione o lasciato accessibile.
 
+### 2026-07-25 (sera, implementando la tappa 3) — I punti aperti del grafo di sistemi solari
+**Contesto:** l'idea 38 lasciava sei punti da chiudere "quando toccherà". Toccava: ecco cosa si è deciso implementando, con le alternative scartate.
+1. **I mercanti si muovono anche a gioco chiuso, e senza salvare niente.** La posizione di ogni mercante è una **funzione deterministica dell'orologio UTC** (arco + periodo + fase, moto avanti-indietro): riaprendo l'app sono dove sarebbero stati. L'alternativa — simularli e salvarne lo stato — avrebbe aggiunto dati al salvataggio e una simulazione da riallineare a ogni caricamento, per lo stesso risultato visibile.
+2. **Intercettazione per prossimità.** Mentre la nave percorre la rotta, se passa entro **3,5 UA** da un mercante scatta il solito banner "in avvicinamento" e il tap devia (rotta in pausa, come prima). Non serve un sistema di appuntamenti: la scelta informata sta nel *decidere la rotta* guardando dove sono.
+3. **Il primo mercantile garantito sopravvive**, ma come **rete di sicurezza**: se a metà della prima rotta non si è incrociato nessuno, uno si fa vivo lo stesso. Senza, la Stazione Argo potrebbe restare nascosta per sempre — un vicolo cieco che nessuna eleganza di design ripaga.
+4. **Rotte multi-salto: nessun attracco intermedio.** Il percorso attraversa i sistemi ma non ci si ferma; l'arrivo è uno solo, alla destinazione. L'offline resta quello di prima (un solo arrivo da risolvere) e la regola "in rotta non si mina" non ha eccezioni da spiegare.
+5. **Migrazione gratuita**: il sistema si **deduce dal campo** (`FieldDef.SystemId`), quindi il salvataggio continua a memorizzare solo il campo corrente e i salvataggi vecchi restano validi senza conversioni.
+6. **Cosa rivela cosa**: la **sala mappe** ora svela anche i nomi dei sistemi non visitati (oltre alla composizione dei campi); le rotte dei mercanti si vedono **dopo il primo incontro**. Un modulo "sensori" dedicato resta un'idea per quando i mercanti saranno tanti.
+**Motivazione:** il grafo doveva dare struttura senza gonfiare il salvataggio né moltiplicare i casi limite dell'offline, che è la parte più fragile del gioco (segnalazione 18 docet). Tutte e sei le scelte vanno nella stessa direzione: **stato minimo, comportamento leggibile**.
+
+### 2026-07-25 (sera) — Cinque sistemi, non tre: quanto grande farlo
+**Scelta:** l'universo 1 nasce con **5 sistemi** (EOS di casa, VESTA, ARGO, KORAX, THULE) e **7 tratte**, con più di un percorso possibile verso quasi tutte le mete. I sette campi esistenti si distribuiscono tra i sistemi; VESTA ne guadagna uno nuovo (**Anello esterno**, ferro con densi) perché un sistema con un campo solo non è un sistema.
+**Motivazione:** con 3 nodi il grafo non si sarebbe distinto dalla mappa piatta di prima; con 8-10 sarebbe stato vuoto di contenuto. Cinque bastano a rendere leggibile la distanza in salti, a dare due strade alternative (quindi una scelta) e a lasciare spazio ai sistemi che arriveranno coi minerali nuovi. I **gate di teletrasporto** delle stazioni future entreranno come archi speciali, senza toccare la struttura.
+
+### 2026-07-25 (sera) — Prova di fumo automatica prima delle build
+**Scelta:** il progetto ha ora una **prova di fumo** (`Assets/Editor/SmokeTest.cs`, anche da riga di comando) che apre la scena in play mode, gira tutte le schermate e simula un giro di gioco (risorse, fonderia, viaggio interno, salto verso Argo, mercantile, missioni), fallendo se qualcosa lancia a runtime.
+**Motivazione:** in questo progetto la compilazione pulita dice poco — **quasi tutta l'interfaccia nasce da codice a runtime**, quindi un riferimento nullo o un pannello costruito male non si vede finché non lo si apre, e con l'auto-updater l'errore arriva dritto sui telefoni. Dieci secondi di play mode in batch costano molto meno di una build da ritirare.
+
 ## Decisioni aperte
 
 *(nessuna al momento)*
