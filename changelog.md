@@ -9,6 +9,19 @@ Le APK sono nelle [Releases](https://github.com/s-ricci/evolvingspace-builds/rel
 
 ---
 
+## v0.10 — 25/07/2026
+
+- **Il laser ha una cadenza sola**, tap o IA che sia: l'upgrade di velocità accorcia la laserata (1,00 → 0,55 s) e si vede su entrambi. Il tap ha la precedenza, può spostare il fascio già acceso e **decide il bersaglio anche per l'IA**
+- La **fonderia diventa un modulo a livelli**: Lv 1 (30 ferro grezzo) fonde il ferro, Lv 2 (60 rame grezzo) il rame. Le ricette dei minerali scoperti si vedono sempre, anche quando servirebbe un forno migliore
+- **Partenza a razzo**: alla partenza la nave scatta, le stelle diventano scie, laser e raggio si staccano e il campo resta indietro. Partire ora è una scelta
+- **Mappa a sistemi solari**: i sistemi sono nodi collegati da tratte, si viaggia da un sistema all'altro (anche a più salti) e dentro ogni sistema ci sono i suoi campi. I **mercanti si vedono muoversi sulle rotte** e si intercettano scegliendo dove passare
+- **Missioni ripetibili**: la bacheca di Argo si rinnova a ogni attracco, ogni mercantile abbordato offre un incarico, e le ricompense sono proporzionate al lavoro
+- Nuovo modulo **Sala comunicazioni**: segui e consegna le missioni da bordo, più slot e ricompense migliori salendo di livello
+- I mercanti **non comprano più lingotti**: vendono ferro grezzo e lingotti di rame in cambio di Cookie. Le evoluzioni Mk II costano **500 Cookie**
+- Due campi nuovi: **Vena mista** e **Filone di rame**
+- **Changelog in gioco** e menù **Sviluppatore** nelle impostazioni; pulsantino verde **»** per chiudere subito viaggi e costruzioni
+- Barra risorse più pulita (Cookie e carico), zoom sulla mappa, mercante con **MAX** e "+" a ripetizione, magazzino e impostazioni sistemati
+
 ## v0.9 — 24/07/2026
 
 - Ribilanciamento del pacing: livelli **1-10** con costi esponenziali (~×1,6) invece di 1-5 aritmetici
