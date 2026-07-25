@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-25 (sera — v0.10)
+## Aggiornato al 2026-07-25 (sera — v0.11)
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -223,6 +223,16 @@
 - **Salvataggio v8** con migrazione: la "calibrazione" della fonderia diventa il suo **livello** (fonderia costruita ⇒ almeno Lv 1), le missioni della vecchia catena fissa **decadono** (compresa "vendi 20 lingotti", che non esiste più) e la bacheca si rigenera al primo attracco; sala comunicazioni salvata
 - **Prova di fumo automatica** (`Assets/Editor/SmokeTest.cs`, menu **EvolvingSpace → Prova di fumo**): apre la scena in play mode e fa un giro completo (risorse, fonderia, tutte le schermate, viaggio interno, salto verso Argo, mercantile, missioni), fallendo se qualcosa lancia a runtime. La compilazione pulita non bastava: quasi tutta l'UI nasce da codice
 - Verifica: **compilazione batch pulita** (0 errori, 0 warning di progetto) e **prova di fumo superata**
+
+- **Rifiniture sulla v0.10 dopo il playtest in editor** (25/07, sera tardi — provate in locale prima di pubblicare, poi **build v0.11**):
+  - **Barra risorse**: i Cookie si vedono sempre, anche a zero; icona e numero sono un gruppo affiancato che si stringe sul contenuto (prima il numero del carico finiva lontanissimo dalla sua cassa)
+  - **Mappa stellare**: fondale skybox proprio (faccia sinistra del pacchetto, diversa da quella del mining); rotte **tratteggiate da centro-sole a centro-sole**; targhetta del nome che si stringe sul testo e sta più vicina alla stella; **nave accanto al nome** invece che sopra il sole — e non sparisce più (era un bug: entrando nella vista di un altro sistema veniva nascosta e nessuno la riattivava)
+  - **Interno nave**: la lista si **ricompatta** (i moduli non ancora costruiti non lasciano più buchi) e **"+ COSTRUISCI MODULO"**, verde smorzato, sta in coda all'ultima riga
+  - **Pannelli dei moduli**: via il totale dei lingotti in cima; il costo si legge `[icona] necessari/in magazzino`, allineato a destra, con le cifre compattate (12,3k · 123k · 12,3M) e in rosso quando non bastano
+  - **Banner di rotta anche sulla mappa** (estratto in `TravelBannerUI`, condiviso col mining): destinazione, conto alla rovescia, "»" e deviazione verso il mercantile da qualunque schermata
+  - **Sistemi non esplorati chiusi**: il tap apre la scheda di rotta ("SISTEMA NON ESPLORATO") invece della vista interna; il nome del sistema resta visibile (è una stella), il contenuto no
+  - **Composizione dei campi** solo nel campo di casa o con la Sala Mappe: altrove "composizione sconosciuta", densità compresa
+  - **All'ormeggio non si mina** (né online né offline): la pagina di attracco diventa la schermata di casa, via il tasto "RIPARTI", e in basso compaiono mappa stellare · interno nave · impostazioni. I pulsanti di ritorno dicono dove portano ("TORNA ALLA STAZIONE" / "TORNA AL MINING")
 
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
