@@ -240,10 +240,11 @@ Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'inco
 ### 40. Strumenti di sviluppo: risorse a comando e "finisci subito"
 **Idea (direttiva):** nel menù impostazioni, tre tasti che generano **1000 lingotti di ferro**, **1000 lingotti di rame** e **1000 Cookie**; inoltre, **ogni azione che richiede tempo deve avere un pulsante per finirla istantaneamente** — costruzione dei moduli e viaggi. Servono a debuggare e testare il gioco senza ricominciare da capo ogni volta perdendo molto tempo.
 **Valutazione:** è la lacuna più costosa del progetto in questo momento. Ogni verifica di un contenuto tardivo (hangar Mk II, campo del rame, missioni di Argo) chiede oggi ore di gioco reale o un playtest da zero; con i costi esponenziali della v0.9 la distanza cresce ancora. Il "finisci subito" sui tempi vale quanto le risorse: viaggi e costruzioni sono minuti di attesa che non si possono saltare nemmeno chiudendo l'app, perché l'offline li fa avanzare in tempo reale. Costo implementativo minimo — le funzioni esistono già (`AddIngots`, `TrySpend...`, i timer di costruzione e di rotta su `Time.time`): si tratta di esporle.
-**Punti da chiudere:**
-1. **Visibili sempre o dietro una "modalità sviluppatore"?** Le build finiscono sui telefoni via auto-updater: finché i giocatori siamo noi due va bene averli in chiaro, ma vanno separati graficamente dal resto (sezione a parte, colore d'allarme) per non premerli per sbaglio — e va deciso ora come si spengono il giorno che il gioco esce.
-2. **Dove sta il "finisci subito"**: un tasto unico nelle impostazioni che chiude *tutto* quello che è in corso, oppure un tasto accanto a ogni barra di progresso (costruzione modulo, banner di viaggio). Il secondo è più preciso, il primo più rapido.
-3. **I 1000 di rame** hanno senso solo dopo la fonderia Lv 2: da capire se il tasto li dà comunque (bypassando il gate) o se resta grigio.
+**Punti chiusi il 25/07** (vedi [decisioni.md](decisioni.md)):
+1. **Pulsante a parte**: le tre voci di risorse stanno dietro un tasto **"SVILUPPATORE"** in fondo alle impostazioni (sotto il reset), che apre un pannello suo — non sparse tra gli slider del volume, dove si premono per sbaglio. Il **changelog** resta invece un tasto normale del menù: è roba da giocatore.
+2. **Il "finisci subito" vive nella scheda**, non nelle impostazioni: **pulsantino quadrato verde con "»"** accanto alla barra di progresso, nel banner di viaggio e nella riga del modulo in costruzione. Si salta esattamente la cosa che si sta guardando.
+3. **Sempre tutto disponibile**, nessun gate: i 1000 lingotti di rame arrivano anche senza fonderia Lv 2 — sono strumenti di test, un gate li renderebbe inutili proprio nel caso che serve provare.
+**Resta da chiudere:** se il pannello sviluppatore vada nascosto in release con una costante di compilazione.
 **Stato:** ✅ in roadmap — tappa 10 (strumenti), dopo la mappa a sistemi solari
 
 ---
