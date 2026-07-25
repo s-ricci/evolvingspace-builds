@@ -9,6 +9,17 @@ Le APK sono nelle [Releases](https://github.com/s-ricci/evolvingspace-builds/rel
 
 ---
 
+## v0.11 — 25/07/2026
+
+- **Alla stazione non si mina più**: ormeggiati alla banchina la pagina di attracco prende il posto della schermata principale, il laser tace e il raggio si spegne (anche a gioco chiuso). Si riparte scegliendo una rotta dalla **mappa stellare**, che ora è raggiungibile dalla stazione insieme a interno nave e impostazioni
+- Il **banner di rotta** si vede anche sulla mappa stellare: sai sempre dove stai andando e puoi deviare verso un mercantile da qualunque schermata
+- I **sistemi mai raggiunti** non si possono più sbirciare: toccandoli si apre la scheda di rotta ("sistema non esplorato") invece della mappa interna
+- La **composizione dei campi** si legge solo nel campo di casa o con la Sala Mappe costruita: altrove è "composizione sconosciuta"
+- I **Cookie** si vedono sempre nella barra in alto, anche a zero, e ogni numero sta attaccato alla sua icona
+- Mappa stellare: **fondale nuovo**, rotte **tratteggiate** da sole a sole, targhetta del nome più stretta e vicina alla stella, e la navicella accanto al nome (non più sopra il sole, e non sparisce più tornando dalla vista di un sistema)
+- Interno nave: **"+ COSTRUISCI MODULO"** verde in coda alla lista, che ora si ricompatta senza buchi
+- Nei pannelli dei moduli il costo si legge **necessari/in magazzino** accanto all'icona, con le cifre grandi abbreviate (12,3k · 12,3M), in rosso se non bastano
+
 ## v0.10 — 25/07/2026
 
 - **Il laser ha una cadenza sola**, tap o IA che sia: l'upgrade di velocità accorcia la laserata (1,00 → 0,55 s) e si vede su entrambi. Il tap ha la precedenza, può spostare il fascio già acceso e **decide il bersaglio anche per l'IA**
