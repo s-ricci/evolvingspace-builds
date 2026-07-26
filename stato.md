@@ -2,7 +2,7 @@
 
 > Documento vivo: aggiornare a ogni sessione di lavoro (cosa è fatto, cosa è in corso, prossimo passo).
 
-## Aggiornato al 2026-07-25 (sera — v0.11)
+## Aggiornato al 2026-07-26 (v0.11 pubblicata; idee 41-48 valutate e messe in roadmap)
 
 **Fatto:**
 - Progetto Unity 6000.4.10f1 creato
@@ -234,6 +234,12 @@
   - **Composizione dei campi** solo nel campo di casa o con la Sala Mappe: altrove "composizione sconosciuta", densità compresa
   - **All'ormeggio non si mina** (né online né offline): la pagina di attracco diventa la schermata di casa, via il tasto "RIPARTI", e in basso compaiono mappa stellare · interno nave · impostazioni. I pulsanti di ritorno dicono dove portano ("TORNA ALLA STAZIONE" / "TORNA AL MINING")
 
+- **8 voci nuove dal Google Doc valutate e messe in roadmap** (26/07 — idee **41-48** in [idee.md](idee.md)). Due feature grosse a lungo termine (**flotte e spedizioni**, **oggetti consumabili**), entrambe agganciate alla milestone dei relitti, e sei interventi immediati che formano la **tappa 1 della v0.12** (indicatore dei lingotti invertito, zoom vero sulla mappa, fonderia che apre il forno, tasto "costruisci modulo" che sparisce, focus della torretta, tenere premuto per sparare). La revisione ha trovato **un ribaltamento e tre punti da discutere**, tutti aperti in [decisioni.md](decisioni.md):
+  1. **L'indicatore dei costi era invertito rispetto a tutto il resto del gioco** (idea 48): la v0.11 lo aveva scritto `necessari/in magazzino`, ma barra risorse, livelli e missioni si leggono "quanto ho / quanto serve". Vince la direttiva, si torna a `disponibili/necessari`
+  2. **Le spedizioni della flotta sono reddito passivo** (idea 41) — prima cosa nel progetto a toccare la regola fissa "il gioco attivo batte sempre il passivo": va deciso cosa pagano e con quale tetto
+  3. **I consumabili a tempo** (idea 42): 30 minuti che scorrono anche a gioco chiuso o solo online? E il jetbooster dimezza il viaggio, che è il freno del rubinetto dei Cookie
+  4. **Focus della torretta** (idea 46): filtro esclusivo (l'IA può restare ferma) o priorità con ripiego? E se la nuova grammatica della fonderia (idea 44: il tap apre la funzione, gli upgrade dietro un pulsante) valga anche per la sala comunicazioni
+
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
 - Da validare col gioco vero: la nuova cadenza del laser (l'IA a Lv 1 passa da 2,5 s a ~1,1 s: l'effetto è auto-limitato dallo spawn), il rubinetto dei Cookie con le missioni ripetibili, e i tempi di viaggio sul grafo (il rubinetto era tarato sui ~7-10 minuti verso Argo)
@@ -242,10 +248,12 @@
 >
 > Prima di una build: `Assets/Editor/SmokeTest.cs` (menu **EvolvingSpace → Prova di fumo**, o `-executeMethod EvolvingSpace.EditorTools.SmokeTest.Run`) fa un giro completo in play mode e fallisce se qualcosa lancia. Attenzione: **la prova cancella il salvataggio locale** dell'editor (regala risorse di test e poi ripulisce) — se serve una partita di prova, rifarla dopo.
 >
-> Poi si riparte dalla roadmap qui sotto: il prossimo blocco di contenuto sono i **minerali nuovi** (silicio, titanio, alluminio), che la fonderia a livelli e il ciclo "a mano prima, automatico poi" sono già pronti ad accogliere.
+> Poi si riparte dalla roadmap qui sotto: il **26/07** sono arrivate 8 voci nuove dal Google Doc, e le sei piccole (idee 43-48) formano la **tappa 1 della v0.12**, da fare prima dei **minerali nuovi** (silicio, titanio, alluminio), che restano il prossimo blocco di contenuto. Tre punti vanno però discussi prima di toccare il codice: sono in fondo a [decisioni.md](decisioni.md).
 
-**Prossimo passo (roadmap aggiornata il 25/07 — dettagli nel [GDD](GDD.md)):**
-1. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli, e la fonderia a livelli lo rende meccanico: un livello per minerale
-2. **Altre stazioni** come checkpoint con gate di teletrasporto (nel grafo: **archi speciali**) e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
-3. **Milestone "Relitti"**: relitti di stazione esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto
-4. Da rivedere dopo il playtest della v0.10: taratura della banda 0,75-1,00 Cookie/eq se i tempi di viaggio sul grafo si rivelano diversi; eventuale **modulo sensori** per vedere le rotte dei mercanti da più lontano (oggi si vedono tutte dopo il primo incontro); tetto agli asteroidi grossi (idea 27, rinviata)
+**Prossimo passo (roadmap aggiornata il 26/07 — dettagli nel [GDD](GDD.md)):**
+1. **Rifiniture di interfaccia e comandi (v0.12)** — idee 43-48, tutte piccole e indipendenti: indicatore dei costi `disponibili/necessari` in tutti i punti di spesa (**48, urgente**), **zoom vero** sulla mappa col punto focale del pinch fermo (43), **fonderia che apre il forno** con i potenziamenti dietro un pulsante (44), **"COSTRUISCI MODULO" nascosto** quando non c'è nulla da costruire — e che torna quando Argo sblocca i moduli nuovi (45), **focus della torretta** per tipo di minerale (46), **tenere premuto** per continuare a sparare sullo stesso asteroide (47)
+2. **Silicio, titanio, alluminio** coi Mk successivi (pesi crescenti), nuovi campi e nuove ricette — il ciclo "a mano prima, automatico poi" è già pronto ad accoglierli, e la fonderia a livelli lo rende meccanico: un livello per minerale
+3. **Altre stazioni** come checkpoint con gate di teletrasporto (nel grafo: **archi speciali**) e milestone successive; **intro a fumetto**; l'**universo 2** come capitolo massimo
+4. **Milestone "Relitti"**: relitti di stazione esplorabili con minigioco, HP della tuta ed equipaggiamento — dopo tutto il resto. Porta con sé l'**inventario/stiva**, che serve anche ai **consumabili** (idea 42: jetbooster, overclock, adrenalina, health pack) e ai **pezzi** delle navi
+5. **Milestone "Flotte"** (idea 41, **dopo i relitti**: i pezzi delle navi vengono da lì): costruzione di astronavi, **spedizioni autonome** gestite dalla sala comunicazioni, più avanti i **pirati stellari** — da progettare risolvendo prima la questione del reddito passivo
+6. Da rivedere dopo il playtest della v0.11: taratura della banda 0,75-1,00 Cookie/eq se i tempi di viaggio sul grafo si rivelano diversi; eventuale **modulo sensori** per vedere le rotte dei mercanti da più lontano (oggi si vedono tutte dopo il primo incontro); tetto agli asteroidi grossi (idea 27, rinviata)
