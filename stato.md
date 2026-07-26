@@ -251,6 +251,8 @@
   - **Fuoco tenendo premuto** (idea 47): il dito giù su un asteroide continua a farlo bersagliare; la cadenza resta quella del fascio, quindi non si spara più in fretta. Se il bersaglio esplode ci si ferma, il drag dei minerali ha la precedenza, e in rotta/all'ormeggio non parte nulla
   - **Salvataggio v9** (retrocompatibile): un campo solo, il focus dell'IA, che nei salvataggi vecchi nasce "automatico"
 
+- **Build v0.12 pubblicata** (26/07): release su GitHub (APK + version.json) e copia su Drive. Contiene le sei rifiniture delle idee 43-48; voce nel [changelog](changelog.md) scritta prima della build, come da regola. **Da provare sul telefono** — la v0.11 non era mai stata testata su dispositivo, quindi questo playtest copre entrambe
+
 **In corso:**
 - Playtest lungo del pacing sui giorni (tier 1 ~1-2 giorni, tier 2 ~3-5: il verdetto vero arriva col gioco quotidiano)
 - Da validare col gioco vero: la nuova cadenza del laser (l'IA a Lv 1 passa da 2,5 s a ~1,1 s: l'effetto è auto-limitato dallo spawn), il rubinetto dei Cookie con le missioni ripetibili, e i tempi di viaggio sul grafo (il rubinetto era tarato sui ~7-10 minuti verso Argo)
