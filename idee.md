@@ -256,57 +256,54 @@ Il pezzo più prezioso è però il **mercante intercettabile**: trasforma l'inco
 ### 41. Flotte: costruzione di astronavi, spedizioni e pirati
 **Idea:** nuovo sistema di **creazione di astronavi** per formare una **flotta**; la tipologia di nave determina il tipo di spedizione eseguibile. La costruzione è laboriosa e richiede **pezzi appositi**, alcuni ottenibili **solo esplorando i relitti**. Costruita la prima nave, la **sala comunicazioni** diventa il posto da cui gestire le spedizioni: un menù con le missioni disponibili da far eseguire in autonomia alla nave selezionata. Più avanti, **combattimenti contro flotte di pirati stellari** usando le navi non impegnate in spedizioni (da programmare in seguito).
 **Valutazione:** è la seconda feature per dimensione dopo i relitti, e la prima che allarga il gioco **oltre la propria nave**. Tre cose la reggono bene: la **sala comunicazioni** è già il modulo della radio e degli incarichi, quindi la plancia della flotta ha già una casa (e le si darebbe un secondo asse di crescita, oggi ha solo slot missioni e +3%); i **pezzi dai relitti** danno finalmente uno sbocco al bottino di quella milestone, che oggi è dichiarata ma non ha destinatari; le **spedizioni** trasformano la mappa a grafo in qualcosa che si usa anche stando fermi.
-**Punti da chiudere quando toccherà:**
-1. ⚠️ **Le spedizioni sono reddito passivo**, ed è la prima cosa in tutto il progetto che tocca la regola fissa *"il gioco attivo batte sempre il passivo"*. Vanno decisi il tetto e il ritmo con la stessa cura del mining offline (che ha il tetto delle 24 h e il deposito pieno). Vedi la nota sotto.
-2. **Cosa pagano.** Se pagano Cookie diventano un **secondo rubinetto** parallelo alle missioni, ed è la manopola su cui è tarata tutta l'economia (0,75-1,00 Cookie per equivalente asteroide). Se pagano **pezzi, materiali rari e oggetti** restano fuori dalla taratura e alimentano se stesse e i relitti: è la strada più sicura.
-3. **Dove si costruiscono le navi**: hangar di Argo (coerente con "le cose grandi si fanno alle stazioni") o nuovo modulo cantiere a bordo. Nel primo caso la flotta è un altro motivo per tornare alla stazione.
-4. **I pirati sono un terzo sistema di combattimento** dopo il laser del mining e il minigioco dei relitti. Conviene farli nascere **dentro** le spedizioni (rischio della spedizione, esito risolto sulla mappa) invece che come schermata nuova.
-5. **Dipendenza dura**: se i pezzi arrivano solo dai relitti, la flotta **non può precedere** la milestone dei relitti.
-**Stato:** ✅ in roadmap — **milestone dopo i relitti**; punto 1 da discutere
+**Deciso il 26/07:** le spedizioni pagano **pezzi, materiali rari e oggetti**, non Cookie — restano fuori dalla taratura del rubinetto e si autoalimentano (le navi trovano i pezzi per altre navi, e alcuni componenti restano esclusiva dei relitti). Una piccola quota di Cookie resta **da valutare** quando la milestone entrerà in cantiere.
+**Punti ancora da chiudere quando toccherà:**
+1. **Dove si costruiscono le navi**: hangar di Argo (coerente con "le cose grandi si fanno alle stazioni") o nuovo modulo cantiere a bordo. Nel primo caso la flotta è un altro motivo per tornare alla stazione.
+2. **I pirati sono un terzo sistema di combattimento** dopo il laser del mining e il minigioco dei relitti. Conviene farli nascere **dentro** le spedizioni (rischio della spedizione, esito risolto sulla mappa) invece che come schermata nuova.
+3. **Dipendenza dura**: se i pezzi arrivano solo dai relitti, la flotta **non può precedere** la milestone dei relitti.
+**Stato:** ✅ in roadmap — **milestone dopo i relitti**
 
 ### 42. Oggetti consumabili nella stiva
 **Idea:** oggetti consumabili come **ricompensa secondaria** di contratti, spedizioni e relitti, stoccati nella **stiva** e utilizzabili in qualsiasi momento: **jetbooster** (velocità della nave ×2, tempi di viaggio dimezzati, 30 minuti), **overclock delle torrette** (danno ×2, 30 minuti), **adrenalina** (vita e danno del personaggio ×2), **health pack** (cura 30 HP — da valutare un limite di 1-2 usi per relitto e un drop raro, per non sbroccarlo).
 **Valutazione:** i quattro oggetti stanno su due piani diversi. **Adrenalina e health pack** hanno senso solo dentro il minigioco dei relitti (parlano di "personaggio" e HP della tuta): nascono e muoiono lì. **Jetbooster e overclock** agiscono invece sul gioco di oggi. Tutti e quattro chiedono la stessa cosa nuova: un **inventario** — la "stiva" non esiste, oggi ci sono il magazzino (lingotti, senza limite) e il carico del grezzo (a peso). Va progettato una volta sola, insieme ai **4 slot di equipaggiamento** che l'idea 19 già prevede.
-**Punti da chiudere quando toccherà:**
-1. ⚠️ **I 30 minuti scorrono a gioco chiuso?** Se sì il potenziamento evapora mentre dormi e spinge a controllare il telefono di continuo; se scorrono solo online, la regola "attivo batte passivo" resta intatta. La seconda è più coerente con tutto il resto.
-2. **Il jetbooster dimezza il viaggio, e il viaggio è il freno del rubinetto dei Cookie** (la banda 0,75-1,00 è tarata sui tempi di rotta). Va tenuto raro e non cumulabile con se stesso, altrimenti apre il rubinetto dal lato che l'economia non controlla.
-3. **L'overclock scavalca il doppio gating?** Oggi il rame si rompe solo col laser Mk II e gli asteroidi densi vogliono ≥ 9 danni a colpo: un ×2 temporaneo permetterebbe di rompere materiali che non dovresti ancora toccare. Proposta: raddoppia il danno **ma non abbassa le soglie di sblocco**.
-4. **Dove si usano**: serve un accesso rapido (la stiva è nell'interno nave, ma il jetbooster si usa in rotta e l'overclock mentre si mina).
-**Stato:** ✅ in roadmap — **con la milestone relitti** (inventario condiviso); jetbooster e overclock si possono anticipare se serve. Punto 1 da discutere
+**Deciso il 26/07:** i consumabili **si accumulano e si sommano** (20 jetbooster da 30 minuti = 10 ore di buff, usati uno dietro l'altro) e **a gioco chiuso sono in pausa**: alla riapertura si ritrovano come li si era lasciati. Implicazione tecnica: la durata si conta in **tempo di gioco attivo** e si salva come "secondi rimanenti", non come istante di scadenza sull'orologio UTC (a differenza di rotte e costruzioni).
+Cade anche la preoccupazione sul jetbooster: **accelerare i Cookie è lo scopo**, non un effetto da tappare — il rubinetto si difende alzando i prezzi del tier successivo, non rallentando chi gioca (vedi la regola del power creep in [decisioni.md](decisioni.md)).
+**Punti ancora da chiudere quando toccherà:**
+1. **L'overclock e le soglie di rottura.** Oggi il rame si rompe solo col laser Mk II e gli asteroidi densi vogliono ≥ 9 danni a colpo: un ×2 temporaneo permetterebbe di rompere materiali di un tier che non hai ancora. Da valutare se è un problema o un assaggio gradito — con la regola nuova ("il vecchio si polverizza, il nuovo resiste") probabilmente basta che le soglie del tier successivo siano fuori portata anche col ×2.
+2. **Dove si usano**: serve un accesso rapido (la stiva è nell'interno nave, ma il jetbooster si usa in rotta e l'overclock mentre si mina).
+**Stato:** ✅ in roadmap — **con la milestone relitti** (inventario condiviso); jetbooster e overclock si possono anticipare se serve
 
 ### 43. Zoom vero sulla mappa stellare
 **Idea (direttiva):** l'attuale zoom non è un vero ingrandimento: cambia la dimensione totale della mappa e la trascina automaticamente in alto/basso. Serve uno **zoom reale, senza traslazione automatica**.
 **Valutazione:** diagnosi corretta e causa identificata. `MapPanZoom` scala il contenuto e poi moltiplica anche la posizione (`SetPan(anchoredPosition × fattore)`): lo zoom è ancorato al centro dell'area virtuale, non al punto tra le dita, quindi la mappa "scappa" mentre si pizzica. Il fix è tenere fermo il **punto focale del pinch** (il pixel sotto le dita resta sotto le dita) e ricalcolare i limiti del pan attorno a quello. Lavoro contenuto, un solo file riusabile. Supera l'implementazione dell'idea 30, non la decisione.
-**Stato:** ✅ in roadmap — subito (rifiniture v0.12)
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — zoom ancorato al punto tra le dita
 
 ### 44. La fonderia si apre sul forno, i potenziamenti dietro un pulsante
 **Idea (direttiva):** chi tocca "Fonderia" vuole fondere, non vedere i potenziamenti: il tap deve aprire **direttamente il forno** con l'elenco dei lingotti. Dentro, un pulsante **"Potenziamenti"**, disabilitato con la scritta **(Max)** quando sono tutti al massimo.
 **Valutazione:** giusto sull'uso reale — la fonderia è l'unico modulo in cui si **entra per fare qualcosa**, non per comprare, e dal Lv 2 (che è il massimo attuale) il suo pannello è un vicolo cieco con dentro un solo bottone. L'eccezione alla grammatica "tap sul modulo → pannello upgrade" è legittima proprio perché è l'unico modulo con una schermata di funzione. Nota: **non è più l'unico** — la sala comunicazioni ha la lista delle missioni, oggi impilata nello stesso pannello degli upgrade. Conviene enunciare la regola in generale: *il tap apre la funzione, gli upgrade stanno dietro un pulsante* — e applicarla a entrambe, invece di ritrovarsi con due grammatiche.
-**Punto da chiudere:** ⚠️ se estendere la stessa regola alla **sala comunicazioni** (tap → lista missioni, upgrade dietro "Potenziamenti") o lasciarla com'è.
-**Stato:** ✅ in roadmap — subito (rifiniture v0.12); estensione alla sala comunicazioni da confermare
+**Deciso il 26/07:** la regola si applica **a entrambe** — fonderia e sala comunicazioni: *il tap apre la funzione, gli upgrade stanno dietro "POTENZIAMENTI", che si disabilita con "(Max)"*. Gli altri moduli, che di funzione hanno solo i propri upgrade, continuano ad aprire il loro pannello.
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — regola estesa anche alla sala comunicazioni
 
 ### 45. Via il tasto "Costruisci modulo" quando non c'è più niente da costruire
 **Idea:** valutare se far sparire il pulsante verde "costruisci modulo" nell'interno nave quando tutti i moduli disponibili sono già stati costruiti.
 **Valutazione:** conseguenza naturale della rifinitura del 24/07 (il popup nasconde i moduli già costruiti e mostra "Nessun nuovo modulo disponibile"): se il popup è sempre vuoto, il pulsante è un vicolo cieco. Un'accortezza sola, ma obbligatoria: la condizione è "nessun modulo **disponibile adesso**", ricalcolata in diretta — sala mappe e sala comunicazioni si sbloccano solo dopo Argo, quindi il pulsante deve **tornare** quando compaiono, altrimenti chi ha costruito tutto prima della stazione non lo rivede più.
-**Stato:** ✅ in roadmap — subito (rifiniture v0.12)
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — il tasto torna quando Argo sblocca i moduli nuovi
 
 ### 46. Focus della torretta per tipo di asteroide
 **Idea:** poter scegliere su quale **tipo di asteroide** l'IA dà la priorità.
 **Valutazione:** è il completamento naturale dell'idea 24 — il tap punta *un* asteroide, il focus è un **ordine permanente**. Serve davvero adesso che esistono i campi misti (Vena mista 50/50, Filone di rame 20/80): oggi l'IA spara al più basso e metà delle laserate finiscono nel ferro quando serve il rame. Il posto giusto è una card nel pannello del laser minerario, con le icone dei minerali, visibile da quando se ne conosce più di uno.
-**Punti da chiudere:**
-1. ⚠️ **Filtro esclusivo o priorità?** Il filtro rischia di lasciare l'IA ferma davanti a uno schermo pieno del tipo sbagliato (e gli asteroidi ignorati escono in fondo: è la pressione temporale del gioco). La **priorità** — "prima il rame, se non c'è il ferro" — non si blocca mai. Consigliata la priorità, con eventualmente un interruttore "solo questo" per chi lo vuole.
-2. Il focus **non deve scavalcare il tap** (l'idea 24 dice che il giocatore attivo comanda) e deve rispettare il doppio gating: non punta ciò che non può rompere, né il rame senza IA Lv 2.
-**Stato:** ✅ in roadmap — subito (rifiniture v0.12); punto 1 da confermare
+**Deciso il 26/07:** è una **priorità con ripiego**, non un filtro — l'IA insiste sul tipo scelto e, se in campo non ce n'è, torna al criterio di oggi (il più basso, quello che sta per uscire). Il tap resta sopra a tutto (idea 24) e il doppio gating vale sempre: non si punta ciò che non si può rompere, né il rame senza IA Lv 2.
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — card nel pannello del laser, AUTOMATICO/FERRO/RAME
 
 ### 47. Tenere premuto per continuare a sparare sullo stesso asteroide
 **Idea:** tenendo premuto un asteroide il laser continua a sparargli, senza doverlo ripremere in continuazione.
 **Valutazione:** QoL pura, **non tocca il bilanciamento**: la cadenza è già dettata dal fascio (decisione 25), quindi tenere premuto non spara più in fretta — risparmia solo il dito. Si incastra bene con quello che il tap già fa: ridirige il fascio acceso e designa il bersaglio all'IA; tenere premuto è "conferma l'ordine". Tre accortezze: il **trascinamento dei minerali** resta prioritario sulla pressione (com'è oggi); se l'asteroide esplode sotto il dito è meglio **fermarsi** invece di agganciarne un altro da soli (altrimenti il dito diventa una seconda IA involontaria); vale la regola "in rotta e all'ormeggio non si mina".
-**Stato:** ✅ in roadmap — subito (rifiniture v0.12)
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — il drag dei minerali resta prioritario
 
 ### 48. Indicatore dei lingotti: disponibili / necessari
 **Idea (direttiva, urgente):** l'indicatore accanto ai miglioramenti è invertito — con 30 lingotti su 60 necessari deve leggersi **30/60**, non 60/30.
 **Valutazione:** la direttiva **ribalta una scelta fatta il 25/07** con le rifiniture della v0.11, dove il costo era stato scritto come `necessari/in magazzino` (`SetCost` in `ShipInteriorScreen`). Ha ragione la direttiva: **ovunque altro nel gioco** si legge "quanto ho / quanto serve" — il carico nella barra risorse (`340/1000`), i livelli (`Lv 3/10`), l'avanzamento delle missioni (`12/30`). I pannelli dei moduli erano l'unico posto che si leggeva al contrario, ed è esattamente il posto in cui si fanno i conti. Modifica di una riga (`{have}/{cost}`), colori e cifre compattate invariati, più una passata di controllo sugli altri punti di spesa (fonderia, hangar, banco del mercante) perché l'ordine sia lo stesso dappertutto.
-**Stato:** ✅ in roadmap — subito, in testa alle rifiniture v0.12
+**Stato:** ✅ implementata il 26/07 (entrerà nella v0.12) — `SetCost` ora scrive `disponibili/necessari`
 
 ---
 
