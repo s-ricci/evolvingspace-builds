@@ -307,6 +307,51 @@ Cade anche la preoccupazione sul jetbooster: **accelerare i Cookie è lo scopo**
 
 ---
 
+## Importate il 2026-07-26, dopo la v0.12 — 7 voci ("NUOVE MODIFICHE")
+
+> Tre fix di navigazione della mappa, due interventi strutturali (cambio destinazione in rotta, sistema solare con orbite), il ripensamento dei mercanti e una levetta che risolve un problema di gameplay vero. **Tre punti da discutere** (⚠️).
+
+### 49. Levetta della velocità nella schermata mining
+**Idea (direttiva):** poter **regolare la velocità con una levetta** nella schermata di mining. Motivo: se non hai abbastanza danno, l'IA continua a colpire l'ultimo asteroide che sta per uscire dalla mappa, e finisce per **danneggiarli tutti senza distruggerne nemmeno uno**.
+**Valutazione:** la levetta è la **barra velocità** che il GDD prevedeva per l'evoluzione 1b e che non è mai arrivata; ha senso e dà al giocatore la manopola per accordare il flusso di asteroidi al proprio danno. Ma il difetto descritto ha una **seconda causa, indipendente dalla velocità**: l'IA scegle il bersaglio *a ogni laserata* e la regola è "il più basso". Mentre gli asteroidi scendono il più basso cambia di continuo, quindi il danno si spalma — succede anche a velocità dimezzata. La cura vera è **impegnare l'IA sul bersaglio scelto** finché muore o esce dal campo (è già quello che fa col bersaglio designato col tap, idea 24: basta estendere la regola). Le due cose insieme risolvono; la levetta da sola no.
+**Punti da chiudere:** ⚠️ (1) l'IA deve **restare sul bersaglio** fino alla sua fine? (proposta: sì — la regola "il più basso" vale solo nel momento della scelta); (2) la levetta scala **solo il mining** (spawn, discesa, stelle) o anche la velocità delle rotte? Tenerla sul mining è più semplice e non tocca i tempi di viaggio, su cui è tarato il rubinetto; (3) fino a che punto si può scendere (fino a fermarsi?), e va salvata (serve anche alla resa offline).
+**Stato:** 🔎 in valutazione — da chiudere i tre punti, poi subito
+
+### 50. Sulla mappa: zoom e spostamento insieme
+**Idea:** sulla mappa stellare e su quella di sistema si può zoomare **oppure** spostarsi, non le due cose insieme.
+**Valutazione:** vero e voluto a metà: `MapPanZoom` **sospende il pan durante il pinch** perché la soglia di trascinamento dell'EventSystem se lo mangiava. Ora che lo zoom è ancorato al punto tra le dita (idea 43) la strada è aperta: si sposta anche la vista seguendo lo **spostamento del punto medio** tra le due dita, che è il modo naturale di fare pan+zoom insieme.
+**Stato:** ✅ in roadmap — subito
+
+### 51. Un solo mercante, libero e più veloce
+**Idea (direttiva):** dopo il primo incontro la nave mercantile è **sempre e solo una**, libera di spostarsi **casualmente su tutte le rotte scoperte**; **raddoppiare la velocità** di spostamento dei mercanti.
+**Valutazione:** oggi sono **5 mercanti**, uno per arco, che fanno avanti e indietro sul proprio arco con moto deterministico dall'orologio UTC — così si muovono anche a gioco chiuso senza salvare nulla (decisione del 25/07). Un mercante unico e vagabondo è più leggibile ("quello" mercante, che segui sulla mappa) e più credibile di cinque navette in navetta. Due cose da tenere:
+1. **Il moto deve restare deterministico**, altrimenti l'intercettazione perde credibilità: il "caso" va derivato dall'orologio (la tratta scelta a ogni tappa è una funzione dell'indice di tappa), non da `Random`. Con le "rotte scoperte" la posizione diventa funzione anche dello stato del giocatore: accettabile, ma la traiettoria passata cambia quando si scopre una tratta nuova — conta solo la posizione attuale.
+2. ⚠️ **Il rubinetto secondario dei Cookie si stringe**: ogni mercantile abbordato dà un incarico, e da cinque possibilità se ne passa a una. I mercanti sono anche l'unico posto fuori Argo dove comprare lingotti di rame. Con la regola del power creep del 26/07 non è un dramma (la bacheca di Argo resta il rubinetto principale), ma va deciso se compensare — per esempio con **più incarichi per abbordaggio** o un mercante che si fa trovare più spesso lungo la rotta.
+**Stato:** 🔎 in valutazione — il punto 2 da confermare, il resto è chiaro
+
+### 52. Cambiare destinazione durante il viaggio
+**Idea (direttiva):** durante un viaggio deve **sempre** essere possibile partire verso un'altra destinazione; la rotta sul grafo si aggiorna e **parte dal punto in cui si è in quel momento**.
+**Valutazione:** oggi `Depart` rifiuta se si è già in rotta (`if (IsTraveling) return false`) e la mappa lo rispecchia: si aspetta l'arrivo. La direttiva è giusta — su una mappa a grafo il ripensamento è parte del viaggio. Serve però un pezzo che non esiste: **ripartire da un punto in mezzo a un arco**. Modello proposto: la posizione attuale diventa un nodo virtuale, e si sceglie il meglio tra *proseguire fino al prossimo sistema* e *tornare al precedente*, poi Dijkstra da lì; la durata nuova = quel tratto + il percorso + l'avvicinamento al campo. Da sistemare di conseguenza: il disegno della rotta sulla mappa (parte dalla nave, non dal sistema), il salvataggio della rotta (che oggi ricalcola il percorso da `CurrentSystem`, e quindi va esteso col punto di partenza reale) e il caso "cambio destinazione mentre sono affiancato a un mercantile".
+**Stato:** ✅ in roadmap — subito dopo i fix di mappa (è il più invasivo del gruppo)
+
+### 53. Il sistema solare con le orbite
+**Idea (direttiva):** nella mappa di sistema si vedono il **sole** e tutti i punti di interesse che gli **orbitano** attorno; orbite **leggermente visibili e tratteggiate**, **ellittiche** per simulare il 3D; i PoI girano nella propria orbita a **velocità ridotta ma percettibile**; il viaggio tra un PoI e l'altro **tiene conto della distanza effettiva** tra essi.
+**Valutazione:** è il salto estetico che manca alla vista di sistema, oggi una griglia di cluster su coordinate fisse — e ha una conseguenza di gameplay che va oltre la grafica: **le distanze interne diventano variabili nel tempo**. Il raggio dell'orbita si ricava dalla posizione attuale di ogni campo (`PositionUA`), l'angolo dall'orologio UTC (stesso trucco dei mercanti: nessuno stato da salvare, e i pianeti girano anche a gioco chiuso), lo schiacciamento dà il finto 3D. L'offline non ne soffre: la durata si calcola alla partenza e da lì scorre.
+**Punti da chiudere:** ⚠️ con le orbite due campi possono trovarsi **quasi sovrapposti** e il viaggio costerebbe pochi secondi (o al contrario il doppio del solito): serve un **minimo di durata** per le rotte interne e un occhio al massimo. Da decidere anche se i **campi orbitano tutti** o se le stazioni stanno ferme (una stazione in orbita è plausibile, ma "Argo si sposta" cambia la lettura della mappa).
+**Stato:** ✅ in roadmap — insieme ai fix di mappa, con il minimo di durata da fissare
+
+### 54. La X della mappa risale di un livello, via "◀ SISTEMI"
+**Idea (direttiva):** la X della mappa stellare **riporta al sistema**, quindi si può **togliere il pulsante "◀ SISTEMI"**.
+**Valutazione:** oggi la X è sempre l'uscita dalla mappa (torna al mining o alla stazione) e nella vista di sistema c'è in più "◀ SISTEMI" per risalire al grafo. Letta alla lettera la direttiva darebbe una X che dal grafo scende nel sistema *e* nessun modo di risalire: quindi la lettura giusta è l'altra, **la X come "torna indietro di un livello"** — nella vista di sistema riporta al grafo (ed è per questo che "◀ SISTEMI" diventa inutile), nel grafo esce dalla mappa. L'uscita esplicita resta comunque il pulsante in fondo ("TORNA AL MINING" / "TORNA ALLA STAZIONE"), quindi non si perde nulla.
+**Stato:** ✅ in roadmap — subito (interpretazione da confermare in mezza riga)
+
+### 55. Nome e X dentro un banner, non in trasparenza
+**Idea (direttiva):** il nome del sistema e la X per uscirne vanno **dentro un banner**, non lasciati in trasparenza sopra il contenuto; **stesso trattamento** per nome e X della mappa stellare.
+**Valutazione:** giusto e sarà più giusto ancora con le orbite (idea 53): il contenuto che scorre sotto un titolo trasparente lo rende illeggibile a intermittenza. Diventa una fascia in tinta col tema, con il titolo a sinistra e la X a destra, che fa anche da tetto all'area trascinabile — utile perché oggi il pan comincia anche sotto il titolo.
+**Stato:** ✅ in roadmap — subito, insieme alla 54 (stessa fascia)
+
+---
+
 ## Idee scartate
 
 - **Idea 3 — Asteroide di deuterio** (scartata *per ora* il 23/07 sera, direttiva 12): implementata nella v0.3 e rimossa lo stesso giorno insieme a reattore ed energia; se il sistema energetico tornerà, tornerà con lui.
