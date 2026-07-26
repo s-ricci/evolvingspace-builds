@@ -577,7 +577,25 @@
     <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
   </div>
 
-  <h3>Decisioni aperte <span class="badge open">1</span></h3>
+  <h3>Decisioni aperte <span class="badge open">4</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-26 (dopo la v0.12) &mdash; La levetta della velocit&agrave; e la causa vera dello spalmare danno (idea 49)</h4>
+    <p><strong>Il nodo:</strong> la levetta serve, ma il difetto ha una seconda causa: l'IA riscegle il bersaglio a ogni laserata con la regola "il pi&ugrave; basso", e il pi&ugrave; basso cambia mentre gli asteroidi scendono.</p>
+    <p><strong>Da decidere:</strong> se l'IA deve <strong>impegnarsi sul bersaglio</strong> finch&eacute; muore o esce (proposta: s&igrave; &mdash; "il pi&ugrave; basso" resta il criterio <em>di scelta</em>, non un ripensamento continuo); se la levetta scala <strong>solo il mining</strong> o anche le rotte; il minimo della levetta e il fatto che va salvata, perch&eacute; entra nella resa offline.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-26 (dopo la v0.12) &mdash; Un mercante solo: cosa fare del rubinetto secondario (idea 51)</h4>
+    <p><strong>Il nodo:</strong> da 5 mercanti a 1 si perdono possibilit&agrave; di incarico (uno per abbordaggio) e si stringe l'unico posto fuori Argo dove comprare lingotti di rame.</p>
+    <p><strong>Le strade:</strong> lasciarlo cos&igrave; (la bacheca di Argo resta il rubinetto principale, e la regola del power creep dice che non &egrave; il pacing a dover essere difeso) oppure compensare con <strong>pi&ugrave; incarichi per abbordaggio</strong> o un mercante che incrocia la rotta pi&ugrave; spesso. Il moto resta comunque <strong>deterministico dall'orologio</strong>.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-26 (dopo la v0.12) &mdash; Orbite: minimo di durata delle rotte interne, e chi orbita (idea 53)</h4>
+    <p><strong>Il nodo:</strong> con i PoI in orbita le distanze interne diventano variabili e due campi allineati ridurrebbero il viaggio a pochi secondi.</p>
+    <p><strong>Da decidere:</strong> un <strong>minimo (e un massimo) di durata</strong> per le rotte interne, e se le <strong>stazioni orbitano</strong> come i campi o restano ferme (Argo che si sposta cambia la lettura della mappa).</p>
+  </div>
 
   <div class="decision-card">
     <h4>2026-07-26 — Una quota di Cookie dalle spedizioni? (idea 41)</h4>
@@ -686,6 +704,21 @@
     <tr><td>48</td><td><strong>Indicatore dei lingotti invertito</strong>: con 30 su 60 necessari deve leggersi <strong>30/60</strong>, non 60/30</td><td>✅ Subito, in testa alla v0.12. <strong>Ribalta una scelta della v0.11</strong> (<code>necessari/in magazzino</code>) e ha ragione: ovunque altro nel gioco si legge "quanto ho / quanto serve" — carico <code>340/1000</code>, livelli <code>Lv 3/10</code>, missioni <code>12/30</code>. I pannelli dei moduli erano l'unico posto a leggersi al contrario, ed è dove si fanno i conti. <strong>Implementata il 26/07</strong>: gli altri punti di spesa erano già in quest'ordine</td></tr>
   </table>
 
+  <h3>Importate il 2026-07-26, dopo la v0.12 <span class="badge open">7 voci, da fare</span></h3>
+
+  <p>Tre fix di navigazione della mappa, due interventi strutturali, il ripensamento dei mercanti e una levetta che risolve un problema di gameplay vero. <strong>Tre punti da discutere</strong> (&#9888;&#65039;), aperti nella sezione <a href="#decisioni">Decisioni</a>.</p>
+
+  <table>
+    <tr><th>#</th><th>Idea / direttiva</th><th>Verdetto</th></tr>
+    <tr><td>49</td><td><strong>Levetta della velocit&agrave;</strong> nella schermata mining: senza abbastanza danno l'IA colpisce sempre l'ultimo asteroide che sta per uscire e li <strong>danneggia tutti senza distruggerne nemmeno uno</strong></td><td>&#128269; In valutazione. La levetta &egrave; la <strong>barra velocit&agrave;</strong> che il GDD prevedeva per la 1b e d&agrave; la manopola giusta al giocatore, ma il difetto ha una <strong>seconda causa indipendente</strong>: l'IA riscegle il bersaglio a ogni laserata con la regola "il pi&ugrave; basso", e il pi&ugrave; basso cambia mentre gli asteroidi scendono &mdash; il danno si spalma anche a velocit&agrave; dimezzata. &#9888;&#65039; Da chiudere: se l'IA deve <strong>impegnarsi sul bersaglio</strong> fino alla sua fine (proposta: s&igrave;), se la levetta scala solo il mining o anche le rotte, e fin dove si pu&ograve; scendere (va salvata: entra nella resa offline)</td></tr>
+    <tr><td>50</td><td>Sulla mappa si pu&ograve; <strong>zoomare o spostarsi, non insieme</strong></td><td>&#9989; Subito. Vero e voluto a met&agrave;: il pan si sospende durante il pinch perch&eacute; la soglia di trascinamento se lo mangiava. Ora che lo zoom &egrave; ancorato al punto tra le dita (idea 43) basta seguire lo <strong>spostamento del punto medio</strong></td></tr>
+    <tr><td>51</td><td>Dopo il primo incontro <strong>un solo mercante</strong>, libero di vagare <strong>casualmente sulle rotte scoperte</strong>; <strong>velocit&agrave; raddoppiata</strong></td><td>&#128269; In valutazione. Pi&ugrave; leggibile di cinque navette in navetta ("quello" mercante, che segui sulla mappa). Due vincoli: il moto deve restare <strong>deterministico dall'orologio</strong> (il "caso" si deriva dall'indice di tappa, non da <code>Random</code>, altrimenti l'intercettazione non &egrave; credibile); e &#9888;&#65039; <strong>il rubinetto secondario dei Cookie si stringe</strong> &mdash; un incarico per abbordaggio, da cinque possibilit&agrave; a una, e i mercanti sono l'unico posto fuori Argo dove comprare lingotti di rame. Da decidere se compensare</td></tr>
+    <tr><td>52</td><td><strong>Cambiare destinazione durante il viaggio</strong>, con la rotta che si aggiorna partendo dal punto in cui si &egrave;</td><td>&#9989; Subito, ma &egrave; il pi&ugrave; invasivo del gruppo: oggi <code>Depart</code> rifiuta se si &egrave; gi&agrave; in rotta. Serve un pezzo nuovo &mdash; <strong>ripartire da met&agrave; arco</strong>: la posizione attuale diventa un nodo virtuale e si scegle il meglio tra proseguire al prossimo sistema e tornare al precedente. Da sistemare di conseguenza il disegno della rotta (parte dalla nave), il salvataggio (che oggi ricalcola il percorso dal sistema corrente) e il cambio rotta mentre si &egrave; affiancati a un mercantile</td></tr>
+    <tr><td>53</td><td><strong>Sistema solare con le orbite</strong>: sole al centro, PoI in orbite ellittiche tratteggiate che girano lentamente, e viaggio che tiene conto della <strong>distanza effettiva</strong> tra i PoI</td><td>&#9989; Subito. &Egrave; il salto estetico che manca alla vista di sistema, oggi una griglia di cluster fissi, e ha una conseguenza di gameplay: le <strong>distanze interne diventano variabili nel tempo</strong>. Raggio dall'attuale posizione dei campi, angolo dall'orologio UTC (come i mercanti: nessuno stato da salvare, girano anche a gioco chiuso), schiacciamento per il finto 3D. &#9888;&#65039; Da fissare un <strong>minimo di durata</strong> per le rotte interne (due campi allineati costerebbero pochi secondi) e se le <strong>stazioni orbitano</strong> o stanno ferme</td></tr>
+    <tr><td>54</td><td>La <strong>X</strong> riporta al sistema, quindi via il pulsante <strong>"&#9664; SISTEMI"</strong></td><td>&#9989; Subito. Letta alla lettera darebbe una X che scende nel sistema e nessun modo di risalire: la lettura giusta &egrave; la <strong>X come "indietro di un livello"</strong> &mdash; nella vista di sistema riporta al grafo (ed &egrave; per questo che "&#9664; SISTEMI" diventa inutile), nel grafo esce dalla mappa. L'uscita esplicita resta il pulsante in fondo</td></tr>
+    <tr><td>55</td><td><strong>Nome e X dentro un banner</strong>, non in trasparenza sopra il contenuto &mdash; in entrambe le viste</td><td>&#9989; Subito, insieme alla 54. Giusto ora e ancora di pi&ugrave; con le orbite: il contenuto che scorre sotto un titolo trasparente lo rende illeggibile a intermittenza. La fascia fa anche da tetto all'area trascinabile, che oggi comincia sotto il titolo</td></tr>
+  </table>
+
   <h3>Idee scartate <span class="badge open">1</span></h3>
   <p>L'idea 3 (asteroide di deuterio) è scartata <em>per ora</em>: implementata nella v0.3, rimossa con la direttiva 12; se reattore ed energia torneranno, tornerà con loro.</p>
 </section>
@@ -716,6 +749,9 @@
     <li><strong>Fuoco tenendo premuto</strong>: il dito giù continua a bersagliare quell'asteroide, alla cadenza del fascio; il drag dei minerali ha la precedenza</li>
     <li><strong>Salvataggio v9</strong> retrocompatibile: un campo solo, il focus dell'IA, che nei salvataggi vecchi nasce "automatico"</li>
   </ul>
+
+  <h4>Seconda tornata dal Google Doc (26/07, dopo la v0.12)</h4>
+  <p>Sette voci nuove (idee <strong>49-55</strong>), tutte su <strong>mappa e viaggio</strong>: levetta della velocit&agrave; nel mining, pan+zoom insieme, un mercante solo libero e pi&ugrave; veloce, cambio destinazione in rotta, sistema solare con orbite ellittiche, X che risale di un livello (via "&#9664; SISTEMI") e nome + X dentro un banner. Sono il blocco successivo, prima dei minerali nuovi; <strong>tre punti restano da discutere</strong> (vedi <a href="#decisioni">Decisioni aperte</a>).</p>
 
   <h4>Build v0.12 pubblicata (26/07)</h4>
   <p>Release su GitHub (APK + version.json) e copia su Drive: contiene le sei rifiniture delle idee 43-48. <strong>Da provare sul telefono</strong> — la v0.11 non era mai stata testata su dispositivo, quindi questo playtest copre entrambe.</p>
