@@ -145,7 +145,7 @@
 
 <header>
   <h1>⟨ EVOLVING SPACE ⟩</h1>
-  <span class="updated">Aggiornato al 2026-07-25 — v0.11</span>
+  <span class="updated">Aggiornato al 2026-07-26 — v0.11, idee 41-48 in roadmap</span>
   <nav>
     <a href="#gdd">GDD</a>
     <a href="#decisioni">Decisioni</a>
@@ -311,7 +311,7 @@
   <p>Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e trascina) è sempre gratuito e disponibile (anti-softlock); a magazzino pieno si fonde per liberare spazio. Ogni upgrade si compra <strong>nel pannello del suo modulo</strong> (direttiva 14: la sala comandi è il ponte, non il negozio).</p>
 
   <h3>Visione a medio-lungo termine</h3>
-  <p>Roadmap aggiornata il 25/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
+  <p>Roadmap aggiornata il 26/07/2026 (dettagli nella sezione <a href="#idee">Idee</a>):</p>
   <ol>
     <li><s><strong>Fonderia comoda</strong></s> ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali</li>
     <li><s><strong>Deposito a peso + schermata mining dinamica</strong></s> ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest</li>
@@ -319,12 +319,14 @@
     <li><s><strong>Mercantili e "Cookie"</strong></s> ✓ (24/07, v0.7) — incontri casuali in rotta a prezzi variabili; il primo rivela la Stazione Argo</li>
     <li><s><strong>Prima stazione spaziale</strong></s> ✓ (24/07, v0.7) — la <strong>Stazione Argo</strong>: missioni → Cookie → evoluzioni Mk II all'hangar, campo del rame attivato, ricetta del rame in fonderia, commercio, sala mappe costruibile, raggio Mk II = secondo fascio</li>
     <li><s><strong>Ribilanciamento del pacing</strong></s> ✓ (24/07, v0.9) — livelli 1-10 esponenziali, IA e fonderia per minerale, baratto solo verso il basso</li>
-    <li><strong>Rifiniture e fix</strong> (idee 20-26, 29, 30, 32) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa</li>
-    <li><strong>Riassetto dell'economia</strong> (idee 31, 33-37) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame</li>
-    <li><strong>Mappa stellare a sistemi solari</strong> (idea 38) — la mappa diventa un <strong>grafo</strong>: sistemi come nodi, tratte come archi, viaggio da sistema a sistema, ogni sistema coi suoi campi e le sue stazioni; i <strong>mercanti</strong> smettono di essere casuali e percorrono rotte visibili sugli archi, intercettabili</li>
-    <li><strong>Changelog e strumenti di sviluppo</strong> (idee 39, 40) — nelle impostazioni: <strong>changelog delle versioni</strong> (tasto normale) con implementazioni e fix di ciascuna; <strong>pulsante "SVILUPPATORE" separato</strong>, in fondo sotto il reset, con <strong>+1000 lingotti di ferro</strong>, <strong>+1000 lingotti di rame</strong>, <strong>+1000 Cookie</strong> sempre disponibili senza gate. Il <strong>"finisci subito"</strong> sta invece <strong>dentro la scheda</strong> dell'attesa: pulsantino quadrato verde <strong>"»"</strong> accanto alla barra di progresso, nel banner di viaggio e nella riga del modulo in costruzione</li>
-    <li>Più avanti: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
-    <li><strong>Milestone "Relitti"</strong> (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. <strong>In fondo alla roadmap</strong>, dopo tutto il resto</li>
+    <li><s><strong>Rifiniture e fix</strong></s> ✓ (25/07, v0.10) — cadenza unica del laser, tap che punta anche l'IA, partenza a razzo, fonderia a livelli, barra risorse senza lingotti, mercante con quantità rapide, impostazioni, zoom sulla mappa</li>
+    <li><s><strong>Riassetto dell'economia</strong></s> ✓ (25/07, v0.10) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame</li>
+    <li><s><strong>Mappa stellare a sistemi solari</strong></s> ✓ (25/07, v0.10) — 5 sistemi come nodi, 7 tratte come archi, viaggio multi-salto, campi e stazioni dentro i sistemi; i <strong>mercanti percorrono rotte visibili</strong> e si intercettano (moto deterministico, anche a gioco chiuso)</li>
+    <li><s><strong>Changelog e strumenti di sviluppo</strong></s> ✓ (25/07, v0.10) — tasto <strong>CHANGELOG</strong> nelle impostazioni (ultime 10 versioni, generate a ogni build), pulsante <strong>SVILUPPATORE</strong> separato con le risorse di test, <strong>"»" verde</strong> dentro le schede di viaggio e costruzione</li>
+    <li><strong>Prossimo — rifiniture di interfaccia e comandi</strong> (idee 43-48, dal doc del 26/07): indicatore dei costi <code>disponibili/necessari</code> in tutti i punti di spesa (urgente: oggi si legge al contrario di tutto il resto del gioco), <strong>zoom vero</strong> sulla mappa (il punto tra le dita resta fermo, niente traslazione automatica), <strong>fonderia che apre il forno</strong> coi potenziamenti dietro un pulsante che diventa "(Max)", <strong>"COSTRUISCI MODULO" nascosto</strong> quando non c'è nulla da costruire (e che torna quando Argo sblocca i moduli nuovi), <strong>focus della torretta</strong> per tipo di minerale, <strong>tenere premuto</strong> per continuare a sparare sullo stesso asteroide</li>
+    <li>Poi: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (nel grafo: archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia se il design lo richiederà; l'universo 2 come capitolo massimo</li>
+    <li><strong>Milestone "Relitti"</strong> (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. <strong>In fondo alla roadmap</strong>, dopo tutto il resto. Porta con sé l'<strong>inventario/stiva</strong>, che serve anche agli <strong>oggetti consumabili</strong> (idea 42) e ai <strong>pezzi</strong> per costruire le navi</li>
+    <li><strong>Milestone "Flotte"</strong> (idea 41) — costruzione di astronavi con pezzi rari (alcuni <strong>solo dai relitti</strong>, quindi viene dopo), <strong>spedizioni autonome</strong> gestite dalla sala comunicazioni, più avanti i <strong>combattimenti contro i pirati stellari</strong> con le navi libere. È la prima cosa del progetto che introduce <strong>reddito passivo</strong>: prima di progettarla va deciso cosa pagano le spedizioni e con che tetto (decisione aperta)</li>
   </ol>
 
   <h3>UI generale</h3>
@@ -544,8 +546,31 @@
     <p><strong>Motivazione:</strong> negli incremental le azioni manuali di oggi sono gli upgrade automatici di domani: tap manuale → futuro upgrade "torretta automatica"; trascinamento manuale → futuro upgrade "raggio traente/magnete". L'opzione b) (nave che segue il dito con sparo automatico) brucerebbe in partenza l'upgrade della torretta e contrasta con la nave fissa dell'opzione 1a. Avvertenza di bilanciamento: trascinare i minerali è piacevole con 3 drop, tedioso con 30 — è esattamente il fastidio che renderà desiderabile l'upgrade del magnete, ma va tenuto d'occhio.</p>
   </div>
 
-  <h3>Decisioni aperte <span class="badge done">0</span></h3>
-  <p><em>Nessuna al momento.</em></p>
+  <h3>Decisioni aperte <span class="badge open">4</span></h3>
+
+  <div class="decision-card">
+    <h4>2026-07-26 — Le spedizioni della flotta sono reddito passivo (idea 41)</h4>
+    <p><strong>Il nodo:</strong> la flotta manda navi a fare spedizioni <strong>in autonomia</strong>, cioè produce mentre non giochi. È la prima cosa in tutto il progetto che tocca la regola fissa <em>"il gioco attivo batte sempre il passivo"</em>, che finora ha guidato ogni bilanciamento (torretta più lenta del tap, deriva più lenta del trascinamento, offline con tetto a 24 h e deposito che si riempie).</p>
+    <p><strong>Le strade:</strong> <strong>a)</strong> le spedizioni pagano <strong>solo pezzi, materiali rari e oggetti</strong> — restano fuori dall'economia dei Cookie e alimentano se stesse e i relitti; <strong>b)</strong> pagano anche Cookie, e allora diventano un <strong>secondo rubinetto</strong> parallelo alle missioni e la banda 0,75-1,00 per equivalente asteroide va ritarata su due sorgenti; <strong>c)</strong> pagano quello che vogliono ma hanno un tetto duro (poche navi, poche spedizioni contemporanee, tempi lunghi) che le tiene sotto la resa del gioco attivo. La (a) è la più sicura, la (c) la più flessibile.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-26 — I consumabili scorrono a gioco chiuso? (idea 42)</h4>
+    <p><strong>Il nodo:</strong> jetbooster e overclock durano "30 minuti". Se il cronometro gira anche ad app chiusa, il potenziamento si consuma mentre dormi e il gioco chiede di essere controllato di continuo; se gira <strong>solo online</strong>, resta un premio al gioco attivo e non si spreca mai.</p>
+    <p><strong>Collegato:</strong> il jetbooster <strong>dimezza i tempi di viaggio</strong>, e il viaggio è il freno su cui è tarato il rubinetto dei Cookie — va tenuto raro e non cumulabile. E l'overclock non deve abbassare le soglie del doppio gating (rame col Mk II, densi con ≥ 9 danni): raddoppia il danno, non sblocca materiali.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-26 — Focus della torretta: filtro esclusivo o priorità? (idea 46)</h4>
+    <p><strong>Il nodo:</strong> con un <strong>filtro esclusivo</strong> l'IA può restare ferma davanti a uno schermo pieno del tipo sbagliato, mentre gli asteroidi ignorati escono in fondo (la pressione temporale del gioco). Con la <strong>priorità</strong> ("prima il rame, altrimenti il ferro") non si blocca mai ma non si può "risparmiare" un campo.</p>
+    <p><strong>Proposta:</strong> priorità come comportamento base, eventuale interruttore "solo questo". In entrambi i casi il tap continua a comandare (idea 24) e il gating resta valido.</p>
+  </div>
+
+  <div class="decision-card">
+    <h4>2026-07-26 — Grammatica dei moduli con schermata di funzione (idea 44)</h4>
+    <p><strong>Il nodo:</strong> la direttiva chiede che il tap sulla fonderia apra <strong>il forno</strong>, coi potenziamenti dietro un pulsante. La fonderia però non è più l'unico modulo con una funzione da usare: anche la <strong>sala comunicazioni</strong> ha la lista delle missioni, oggi impilata nello stesso pannello degli upgrade.</p>
+    <p><strong>Proposta:</strong> enunciare la regola una volta sola — <em>il tap apre la funzione, gli upgrade stanno dietro un pulsante "Potenziamenti" (disabilitato con "(Max)")</em> — e applicarla a fonderia <strong>e</strong> sala comunicazioni, invece di tenere due grammatiche.</p>
+  </div>
 </section>
 
 <!-- =========================== IDEE ============================ -->
@@ -554,7 +579,7 @@
 
   <blockquote>Le idee nascono nel documento Google condiviso, vengono valutate e finiscono <strong>in roadmap</strong> oppure tra le <strong>scartate</strong> (sempre con motivazione). Niente si perde. Fonte: <code>Docs/idee.md</code>.</blockquote>
 
-  <p><strong>Stato al 25/07/2026 (v0.10):</strong> le idee <strong>20-26 e 29-40 sono implementate</strong>. Restano fuori solo la <strong>19</strong> (relitti esplorabili, milestone in fondo alla roadmap), la <strong>27</strong> (tetto agli asteroidi grossi, rinviata) e la <strong>2</strong> (quadro elettrico, congelata col sistema energetico).</p>
+  <p><strong>Stato al 26/07/2026:</strong> le idee <strong>20-26 e 29-40 sono implementate</strong> (v0.10-v0.11). Restano da fare le <strong>41-48</strong>, appena importate; restano fuori la <strong>19</strong> (relitti esplorabili, milestone in fondo alla roadmap), la <strong>27</strong> (tetto agli asteroidi grossi, rinviata) e la <strong>2</strong> (quadro elettrico, congelata col sistema energetico).</p>
 
   <h3>Importate il 2026-07-23 <span class="badge done">11 valutate</span></h3>
 
@@ -632,6 +657,22 @@
     <tr><td>40</td><td><strong>Strumenti di sviluppo</strong> nelle impostazioni: <strong>+1000 lingotti di ferro</strong>, <strong>+1000 lingotti di rame</strong>, <strong>+1000 Cookie</strong>, e un <strong>"finisci subito"</strong> su ogni azione a tempo (costruzione dei moduli, viaggi) — per debuggare e testare senza ricominciare da capo</td><td>✅ In roadmap come <strong>tappa 4</strong>. È la lacuna più costosa del progetto: ogni verifica di un contenuto tardivo (hangar Mk II, campo del rame, missioni) chiede ore di gioco reale, e coi costi esponenziali della v0.9 la distanza cresce. Il "finisci subito" vale quanto le risorse: viaggi e costruzioni avanzano in tempo reale anche a gioco chiuso, non si saltano in alcun modo. Costo implementativo minimo, le funzioni esistono già. <strong>Dettagli chiusi il 25/07:</strong> risorse dietro un pulsante <strong>"SVILUPPATORE"</strong> a parte (in fondo, sotto il reset), <strong>"»" verde dentro la scheda</strong> di viaggio e di costruzione per saltare l'attesa, risorse <strong>sempre disponibili senza gate</strong></td></tr>
   </table>
 
+  <h3>Importate il 2026-07-26, dopo la v0.11 <span class="badge open">8 voci, da fare</span></h3>
+
+  <p>Due feature grosse a lungo termine (flotte e consumabili, entrambe agganciate alla milestone dei relitti) e sei interventi immediati su interfaccia e comandi. <strong>Tre punti vanno discussi prima di scrivere codice</strong>: sono segnati con ⚠️ e aperti nella sezione <a href="#decisioni">Decisioni</a>.</p>
+
+  <table>
+    <tr><th>#</th><th>Idea / direttiva</th><th>Verdetto</th></tr>
+    <tr><td>41</td><td><strong>Flotte</strong>: creazione di astronavi con pezzi rari (alcuni <strong>solo dai relitti</strong>), <strong>spedizioni autonome</strong> gestite dalla sala comunicazioni, più avanti <strong>combattimenti contro flotte di pirati</strong> con le navi libere</td><td>✅ In roadmap come <strong>milestone dopo i relitti</strong> (dipendenza dura: i pezzi vengono da lì). Regge bene: la sala comunicazioni è già la radio degli incarichi, i relitti trovano finalmente un destinatario per il bottino, e la mappa a grafo si usa anche stando fermi. Da chiudere: ⚠️ <strong>le spedizioni sono reddito passivo</strong> — prima cosa nel progetto a toccare la regola "attivo batte passivo"; <strong>cosa pagano</strong> (se Cookie, diventano un secondo rubinetto parallelo alle missioni); <strong>dove si costruiscono</strong> le navi (hangar di Argo o cantiere di bordo); i <strong>pirati</strong> conviene farli nascere dentro le spedizioni, non come schermata nuova</td></tr>
+    <tr><td>42</td><td><strong>Oggetti consumabili</strong> nella stiva, da contratti, spedizioni e relitti: jetbooster (viaggio dimezzato, 30 min), overclock delle torrette (danno ×2, 30 min), adrenalina, health pack</td><td>✅ In roadmap <strong>con la milestone relitti</strong>. Adrenalina e health pack vivono solo dentro il minigioco; jetbooster e overclock agiscono sul gioco di oggi e si possono anticipare. Tutti chiedono la stessa cosa nuova: un <strong>inventario</strong> — la "stiva" non esiste (ci sono magazzino e carico del grezzo) — da progettare una volta sola coi 4 slot di equipaggiamento dell'idea 19. Da chiudere: ⚠️ i <strong>30 minuti scorrono a gioco chiuso?</strong>; il jetbooster dimezza il viaggio, che è il <strong>freno del rubinetto dei Cookie</strong>; l'overclock non deve abbassare le soglie del doppio gating</td></tr>
+    <tr><td>43</td><td><strong>Zoom vero</strong> sulla mappa stellare: oggi cambia la dimensione totale e trascina la mappa da sola</td><td>✅ Subito (v0.12). Diagnosi corretta, causa trovata: <code>MapPanZoom</code> scala il contenuto <em>e</em> moltiplica la posizione, quindi lo zoom è ancorato al centro dell'area virtuale invece che al punto tra le dita. Fix: tenere fermo il <strong>punto focale del pinch</strong>. Supera l'implementazione dell'idea 30, non la decisione</td></tr>
+    <tr><td>44</td><td><strong>La fonderia apre il forno</strong>, coi potenziamenti dietro un pulsante che si spegne con <strong>(Max)</strong></td><td>✅ Subito (v0.12). Giusto sull'uso reale: è l'unico modulo in cui si entra <em>per fare</em>, e al Lv 2 (massimo attuale) il pannello è un vicolo cieco. ⚠️ Non è però più l'unico modulo con una funzione: anche la <strong>sala comunicazioni</strong> ha la lista delle missioni. Meglio enunciare la regola una volta sola e applicarla a entrambe</td></tr>
+    <tr><td>45</td><td>Far sparire <strong>"COSTRUISCI MODULO"</strong> quando tutti i moduli disponibili sono già costruiti</td><td>✅ Subito (v0.12). Conseguenza naturale della rifinitura del 24/07 (popup senza i moduli già costruiti): se il popup è sempre vuoto, il pulsante è un vicolo cieco. Un'accortezza obbligatoria: la condizione è "nessun modulo <em>disponibile adesso</em>", così il pulsante <strong>torna</strong> quando Argo sblocca sala mappe e sala comunicazioni</td></tr>
+    <tr><td>46</td><td><strong>Focus della torretta</strong>: scegliere il tipo di asteroide a cui dare priorità</td><td>✅ Subito (v0.12). Completamento naturale dell'idea 24: il tap punta <em>un</em> asteroide, il focus è un <strong>ordine permanente</strong> — serve ora che esistono i campi misti, dove metà delle laserate finiscono nel minerale sbagliato. ⚠️ Da confermare: <strong>filtro esclusivo</strong> (l'IA può restare ferma mentre gli asteroidi escono in fondo) o <strong>priorità con ripiego</strong> (consigliata). Il tap resta sopra a tutto e il gating vale sempre</td></tr>
+    <tr><td>47</td><td><strong>Tenere premuto</strong> un asteroide per continuare a sparargli</td><td>✅ Subito (v0.12). QoL pura e a bilanciamento invariato: la cadenza è già dettata dal fascio, quindi non si spara più in fretta — si risparmia il dito. Il trascinamento dei minerali resta prioritario; se l'asteroide esplode sotto il dito meglio fermarsi (altrimenti il dito diventa una seconda IA)</td></tr>
+    <tr><td>48</td><td><strong>Indicatore dei lingotti invertito</strong>: con 30 su 60 necessari deve leggersi <strong>30/60</strong>, non 60/30</td><td>✅ Subito, in testa alla v0.12. <strong>Ribalta una scelta della v0.11</strong> (<code>necessari/in magazzino</code>) e ha ragione: ovunque altro nel gioco si legge "quanto ho / quanto serve" — carico <code>340/1000</code>, livelli <code>Lv 3/10</code>, missioni <code>12/30</code>. I pannelli dei moduli erano l'unico posto a leggersi al contrario, ed è dove si fanno i conti. Una riga, più una passata di controllo sugli altri punti di spesa</td></tr>
+  </table>
+
   <h3>Idee scartate <span class="badge open">1</span></h3>
   <p>L'idea 3 (asteroide di deuterio) è scartata <em>per ora</em>: implementata nella v0.3, rimossa con la direttiva 12; se reattore ed energia torneranno, tornerà con loro.</p>
 </section>
@@ -642,7 +683,17 @@
 
   <blockquote>Aggiornare a ogni sessione di lavoro. Fonte: <code>Docs/stato.md</code>.</blockquote>
 
-  <h3>Aggiornato al 2026-07-25 (sera) — v0.11</h3>
+  <h3>Aggiornato al 2026-07-26 — v0.11 pubblicata, idee 41-48 in roadmap</h3>
+
+  <h4>8 voci nuove dal Google Doc (26/07)</h4>
+  <p>Valutate tutte insieme (idee <strong>41-48</strong>): due feature grosse a lungo termine — <strong>flotte e spedizioni</strong> e <strong>oggetti consumabili</strong>, entrambe agganciate alla milestone dei relitti — e sei interventi immediati che formano la <strong>tappa 1 della v0.12</strong>. La revisione ha trovato <strong>un ribaltamento e tre punti da discutere</strong>:</p>
+  <ol>
+    <li><strong>L'indicatore dei costi era invertito rispetto a tutto il resto del gioco</strong> (idea 48): la v0.11 lo aveva scritto <code>necessari/in magazzino</code>, ma barra risorse, livelli e missioni si leggono "quanto ho / quanto serve". Vince la direttiva: si torna a <code>disponibili/necessari</code></li>
+    <li><strong>Le spedizioni della flotta sono reddito passivo</strong> (idea 41) — prima cosa nel progetto a toccare la regola fissa "il gioco attivo batte sempre il passivo": va deciso cosa pagano e con quale tetto</li>
+    <li><strong>I consumabili a tempo</strong> (idea 42): 30 minuti che scorrono anche a gioco chiuso o solo online? E il jetbooster dimezza il viaggio, che è il freno del rubinetto dei Cookie</li>
+    <li><strong>Focus della torretta</strong> (idea 46): filtro esclusivo (l'IA può restare ferma) o priorità con ripiego? E se la nuova grammatica della fonderia (idea 44) valga anche per la sala comunicazioni</li>
+  </ol>
+  <p>Le sei rifiniture in coda alla v0.11 sono: costi <code>disponibili/necessari</code>, zoom vero sulla mappa, fonderia che apre il forno, "COSTRUISCI MODULO" che sparisce quando non serve, focus della torretta, tenere premuto per sparare.</p>
 
   <h4>Rifiniture dopo il playtest in editor (v0.11)</h4>
   <ul>
