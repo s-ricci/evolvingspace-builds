@@ -200,7 +200,7 @@ Regole fisse: il gioco attivo batte sempre il passivo; il mining manuale (tap e 
 
 ## Visione a medio-lungo termine
 
-Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), ordine di lavoro in [stato.md](stato.md)):
+Idee valutate e messe in roadmap, aggiornata al 26/07/2026 (dettagli in [idee.md](idee.md), ordine di lavoro in [stato.md](stato.md)):
 
 1. ~~**Fonderia comoda**~~ ✓ (23/07) — X di chiusura e "produci tutti"; il "Crafta tutto" globale arriverà con più materiali
 2. ~~**Deposito a peso + schermata mining dinamica**~~ ✓ (23/07 sera, direttive 12-13) — hanno sostituito il sistema energetico della v0.3, ritirato dopo il playtest
@@ -212,8 +212,10 @@ Idee valutate e messe in roadmap il 23/07/2026 (dettagli in [idee.md](idee.md), 
 8. ~~**Riassetto dell'economia**~~ ✓ (25/07, v0.10) — missioni ripetibili e randomizzate, Sala comunicazioni, 500 Cookie il primo tier, fine della vendita dei lingotti, acquisto lingotti coi Cookie, Vena mista e Filone di rame
 9. ~~**Mappa stellare a sistemi solari**~~ ✓ (25/07, v0.10) — 5 sistemi come nodi, 7 tratte come archi, viaggio multi-salto, campi e stazioni dentro i sistemi; i **mercanti percorrono rotte visibili** e si intercettano (moto deterministico, anche a gioco chiuso)
 10. ~~**Changelog e strumenti di sviluppo**~~ ✓ (25/07, v0.10) — tasto **CHANGELOG** nelle impostazioni (ultime 10 versioni, testo generato a ogni build da `changelog.md`), pulsante **SVILUPPATORE** separato con le risorse di test, e il **"»" verde** dentro le schede di viaggio e costruzione per chiudere subito l'attesa
-11. **Prossimo**: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (che nel grafo sono archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
-12. **Milestone "Relitti"** (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. **In fondo alla roadmap**, dopo tutto il resto
+11. **Prossimo — rifiniture di interfaccia e comandi** (idee 43-48, dal doc del 26/07): indicatore dei costi `disponibili/necessari` in tutti i punti di spesa (urgente: oggi si legge al contrario di tutto il resto del gioco), **zoom vero** sulla mappa (punto focale del pinch fermo, niente traslazione automatica), **fonderia che apre il forno** coi potenziamenti dietro un pulsante "(Max)" quando sono finiti, **"COSTRUISCI MODULO" nascosto** quando non c'è nulla da costruire (e che torna quando Argo sblocca i moduli nuovi), **focus della torretta** per tipo di minerale, **tenere premuto** per continuare a sparare sullo stesso asteroide
+12. Poi: silicio, titanio, alluminio coi Mk successivi (pesi crescenti); altre stazioni come checkpoint con gate di teletrasporto (che nel grafo sono archi speciali) e milestone successive; intro a fumetto; eventuale ritorno di reattore/energia (e del "quadro elettrico") se il design lo richiederà; l'universo 2 come capitolo massimo
+13. **Milestone "Relitti"** (idea 19) — relitti di stazione esplorabili: minigioco a stanze procedurali, HP della tuta, oggetti equipaggiabili, oggetti come ricompensa delle missioni. **In fondo alla roadmap**, dopo tutto il resto. Porta con sé l'**inventario/stiva**, che serve anche agli **oggetti consumabili** (idea 42: jetbooster, overclock delle torrette, adrenalina, health pack) e ai **pezzi** per costruire le navi
+14. **Milestone "Flotte"** (idea 41) — costruzione di astronavi con pezzi rari (alcuni **solo dai relitti**, quindi viene dopo), **spedizioni autonome** gestite dalla sala comunicazioni, più avanti i **combattimenti contro i pirati stellari** con le navi libere. È la prima cosa del progetto che introduce **reddito passivo**: prima di progettarla va deciso cosa pagano le spedizioni e con che tetto (decisione aperta in [decisioni.md](decisioni.md))
 
 ## UI generale
 
