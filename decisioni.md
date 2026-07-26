@@ -245,6 +245,19 @@
 
 ## Decisioni aperte
 
+### 2026-07-26 (dopo la v0.12) — La levetta della velocità e la causa vera dello spalmare danno (idea 49)
+**Il nodo:** la direttiva chiede una levetta per regolare la velocità, perché con poco danno l'IA "danneggia tutti gli asteroidi senza distruggerne nemmeno uno". La levetta serve (è la barra velocità che il GDD prevedeva per la 1b), ma il difetto ha una **seconda causa**: l'IA riscegle il bersaglio a ogni laserata con la regola "il più basso", e il più basso cambia mentre gli asteroidi scendono.
+**Da decidere:** (1) se l'IA deve **impegnarsi sul bersaglio** finché muore o esce (proposta: sì — "il più basso" resta il criterio *di scelta*, non un ripensamento continuo); (2) se la levetta scala **solo il mining** (spawn, discesa, stelle) o anche le rotte — tenerla al mining non tocca i tempi di viaggio; (3) il minimo della levetta (fino a fermarsi?) e il fatto che va salvata, perché entra nella resa offline.
+
+### 2026-07-26 (dopo la v0.12) — Un mercante solo: cosa fare del rubinetto secondario (idea 51)
+**Il nodo:** passando da 5 mercanti a 1 si perde qualche possibilità di incarico (uno per abbordaggio) e si stringe l'unico posto fuori Argo dove comprare lingotti di rame.
+**Le strade:** lasciarlo così (la bacheca di Argo resta il rubinetto principale, e la regola del power creep dice che non è il pacing a dover essere difeso), oppure compensare con **più incarichi per abbordaggio** o un mercante che incrocia la rotta più spesso.
+**Nota tecnica già decisa altrove:** il moto deve restare **deterministico dall'orologio** (decisione del 25/07), quindi il vagabondaggio "casuale" si deriva dall'indice di tappa, non da `Random`.
+
+### 2026-07-26 (dopo la v0.12) — Orbite: minimo di durata delle rotte interne, e chi orbita (idea 53)
+**Il nodo:** con i PoI in orbita le distanze interne a un sistema diventano variabili; due campi possono allinearsi e ridurre il viaggio a pochi secondi.
+**Da decidere:** un **minimo (e un massimo) di durata** per le rotte interne, e se le **stazioni orbitano** come i campi o restano ferme (Argo che si sposta cambia la lettura della mappa).
+
 ### 2026-07-26 — Una quota di Cookie dalle spedizioni? (idea 41)
 **Il nodo:** deciso che le spedizioni pagano pezzi, materiali e oggetti, resta da valutare se aggiungere **una piccola quota di Cookie** quando la milestone entrerà in cantiere. Per ora si evita: se si aggiungerà, dovrà essere una cifra piccola e nota, non un secondo rubinetto.
 **Da riprendere:** con la progettazione della milestone Flotte, dopo i relitti. Da confermare.
