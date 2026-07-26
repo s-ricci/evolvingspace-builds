@@ -221,4 +221,19 @@
 
 ## Decisioni aperte
 
-*(nessuna al momento)*
+### 2026-07-26 — Le spedizioni della flotta sono reddito passivo (idea 41)
+**Il nodo:** la flotta manda navi a fare spedizioni **in autonomia**, cioè produce mentre non giochi. È la prima cosa in tutto il progetto che tocca la regola fissa *"il gioco attivo batte sempre il passivo"*, che finora ha guidato ogni bilanciamento (torretta più lenta del tap, deriva più lenta del trascinamento, offline con tetto a 24 h e deposito che si riempie).
+**Le strade:** (a) le spedizioni pagano **solo pezzi, materiali rari e oggetti** — restano fuori dall'economia dei Cookie e alimentano se stesse e i relitti; (b) pagano anche Cookie, e allora diventano un **secondo rubinetto** parallelo alle missioni e la banda 0,75-1,00 per equivalente asteroide va ritarata su due sorgenti; (c) pagano quello che vogliono ma hanno un tetto duro (poche navi, poche spedizioni contemporanee, tempi lunghi) che le tiene sotto la resa del gioco attivo.
+**Da decidere insieme prima di progettare la milestone.** La (a) è la più sicura, la (c) la più flessibile.
+
+### 2026-07-26 — I consumabili scorrono a gioco chiuso? (idea 42)
+**Il nodo:** jetbooster e overclock durano "30 minuti". Se il cronometro gira anche ad app chiusa, il potenziamento si consuma mentre dormi e il gioco chiede di essere controllato di continuo; se gira **solo online**, resta un premio al gioco attivo e non si spreca mai.
+**Collegato:** il jetbooster **dimezza i tempi di viaggio**, e il viaggio è il freno su cui è tarato il rubinetto dei Cookie — va tenuto raro e non cumulabile. E l'overclock non deve abbassare le soglie del doppio gating (rame col Mk II, densi con ≥ 9 danni): raddoppia il danno, non sblocca materiali.
+
+### 2026-07-26 — Focus della torretta: filtro esclusivo o priorità? (idea 46)
+**Il nodo:** scegliere il tipo di asteroide su cui l'IA insiste. Con un **filtro esclusivo** l'IA può restare ferma davanti a uno schermo pieno del tipo sbagliato, mentre gli asteroidi ignorati escono in fondo (la pressione temporale del gioco). Con la **priorità** ("prima il rame, altrimenti il ferro") non si blocca mai ma non si può nemmeno "risparmiare" un campo.
+**Proposta:** priorità come comportamento base, eventuale interruttore "solo questo" per chi lo vuole. In entrambi i casi il tap continua a comandare (idea 24) e il gating resta valido.
+
+### 2026-07-26 — Grammatica dei moduli con schermata di funzione (idea 44)
+**Il nodo:** la direttiva chiede che il tap sulla fonderia apra **il forno**, con i potenziamenti dietro un pulsante. La fonderia però non è più l'unico modulo con una funzione da usare: anche la **sala comunicazioni** ha la lista delle missioni, oggi impilata nello stesso pannello degli upgrade.
+**Proposta:** enunciare la regola una volta sola — *il tap apre la funzione, gli upgrade stanno dietro un pulsante "Potenziamenti" (disabilitato con "(Max)")* — e applicarla a fonderia **e** sala comunicazioni, invece di tenere due grammatiche. Da confermare.
