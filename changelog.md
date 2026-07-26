@@ -9,6 +9,15 @@ Le APK sono nelle [Releases](https://github.com/s-ricci/evolvingspace-builds/rel
 
 ---
 
+## v0.12 — 26/07/2026
+
+- Nei pannelli dei moduli il costo si legge finalmente nel verso giusto: **quanto hai / quanto serve** (con 30 lingotti su 60 leggi `30/60`)
+- **Zoom vero sulla mappa stellare**: il punto tra le dita resta fermo mentre pizzichi, e la mappa non scivola più da sola
+- La **fonderia si apre sul forno**: tocchi il modulo e sei davanti alle ricette. I potenziamenti stanno dietro il pulsante in fondo, che si spegne con **(MAX)** quando non c'è più niente da migliorare. Stessa cosa per la **sala comunicazioni**, che si apre sulle missioni
+- Il tasto **"COSTRUISCI MODULO" sparisce** quando non c'è più nulla da costruire, e ricompare appena la stazione sblocca moduli nuovi
+- Nuovo **focus dell'IA** nel pannello del laser: le dici se preferire il **ferro** o il **rame** e lei insiste su quello; se in campo non ce n'è, torna a sparare a chi sta per sfuggire
+- **Tenendo premuto** un asteroide il laser continua a colpirlo, senza dover ripremere ogni volta (la cadenza resta quella del laser: non spara più in fretta)
+
 ## v0.11 — 25/07/2026
 
 - **Alla stazione non si mina più**: ormeggiati alla banchina la pagina di attracco prende il posto della schermata principale, il laser tace e il raggio si spegne (anche a gioco chiuso). Si riparte scegliendo una rotta dalla **mappa stellare**, che ora è raggiungibile dalla stazione insieme a interno nave e impostazioni
