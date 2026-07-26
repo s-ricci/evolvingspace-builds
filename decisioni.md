@@ -5,6 +5,30 @@
 
 ## Decisioni prese
 
+### 2026-07-26 — Il potere cresce con le settimane: il ferro diventa noccioline, la sfida sta al tier attuale
+**Scelta:** regola di bilanciamento a lungo termine, valida da qui in avanti. Chi gioca da una settimana deve **disintegrare gli asteroidi di ferro come noccioline**; la difficoltà si sposta ogni volta sul **contenuto del tier corrente**, e i costi salgono di conseguenza. Le cose devono diventare **progressivamente più facili da fare** e **progressivamente più care da comprare**: è la curva a fare da freno, non il singolo strumento.
+**Conseguenze immediate:**
+- Il **jetbooster** (idea 42) dimezza i tempi di viaggio *e quindi* accelera i Cookie: **è lo scopo**, non un effetto collaterale da tappare. Il rubinetto non si difende rallentando il giocatore, si difende alzando i prezzi del tier successivo.
+- Lo stesso vale per l'**overclock** e per la linea danni: il vecchio materiale si polverizza, il nuovo resiste.
+- La banda **0,75-1,00 Cookie per equivalente asteroide** resta il metro del *valore*, non un tetto alla *velocità*: se il giocatore trova modi di produrre più equivalenti al minuto, il prezzo dei tier è la leva.
+**Motivazione:** è la promessa del genere idle — la fatica di ieri diventa banale, e la soddisfazione sta nel vedere quanto sei diventato forte. Le protezioni scritte finora ("attento, il jetbooster apre il rubinetto") difendevano un pacing che il giocatore ha *diritto* di rompere: quel che va difeso è che ci sia **sempre un tier davanti** che non si rompe con le noccioline.
+
+### 2026-07-26 — Consumabili: si accumulano, si sommano, e a gioco chiuso sono in pausa
+**Scelta:** i consumabili (idea 42) sono **stackabili**: 20 jetbooster da 30 minuti valgono 10 ore di buff, usati uno dietro l'altro. Il tempo residuo **non scorre ad app chiusa**: alla riapertura si ritrovano esattamente come li si era lasciati.
+**Motivazione:** un consumabile che evapora mentre dormi trasforma un premio in un obbligo di presenza — l'opposto di un idle. Congelarlo lo rende una **scorta che il giocatore decide quando spendere**, ed è anche l'unica lettura coerente col resto: mining e viaggi avanzano offline perché sono la nave che lavora, il buff è invece qualcosa che *usi tu*. Nota implementativa: la durata va contata in **tempo di gioco attivo** (non su orologio UTC come rotte e costruzioni), e va salvata come "secondi rimanenti", non come "istante di scadenza".
+
+### 2026-07-26 — Spedizioni della flotta: pagano pezzi, materiali e oggetti; i Cookie per ora no
+**Scelta:** le spedizioni (idea 41) pagano **pezzi, materiali rari e oggetti** — restano fuori dall'economia dei Cookie. Una piccola quota di Cookie resta **da valutare** quando la milestone sarà in cantiere; per ora si evita.
+**Motivazione:** tiene le spedizioni fuori dalla taratura del rubinetto (che è la manopola più delicata dell'economia) e le rende **autoalimentanti**: le navi trovano i pezzi per costruire altre navi, e il ciclo si chiude con i relitti, che restano l'unica fonte di alcuni componenti. Se un domani serviranno Cookie, si aggiungeranno in quantità piccole e note, non come rubinetto parallelo.
+
+### 2026-07-26 — Focus della torretta: priorità con ripiego, non filtro
+**Scelta:** il focus per tipo di minerale (idea 46) è una **priorità**: l'IA insiste sul tipo scelto e, se in campo non ce n'è, **ripiega** sugli altri col criterio di oggi (il più basso, cioè quello che sta per uscire). Nessun filtro esclusivo.
+**Motivazione:** il filtro lascerebbe l'IA immobile davanti a uno schermo pieno del tipo sbagliato mentre gli asteroidi escono in fondo — un modo silenzioso di peggiorare la resa credendo di ottimizzarla. La priorità dà lo stesso controllo senza mai fermarsi. Il **tap resta sopra a tutto** (idea 24: il bersaglio scelto a mano batte il focus) e il doppio gating vale sempre: non si punta ciò che non si può rompere, né il rame senza IA Lv 2.
+
+### 2026-07-26 — Grammatica dei moduli: il tap apre la funzione, gli upgrade stanno dietro "Potenziamenti"
+**Scelta:** per i moduli che **hanno una schermata di funzione**, il tap sulla riga apre **la funzione**, e i potenziamenti stanno dietro un pulsante **"POTENZIAMENTI"** che si disabilita con **"(Max)"** quando sono tutti al massimo. Vale per la **fonderia** (tap → il forno con le ricette, idea 44) e per la **sala comunicazioni** (tap → la lista delle missioni). Gli altri moduli — che di funzione hanno solo i propri upgrade — continuano ad aprire il loro pannello.
+**Motivazione:** la direttiva parlava della fonderia, ma la fonderia non è più l'unico caso: mettere la regola solo lì avrebbe creato due grammatiche a distanza di un modulo. Così la regola è una sola e si legge dall'uso: *si entra in una stanza per usarla, non per fare shopping*. La fonderia al livello massimo (Lv 2, oggi) smette anche di essere un pannello con dentro un solo bottone spento.
+
 ### 2026-07-22 — Comportamento della schermata mining
 **Scelta:** opzione **a)** — 2 asteroidi statici; la nave aspetta che vengano distrutti e raccolti prima di avanzare (nuova ondata a campo libero).
 **Motivazione:** è la versione già descritta nel GDD e la più rapida per arrivare a un primo giocabile che validi il loop "spara → raccogli → crafta". In un idle/incremental la prima schermata fa da tutorial: la semplicità è un pregio. L'opzione **b)** (asteroidi in avvicinamento + barra velocità) resta la **evoluzione naturale a medio termine** — dà la sensazione di viaggio coerente con la lore — e per questo lo spawner degli asteroidi è astratto dietro un'interfaccia (`IAsteroidSpawner`), così il passaggio a b) non richiederà di riscrivere la schermata. L'opzione **c)** (esplorazione procedurale con due levette) è **scartata**: cambia genere, richiede due mani e attenzione continua, l'opposto di un idle giocabile con un pollice.
@@ -221,19 +245,6 @@
 
 ## Decisioni aperte
 
-### 2026-07-26 — Le spedizioni della flotta sono reddito passivo (idea 41)
-**Il nodo:** la flotta manda navi a fare spedizioni **in autonomia**, cioè produce mentre non giochi. È la prima cosa in tutto il progetto che tocca la regola fissa *"il gioco attivo batte sempre il passivo"*, che finora ha guidato ogni bilanciamento (torretta più lenta del tap, deriva più lenta del trascinamento, offline con tetto a 24 h e deposito che si riempie).
-**Le strade:** (a) le spedizioni pagano **solo pezzi, materiali rari e oggetti** — restano fuori dall'economia dei Cookie e alimentano se stesse e i relitti; (b) pagano anche Cookie, e allora diventano un **secondo rubinetto** parallelo alle missioni e la banda 0,75-1,00 per equivalente asteroide va ritarata su due sorgenti; (c) pagano quello che vogliono ma hanno un tetto duro (poche navi, poche spedizioni contemporanee, tempi lunghi) che le tiene sotto la resa del gioco attivo.
-**Da decidere insieme prima di progettare la milestone.** La (a) è la più sicura, la (c) la più flessibile.
-
-### 2026-07-26 — I consumabili scorrono a gioco chiuso? (idea 42)
-**Il nodo:** jetbooster e overclock durano "30 minuti". Se il cronometro gira anche ad app chiusa, il potenziamento si consuma mentre dormi e il gioco chiede di essere controllato di continuo; se gira **solo online**, resta un premio al gioco attivo e non si spreca mai.
-**Collegato:** il jetbooster **dimezza i tempi di viaggio**, e il viaggio è il freno su cui è tarato il rubinetto dei Cookie — va tenuto raro e non cumulabile. E l'overclock non deve abbassare le soglie del doppio gating (rame col Mk II, densi con ≥ 9 danni): raddoppia il danno, non sblocca materiali.
-
-### 2026-07-26 — Focus della torretta: filtro esclusivo o priorità? (idea 46)
-**Il nodo:** scegliere il tipo di asteroide su cui l'IA insiste. Con un **filtro esclusivo** l'IA può restare ferma davanti a uno schermo pieno del tipo sbagliato, mentre gli asteroidi ignorati escono in fondo (la pressione temporale del gioco). Con la **priorità** ("prima il rame, altrimenti il ferro") non si blocca mai ma non si può nemmeno "risparmiare" un campo.
-**Proposta:** priorità come comportamento base, eventuale interruttore "solo questo" per chi lo vuole. In entrambi i casi il tap continua a comandare (idea 24) e il gating resta valido.
-
-### 2026-07-26 — Grammatica dei moduli con schermata di funzione (idea 44)
-**Il nodo:** la direttiva chiede che il tap sulla fonderia apra **il forno**, con i potenziamenti dietro un pulsante. La fonderia però non è più l'unico modulo con una funzione da usare: anche la **sala comunicazioni** ha la lista delle missioni, oggi impilata nello stesso pannello degli upgrade.
-**Proposta:** enunciare la regola una volta sola — *il tap apre la funzione, gli upgrade stanno dietro un pulsante "Potenziamenti" (disabilitato con "(Max)")* — e applicarla a fonderia **e** sala comunicazioni, invece di tenere due grammatiche. Da confermare.
+### 2026-07-26 — Una quota di Cookie dalle spedizioni? (idea 41)
+**Il nodo:** deciso che le spedizioni pagano pezzi, materiali e oggetti, resta da valutare se aggiungere **una piccola quota di Cookie** quando la milestone entrerà in cantiere. Per ora si evita: se si aggiungerà, dovrà essere una cifra piccola e nota, non un secondo rubinetto.
+**Da riprendere:** con la progettazione della milestone Flotte, dopo i relitti. Da confermare.
